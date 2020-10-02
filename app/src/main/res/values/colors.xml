@@ -3,4 +3,22 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--  Default color -->
+    <color name="darkGrey">#474954</color>
+    <color name="grey">#929292</color>
+    <color name="whiteGrey">#EFF1F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="darkBlue">#001C71</color>
+    <color name="blue">#007DFF</color>
+    <color name="lightBlue">#40DBFB</color>
+    <color name="green">#87D682</color>
+    <color name="greenBlue">#7AD9E3</color>
+
+    <!--   Other -->
+    <color name="greenLowOpacity">#B387D682</color>
+    <color name="greenBlueLowOpacity">#B37AD9E3</color>
+    <color name="darkGreyLowOpacity">#B3474954</color>
+    <color name="lightBlueLowOpacity">#B340DBFB</color>
+
 </resources>
