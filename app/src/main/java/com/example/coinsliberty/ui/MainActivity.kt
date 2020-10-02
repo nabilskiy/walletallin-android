@@ -18,22 +18,6 @@ class MainActivity : AppCompatActivity() {
         setTransparentLightStatusBar()
         setupFullScreen()
 
-        lavCoinsLiberty.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator) {
-                Log.e("Animation:", "start")
-            }
 
-            override fun onAnimationEnd(animation: Animator) {
-                Toast.makeText(this@MainActivity, "Finish Animation", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onAnimationCancel(animation: Animator) {
-                Log.e("Animation:", "cancel")
-            }
-
-            override fun onAnimationRepeat(animation: Animator) {
-                Log.e("Animation:", "repeat")
-            }
-        })
     }
 }
