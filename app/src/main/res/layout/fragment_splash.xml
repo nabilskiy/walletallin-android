@@ -8,8 +8,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lavCoinsLiberty"
-        android:layout_width="234dp"
-        android:layout_height="96dp"
+        android:layout_width="@dimen/splash_width"
+        android:layout_height="@dimen/splash_height"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
