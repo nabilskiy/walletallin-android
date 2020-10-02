@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#474954"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+   <com.airbnb.lottie.LottieAnimationView
+       android:id="@+id/lavCoinsLiberty"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="236dp"
+       android:layout_marginBottom="310dp"
+       android:layout_marginStart="62dp"
+       android:layout_marginEnd="62dp"
+       app:lottie_autoPlay="true"
+       app:lottie_fileName="coinsliberty_logo.json"
+       app:lottie_loop="false"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
