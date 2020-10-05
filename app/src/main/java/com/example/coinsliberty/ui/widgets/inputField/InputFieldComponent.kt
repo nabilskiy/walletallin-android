@@ -77,13 +77,12 @@ class InputFieldComponent @JvmOverloads constructor(
     }
 
     fun setPhoneNumber() {
-        val phoneNumber: String = "+ "
         etField.inputType = InputType.TYPE_CLASS_NUMBER
 
         etField.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
+            override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 modifyNumber(s.toString())
@@ -93,8 +92,10 @@ class InputFieldComponent @JvmOverloads constructor(
 
     private fun modifyNumber(number: String) {
         if (number.isNotEmpty()) {
-            if (number.startsWith("+ ")) etField.setText(number)
-            else if(number != "+") etField.setText("+ ${number}")
+            if (!number.startsWith("+")) {
+                etField.setText("+${number}")
+                etField.setSelection(etField.text.length)
+            }
         }
     }
 
