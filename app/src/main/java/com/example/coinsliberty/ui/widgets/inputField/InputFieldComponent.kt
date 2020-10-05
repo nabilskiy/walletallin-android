@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.widget.FrameLayout
 import com.example.coinsliberty.R
 import com.example.coinsliberty.utils.extensions.visibleIfOrGone
@@ -43,15 +44,16 @@ class InputFieldComponent @JvmOverloads constructor(
         val header = typedArray.getString(R.styleable.InputFieldComponent_ifc_header) ?: ""
         tvInputHeader.text = header
 
+        val typeOfInput = typedArray.getString(R.styleable.InputFieldComponent_ifc_type) ?: "text"
+
+
         val useMask = typedArray.getBoolean(R.styleable.InputFieldComponent_ifc_use_mask, false)
         cbShowHide.visibleIfOrGone { useMask }
 
         val showMask = typedArray.getBoolean(R.styleable.InputFieldComponent_ifc_mask, true)
         cbShowHide.isChecked = showMask
 
-        val typeOfInput = typedArray.getString(R.styleable.InputFieldComponent_ifc_type) ?: "text"
         currentInputType(typeOfInput)
-
         typedArray.recycle()
     }
 
@@ -68,10 +70,16 @@ class InputFieldComponent @JvmOverloads constructor(
     }
 
     fun currentInputType(type: String) {
+        cbShowHide.visibility = View.INVISIBLE
+
         when (type) {
             TypeOfInput.phone.name -> setPhoneNumber()
             TypeOfInput.textEmailAddress.name -> etField.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-            TypeOfInput.textPassword.name -> etField.inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD
+            TypeOfInput.textPassword.name -> {
+                cbShowHide.visibility = View.VISIBLE
+                cbShowHide.isChecked = false
+                etField.inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD
+            }
             TypeOfInput.text.name -> etField.inputType = InputType.TYPE_CLASS_TEXT
         }
     }
