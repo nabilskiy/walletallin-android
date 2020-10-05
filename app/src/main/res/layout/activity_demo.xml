@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.demo.DemoActivity">
 
+    <include layout="@layout/toolbar"/>
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/ifcPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ifc_header="Phone"
-        app:ifc_use_mask="true"
-        app:ifc_type="phone"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

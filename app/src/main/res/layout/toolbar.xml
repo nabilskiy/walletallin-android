@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:background="@drawable/bg_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivToolbarIconLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_germany"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="22dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivToolbarRightIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/ic_germany"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="22dp"
+        />
+
+    <TextView
+        android:id="@+id/tvToolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="Title"
+        />
+
+    <LinearLayout
+        android:id="@+id/llToolbarLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
+        android:background="@drawable/bg_toolbar_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/ivToolbarLogo"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:src="@drawable/toolbar_logo"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivAddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_logo_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/llToolbarLogo"
+        app:layout_constraintStart_toStartOf="@+id/llToolbarLogo"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="8dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
