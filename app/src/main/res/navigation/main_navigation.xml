@@ -10,5 +10,16 @@
         android:id="@+id/splashFragment"
         android:name="com.example.coinsliberty.ui.splash.SplashFragment"
         android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash"/>
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_signUpFragmnet"
+            app:destination="@id/signUpFragmnet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragmnet"
+        android:name="com.example.coinsliberty.ui.signup.SignUpFragment"
+        android:label="SignUpFragmnet"
+        tools:layout="@layout/fragment_sign_up"
+        />
 </navigation>

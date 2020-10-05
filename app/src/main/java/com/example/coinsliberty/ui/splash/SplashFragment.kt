@@ -8,9 +8,10 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.moneybee.ui.config.NavigationConfig
+import com.example.coinsliberty.ui.config.NavigationConfig
 import com.example.moneybee.ui.splash.SplashNavigation
 import com.example.moneybee.ui.splash.SplashViewModel
 import kotlinx.android.synthetic.main.fragment_splash.*
@@ -35,7 +36,8 @@ class SplashFragment: BaseKotlinFragment() {
     private fun subscribeLiveData() {
     }
 
-    private fun navigate(navigationConfig: NavigationConfig?) {
+    private fun navigate() {
+        navigator.goToSignUp()
     }
 
 
@@ -46,7 +48,7 @@ class SplashFragment: BaseKotlinFragment() {
 
             @SuppressLint("ShowToast")
             override fun onAnimationEnd(animation: Animator) {
-                Toast.makeText(activity, "Finish", Toast.LENGTH_SHORT).show()
+                    navigate()
             }
 
             override fun onAnimationCancel(animation: Animator) {
