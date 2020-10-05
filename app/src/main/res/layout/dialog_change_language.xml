@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog">
+
+
+    <TextView
+        android:id="@+id/tvChangeLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+
+    <include
+        android:id="@+id/activeItem"
+        layout="@layout/item_change_language"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </include>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChangeLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activeItem" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <ScrollView-->
+    <!--        android:id="@+id/svActiveItem"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="124dp"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:fillViewport="true"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/activeItem">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/unitedStates"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/unitedArabEmirates"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/russia"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/germany"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/italy"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/brazil"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/thailand"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/china"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/southKorea"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/spain"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/japan"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--            <include-->
+    <!--                android:id="@+id/india"-->
+    <!--                layout="@layout/item_change_language"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        </LinearLayout>-->
+    <!--    </ScrollView>-->
