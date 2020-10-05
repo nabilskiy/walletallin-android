@@ -37,7 +37,7 @@ class SplashFragment: BaseKotlinFragment() {
     }
 
     private fun navigate() {
-        navigator.goToSignUp()
+        navigator.goToSignUp(navController)
     }
 
 
