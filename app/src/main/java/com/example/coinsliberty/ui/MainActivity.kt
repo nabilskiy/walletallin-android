@@ -18,6 +18,28 @@ class MainActivity : AppCompatActivity() {
         setTransparentLightStatusBar()
         setupFullScreen()
 
+        bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.wallet -> {
+                    setContent("Home")
+                    true
+                }
+                R.id.exchange -> {
+                    setContent("Notification")
+                    true
+                }
+                R.id.setting -> {
+                    setContent("Search")
+                    true
+                }
+                else -> false
+            }
+            }
+        }
 
+    private fun setContent(content: String) {
+        setTitle(content)
+        tvLabel.text = content
     }
+
 }
