@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InputFieldComponent">
+        <attr name="ifc_header" format="string"/>
+        <attr name="ifc_use_mask" format="boolean"/>
+        <attr name="ifc_mask" format="boolean"/>
+        <attr name="ifc_type" format="string"/>
+    </declare-styleable>
+</resources>

@@ -6,4 +6,7 @@
     <dimen name="btn_grey_corners_radius">5dp</dimen>
     <dimen name="btn_setting_corners_radius">15dp</dimen>
 
+    <!--    Splash Fragment-->
+    <dimen name="splash_width">234dp</dimen>
+    <dimen name="splash_height">96dp</dimen>
 </resources>
