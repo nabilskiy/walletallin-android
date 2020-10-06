@@ -31,5 +31,15 @@
         android:name="com.example.coinsliberty.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_bottomTabNavigator"
+            app:destination="@id/bottomTabNavigator" />
+    </fragment>
+    <activity
+        android:id="@+id/bottomTabNavigator"
+        android:name="com.example.coinsliberty.BottomActivity"
+        android:label="BottomActivityy"
+        tools:layout="@layout/activity_bottom"
         />
 </navigation>
