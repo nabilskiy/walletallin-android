@@ -33,6 +33,11 @@
         tools:layout="@layout/fragment_login"
         >
         <action
+            android:id="@+id/action_loginFragment_to_signUpFragmnet"
+            app:destination="@id/signUpFragmnet" />
+    </fragment>
+        >
+        <action
             android:id="@+id/action_loginFragment_to_bottomTabNavigator"
             app:destination="@id/bottomTabNavigator" />
     </fragment>
