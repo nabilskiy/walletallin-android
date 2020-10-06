@@ -13,15 +13,9 @@ object KoinProvider {
 
     @JvmStatic
     fun startKoin(app: CoinsLibertyApp) {
-        //app.startKoin(app, listOf(appModule, viewModelModule, navigatorsModule, sharedModule))
-
         startKoin {
-            // Android context
-            //androidContext(this)
-            // modules
+            androidContext(app)
             modules(listOf(appModule, viewModelModule, navigatorsModule, sharedModule))
         }
-
     }
-
 }
