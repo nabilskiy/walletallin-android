@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CoinsLiberty</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="sign_up">sign up</string>
+    <string name="update">Update</string>
+    <string name="sign_up_with_upper">Sign Up</string>
+    <string name="login">Login</string>
 </resources>

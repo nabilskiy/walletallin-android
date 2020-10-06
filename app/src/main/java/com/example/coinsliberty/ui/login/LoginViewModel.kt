@@ -1,16 +1,15 @@
-package com.example.moneybee.ui.splash
+package com.example.coinsliberty.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.ui.config.NavigationConfig
 
-
-class SplashViewModel(): BaseViewModel() {
+class LoginViewModel(): BaseViewModel() {
 
     val ldNavigate = MutableLiveData<NavigationConfig>()
 
     fun navigate() {
-       
+
     }
 
 }

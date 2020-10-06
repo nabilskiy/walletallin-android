@@ -6,25 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.demo.DemoActivity">
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/inputField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:ifc_header="Password"
-        app:ifc_type="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/toolbar"/>
 
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/ifcPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ifc_header="Phone"
-        app:ifc_use_mask="true"
-        app:ifc_type="phone"
-        app:layout_constraintTop_toBottomOf="@+id/inputField"
-        android:layout_marginTop="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
