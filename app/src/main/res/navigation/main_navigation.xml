@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_splashFragment_to_signUpFragmnet"
             app:destination="@id/signUpFragmnet" />
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -21,5 +24,12 @@
         android:name="com.example.coinsliberty.ui.signup.SignUpFragment"
         android:label="SignUpFragmnet"
         tools:layout="@layout/fragment_sign_up"
+        />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.coinsliberty.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"
         />
 </navigation>
