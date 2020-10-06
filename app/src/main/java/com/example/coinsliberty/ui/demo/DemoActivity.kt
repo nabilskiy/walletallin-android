@@ -10,6 +10,6 @@ class DemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
 
-        ChangeLanguageDialog().show(supportFragmentManager, "test")
+        ChangeLanguageDialog().show(supportFragmentManager, ChangeLanguageDialog.TAG)
     }
 }
