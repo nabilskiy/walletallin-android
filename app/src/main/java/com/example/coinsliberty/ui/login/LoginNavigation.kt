@@ -1,12 +1,13 @@
 package com.example.coinsliberty.ui.login
 
 import androidx.navigation.NavController
+import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseNavigator
 
 class LoginNavigation : BaseNavigator() {
 
-    fun goToSetUp(navController: NavController?) {
-        // navController?.navigate(R.id.action_splashFragment_to_setUpFragment)
+    fun goToSignUp(navController: NavController?) {
+        navController?.navigate(R.id.action_loginFragment_to_signUpFragmnet)
     }
 
 }

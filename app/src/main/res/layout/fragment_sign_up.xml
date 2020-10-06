@@ -21,7 +21,7 @@
         android:id="@+id/tvScreenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/sign_up_with_upper"
         app:layout_constraintStart_toEndOf="@+id/ivLock"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="44dp"
@@ -77,29 +77,28 @@
         />
 
     <TextView
-        android:id="@+id/tvSignUpLogin"
+        android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ifcSignUpPassword"
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/blue"
         />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ifcSignUpPassword"
-        android:background="@drawable/btn_grey_border"
+        android:layout_marginBottom="56dp"
+        style="@style/ButtonGreyBorder"
         android:gravity="center"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@color/lightBlue"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

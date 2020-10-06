@@ -61,8 +61,7 @@
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lineHeight="20dp"
-        android:text="forgot password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/blue"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,27 +74,24 @@
         android:id="@+id/tvLoginSignUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sign up"
+        android:text="@string/sign_up"
         android:textColor="@color/blue"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
+        app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="96dp"
-        />
+        app:layout_constraintBottom_toTopOf="@id/btnLoginUpdate"
+        android:layout_marginStart="40dp" />
 
     <Button
         android:id="@+id/btnLoginUpdate"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginBottom="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
-        android:background="@drawable/btn_grey_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/ButtonGreyBorder"
         android:gravity="center"
-        android:text="Update"
-        android:textColor="@color/lightBlue"
-        android:alpha="0.6"
-        />
+        android:text="@string/update"
+        android:textColor="@color/lightBlue" />
 </androidx.constraintlayout.widget.ConstraintLayout>
