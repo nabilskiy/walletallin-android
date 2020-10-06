@@ -17,19 +17,19 @@ class LoginFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         loginToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.logout_icon)
         loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
-        btnLoginUpdate.setOnClickListener {
-            navigate()
-        }
-    }
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
-    }
+
+        btnLoginUpdate.setOnClickListener {
+            navigate()
+            }
+        }
 
     private fun navigate() {
         navigator.goToContent(navController)
     }
 
 }
+
