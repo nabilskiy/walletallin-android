@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.demo.DemoActivity">
 
-    <include layout="@layout/toolbar"/>
 
+    <com.example.coinsliberty.ui.widgets.inputField.switch.SwitchComponent
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sc_left_btn_text="Enabled"
+        app:sc_right_btn_text="Disabled"
+        app:sc_status="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
