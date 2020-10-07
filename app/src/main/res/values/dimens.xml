@@ -38,7 +38,23 @@
     <dimen name="dialog_iv_close_marginTop">6dp</dimen>
     <dimen name="dialog_iv_close_marginEnd">10dp</dimen>
 
+    <dimen name="dialog_clLink_width">280dp</dimen>
+    <dimen name="dialog_clLink_height">40dp</dimen>
+    <dimen name="dialog_clLink_marginStartEnd">16dp</dimen>
+    <dimen name="dialog_clLink_marginBottom">32dp</dimen>
 
+    <dimen name="dialog_ivCopy_marginTopBottom">8dp</dimen>
+    <dimen name="dialog_ivCopy_marginEnd">6dp</dimen>
 
+    <dimen name="dialog_tvLink_marginStart">12dp</dimen>
+
+    <dimen name="dialog_tvPleaseVerify_marginTop">16dp</dimen>
+
+    <dimen name="dialog_ll_qr_code_width_height">136dp</dimen>
+    <dimen name="dialog_ll_qr_code_elevation">4dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginStartEnd">88dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginTop">30dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
+    <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
 
 </resources>

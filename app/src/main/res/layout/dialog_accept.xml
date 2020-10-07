@@ -39,6 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_accept_tv_balance_marginTop"
             android:text="3333 USD"
+            android:textColor="@color/darkGrey"
+            android:textAppearance="@style/H1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivSuccess" />
@@ -49,6 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_accept_tv_will_marginTop"
             android:text="@string/will_be_set_to"
+            android:textColor="@color/green"
+            android:textAppearance="@style/H10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvBalance" />
@@ -58,6 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3Wa2231sdsadsad"
+            android:textAppearance="@style/H8"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWillBeSent" />

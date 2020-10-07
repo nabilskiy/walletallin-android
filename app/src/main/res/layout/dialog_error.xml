@@ -39,6 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_error_tv_error_marginTop"
             android:text="@string/error"
+            android:textAppearance="@style/H1"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivError" />
@@ -49,6 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dialog_error_tv_error_text_marginBottom"
             android:text="TextView"
+            android:textAppearance="@style/H8"
+            android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
