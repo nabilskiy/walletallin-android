@@ -27,4 +27,55 @@
         app:ifc_type="phone"
         app:layout_constraintTop_toBottomOf="@+id/inputField"
         android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnDialogError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDialogAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialogError" />
+
+    <Button
+        android:id="@+id/btnDialogQrCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="qrcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialogAccept" />
+
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnGenerate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Button"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btnGenerate"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:srcCompat="@drawable/bg_dialog_green" />-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

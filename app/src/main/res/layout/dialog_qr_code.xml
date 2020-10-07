@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_blue">
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginTop="@dimen/dialog_layout_marginTop"
+        android:layout_marginEnd="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginBottom="@dimen/dialog_layout_marginStartEndBottom"
+        android:background="@drawable/bg_dialog_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_item_dialog_receive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_copy" />
+
+            <TextView
+                android:id="@+id/tvLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.523" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvPleaseVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="Please Verify the Address properly."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llQrCode" />
+
+        <TextView
+            android:id="@+id/tvSentBTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sent BTC can not be reversed in any case."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPleaseVerify" />
+
+        <LinearLayout
+            android:id="@+id/llQrCode"
+            android:layout_width="136dp"
+            android:layout_height="136dp"
+            android:layout_marginStart="@dimen/dialog_iv_center_marginTopStartEnd"
+            android:layout_marginTop="@dimen/dialog_iv_center_marginTopStartEnd"
+            android:layout_marginEnd="@dimen/dialog_iv_center_marginTopStartEnd"
+            android:layout_marginBottom="@dimen/dialog_iv_center_marginBottom"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/ivQrCode"
+                android:layout_width="160dp"
+                android:layout_height="160dp"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
