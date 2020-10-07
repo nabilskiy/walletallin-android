@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">CoinsLiberty</string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="sign_up">sign up</string>
+    <string name="update">Update</string>
+    <string name="sign_up_with_upper">Sign Up</string>
+    <string name="login">Login</string>
     <string name="error">ERROR</string>
     <string name="will_be_set_to">Will be sent to:</string>
 </resources>
