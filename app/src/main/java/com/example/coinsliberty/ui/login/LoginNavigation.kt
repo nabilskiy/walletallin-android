@@ -9,5 +9,7 @@ class LoginNavigation : BaseNavigator() {
     fun goToSignUp(navController: NavController?) {
         navController?.navigate(R.id.action_loginFragment_to_signUpFragmnet)
     }
-
+    fun goToContent(navController: NavController?) {
+         navController?.navigate(R.id.action_loginFragment_to_bottomTabNavigator)
+    }
 }

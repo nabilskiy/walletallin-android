@@ -19,8 +19,17 @@ class LoginFragment : BaseKotlinFragment() {
 
         loginToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.logout_icon)
         loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
-        btnLoginUpdate.isEnabled = false
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
+
+        btnLoginUpdate.setOnClickListener {
+            navigate()
+            }
+        }
+
+    private fun navigate() {
+        navigator.goToContent(navController)
     }
+
 }
+

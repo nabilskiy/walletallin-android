@@ -12,6 +12,9 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
+            android:id="@+id/action_splashFragment_to_signUpFragmnet"
+            app:destination="@id/signUpFragmnet" />
+        <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -32,5 +35,16 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragmnet"
             app:destination="@id/signUpFragmnet" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_bottomTabNavigator"
+            app:destination="@id/bottomTabNavigator" />
     </fragment>
+
+    <activity
+        android:id="@+id/bottomTabNavigator"
+        android:name="com.example.coinsliberty.BottomActivity"
+        android:label="BottomActivityy"
+        tools:layout="@layout/activity_bottom"
+        />
 </navigation>
