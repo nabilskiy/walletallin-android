@@ -15,6 +15,7 @@
     <color name="green">#87D682</color>
     <color name="greenBlue">#7AD9E3</color>
     <color name="lightGrey">#CACACA</color>
+    <color name="middleGrey">#A2A3AD</color>
 
     <!--   Other -->
     <color name="greenLowOpacity">#B387D682</color>
