@@ -24,7 +24,11 @@
         android:name="com.example.coinsliberty.ui.signup.SignUpFragment"
         android:label="SignUpFragmnet"
         tools:layout="@layout/fragment_sign_up"
-        />
+        >
+        <action
+            android:id="@+id/action_signUpFragmnet_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
@@ -40,6 +44,13 @@
             android:id="@+id/action_loginFragment_to_bottomTabNavigator"
             app:destination="@id/bottomTabNavigator" />
     </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.coinsliberty.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:label="ProfileFragment"
+        />
 
     <activity
         android:id="@+id/bottomTabNavigator"

@@ -18,5 +18,8 @@ class SignUpFragment: BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvLogin.setOnClickListener { activity?.onBackPressed() }
+        btnSignUp.setOnClickListener {
+            navigator.goToProfile(navController)
+        }
     }
 }

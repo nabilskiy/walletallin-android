@@ -30,6 +30,5 @@ class BottomActivity : AppCompatActivity() {
 
     private fun setContent(content: String) {
         setTitle(content)
-        tvLabel.text = content
     }
 }

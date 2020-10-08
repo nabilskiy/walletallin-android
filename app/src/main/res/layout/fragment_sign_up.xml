@@ -90,6 +90,7 @@
         />
 
     <Button
+        android:id="@+id/btnSignUp"
         android:layout_width="@dimen/sign_up_button_width"
         android:layout_height="@dimen/sign_up_button_height"
         android:layout_marginBottom="@dimen/sign_up_button_margin_bottom"
