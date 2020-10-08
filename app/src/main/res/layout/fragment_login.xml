@@ -24,7 +24,7 @@
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
         app:layout_constraintStart_toEndOf="@+id/ivLock"
         app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
         android:layout_marginTop="@dimen/login_text_margin_top"
