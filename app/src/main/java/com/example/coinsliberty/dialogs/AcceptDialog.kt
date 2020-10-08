@@ -8,13 +8,14 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
 import com.example.coinsliberty.utils.stub.StubViewModel
-import kotlinx.android.synthetic.main.dialog_error.*
-
-class DialogError : BaseKotlinDialogFragment() {
-    override val layoutRes: Int = R.layout.dialog_error
+import kotlinx.android.synthetic.main.dialog_accept.*
+private const val keyBundleBalance = "balance"
+private const val keyBundleLink = "link"
+class AcceptDialog : BaseKotlinDialogFragment() {
+    override val layoutRes: Int = R.layout.dialog_accept
     override val viewModel: StubViewModel by viewModel()
 
-    private val keyBundle = "title"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,15 +24,16 @@ class DialogError : BaseKotlinDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvTextError.text = arguments?.getString(keyBundle)
+        tvBalance.text = arguments?.getString(keyBundleBalance)
+        tvLink.text = arguments?.getString(keyBundleLink)
         ivClose.setOnClickListener { dismiss() }
     }
 
     companion object {
-        val TAG: String = DialogError::class.java.name
-        fun newInstance(title: String): DialogFragment {
-            val fragment = DialogError()
-            val bundle = bundleOf("title" to title)
+        val TAG: String = AcceptDialog::class.java.name
+        fun newInstance(balance: String, link: String): DialogFragment {
+            val fragment = AcceptDialog()
+            val bundle = bundleOf(keyBundleBalance to balance, keyBundleLink to link)
             fragment.arguments = bundle
             fragment.setStyle(STYLE_NO_FRAME, 0)
             return fragment

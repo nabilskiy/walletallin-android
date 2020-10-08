@@ -12,18 +12,17 @@ import com.example.coinsliberty.utils.stub.StubViewModel
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
-import kotlinx.android.synthetic.main.dialog_accept.*
 import kotlinx.android.synthetic.main.dialog_qr_code.*
 import kotlinx.android.synthetic.main.dialog_qr_code.ivClose
 import kotlinx.android.synthetic.main.dialog_qr_code.tvLink
 import org.koin.android.viewmodel.ext.android.viewModel
-
-class DialogQrCode : BaseKotlinDialogFragment() {
+private const val keyBundleTitle = "title"
+private const val keyBundleLink = "link"
+class QrCodeDialog : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_qr_code
     override val viewModel: StubViewModel by viewModel()
 
-    private val keyBundleTitle = "title"
-    private val keyBundleLink = "link"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,10 +58,10 @@ class DialogQrCode : BaseKotlinDialogFragment() {
     }
 
     companion object {
-        val TAG: String = DialogQrCode::class.java.name
+        val TAG: String = QrCodeDialog::class.java.name
         fun newInstance(title: String, link: String): DialogFragment {
-            val fragment = DialogQrCode()
-            val bundle = bundleOf("title" to title, "link" to link)
+            val fragment = QrCodeDialog()
+            val bundle = bundleOf(keyBundleTitle to title, keyBundleLink to link)
             fragment.arguments = bundle
             fragment.setStyle(STYLE_NO_FRAME, 0)
             return fragment
