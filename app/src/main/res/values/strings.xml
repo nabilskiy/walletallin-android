@@ -5,4 +5,13 @@
     <string name="update">Update</string>
     <string name="sign_up_with_upper">Sign Up</string>
     <string name="login">Login</string>
+    <string name="browse">Browse</string>
+    <string name="choose_file">Choose file</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+
 </resources>
