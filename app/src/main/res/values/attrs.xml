@@ -6,4 +6,15 @@
         <attr name="ifc_mask" format="boolean"/>
         <attr name="ifc_type" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="SwitchComponent">
+        <attr name="sc_left_btn_text" format="string"/>
+        <attr name="sc_right_btn_text" format="string"/>
+        <attr name="sc_status" format="boolean"/>
+    </declare-styleable>
+    
+    <declare-styleable name="AttachComponent">
+        <attr name="ac_text_field_text" format="string"/>
+        <attr name="ac_button_text" format="string"/>
+    </declare-styleable>
 </resources>

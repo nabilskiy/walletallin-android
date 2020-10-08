@@ -6,28 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.demo.DemoActivity">
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/inputField"
-        android:layout_width="match_parent"
+    <com.example.coinsliberty.ui.widgets.inputField.switch.SwitchComponent
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:ifc_header="Password"
-        app:ifc_type="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:sc_left_btn_text="Enabled"
+        app:sc_right_btn_text="Disabled"
+        app:sc_status="false" />
 
-
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/ifcPassword"
+    <com.example.coinsliberty.ui.widgets.inputField.attach.AttachComponent
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="Phone"
-        app:ifc_use_mask="true"
-        app:ifc_type="phone"
-        app:layout_constraintTop_toBottomOf="@+id/inputField"
-        android:layout_marginTop="20dp"/>
-
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:ac_text_field_text="Choose"
+        app:ac_button_text="Browse"
+        />
     <Button
         android:id="@+id/btnDialogError"
         android:layout_width="wrap_content"
@@ -56,26 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnDialogAccept" />
 
-
-
-<!--    <Button-->
-<!--        android:id="@+id/btnGenerate"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Button"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="32dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/btnGenerate"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:srcCompat="@drawable/bg_dialog_green" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
