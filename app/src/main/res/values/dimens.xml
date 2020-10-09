@@ -12,6 +12,19 @@
     <dimen name="h9_text_size">12sp</dimen>
     <dimen name="h10_text_size">12sp</dimen>
 
+    <!--    Line height-->
+    <dimen name="h1_text_line_height">20dp</dimen>
+    <dimen name="h2_text_line_height">20dp</dimen>
+    <dimen name="h3_text_line_height">20dp</dimen>
+    <dimen name="h4_text_line_height">20dp</dimen>
+    <dimen name="h5_text_line_height">20dp</dimen>
+    <dimen name="h6_text_line_height">20dp</dimen>
+    <dimen name="h7_text_line_height">20dp</dimen>
+    <dimen name="h8_text_line_height">20dp</dimen>
+    <dimen name="h9_text_line_height">20dp</dimen>
+    <dimen name="h10_text_line_height">20dp</dimen>
+
+
     <dimen name="btn_border_size">1dp</dimen>
     <dimen name="btn_corners_radius">10dp</dimen>
     <dimen name="btn_grey_corners_radius">5dp</dimen>
@@ -20,6 +33,80 @@
     <!--    Splash Fragment-->
     <dimen name="splash_width">234dp</dimen>
     <dimen name="splash_height">96dp</dimen>
+
+    <!--    Activity Bottom-->
+    <dimen name="ab_icon_size">24dp</dimen>
+
+    <!--    Attech Component-->
+    <dimen name="ac_padding_start">16dp</dimen>
+    <dimen name="ac_width">94dp</dimen>
+    <dimen name="ac_height">32dp</dimen>
+
+    <!-- Bottom Navigation -->
+    <dimen name="bn_height">56dp</dimen>
+
+    <!-- Login -->
+    <dimen name="login_image_view_margin_top">36dp</dimen>
+    <dimen name="login_image_view_margin_start">40dp</dimen>
+    <dimen name="login_text_margin_start">8dp</dimen>
+    <dimen name="login_text_margin_top">36dp</dimen>
+    <dimen name="login_password_margin_top">12dp</dimen>
+    <dimen name="login_password_margin_end">40dp</dimen>
+    <dimen name="login_signup_margin_start">40dp</dimen>
+    <dimen name="login_update_button_width">200dp</dimen>
+    <dimen name="login_update_button_height">40dp</dimen>
+    <dimen name="login_update_button_margin_bottom">56dp</dimen>
+
+    <!-- Sign Up   -->
+    <dimen name="sign_up_image_margin_top">44dp</dimen>
+    <dimen name="sign_up_image_margin_start">40dp</dimen>
+    <dimen name="sign_up_text_margin_top">40dp</dimen>
+    <dimen name="sign_up_text_margin_start">8dp</dimen>
+    <dimen name="sign_up_first_name_margin_top">40dp</dimen>
+    <dimen name="sign_up_first_name_margin_start">40dp</dimen>
+    <dimen name="sign_up_first_name_margin_end">40dp</dimen>
+    <dimen name="sign_up_last_name_margin_top">18dp</dimen>
+    <dimen name="sign_up_last_name_margin_start">40dp</dimen>
+    <dimen name="sign_up_last_name_margin_end">40dp</dimen>
+    <dimen name="sign_up_email_margin_top">18dp</dimen>
+    <dimen name="sign_up_email_margin_start">40dp</dimen>
+    <dimen name="sign_up_email_margin_end">40dp</dimen>
+    <dimen name="sign_up_password_margin_top">18dp</dimen>
+    <dimen name="sign_up_password_margin_start">40dp</dimen>
+    <dimen name="sign_up_password_margin_end">40dp</dimen>
+    <dimen name="sign_up_login_margin_start">40dp</dimen>
+    <dimen name="sign_up_login_margin_top">16dp</dimen>
+    <dimen name="sign_up_button_margin_bottom">56dp</dimen>
+    <dimen name="sign_up_button_height">40dp</dimen>
+    <dimen name="sign_up_button_width">200dp</dimen>
+
+    <!--  Input Field  -->
+    <dimen name="if_edit_text_margin_top">2dp</dimen>
+    <dimen name="if_edit_text_padding_start">15dp</dimen>
+    <dimen name="if_edit_text_padding_top">10dp</dimen>
+    <dimen name="if_edit_text_padding_bottom">10dp</dimen>
+    <dimen name="if_checkbox_margin_end">9dp</dimen>
+    <dimen name="if_checkbox_margin_top">8dp</dimen>
+    <dimen name="if_checkbox_margin_bottom">8dp</dimen>
+
+    <!--  Switch  -->
+    <dimen name="switch_button_width">80dp</dimen>
+    <dimen name="switch_button_height">32dp</dimen>
+
+    <!-- Toolbar-->
+    <dimen name="toolbar_view_margin_bottom">12dp</dimen>
+    <dimen name="toolbar_icon_left_margin_top">30dp</dimen>
+    <dimen name="toolbar_icon_left_margin_start">22dp</dimen>
+    <dimen name="toolbar_icon_right_margin_top">30dp</dimen>
+    <dimen name="toolbar_icon_right_margin_end">22dp</dimen>
+    <dimen name="toolbar_title_margin_top">30dp</dimen>
+    <dimen name="toolbar_linerlayout_margin_top">12dp</dimen>
+    <dimen name="toolbar_logo_margin">2dp</dimen>
+    <dimen name="toolbar_logo_width">92dp</dimen>
+    <dimen name="toolbar_logo_height">92dp</dimen>
+    <dimen name="toolbar_add_photo_margin_start">70dp</dimen>
+    <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
+
 
     <!--    dialog-->
     <dimen name="dialog_layout_marginTop">32dp</dimen>

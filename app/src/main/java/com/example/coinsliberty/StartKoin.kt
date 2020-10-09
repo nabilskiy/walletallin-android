@@ -7,6 +7,7 @@ import com.example.coinsliberty.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+
 object KoinProvider {
 
     @JvmStatic
@@ -16,5 +17,4 @@ object KoinProvider {
             modules(listOf(appModule, viewModelModule, navigatorsModule, sharedModule))
         }
     }
-
 }

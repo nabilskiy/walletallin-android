@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.ui.config.NavigationConfig
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 
@@ -20,7 +21,6 @@ class LoginFragment : BaseKotlinFragment() {
         loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
-
 
         btnLoginUpdate.setOnClickListener {
             navigate()

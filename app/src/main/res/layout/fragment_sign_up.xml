@@ -13,8 +13,8 @@
         android:src="@drawable/ic_lock"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="44dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/sign_up_image_margin_top"
+        android:layout_marginStart="@dimen/sign_up_image_margin_start"
         />
 
     <TextView
@@ -24,56 +24,56 @@
         android:text="@string/sign_up_with_upper"
         app:layout_constraintStart_toEndOf="@+id/ivLock"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="44dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/sign_up_text_margin_top"
+        android:layout_marginStart="@dimen/sign_up_text_margin_start"
         android:textColor="@color/darkGrey"
-        android:textSize="20sp"
+        style="@style/H1"
         />
 
     <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="First Name"
+        app:ifc_header="@string/first_name"
         app:layout_constraintTop_toBottomOf="@id/ivLock"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/sign_up_first_name_margin_top"
+        android:layout_marginStart="@dimen/sign_up_first_name_margin_start"
+        android:layout_marginEnd="@dimen/sign_up_first_name_margin_end"
         />
 
     <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="Last Name"
+        app:ifc_header="@string/last_name"
         app:layout_constraintTop_toBottomOf="@id/ifcFirstName"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/sign_up_last_name_margin_top"
+        android:layout_marginStart="@dimen/sign_up_last_name_margin_start"
+        android:layout_marginEnd="@dimen/sign_up_last_name_margin_end"
         />
 
     <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="Email"
+        app:ifc_header="@string/email"
         app:ifc_type="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/ifcLastName"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/sign_up_email_margin_top"
+        android:layout_marginStart="@dimen/sign_up_email_margin_start"
+        android:layout_marginEnd="@dimen/sign_up_email_margin_end"
         />
 
     <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcSignUpPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="Password"
+        app:ifc_header="@string/password"
         app:ifc_type="textPassword"
         app:layout_constraintTop_toBottomOf="@id/ifcEmail"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/sign_up_password_margin_top"
+        android:layout_marginStart="@dimen/sign_up_password_margin_start"
+        android:layout_marginEnd="@dimen/sign_up_password_margin_end"
         />
 
     <TextView
@@ -82,16 +82,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ifcSignUpPassword"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/sign_up_login_margin_start"
+        android:layout_marginTop="@dimen/sign_up_login_margin_top"
         android:text="@string/login"
         android:textColor="@color/blue"
+        style="@style/H4"
         />
 
     <Button
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="@dimen/sign_up_button_width"
+        android:layout_height="@dimen/sign_up_button_height"
+        android:layout_marginBottom="@dimen/sign_up_button_margin_bottom"
         style="@style/ButtonGreyBorder"
         android:gravity="center"
         android:text="@string/update"

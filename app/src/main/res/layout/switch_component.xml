@@ -9,24 +9,26 @@
 
     <TextView
         android:id="@+id/switchLeftButton"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/switch_button_width"
+        android:layout_height="@dimen/switch_button_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center"
-        tools:hint="Enabled"
+        tools:hint="@string/enabled"
+        style="@style/H8"
         android:textColor="@drawable/selector_switch_text_color"
         android:background="@drawable/selector_status_switch"
         />
 
     <TextView
         android:id="@+id/switchRightButton"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/switch_button_width"
+        android:layout_height="@dimen/switch_button_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/switchLeftButton"
         android:gravity="center"
-        tools:hint="Disabled"
+        tools:hint="@string/disabled"
+        style="@style/H8"
         android:textColor="@drawable/selector_switch_text_color"
         android:background="@drawable/selector_status_switch"
         />
