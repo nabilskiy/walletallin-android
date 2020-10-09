@@ -6,10 +6,4 @@ import com.example.coinsliberty.ui.config.NavigationConfig
 
 class ProfileViewModel (): BaseViewModel() {
 
-    val ldNavigate = MutableLiveData<NavigationConfig>()
-
-    fun navigate() {
-
-    }
-
 }
