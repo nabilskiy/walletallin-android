@@ -13,6 +13,8 @@
     <string name="password">Password</string>
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
+    <string name="phone">Phone</string>
+    <string name="save">Save</string>
 
     <string name="error">ERROR</string>
     <string name="will_be_set_to">Will be sent to:</string>

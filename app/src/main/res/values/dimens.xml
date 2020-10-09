@@ -107,6 +107,39 @@
     <dimen name="toolbar_add_photo_margin_start">70dp</dimen>
     <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
 
+    <!--  Profile  -->
+    <dimen name="profile_input_first_name_width">136dp</dimen>
+    <dimen name="profile_input_first_name_margin_top">74dp</dimen>
+    <dimen name="profile_input_first_name_margin_start">40dp</dimen>
+    <dimen name="profile_input_last_name_width">136dp</dimen>
+    <dimen name="profile_input_last_name_margin_top">74dp</dimen>
+    <dimen name="profile_input_last_name_margin_end">40dp</dimen>
+    <dimen name="profile_email_margin_top">10dp</dimen>
+    <dimen name="profile_email_margin_start">40dp</dimen>
+    <dimen name="profile_email_margin_end">40dp</dimen>
+    <dimen name="profile_phone_margin_top">10dp</dimen>
+    <dimen name="profile_phone_margin_start">40dp</dimen>
+    <dimen name="profile_phone_margin_end">40dp</dimen>
+    <dimen name="profile_currency_margin_top">12dp</dimen>
+    <dimen name="profile_currency_margin_start">40dp</dimen>
+    <dimen name="profile_currency_field_margin_top">3dp</dimen>
+    <dimen name="profile_currency_field_padding_start">16dp</dimen>
+    <dimen name="profile_currency_field_margin_start">40dp</dimen>
+    <dimen name="profile_currency_field_width">112dp</dimen>
+    <dimen name="profile_currency_field_height">32dp</dimen>
+    <dimen name="profile_switch_margin_end">40dp</dimen>
+    <dimen name="profile_switch_margin_top">3dp</dimen>
+    <dimen name="profile_switch_title_margin_end">178dp</dimen>
+    <dimen name="profile_switch_title_margin_top">12dp</dimen>
+    <dimen name="profile_choose_title_margin_start">40dp</dimen>
+    <dimen name="profile_choose_title_margin_top">12dp</dimen>
+    <dimen name="profile_attach_margin_start">40dp</dimen>
+    <dimen name="profile_attach_margin_top">3dp</dimen>
+    <dimen name="profile_attach_margin_end">40dp</dimen>
+    <dimen name="profile_button_margin_top">40dp</dimen>
+    <dimen name="profile_button_width">200dp</dimen>
+    <dimen name="profile_button_height">40dp</dimen>
+
 
     <!--    dialog-->
     <dimen name="dialog_layout_marginTop">32dp</dimen>

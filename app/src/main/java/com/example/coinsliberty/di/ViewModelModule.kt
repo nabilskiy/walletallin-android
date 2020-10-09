@@ -4,8 +4,8 @@ import com.example.coinsliberty.ui.login.LoginViewModel
 import com.example.coinsliberty.ui.signup.SignUpViewModel
 import com.example.coinsliberty.utils.stub.StubViewModel
 import com.example.moneybee.ui.splash.SplashViewModel
-import org.koin.android.viewmodel.dsl.viewModel
-import org.koin.dsl.module
+import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
 val viewModelModule = module {
     viewModel { StubViewModel() }

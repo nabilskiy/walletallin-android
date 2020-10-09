@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/profileToolbar"
+        layout="@layout/toolbar" />
+
+    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        android:id="@+id/ifcProfileFirstName"
+        android:layout_width="@dimen/profile_input_first_name_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/profileToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/profile_input_first_name_margin_top"
+        android:layout_marginStart="@dimen/profile_input_first_name_margin_start"
+        app:ifc_header="@string/first_name"
+        />
+
+    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        android:id="@+id/ifcProfileLastName"
+        android:layout_width="@dimen/profile_input_last_name_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileToolbar"
+        android:layout_marginTop="@dimen/profile_input_last_name_margin_top"
+        android:layout_marginEnd="@dimen/profile_input_last_name_margin_end"
+        app:ifc_header="@string/last_name"
+        />
+
+    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        android:id="@+id/ifcProfileEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ifc_header="@string/email"
+        app:ifc_type="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@id/ifcProfileFirstName"
+        android:layout_marginTop="@dimen/profile_email_margin_top"
+        android:layout_marginStart="@dimen/profile_email_margin_start"
+        android:layout_marginEnd="@dimen/profile_email_margin_end"
+        />
+
+    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        android:id="@+id/ifcProfilePhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ifc_header="@string/phone"
+        app:layout_constraintTop_toBottomOf="@id/ifcProfileEmail"
+        android:layout_marginStart="@dimen/profile_phone_margin_start"
+        android:layout_marginEnd="@dimen/profile_phone_margin_end"
+        android:layout_marginTop="@dimen/profile_phone_margin_top"
+        />
+
+    <TextView
+        android:id="@+id/tvCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currency"
+        app:layout_constraintTop_toBottomOf="@id/ifcProfilePhone"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/profile_currency_margin_start"
+        android:layout_marginTop="@dimen/profile_currency_margin_top"
+        style="@style/H8"
+        android:textColor="@color/grey"
+        />
+    
+    <TextView
+        android:id="@+id/tvCurrencyField"
+        android:layout_width="@dimen/profile_currency_field_width"
+        android:layout_height="@dimen/profile_currency_field_height"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrency"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/profile_currency_field_margin_start"
+        android:background="@drawable/bg_input_field"
+        style="@style/H8"
+        android:textColor="@color/darkGrey"
+        android:text="USD"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/profile_currency_field_padding_start"
+        android:layout_marginTop="@dimen/profile_currency_field_margin_top"
+        />
+
+    <TextView
+        android:id="@+id/tvSwitchTitle"
+        style="@style/H8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ifcProfilePhone"
+        android:text="2FA"
+        android:layout_marginTop="@dimen/profile_switch_title_margin_top"
+        android:layout_marginEnd="@dimen/profile_switch_title_margin_end"
+        />
+
+    <com.example.coinsliberty.ui.widgets.inputField.switch.SwitchComponent
+        android:id="@+id/profileSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvSwitchTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/profile_switch_margin_end"
+        android:layout_marginTop="@dimen/profile_switch_margin_top"
+        app:sc_left_btn_text="@string/enabled"
+        app:sc_right_btn_text="@string/disabled"
+        />
+
+    <TextView
+        android:id="@+id/tvChooseFileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvCurrencyField"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/profile_choose_title_margin_start"
+        android:text="Upload document"
+        style="@style/H8"
+        android:textColor="@color/grey"
+        android:layout_marginTop="@dimen/profile_choose_title_margin_top"
+        />
+
+    <com.example.coinsliberty.ui.widgets.inputField.attach.AttachComponent
+        android:id="@+id/profileAttachComponent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvChooseFileTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/profile_attach_margin_start"
+        android:layout_marginEnd="@dimen/profile_attach_margin_end"
+        android:layout_marginTop="@dimen/profile_attach_margin_top"
+        app:ac_text_field_text="Choose"
+        app:ac_button_text="Browse"
+        />
+
+    <Button
+        android:id="@+id/btnLoginUpdate"
+        style="@style/ButtonGreyBorder"
+        android:layout_width="@dimen/profile_button_width"
+        android:layout_height="@dimen/profile_button_height"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileAttachComponent"
+        android:layout_marginTop="@dimen/profile_button_margin_top"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
