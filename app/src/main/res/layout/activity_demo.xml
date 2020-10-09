@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.demo.DemoActivity">
 
-
     <com.example.coinsliberty.ui.widgets.inputField.switch.SwitchComponent
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,4 +26,34 @@
         app:ac_text_field_text="Choose"
         app:ac_button_text="Browse"
         />
+    <Button
+        android:id="@+id/btnDialogError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDialogAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialogError" />
+
+    <Button
+        android:id="@+id/btnDialogQrCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="qrcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDialogAccept" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

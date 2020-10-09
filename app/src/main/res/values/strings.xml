@@ -14,4 +14,8 @@
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
 
+    <string name="error">ERROR</string>
+    <string name="will_be_set_to">Will be sent to:</string>
+    <string name="verify_address">Please Verify the Address properly.</string>
+    <string name="sent_btc">Sent BTC can not be reversed in any case.</string>
 </resources>

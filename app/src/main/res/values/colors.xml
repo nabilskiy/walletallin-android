@@ -22,5 +22,7 @@
     <color name="greenBlueLowOpacity">#B37AD9E3</color>
     <color name="darkGreyLowOpacity">#B3474954</color>
     <color name="lightBlueLowOpacity">#B340DBFB</color>
+    <color name="red">#FF2507</color>
+
 
 </resources>
