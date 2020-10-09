@@ -140,4 +140,41 @@
     <dimen name="profile_button_width">200dp</dimen>
     <dimen name="profile_button_height">40dp</dimen>
 
+
+    <!--    dialog-->
+    <dimen name="dialog_layout_marginTop">32dp</dimen>
+    <dimen name="dialog_layout_marginStartEndBottom">6dp</dimen>
+
+    <dimen name="dialog_iv_center_marginTopStartEnd">100dp</dimen>
+    <dimen name="dialog_iv_center_marginBottom">200dp</dimen>
+
+    <dimen name="dialog_error_tv_error_text_marginBottom">48dp</dimen>
+    <dimen name="dialog_error_tv_error_marginTop">12dp</dimen>
+
+    <dimen name="dialog_accept_tv_balance_marginTop">80dp</dimen>
+    <dimen name="dialog_accept_tv_will_marginTop">10dp</dimen>
+    <dimen name="dialog_accept_tv_link_paddingBottom">16dp</dimen>
+
+    <dimen name="dialog_iv_close_marginTop">6dp</dimen>
+    <dimen name="dialog_iv_close_marginEnd">10dp</dimen>
+
+    <dimen name="dialog_clLink_width">280dp</dimen>
+    <dimen name="dialog_clLink_height">40dp</dimen>
+    <dimen name="dialog_clLink_marginStartEnd">16dp</dimen>
+    <dimen name="dialog_clLink_marginBottom">32dp</dimen>
+
+    <dimen name="dialog_ivCopy_marginTopBottom">8dp</dimen>
+    <dimen name="dialog_ivCopy_marginEnd">6dp</dimen>
+
+    <dimen name="dialog_tvLink_marginStart">12dp</dimen>
+
+    <dimen name="dialog_tvPleaseVerify_marginTop">16dp</dimen>
+
+    <dimen name="dialog_ll_qr_code_width_height">136dp</dimen>
+    <dimen name="dialog_ll_qr_code_elevation">4dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginStartEnd">88dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginTop">30dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
+    <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
+
 </resources>
