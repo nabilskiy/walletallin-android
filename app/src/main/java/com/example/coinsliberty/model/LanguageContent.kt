@@ -7,6 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class LanguageContent(
     val name: Int,
     val ico: Int,
-    val active: Boolean
+    var active: Boolean
 
 ): Parcelable
