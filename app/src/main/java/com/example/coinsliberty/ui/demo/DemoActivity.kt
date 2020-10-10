@@ -15,17 +15,17 @@ class DemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
 
-        btnDialogAccept.setOnClickListener {
-            AcceptDialog.newInstance("this balance", "this link")
-                .show(supportFragmentManager, AcceptDialog.TAG)
-        }
-        btnDialogError.setOnClickListener {
-            ErrorDialog.newInstance("this tittle")
-                .show(supportFragmentManager, ErrorDialog.TAG)
-        }
-        btnDialogQrCode.setOnClickListener {
-            QrCodeDialog.newInstance("this tittle", "1FThvklkdfG678Jhghjhjg^7hfH784Dfg")
-                .show(supportFragmentManager, QrCodeDialog.TAG)
-        }
+//        btnDialogAccept.setOnClickListener {
+//            AcceptDialog.newInstance("this balance", "this link")
+//                .show(supportFragmentManager, AcceptDialog.TAG)
+//        }
+//        btnDialogError.setOnClickListener {
+//            ErrorDialog.newInstance("this tittle")
+//                .show(supportFragmentManager, ErrorDialog.TAG)
+//        }
+//        btnDialogQrCode.setOnClickListener {
+//            QrCodeDialog.newInstance("this tittle", "1FThvklkdfG678Jhghjhjg^7hfH784Dfg")
+//                .show(supportFragmentManager, QrCodeDialog.TAG)
+//        }
     }
 }
