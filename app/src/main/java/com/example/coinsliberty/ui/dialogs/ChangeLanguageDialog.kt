@@ -11,7 +11,7 @@ import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.item_change_language.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
+//
 //class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
 //    override val layoutRes: Int = R.layout.dialog_change_language
 //    override val viewModel: ChangeLanguageViewModel by viewModel()

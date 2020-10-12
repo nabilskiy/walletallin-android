@@ -19,6 +19,10 @@ class ProfileFragment : BaseKotlinFragment() {
         profileToolbar.ivToolbarIconLeft.setBackgroundResource(R.drawable.ic_arrow_back)
         profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
         profileToolbar.tvToolbarTitle.text = "Profile"
+
+        btnLoginUpdate.setOnClickListener {
+            navigator.goToTestFragment(navController)
+        }
     }
 
 }
