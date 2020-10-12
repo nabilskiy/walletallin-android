@@ -23,5 +23,8 @@
     <string name="to_address">To Address</string>
     <string name="amount_to_send">Amount to send</string>
     <string name="sent_coin">Sent Coin</string>
+    <string name="forgot_password_two">Forgot Password</string>
+    <string name="send_to_mail">Send to Mail</string>
+    <string name="a_link_to_reset">A link to reset your password will be sent to your email</string>
 
 </resources>
