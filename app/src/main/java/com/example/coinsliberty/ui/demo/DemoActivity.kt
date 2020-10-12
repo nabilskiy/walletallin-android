@@ -14,8 +14,8 @@ class DemoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_demo)
 
         btnTest.setOnClickListener {
-            ForgotPassDialog.newInstance()
-                .show(supportFragmentManager, ForgotPassDialog.TAG)
+            ResetPassDialog.newInstance()
+                .show(supportFragmentManager, ResetPassDialog.TAG)
         }
 //        btnDialogError.setOnClickListener {
 //            ErrorDialog.newInstance("this tittle")

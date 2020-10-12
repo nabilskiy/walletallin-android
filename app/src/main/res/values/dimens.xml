@@ -204,6 +204,13 @@
     <dimen name="dialog_forgot_tv_link_marginStartEnd">76dp</dimen>
     <dimen name="dialog_forgot_tv_link_marginTop">8dp</dimen>
 
+    <dimen name="dialog_reset_iv_close_marginEnd">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginStart">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginTop">20dp</dimen>
+    <dimen name="dialog_reset_cc_new_marginTop">8dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginTop">358dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
 
 
 
