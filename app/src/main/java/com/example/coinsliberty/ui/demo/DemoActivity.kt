@@ -6,6 +6,7 @@ import com.example.coinsliberty.R
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.QrCodeDialog
+import com.example.coinsliberty.dialogs.SendDialog
 import kotlinx.android.synthetic.main.activity_demo.*
 
 
@@ -15,10 +16,17 @@ class DemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
 
-//        btnDialogAccept.setOnClickListener {
-//            AcceptDialog.newInstance("this balance", "this link")
-//                .show(supportFragmentManager, AcceptDialog.TAG)
-//        }
+        btnTest.setOnClickListener {
+            SendDialog.newInstance(
+                "SEnD ETH",
+                " 16azaQHPThoQcf14o2XqmbG",
+                "0.25947531",
+                "2671.53",
+                "ETC",
+                "USD"
+            )
+                .show(supportFragmentManager, SendDialog.TAG)
+        }
 //        btnDialogError.setOnClickListener {
 //            ErrorDialog.newInstance("this tittle")
 //                .show(supportFragmentManager, ErrorDialog.TAG)

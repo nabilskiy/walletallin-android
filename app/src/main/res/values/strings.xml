@@ -20,4 +20,8 @@
     <string name="will_be_set_to">Will be sent to:</string>
     <string name="verify_address">Please Verify the Address properly.</string>
     <string name="sent_btc">Sent BTC can not be reversed in any case.</string>
+    <string name="to_address">To Address</string>
+    <string name="amount_to_send">Amount to send</string>
+    <string name="sent_coin">Sent Coin</string>
+
 </resources>

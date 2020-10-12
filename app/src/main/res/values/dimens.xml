@@ -177,4 +177,19 @@
     <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
     <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
 
+    <dimen name="dialog_send_tv_toAddress_marginStart">24dp</dimen>
+    <dimen name="dialog_send_tv_toAddress_marginTop">36dp</dimen>
+    <dimen name="dialog_send_clLink_marginStartEnd">8dp</dimen>
+    <dimen name="dialog_send_clLink_marginTop">4dp</dimen>
+    <dimen name="dialog_send_clFiat_marginTop">6dp</dimen>
+    <dimen name="dialog_send_tv_marginStart">16dp</dimen>
+    <dimen name="dialog_send_tv_marginEnd">8dp</dimen>
+    <dimen name="dialog_send_tv_amount_marginTop">18dp</dimen>
+    <dimen name="dialog_send_iv_obmen_marginTop">31dp</dimen>
+    <dimen name="dialog_send_btn_send_marginStartEnd">56dp</dimen>
+    <dimen name="dialog_send_btn_send_marginTop">250dp</dimen>
+    <dimen name="dialog_send_btn_send_marginBottom">20dp</dimen>
+
+
+
 </resources>
