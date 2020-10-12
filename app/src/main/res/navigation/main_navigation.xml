@@ -50,6 +50,17 @@
         android:name="com.example.coinsliberty.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment"
+        >
+        <action
+            android:id="@+id/action_profileFragment_to_myWalletFragment"
+            app:destination="@id/myWalletFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myWalletFragment"
+        android:name="com.example.coinsliberty.ui.wallet.MyWalletFragment"
+        tools:layout="@layout/fragment_my_wallet"
+        android:label="WalletFragment"
         />
 
     <activity
