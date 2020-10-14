@@ -9,12 +9,14 @@ import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.moneybee.ui.splash.SplashNavigation
 import com.example.moneybee.ui.splash.SplashViewModel
 import kotlinx.android.synthetic.main.fragment_splash.*
+import org.koin.android.ext.android.get
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class SplashFragment: BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_splash
-    override val viewModel: SplashViewModel = SplashViewModel()
-    override val navigator: SplashNavigation = SplashNavigation()
+    override val viewModel: SplashViewModel by viewModel()
+    override val navigator: SplashNavigation = get()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
