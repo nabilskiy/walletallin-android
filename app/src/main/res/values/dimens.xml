@@ -176,6 +176,14 @@
     <dimen name="dialog_ll_qr_code_marginTop">30dp</dimen>
     <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
     <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
+    <dimen name="setting_fragment_sv_layout_marginTop">26dp</dimen>
+    <dimen name="item_setting_width">60dp</dimen>
+    <dimen name="item_setting_layout_marginStartEnd">16dp</dimen>
+    <dimen name="setting_fragment_item_layout_marginBottom">8dp</dimen>
+    <dimen name="item_setting_iv_left_marginStart">18dp</dimen>
+    <dimen name="item_setting_tv_tittle_marginStart">18dp</dimen>
+    <dimen name="item_setting_im_next_marginEnd">16dp</dimen>
+    <dimen name="setting_fragment_tv_mail_layout_marginTop">10dp</dimen>
 
     <dimen name="dialog_send_tv_toAddress_marginStart">24dp</dimen>
     <dimen name="dialog_send_tv_toAddress_marginTop">36dp</dimen>
