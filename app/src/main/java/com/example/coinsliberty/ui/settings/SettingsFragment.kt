@@ -8,11 +8,13 @@ import com.example.coinsliberty.utils.extensions.invisible
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.item_settings.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import org.koin.android.ext.android.get
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SettingsFragment() : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_settings
-    override val viewModel: SettingsFragmentViewModel = SettingsFragmentViewModel()
-    override val navigator: SettingsFragmentNavigation = SettingsFragmentNavigation()
+    override val viewModel: SettingsViewModel by viewModel()
+    override val navigator: SettingsNavigation = get()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@ import com.example.coinsliberty.base.BaseNavigator
 
 
 
-class SettingsFragmentNavigation : BaseNavigator() {
+class SettingsNavigation : BaseNavigator() {
 
 
 }
