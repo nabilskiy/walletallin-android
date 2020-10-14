@@ -19,14 +19,13 @@ import com.example.coinsliberty.di.viewModelModule
 import com.example.coinsliberty.model.LanguageContent
 import com.example.coinsliberty.ui.dialogs.adapter.ChangeLanguageHolder
 import com.example.coinsliberty.utils.extensions.bindDataTo
-import kotlinx.android.synthetic.main.dialog_change_language.*
 import kotlinx.android.synthetic.main.item_change_language.*
 //import org.koin.android.experimental.dsl.viewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
-    override val layoutRes: Int = R.layout.dialog_change_language
+    override val layoutRes: Int = 0
     override val viewModel: ChangeLanguageViewModel by viewModel()
 
     private var listener: ((Boolean) -> Unit)? = null
@@ -40,9 +39,9 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
     var adapter = BaseAdapter()
         .map(R.layout.item_change_language, ChangeLanguageHolder.ItemHolder {
             viewModel.changeList(it)
-            clItemLang.setOnClickListener {
-                listener?.invoke(true)
-            }
+//            clItemLang.setOnClickListener {
+//                listener?.invoke(true)
+//            }
             if (it.active) { tvName.setTextColor(R.color.darkBlue) }
         })
 
@@ -50,8 +49,8 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         subscribeLiveData()
 
-        ivClose.setOnClickListener { dismiss() }
-        rvChangeLanguage.adapter = adapter
+//        ivClose.setOnClickListener { dismiss() }
+//        rvChangeLanguage.adapter = adapter
 
     }
 //    @SuppressLint("ResourceAsColor")
