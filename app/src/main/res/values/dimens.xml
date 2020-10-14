@@ -220,7 +220,22 @@
     <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
     <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
 
-
+    <!-- Transaction -->
+    <dimen name="transaction_logo_margin_top">32dp</dimen>
+    <dimen name="transaction_title_margin_top">12dp</dimen>
+    <dimen name="transaction_right_icon_margin_top">28dp</dimen>
+    <dimen name="transaction_right_icon_margin_end">10dp</dimen>
+    <dimen name="transaction_left_icon_margin_top">28dp</dimen>
+    <dimen name="transaction_left_icon_margin_start">10dp</dimen>
+    <dimen name="transaction_button_width">136dp</dimen>
+    <dimen name="transaction_button_height">40dp</dimen>
+    <dimen name="transaction_button_margin_end">40dp</dimen>
+    <dimen name="transaction_button_margin_start">40dp</dimen>
+    <dimen name="transaction_button_margin_bottom">22dp</dimen>
+    <dimen name="transaction_button_margin_top">20dp</dimen>
+    <dimen name="transaction_button_text_margin_start">20dp</dimen>
+    <dimen name="transaction_button_image_margin_start">20dp</dimen>
+    <dimen name="no_transaction_image_margin_bottom">8dp</dimen>
 
 
 </resources>
