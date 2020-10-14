@@ -40,6 +40,13 @@
     <string name="dashcoin_result">23,12$</string>
     <string name="bitcoin_cash_result">23,12$</string>
     <string name="bitcoin_result">23,12$</string>
-
+    <string name="title">title</string>
+    <string name="type">type</string>
+    <string name="price">price</string>
+    <string name="result">result</string>
+    <string name="wallet_toolbar_title">1465,20 USD</string>
+    <string name="wallet_toolbar_total">Total balance</string>
+    <string name="send">SEND</string>
+    <string name="receive">RECEIVE</string>
 
 </resources>

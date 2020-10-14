@@ -12,15 +12,12 @@ class BottomActivity : AppCompatActivity() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.wallet -> {
-                    setContent("Home")
                     true
                 }
                 R.id.exchange -> {
-                    setContent("Notification")
                     true
                 }
                 R.id.setting -> {
-                    setContent("Search")
                     true
                 }
                 else -> false
@@ -31,4 +28,5 @@ class BottomActivity : AppCompatActivity() {
     private fun setContent(content: String) {
         setTitle(content)
     }
+
 }

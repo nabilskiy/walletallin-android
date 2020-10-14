@@ -177,4 +177,36 @@
     <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
     <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
 
+    <!-- Wallet item -->
+    <dimen name="wallet_item_margin_bottom">8dp</dimen>
+    <dimen name="wallet_item_image_margin">10dp</dimen>
+    <dimen name="wallet_item_title_margin_top">10dp</dimen>
+    <dimen name="wallet_item_title_margin_start">10dp</dimen>
+    <dimen name="wallet_item_type_margin_start">10dp</dimen>
+    <dimen name="wallet_item_type_margin_bottom">8dp</dimen>
+    <dimen name="wallet_item_price_margin_top">10dp</dimen>
+    <dimen name="wallet_item_price_margin_end">18dp</dimen>
+    <dimen name="wallet_item_result_margin_end">18dp</dimen>
+    <dimen name="wallet_item_result_margin_bottom">8dp</dimen>
+
+    <!--  Wallet fragment -->
+    <dimen name="wallet_toolbar_title_margin_top">36dp</dimen>
+    <dimen name="wallet_total_margin_top">2dp</dimen>
+    <dimen name="wallet_total_icon_margin_top">24dp</dimen>
+    <dimen name="wallet_total_icon_margin_end">10dp</dimen>
+    <dimen name="wallet_toolbar_send_width">136dp</dimen>
+    <dimen name="wallet_toolbar_send_height">40dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_start">40dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_top">18dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_bottom">16dp</dimen>
+    <dimen name="wallet_toolbar_send_text_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_send_icon_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_receive_width">136dp</dimen>
+    <dimen name="wallet_toolbar_receive_height">40dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_end">40dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_top">18dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_bottom">16dp</dimen>
+    <dimen name="wallet_toolbar_receive_text_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_receive_icon_margin_start">20dp</dimen>
+    <dimen name="wallet_recycle_margin">16dp</dimen>
 </resources>

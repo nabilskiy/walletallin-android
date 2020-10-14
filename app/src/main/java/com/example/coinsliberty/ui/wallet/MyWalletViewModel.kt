@@ -11,14 +11,14 @@ class MyWalletViewModel: BaseViewModel() {
         val listData: ArrayList<WalletContent> = ArrayList()
 
         listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
+                                    R.string.bitcoin_price, R.string.bitcoin_result, R.drawable.bg_wallet_item_light_orange))
+        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, null, null, R.drawable.bg_wallet_item_light_purple))
+        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, null, null, R.drawable.bg_wallet_item_grey))
+        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, null, null, R.drawable.bg_wallet_item_light_blue))
         listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
+            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.drawable.bg_wallet_item_light_green))
         listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
+            R.string.dashcoin_price, R.string.dashcoin_result, R.drawable.bg_wallet_item_middle_blue))
 
         return listData
     }
