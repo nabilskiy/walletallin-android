@@ -185,4 +185,42 @@
     <dimen name="item_setting_im_next_marginEnd">16dp</dimen>
     <dimen name="setting_fragment_tv_mail_layout_marginTop">10dp</dimen>
 
+    <dimen name="dialog_send_tv_toAddress_marginStart">24dp</dimen>
+    <dimen name="dialog_send_tv_toAddress_marginTop">36dp</dimen>
+    <dimen name="dialog_send_clLink_marginStartEnd">8dp</dimen>
+    <dimen name="dialog_send_clLink_marginTop">4dp</dimen>
+    <dimen name="dialog_send_clFiat_marginTop">6dp</dimen>
+    <dimen name="dialog_send_tv_marginStart">16dp</dimen>
+    <dimen name="dialog_send_tv_marginEnd">8dp</dimen>
+    <dimen name="dialog_send_tv_amount_marginTop">18dp</dimen>
+    <dimen name="dialog_send_iv_obmen_marginTop">31dp</dimen>
+    <dimen name="dialog_send_btn_send_marginStartEnd">56dp</dimen>
+    <dimen name="dialog_send_btn_send_marginTop">250dp</dimen>
+    <dimen name="dialog_send_btn_send_marginBottom">20dp</dimen>
+
+    <dimen name="dialog_forgot_iv_lock_marginStart">24dp</dimen>
+    <dimen name="dialog_forgot_iv_lock_marginTop">22dp</dimen>
+    <dimen name="dialog_forgot_tv_title_marginStart">12dp</dimen>
+    <dimen name="dialog_forgot_tv_title_marginTop">24dp</dimen>
+    <dimen name="dialog_forgot_cc_password_marginStartEnd">24dp</dimen>
+    <dimen name="dialog_forgot_cc_password_marginTop">38dp</dimen>
+    <dimen name="dialog_forgot_cc_password_width">280dp</dimen>
+    <dimen name="dialog_forgot_cc_password_height">66dp</dimen>
+    <dimen name="dialog_forgot_btn_marginStartEnd">64dp</dimen>
+    <dimen name="dialog_forgot_btn_marginTop">208dp</dimen>
+    <dimen name="dialog_forgot_btn_marginBottom">30dp</dimen>
+    <dimen name="dialog_forgot_tv_link_marginStartEnd">76dp</dimen>
+    <dimen name="dialog_forgot_tv_link_marginTop">8dp</dimen>
+
+    <dimen name="dialog_reset_iv_close_marginEnd">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginStart">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginTop">20dp</dimen>
+    <dimen name="dialog_reset_cc_new_marginTop">8dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginTop">358dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
+
+
+
+
 </resources>
