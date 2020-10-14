@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_setting_width"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
     android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
     android:background="@drawable/btn_grey">
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/item_setting_tv_tittle_marginStart"
-        android:text="TextView"
+        tools:text="TextView"
         android:textColor="@color/lightBlue"
         android:textAppearance="@style/H10"
         app:layout_constraintBottom_toBottomOf="parent"

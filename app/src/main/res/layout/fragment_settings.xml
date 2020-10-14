@@ -16,13 +16,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/setting_fragment_sv_layout_marginTop"
-        android:layout_marginBottom="@dimen/setting_fragment_sv_layout_marginBottom"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumberPhone">
+        app:layout_constraintTop_toBottomOf="@+id/tvNumberPhone"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_setting_width"
                 android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginTop="@dimen/setting_fragment_item_layout_marginTop"
                 android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
                 android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
         </LinearLayout>
@@ -84,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/setting_fragment_tv_mail_layout_marginTop"
-        android:text="mithilamac@gmail.com"
+        tools:text="mithilamac@gmail.com"
         android:textAppearance="@style/H9"
         android:textColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,22 +94,11 @@
         android:id="@+id/tvNumberPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/setting_fragment_tv_phone_layout_marginTop"
-        android:text="67894569803456"
+        tools:text="67894569803456"
         android:textAppearance="@style/H7"
         android:textColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvMail" />
-
-
-    <include
-        android:id="@+id/settingsBottomNavigator"
-        layout="@layout/bottom_navigator"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bn_height"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

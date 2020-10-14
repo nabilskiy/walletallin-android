@@ -17,6 +17,4 @@ val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { SettingsViewModel() }
     viewModel { ProfileViewModel() }
-    viewModel { SignUpViewModel() }
-    viewModel { SplashViewModel() }
 }
