@@ -35,4 +35,33 @@
     <string name="send_to_mail">Send to Mail</string>
     <string name="a_link_to_reset">A link to reset your password will be sent to your email</string>
 
+
+    <!-- Wallet content   -->
+    <string name="bitcoin_wallet">Bitcoin Wallet</string>
+    <string name="ethereum_wallet">Ethereum Wallet</string>
+    <string name="litecoin_wallet">Litecoin Wallet</string>
+    <string name="ripple_wallet">Ripple Wallet</string>
+    <string name="bitcoin_cash_wallet">Bitcoin Cash Wallet</string>
+    <string name="dashcoin_wallet">Dashcoin Wallet</string>
+    <string name="bitcoin_abreviatoure">BTC</string>
+    <string name="ethereum_abreviatoure">ETH</string>
+    <string name="litecoin_abreviatoure">LTC</string>
+    <string name="ripple_abreviatoure">XRP</string>
+    <string name="bitcoin_cash_abreviatoure">BCH</string>
+    <string name="dashcoin_abreviatoure">DCS</string>
+    <string name="bitcoin_price">0.15384</string>
+    <string name="bitcoin_cash_price">0.15384</string>
+    <string name="dashcoin_price">0.15384</string>
+    <string name="dashcoin_result">23,12$</string>
+    <string name="bitcoin_cash_result">23,12$</string>
+    <string name="bitcoin_result">23,12$</string>
+    <string name="title">title</string>
+    <string name="type">type</string>
+    <string name="price">price</string>
+    <string name="result">result</string>
+    <string name="wallet_toolbar_title">1465,20 USD</string>
+    <string name="wallet_toolbar_total">Total balance</string>
+    <string name="send">SEND</string>
+    <string name="receive">RECEIVE</string>
+
 </resources>
