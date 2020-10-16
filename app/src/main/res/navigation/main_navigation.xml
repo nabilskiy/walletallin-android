@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.coinsliberty.ui.profile.ProfileFragment"
+        android:name="com.example.coinsliberty.ui.profile.ProfileActivity"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment"
         >

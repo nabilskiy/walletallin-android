@@ -1,7 +1,12 @@
 package com.example.coinsliberty.dialogs
 
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
@@ -22,7 +27,7 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
         val TAG: String = ForgotPassDialog::class.java.name
         fun newInstance(): DialogFragment {
             val fragment = ForgotPassDialog()
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            //fragment.setStyle(STYLE_NO_FRAME, 0)
             return fragment
         }
     }

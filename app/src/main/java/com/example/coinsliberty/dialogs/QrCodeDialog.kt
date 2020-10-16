@@ -63,7 +63,7 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
             val fragment = QrCodeDialog()
             val bundle = bundleOf(keyBundleTitle to title, keyBundleLink to link)
             fragment.arguments = bundle
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            //fragment.setStyle(STYLE_NO_FRAME, 0)
             return fragment
         }
     }

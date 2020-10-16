@@ -56,7 +56,7 @@ class SendDialog : BaseKotlinDialogFragment() {
                 keyBundleAmountFiat to amountFiat
             )
             fragment.arguments = bundle
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            //fragment.setStyle(STYLE_NO_FRAME, 0)
             return fragment
         }
     }

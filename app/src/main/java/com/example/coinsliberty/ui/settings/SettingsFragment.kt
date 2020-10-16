@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.dialogs.ResetPassDialog
 import com.example.coinsliberty.utils.extensions.invisible
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.item_settings.view.*
@@ -33,8 +34,13 @@ class SettingsFragment() : BaseKotlinFragment() {
         itemEditProfile.ivLeft.setImageResource(R.drawable.ic_profile_1)
         itemEditProfile.tvTittle.setText(R.string.edit_profile)
 
+        itemEditProfile.setOnClickListener { navigator.goToProfile(navController) }
+
         itemResetPassword.ivLeft.setImageResource(R.drawable.ic_password)
         itemResetPassword.tvTittle.setText(R.string.reset_password)
+
+        itemResetPassword.setOnClickListener { ResetPassDialog.newInstance().show(childFragmentManager, ResetPassDialog.TAG) }
+
 
         itemOtherSettings.ivLeft.setImageResource(R.drawable.ic_settings_1)
         itemOtherSettings.tvTittle.setText(R.string.other_settings)

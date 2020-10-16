@@ -96,7 +96,7 @@
         android:layout_marginBottom="@dimen/sign_up_button_margin_bottom"
         style="@style/ButtonGreyBorder"
         android:gravity="center"
-        android:text="@string/update"
+        android:text="@string/sign_up"
         android:textColor="@color/lightBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
