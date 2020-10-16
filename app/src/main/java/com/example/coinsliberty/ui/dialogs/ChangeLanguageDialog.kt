@@ -1,26 +1,18 @@
 package com.example.coinsliberty.ui.dialogs
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
-import com.example.coinsliberty.di.viewModelModule
 import com.example.coinsliberty.model.LanguageContent
 import com.example.coinsliberty.ui.dialogs.adapter.ChangeLanguageHolder
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.item_change_language.*
-//import org.koin.android.experimental.dsl.viewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -65,6 +57,7 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
 //                if (it.active) { tvName.setTextColor(R.color.darkBlue) }
 //            })
 //        subscribeLiveData()
+//
 //        rvChangeLanguage.adapter = adapter
 //
 //    }

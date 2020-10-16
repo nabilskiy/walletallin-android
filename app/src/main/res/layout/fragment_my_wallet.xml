@@ -50,7 +50,7 @@
             android:layout_marginEnd="@dimen/wallet_total_icon_margin_end"
             android:background="@drawable/ic_ring"
             />
-        
+
         <View
             android:id="@+id/walletToolbarSendButton"
             android:layout_width="@dimen/wallet_toolbar_send_width"
@@ -134,6 +134,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_margin="@dimen/wallet_recycle_margin"
+        android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

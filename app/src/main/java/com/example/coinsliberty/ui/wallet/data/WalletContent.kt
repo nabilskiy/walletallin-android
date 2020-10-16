@@ -4,7 +4,7 @@ data class WalletContent(
     val ico: Int,
     val title: Int,
     val type: Int,
-    var price: Int? = null,
+    val price: Int? = null,
     val result: Int? = null,
     val itemBackground: Int
 )

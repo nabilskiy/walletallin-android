@@ -92,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/ButtonGreyBorder"
         android:gravity="center"
-        android:text="@string/update"
+        android:text="@string/login"
         android:textColor="@color/lightBlue"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
