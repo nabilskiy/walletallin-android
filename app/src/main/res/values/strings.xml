@@ -58,6 +58,17 @@
     <string name="a_link_to_reset">A link to reset your password will be sent to your email</string>
 
 
+    <!-- Wallet content   -->
+    <string name="title">title</string>
+    <string name="type">type</string>
+    <string name="price">price</string>
+    <string name="result">result</string>
+    <string name="wallet_toolbar_title">1465,20 USD</string>
+    <string name="wallet_toolbar_total">Total balance</string>
+    <string name="send">SEND</string>
+    <string name="receive">RECEIVE</string>
+
+
     <!-- Transaction -->
     <string name="transaction_title">167465,20 ETH</string>
     <string name="transaction_total">= 59,23 $</string>
