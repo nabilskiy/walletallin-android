@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/settingsToolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/setting_fragment_sv_layout_marginTop"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumberPhone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/itemChangeLanguage"
+                layout="@layout/item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_setting_width"
+                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+
+            <include
+                android:id="@+id/itemEditProfile"
+                layout="@layout/item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_setting_width"
+                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+
+            <include
+                android:id="@+id/itemResetPassword"
+                layout="@layout/item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_setting_width"
+                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+
+            <include
+                android:id="@+id/itemOtherSettings"
+                layout="@layout/item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_setting_width"
+                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+
+            <include
+                android:id="@+id/itemLogOut"
+                layout="@layout/item_settings"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_setting_width"
+                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
+                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/tvMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/setting_fragment_tv_mail_layout_marginTop"
+        tools:text="mithilamac@gmail.com"
+        android:textAppearance="@style/H9"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsToolbar" />
+
+    <TextView
+        android:id="@+id/tvNumberPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="67894569803456"
+        android:textAppearance="@style/H7"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

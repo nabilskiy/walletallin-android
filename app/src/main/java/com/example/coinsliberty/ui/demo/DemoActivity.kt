@@ -3,9 +3,7 @@ package com.example.coinsliberty.ui.demo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.coinsliberty.R
-import com.example.coinsliberty.dialogs.AcceptDialog
-import com.example.coinsliberty.dialogs.ErrorDialog
-import com.example.coinsliberty.dialogs.QrCodeDialog
+import com.example.coinsliberty.dialogs.*
 import kotlinx.android.synthetic.main.activity_demo.*
 
 
@@ -15,10 +13,10 @@ class DemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo)
 
-//        btnDialogAccept.setOnClickListener {
-//            AcceptDialog.newInstance("this balance", "this link")
-//                .show(supportFragmentManager, AcceptDialog.TAG)
-//        }
+        btnTest.setOnClickListener {
+            ResetPassDialog.newInstance()
+                .show(supportFragmentManager, ResetPassDialog.TAG)
+        }
 //        btnDialogError.setOnClickListener {
 //            ErrorDialog.newInstance("this tittle")
 //                .show(supportFragmentManager, ErrorDialog.TAG)
