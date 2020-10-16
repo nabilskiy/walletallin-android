@@ -96,7 +96,7 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
         val TAG = ChangeLanguageDialog::class.java.name
         fun newInstance(): DialogFragment {
             val fragment = ChangeLanguageDialog()
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogWhiteBG)
             return fragment
         }
     }

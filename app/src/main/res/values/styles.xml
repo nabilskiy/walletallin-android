@@ -43,4 +43,17 @@
         <item name="android:stateListAnimator">@null</item>
     </style>
 
+    <style name="DialogWhiteBG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_white</item>
+    </style>
+    <style name="DialogGreenBG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_green</item>
+    </style>
+    <style name="DialogBlueBG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_blue</item>
+    </style>
+    <style name="DialogRedBG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_red</item>
+    </style>
+
 </resources>
