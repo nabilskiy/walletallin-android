@@ -2,6 +2,8 @@ package com.example.coinsliberty.di
 
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
+import com.example.coinsliberty.ui.profile.ProfileViewModel
+import com.example.coinsliberty.ui.settings.SettingsViewModel
 import com.example.coinsliberty.ui.signup.SignUpViewModel
 import com.example.coinsliberty.utils.stub.StubViewModel
 import com.example.moneybee.ui.splash.SplashViewModel
@@ -14,5 +16,7 @@ val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { LoginViewModel() }
     viewModel { SignUpViewModel() }
+    viewModel { SettingsViewModel() }
+    viewModel { ProfileViewModel() }
     viewModel { ChangeLanguageViewModel() }
 }

@@ -4,51 +4,61 @@
     <style name="H1">
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textSize">@dimen/h1_text_size</item>
+        <item name="lineHeight">@dimen/h1_text_line_height</item>
     </style>
 
     <style name="H2">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">@dimen/h2_text_size</item>
+        <item name="lineHeight">@dimen/h2_text_line_height</item>
     </style>
 
     <style name="H3">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">@dimen/h3_text_size</item>
+        <item name="lineHeight">@dimen/h3_text_line_height</item>
     </style>
 
     <style name="H4">
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/h4_text_size</item>
+        <item name="lineHeight">@dimen/h4_text_line_height</item>
     </style>
 
     <style name="H5">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">@dimen/h5_text_size</item>
+        <item name="lineHeight">@dimen/h5_text_line_height</item>
     </style>
 
     <style name="H6">
         <item name="fontFamily">@font/poppins_medium_italic</item>
         <item name="android:textSize">@dimen/h6_text_size</item>
+        <item name="lineHeight">@dimen/h6_text_line_height</item>
     </style>
 
     <style name="H7">
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textSize">@dimen/h7_text_size</item>
+        <item name="lineHeight">@dimen/h7_text_line_height</item>
     </style>
 
     <style name="H8">
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/h8_text_size</item>
+        <item name="lineHeight">@dimen/h8_text_line_height</item>
     </style>
 
     <style name="H9">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textSize">@dimen/h9_text_size</item>
+        <item name="lineHeight">@dimen/h9_text_line_height</item>
     </style>
 
     <style name="H10">
         <item name="fontFamily">@font/poppins_semi_bold</item>
         <item name="android:textSize">@dimen/h10_text_size</item>
+        <item name="lineHeight">@dimen/h10_text_line_height</item>
     </style>
 
 </resources>

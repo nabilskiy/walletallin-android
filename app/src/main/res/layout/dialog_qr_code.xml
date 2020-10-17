@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_blue">
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:text="TextView"
+        android:textAppearance="@style/H7"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginTop="@dimen/dialog_layout_marginTop"
+        android:layout_marginEnd="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginBottom="@dimen/dialog_layout_marginStartEndBottom"
+        android:background="@drawable/bg_dialog_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLink"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="@dimen/dialog_clLink_height"
+            android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
+            android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
+            android:layout_marginBottom="@dimen/dialog_clLink_marginBottom"
+            android:background="@drawable/bg_item_dialog_receive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
+                android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
+                android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_copy" />
+
+            <TextView
+                android:id="@+id/tvLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
+                android:text="TextView"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/darkGrey"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvPleaseVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
+            android:textAppearance="@style/H8"
+            android:textColor="@color/grey"
+            android:text="@string/verify_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llQrCode" />
+
+        <TextView
+            android:id="@+id/tvSentBTC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/H8"
+            android:textColor="@color/grey"
+            android:text="@string/sent_btc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPleaseVerify" />
+
+        <LinearLayout
+            android:id="@+id/llQrCode"
+            android:layout_width="@dimen/dialog_ll_qr_code_width_height"
+            android:layout_height="@dimen/dialog_ll_qr_code_width_height"
+            android:layout_marginStart="@dimen/dialog_ll_qr_code_marginStartEnd"
+            android:layout_marginTop="@dimen/dialog_ll_qr_code_marginTop"
+            android:layout_marginEnd="@dimen/dialog_ll_qr_code_marginStartEnd"
+            android:layout_marginBottom="@dimen/dialog_ll_qr_code_marginBottom"
+            android:background="@color/white"
+            android:elevation="@dimen/dialog_ll_qr_code_elevation"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivQrCode"
+                android:layout_width="@dimen/dialog_iv_qr_code_width_height"
+                android:layout_height="@dimen/dialog_iv_qr_code_width_height" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

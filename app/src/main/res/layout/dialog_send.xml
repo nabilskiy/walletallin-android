@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_green">
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:text="TextView"
+        android:textAppearance="@style/H7"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginTop="@dimen/dialog_layout_marginTop"
+        android:layout_marginEnd="@dimen/dialog_layout_marginStartEndBottom"
+        android:layout_marginBottom="@dimen/dialog_layout_marginStartEndBottom"
+        android:background="@drawable/bg_dialog_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvToAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialog_send_tv_toAddress_marginStart"
+            android:layout_marginTop="@dimen/dialog_send_tv_toAddress_marginTop"
+            android:text="@string/to_address"
+            android:textAppearance="@style/H10"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLink"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="@dimen/dialog_clLink_height"
+            android:layout_marginStart="@dimen/dialog_send_clLink_marginStartEnd"
+            android:layout_marginTop="@dimen/dialog_send_clLink_marginTop"
+            android:layout_marginEnd="@dimen/dialog_send_clLink_marginStartEnd"
+
+            android:background="@drawable/bg_item_dialog_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvToAddress">
+
+
+            <TextView
+                android:id="@+id/tvLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
+                android:gravity="center"
+                android:text="16azaQHPThoQcf14o2XqmbG"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvAmountToSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialog_send_tv_toAddress_marginStart"
+            android:layout_marginTop="@dimen/dialog_send_tv_amount_marginTop"
+            android:text="@string/amount_to_send"
+            android:textAppearance="@style/H10"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clLink" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSumCripto"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="@dimen/dialog_clLink_height"
+            android:layout_marginStart="@dimen/dialog_send_clLink_marginStartEnd"
+            android:layout_marginTop="@dimen/dialog_send_clLink_marginTop"
+            android:layout_marginEnd="@dimen/dialog_send_clLink_marginStartEnd"
+            android:background="@drawable/bg_item_dialog_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAmountToSend">
+
+
+            <TextView
+                android:id="@+id/tvAmountCripto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
+                android:gravity="center"
+                android:text="0.25947531"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCriptoName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dialog_send_tv_marginEnd"
+                android:text="ETC"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSumFiat"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="@dimen/dialog_clLink_height"
+            android:layout_marginStart="@dimen/dialog_send_clLink_marginStartEnd"
+            android:layout_marginTop="@dimen/dialog_send_clFiat_marginTop"
+            android:layout_marginEnd="@dimen/dialog_send_clLink_marginStartEnd"
+            android:background="@drawable/bg_item_dialog_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clSumCripto">
+
+
+            <TextView
+                android:id="@+id/tvAmountFiat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
+                android:gravity="center"
+                android:text="2671.53"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFiatName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dialog_send_tv_marginEnd"
+                android:text="USD"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnSentCoin"
+            style="@style/ButtonGreyBorder"
+            android:layout_width="@dimen/sign_up_button_width"
+            android:layout_height="@dimen/sign_up_button_height"
+            android:layout_marginStart="@dimen/dialog_send_btn_send_marginStartEnd"
+            android:layout_marginTop="@dimen/dialog_send_btn_send_marginTop"
+            android:layout_marginEnd="@dimen/dialog_send_btn_send_marginStartEnd"
+            android:layout_marginBottom="@dimen/dialog_send_btn_send_marginBottom"
+            android:gravity="center"
+            android:text="@string/sent_coin"
+            android:textColor="@color/lightBlue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivObmen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dialog_send_iv_obmen_marginTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clSumCripto"
+            app:srcCompat="@drawable/ic_obmen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

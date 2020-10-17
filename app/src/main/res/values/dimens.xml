@@ -12,6 +12,19 @@
     <dimen name="h9_text_size">12sp</dimen>
     <dimen name="h10_text_size">12sp</dimen>
 
+    <!--    Line height-->
+    <dimen name="h1_text_line_height">20dp</dimen>
+    <dimen name="h2_text_line_height">20dp</dimen>
+    <dimen name="h3_text_line_height">20dp</dimen>
+    <dimen name="h4_text_line_height">20dp</dimen>
+    <dimen name="h5_text_line_height">20dp</dimen>
+    <dimen name="h6_text_line_height">20dp</dimen>
+    <dimen name="h7_text_line_height">20dp</dimen>
+    <dimen name="h8_text_line_height">20dp</dimen>
+    <dimen name="h9_text_line_height">20dp</dimen>
+    <dimen name="h10_text_line_height">20dp</dimen>
+
+
     <dimen name="btn_border_size">1dp</dimen>
     <dimen name="btn_corners_radius">10dp</dimen>
     <dimen name="btn_dialog_corners_radius">10dp</dimen>
@@ -19,6 +32,243 @@
     <dimen name="btn_setting_corners_radius">15dp</dimen>
 
     <!--    Splash Fragment-->
-    <dimen name="splash_width">234dp</dimen>
-    <dimen name="splash_height">96dp</dimen>
+    <dimen name="splash_width">260dp</dimen>
+    <dimen name="splash_height">110dp</dimen>
+
+    <!--    Activity Bottom-->
+    <dimen name="ab_icon_size">24dp</dimen>
+
+    <!--    Attech Component-->
+    <dimen name="ac_padding_start">16dp</dimen>
+    <dimen name="ac_width">94dp</dimen>
+    <dimen name="ac_height">32dp</dimen>
+
+    <!-- Bottom Navigation -->
+    <dimen name="bn_height">56dp</dimen>
+
+    <!-- Login -->
+    <dimen name="login_image_view_margin_top">36dp</dimen>
+    <dimen name="login_image_view_margin_start">40dp</dimen>
+    <dimen name="login_text_margin_start">8dp</dimen>
+    <dimen name="login_text_margin_top">36dp</dimen>
+    <dimen name="login_password_margin_top">12dp</dimen>
+    <dimen name="login_password_margin_end">40dp</dimen>
+    <dimen name="login_signup_margin_start">40dp</dimen>
+    <dimen name="login_update_button_width">200dp</dimen>
+    <dimen name="login_update_button_height">40dp</dimen>
+    <dimen name="login_update_button_margin_bottom">56dp</dimen>
+
+    <!-- Sign Up   -->
+    <dimen name="sign_up_image_margin_top">44dp</dimen>
+    <dimen name="sign_up_image_margin_start">40dp</dimen>
+    <dimen name="sign_up_text_margin_top">40dp</dimen>
+    <dimen name="sign_up_text_margin_start">8dp</dimen>
+    <dimen name="sign_up_first_name_margin_top">40dp</dimen>
+    <dimen name="sign_up_first_name_margin_start">40dp</dimen>
+    <dimen name="sign_up_first_name_margin_end">40dp</dimen>
+    <dimen name="sign_up_last_name_margin_top">18dp</dimen>
+    <dimen name="sign_up_last_name_margin_start">40dp</dimen>
+    <dimen name="sign_up_last_name_margin_end">40dp</dimen>
+    <dimen name="sign_up_email_margin_top">18dp</dimen>
+    <dimen name="sign_up_email_margin_start">40dp</dimen>
+    <dimen name="sign_up_email_margin_end">40dp</dimen>
+    <dimen name="sign_up_password_margin_top">18dp</dimen>
+    <dimen name="sign_up_password_margin_start">40dp</dimen>
+    <dimen name="sign_up_password_margin_end">40dp</dimen>
+    <dimen name="sign_up_login_margin_start">40dp</dimen>
+    <dimen name="sign_up_login_margin_top">16dp</dimen>
+    <dimen name="sign_up_button_margin_bottom">56dp</dimen>
+    <dimen name="sign_up_button_height">40dp</dimen>
+    <dimen name="sign_up_button_width">200dp</dimen>
+
+    <!--  Input Field  -->
+    <dimen name="if_edit_text_margin_top">2dp</dimen>
+    <dimen name="if_edit_text_padding_start">15dp</dimen>
+    <dimen name="if_edit_text_padding_top">10dp</dimen>
+    <dimen name="if_edit_text_padding_bottom">10dp</dimen>
+    <dimen name="if_checkbox_margin_end">9dp</dimen>
+    <dimen name="if_checkbox_margin_top">8dp</dimen>
+    <dimen name="if_checkbox_margin_bottom">8dp</dimen>
+
+    <!--  Switch  -->
+    <dimen name="switch_button_width">80dp</dimen>
+    <dimen name="switch_button_height">32dp</dimen>
+
+    <!-- Toolbar-->
+    <dimen name="toolbar_view_margin_bottom">12dp</dimen>
+    <dimen name="toolbar_icon_left_margin_top">30dp</dimen>
+    <dimen name="toolbar_icon_left_margin_start">22dp</dimen>
+    <dimen name="toolbar_icon_right_margin_top">30dp</dimen>
+    <dimen name="toolbar_icon_right_margin_end">22dp</dimen>
+    <dimen name="toolbar_title_margin_top">30dp</dimen>
+    <dimen name="toolbar_linerlayout_margin_top">12dp</dimen>
+    <dimen name="toolbar_logo_margin">2dp</dimen>
+    <dimen name="toolbar_logo_width">92dp</dimen>
+    <dimen name="toolbar_logo_height">92dp</dimen>
+    <dimen name="toolbar_add_photo_margin_start">70dp</dimen>
+    <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
+
+    <!--  Profile  -->
+    <dimen name="profile_input_first_name_width">136dp</dimen>
+    <dimen name="profile_input_first_name_margin_top">74dp</dimen>
+    <dimen name="profile_input_first_name_margin_start">40dp</dimen>
+    <dimen name="profile_input_last_name_width">136dp</dimen>
+    <dimen name="profile_input_last_name_margin_top">74dp</dimen>
+    <dimen name="profile_input_last_name_margin_end">40dp</dimen>
+    <dimen name="profile_email_margin_top">10dp</dimen>
+    <dimen name="profile_email_margin_start">40dp</dimen>
+    <dimen name="profile_email_margin_end">40dp</dimen>
+    <dimen name="profile_phone_margin_top">10dp</dimen>
+    <dimen name="profile_phone_margin_start">40dp</dimen>
+    <dimen name="profile_phone_margin_end">40dp</dimen>
+    <dimen name="profile_currency_margin_top">12dp</dimen>
+    <dimen name="profile_currency_margin_start">40dp</dimen>
+    <dimen name="profile_currency_field_margin_top">3dp</dimen>
+    <dimen name="profile_currency_field_padding_start">16dp</dimen>
+    <dimen name="profile_currency_field_margin_start">40dp</dimen>
+    <dimen name="profile_currency_field_width">112dp</dimen>
+    <dimen name="profile_currency_field_height">32dp</dimen>
+    <dimen name="profile_switch_margin_end">40dp</dimen>
+    <dimen name="profile_switch_margin_top">3dp</dimen>
+    <dimen name="profile_switch_title_margin_end">178dp</dimen>
+    <dimen name="profile_switch_title_margin_top">12dp</dimen>
+    <dimen name="profile_choose_title_margin_start">40dp</dimen>
+    <dimen name="profile_choose_title_margin_top">12dp</dimen>
+    <dimen name="profile_attach_margin_start">40dp</dimen>
+    <dimen name="profile_attach_margin_top">3dp</dimen>
+    <dimen name="profile_attach_margin_end">40dp</dimen>
+    <dimen name="profile_button_margin_top">40dp</dimen>
+    <dimen name="profile_button_width">200dp</dimen>
+    <dimen name="profile_button_height">40dp</dimen>
+
+
+    <!--    dialog-->
+    <dimen name="dialog_layout_marginTop">32dp</dimen>
+    <dimen name="dialog_layout_marginStartEndBottom">6dp</dimen>
+
+    <dimen name="dialog_iv_center_marginTopStartEnd">100dp</dimen>
+    <dimen name="dialog_iv_center_marginBottom">200dp</dimen>
+
+    <dimen name="dialog_error_tv_error_text_marginBottom">48dp</dimen>
+    <dimen name="dialog_error_tv_error_marginTop">12dp</dimen>
+
+    <dimen name="dialog_accept_tv_balance_marginTop">80dp</dimen>
+    <dimen name="dialog_accept_tv_will_marginTop">10dp</dimen>
+    <dimen name="dialog_accept_tv_link_paddingBottom">16dp</dimen>
+
+    <dimen name="dialog_iv_close_marginTop">6dp</dimen>
+    <dimen name="dialog_iv_close_marginEnd">10dp</dimen>
+
+    <dimen name="dialog_clLink_width">280dp</dimen>
+    <dimen name="dialog_clLink_height">40dp</dimen>
+    <dimen name="dialog_clLink_marginStartEnd">16dp</dimen>
+    <dimen name="dialog_clLink_marginBottom">32dp</dimen>
+
+    <dimen name="dialog_ivCopy_marginTopBottom">8dp</dimen>
+    <dimen name="dialog_ivCopy_marginEnd">6dp</dimen>
+
+    <dimen name="dialog_tvLink_marginStart">12dp</dimen>
+
+    <dimen name="dialog_tvPleaseVerify_marginTop">16dp</dimen>
+
+    <dimen name="dialog_ll_qr_code_width_height">136dp</dimen>
+    <dimen name="dialog_ll_qr_code_elevation">4dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginStartEnd">88dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginTop">30dp</dimen>
+    <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
+    <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
+    <dimen name="setting_fragment_sv_layout_marginTop">26dp</dimen>
+    <dimen name="item_setting_width">60dp</dimen>
+    <dimen name="item_setting_layout_marginStartEnd">16dp</dimen>
+    <dimen name="setting_fragment_item_layout_marginBottom">8dp</dimen>
+    <dimen name="item_setting_iv_left_marginStart">18dp</dimen>
+    <dimen name="item_setting_tv_tittle_marginStart">18dp</dimen>
+    <dimen name="item_setting_im_next_marginEnd">16dp</dimen>
+    <dimen name="setting_fragment_tv_mail_layout_marginTop">10dp</dimen>
+
+    <dimen name="dialog_send_tv_toAddress_marginStart">24dp</dimen>
+    <dimen name="dialog_send_tv_toAddress_marginTop">36dp</dimen>
+    <dimen name="dialog_send_clLink_marginStartEnd">8dp</dimen>
+    <dimen name="dialog_send_clLink_marginTop">4dp</dimen>
+    <dimen name="dialog_send_clFiat_marginTop">6dp</dimen>
+    <dimen name="dialog_send_tv_marginStart">16dp</dimen>
+    <dimen name="dialog_send_tv_marginEnd">8dp</dimen>
+    <dimen name="dialog_send_tv_amount_marginTop">18dp</dimen>
+    <dimen name="dialog_send_iv_obmen_marginTop">31dp</dimen>
+    <dimen name="dialog_send_btn_send_marginStartEnd">56dp</dimen>
+    <dimen name="dialog_send_btn_send_marginTop">250dp</dimen>
+    <dimen name="dialog_send_btn_send_marginBottom">20dp</dimen>
+
+    <dimen name="dialog_forgot_iv_lock_marginStart">24dp</dimen>
+    <dimen name="dialog_forgot_iv_lock_marginTop">22dp</dimen>
+    <dimen name="dialog_forgot_tv_title_marginStart">12dp</dimen>
+    <dimen name="dialog_forgot_tv_title_marginTop">24dp</dimen>
+    <dimen name="dialog_forgot_cc_password_marginStartEnd">24dp</dimen>
+    <dimen name="dialog_forgot_cc_password_marginTop">38dp</dimen>
+    <dimen name="dialog_forgot_cc_password_width">280dp</dimen>
+    <dimen name="dialog_forgot_cc_password_height">66dp</dimen>
+    <dimen name="dialog_forgot_btn_marginStartEnd">64dp</dimen>
+    <dimen name="dialog_forgot_btn_marginTop">208dp</dimen>
+    <dimen name="dialog_forgot_btn_marginBottom">30dp</dimen>
+    <dimen name="dialog_forgot_tv_link_marginStartEnd">76dp</dimen>
+    <dimen name="dialog_forgot_tv_link_marginTop">8dp</dimen>
+
+    <dimen name="dialog_reset_iv_close_marginEnd">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginStart">24dp</dimen>
+    <dimen name="dialog_reset_tv_tittle_marginTop">20dp</dimen>
+    <dimen name="dialog_reset_cc_new_marginTop">8dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginTop">358dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
+
+    <!-- Transaction -->
+    <dimen name="transaction_logo_margin_top">32dp</dimen>
+    <dimen name="transaction_title_margin_top">12dp</dimen>
+    <dimen name="transaction_right_icon_margin_top">28dp</dimen>
+    <dimen name="transaction_right_icon_margin_end">10dp</dimen>
+    <dimen name="transaction_left_icon_margin_top">28dp</dimen>
+    <dimen name="transaction_left_icon_margin_start">10dp</dimen>
+    <dimen name="transaction_button_width">136dp</dimen>
+    <dimen name="transaction_button_height">40dp</dimen>
+    <dimen name="transaction_button_margin_end">40dp</dimen>
+    <dimen name="transaction_button_margin_start">40dp</dimen>
+    <dimen name="transaction_button_margin_bottom">22dp</dimen>
+    <dimen name="transaction_button_margin_top">20dp</dimen>
+    <dimen name="transaction_button_text_margin_start">20dp</dimen>
+    <dimen name="transaction_button_image_margin_start">20dp</dimen>
+    <dimen name="no_transaction_image_margin_bottom">8dp</dimen>
+
+
+    <!-- Wallet item -->
+    <dimen name="wallet_item_margin_bottom">8dp</dimen>
+    <dimen name="wallet_item_image_margin">10dp</dimen>
+    <dimen name="wallet_item_title_margin_top">10dp</dimen>
+    <dimen name="wallet_item_title_margin_start">10dp</dimen>
+    <dimen name="wallet_item_type_margin_start">10dp</dimen>
+    <dimen name="wallet_item_type_margin_bottom">8dp</dimen>
+    <dimen name="wallet_item_price_margin_top">10dp</dimen>
+    <dimen name="wallet_item_price_margin_end">18dp</dimen>
+    <dimen name="wallet_item_result_margin_end">18dp</dimen>
+    <dimen name="wallet_item_result_margin_bottom">8dp</dimen>
+
+    <!--  Wallet fragment -->
+    <dimen name="wallet_toolbar_title_margin_top">36dp</dimen>
+    <dimen name="wallet_total_margin_top">2dp</dimen>
+    <dimen name="wallet_total_icon_margin_top">24dp</dimen>
+    <dimen name="wallet_total_icon_margin_end">10dp</dimen>
+    <dimen name="wallet_toolbar_send_width">136dp</dimen>
+    <dimen name="wallet_toolbar_send_height">40dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_start">40dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_top">18dp</dimen>
+    <dimen name="wallet_toolbar_send_margin_bottom">16dp</dimen>
+    <dimen name="wallet_toolbar_send_text_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_send_icon_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_receive_width">136dp</dimen>
+    <dimen name="wallet_toolbar_receive_height">40dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_end">40dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_top">18dp</dimen>
+    <dimen name="wallet_toolbar_receive_margin_bottom">16dp</dimen>
+    <dimen name="wallet_toolbar_receive_text_margin_start">20dp</dimen>
+    <dimen name="wallet_toolbar_receive_icon_margin_start">20dp</dimen>
+    <dimen name="wallet_recycle_margin">16dp</dimen>
 </resources>

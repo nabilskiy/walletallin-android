@@ -2,6 +2,9 @@ package com.example.coinsliberty
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.Navigation
+import com.example.coinsliberty.utils.extensions.setTransparentLightStatusBar
+import com.example.coinsliberty.utils.extensions.setupFullScreen
 import kotlinx.android.synthetic.main.activity_bottom.*
 
 class BottomActivity : AppCompatActivity() {
@@ -9,18 +12,20 @@ class BottomActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom)
 
+        setTransparentLightStatusBar()
+        setupFullScreen()
+
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.wallet -> {
-                    setContent("Home")
+                    Navigation.findNavController(frameLayout.requireView()).navigate(R.id.action_global_my_wallet)
                     true
                 }
                 R.id.exchange -> {
-                    setContent("Notification")
                     true
                 }
                 R.id.setting -> {
-                    setContent("Search")
+                    Navigation.findNavController(frameLayout.requireView()).navigate(R.id.action_global_settings)
                     true
                 }
                 else -> false
@@ -30,6 +35,6 @@ class BottomActivity : AppCompatActivity() {
 
     private fun setContent(content: String) {
         setTitle(content)
-        tvLabel.text = content
     }
+
 }

@@ -16,21 +16,21 @@
         android:src="@drawable/ic_lock"
         app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="@dimen/login_image_view_margin_top"
+        android:layout_marginStart="@dimen/login_image_view_margin_start"
         />
 
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login"
         app:layout_constraintStart_toEndOf="@+id/ivLock"
         app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
-        android:layout_marginTop="36dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/login_text_margin_top"
+        android:layout_marginStart="@dimen/login_text_margin_start"
         android:textColor="@color/darkGrey"
-        android:textSize="20sp"
+        style="@style/H1"
         />
 
     <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
@@ -63,11 +63,11 @@
         android:layout_height="wrap_content"
         android:text="@string/forgot_password"
         android:textColor="@color/blue"
-        android:textSize="14sp"
+        style="@style/H4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="@dimen/login_password_margin_top"
+        android:layout_marginEnd="@dimen/login_password_margin_end"
         />
 
     <TextView
@@ -76,22 +76,23 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
         android:textColor="@color/blue"
-        android:textSize="14sp"
+        style="@style/H4"
         app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnLoginUpdate"
-        android:layout_marginStart="40dp" />
+        android:layout_marginStart="@dimen/login_signup_margin_start" />
 
     <Button
         android:id="@+id/btnLoginUpdate"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="@dimen/login_update_button_width"
+        android:layout_height="@dimen/login_update_button_height"
+        android:layout_marginBottom="@dimen/login_update_button_margin_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/ButtonGreyBorder"
         android:gravity="center"
-        android:text="@string/update"
-        android:textColor="@color/lightBlue" />
+        android:text="@string/login"
+        android:textColor="@color/lightBlue"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

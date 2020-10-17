@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/transactionToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_toolbar">
+
+        <ImageView
+            android:id="@+id/ivTransactionLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/etherium_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/transaction_logo_margin_top"
+            />
+
+        <TextView
+            android:id="@+id/tvTransactionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ivTransactionLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/transaction_title_margin_top"
+            android:text="@string/transaction_title"
+            style="@style/H5"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tvTransactionTotalBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransactionTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/H9"
+            android:textColor="@color/lightBlueLowOpacity"
+            android:text="@string/transaction_total"
+            />
+
+        <ImageView
+            android:id="@+id/ivTransactionToolbarRightIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/transaction_right_icon_margin_top"
+            android:layout_marginEnd="@dimen/transaction_right_icon_margin_end"
+            android:background="@drawable/ic_save_transaction"
+            />
+
+        <ImageView
+            android:id="@+id/ivTransactionLeftIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/ic_arrow_back"
+            android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
+            android:layout_marginStart="@dimen/transaction_left_icon_margin_start"
+            />
+
+        <View
+            android:id="@+id/transactionSendButton"
+            android:layout_width="@dimen/transaction_button_width"
+            android:layout_height="@dimen/transaction_button_height"
+            android:background="@drawable/btn_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTransactionTotalBalance"
+            android:layout_marginStart="@dimen/transaction_button_margin_start"
+            android:layout_marginTop="@dimen/transaction_button_margin_top"
+            android:layout_marginBottom="@dimen/transaction_button_margin_bottom"
+            />
+
+        <TextView
+            android:id="@+id/tvTransactionSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_send"
+            style="@style/H9"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/transactionSendButton"
+            app:layout_constraintStart_toEndOf="@id/ivTransactionSendIcon"
+            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
+            android:layout_marginStart="@dimen/transaction_button_text_margin_start"
+            />
+
+        <ImageView
+            android:id="@+id/ivTransactionSendIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_up"
+            app:layout_constraintTop_toTopOf="@id/transactionSendButton"
+            app:layout_constraintStart_toStartOf="@id/transactionSendButton"
+            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
+            android:layout_marginStart="@dimen/transaction_button_image_margin_start"
+            />
+
+        <View
+            android:id="@+id/transactionRecieveButton"
+            android:layout_width="@dimen/transaction_button_width"
+            android:layout_height="@dimen/transaction_button_height"
+            android:background="@drawable/btn_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTransactionTotalBalance"
+            android:layout_marginEnd="@dimen/transaction_button_margin_end"
+            android:layout_marginTop="@dimen/transaction_button_margin_top"
+            android:layout_marginBottom="@dimen/transaction_button_margin_bottom"
+            />
+
+        <TextView
+            android:id="@+id/tvTransactionRecieve"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/transaction_button_text_margin_start"
+            android:text="@string/transaction_receive"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/transactionRecieveButton"
+            app:layout_constraintStart_toEndOf="@id/ivTransactionReceiveIcon"
+            app:layout_constraintTop_toTopOf="@id/transactionRecieveButton" />
+
+        <ImageView
+            android:id="@+id/ivTransactionReceiveIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_arrow_down"
+            app:layout_constraintTop_toTopOf="@id/transactionRecieveButton"
+            app:layout_constraintStart_toStartOf="@id/transactionRecieveButton"
+            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
+            android:layout_marginStart="@dimen/transaction_button_image_margin_start"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvNoTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transactionToolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/no_transaction"
+        style="@style/H7"
+        android:textColor="@color/grey"
+        />
+
+    <ImageView
+        android:id="@+id/ivNoTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_no_transaction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvNoTransaction"
+        android:layout_marginBottom="@dimen/no_transaction_image_margin_bottom"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

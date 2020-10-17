@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".BottomActivity">
 
-    <TextView
-        android:id="@+id/tvLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottomNavigation"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:layout_marginTop="137dp"
-        android:layout_marginBottom="519dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -28,8 +15,19 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/bg_bottom"
         app:itemIconTint="@color/bottom_navigation_item_background_colors"
-        app:itemIconSize="24dp"
+        app:itemIconSize="@dimen/ab_icon_size"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_navigation"
         />
+
+    <fragment
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/menu_navigation"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_above="@+id/bottomNavigation">
+
+    </fragment>
 </RelativeLayout>

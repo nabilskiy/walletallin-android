@@ -4,7 +4,6 @@ import com.example.coinsliberty.di.appModule
 import com.example.coinsliberty.di.navigatorsModule
 import com.example.coinsliberty.di.sharedModule
 import com.example.coinsliberty.di.viewModelModule
-//import org.koin.android.ext.android.startKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
