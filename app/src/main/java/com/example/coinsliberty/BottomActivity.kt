@@ -22,6 +22,7 @@ class BottomActivity : AppCompatActivity() {
                     true
                 }
                 R.id.exchange -> {
+                    Navigation.findNavController(frameLayout.requireView()).navigate(R.id.action_global_exchange)
                     true
                 }
                 R.id.setting -> {

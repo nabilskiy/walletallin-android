@@ -1,5 +1,6 @@
 package com.example.coinsliberty.di
 
+import com.example.coinsliberty.ui.exchange.ExchangeViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
 import com.example.coinsliberty.ui.profile.ProfileViewModel
 import com.example.coinsliberty.ui.settings.SettingsViewModel
@@ -17,4 +18,5 @@ val viewModelModule = module {
     viewModel { SignUpViewModel() }
     viewModel { SettingsViewModel() }
     viewModel { ProfileViewModel() }
+    viewModel { ExchangeViewModel() }
 }
