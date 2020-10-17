@@ -61,4 +61,10 @@
         <item name="lineHeight">@dimen/h10_text_line_height</item>
     </style>
 
+    <style name="H11">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/h11_text_size</item>
+        <item name="lineHeight">@dimen/h11_text_line_height</item>
+    </style>
+
 </resources>

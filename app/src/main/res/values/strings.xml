@@ -76,4 +76,9 @@
     <string name="transaction_receive">RECEIVE</string>
     <string name="no_transaction">"You don't have\nTransaction yet"</string>
 
+    <string-array name="item_exchange">
+        <item>BTC</item>
+        <item>USD</item>
+    </string-array>
+
 </resources>
