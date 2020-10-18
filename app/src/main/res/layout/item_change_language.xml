@@ -34,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:textAppearance="@style/H8"
-        android:text="TextView"
-        android:textColor="@color/grey"
+        tools:text="TextView"
+        android:textColor="@drawable/selector_choose_language_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivFlag"
         app:layout_constraintTop_toTopOf="parent" />

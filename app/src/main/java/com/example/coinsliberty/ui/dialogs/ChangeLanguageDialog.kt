@@ -1,6 +1,5 @@
 package com.example.coinsliberty.ui.dialogs
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
@@ -11,7 +10,6 @@ import com.example.coinsliberty.model.LanguageContent
 import com.example.coinsliberty.ui.dialogs.adapter.ChangeLanguageHolder
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_change_language.*
-import kotlinx.android.synthetic.main.item_change_language.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -19,16 +17,14 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_change_language
     override val viewModel: ChangeLanguageViewModel by viewModel()
 
-//    interface NoticeDialogListener {
-//        fun onDialogPositiveClick(dialog: BaseKotlinDialogFragment?)
-//    }
-    //var mListener: NoticeDialogListener? = null
+    var activeIcon: Int? = null
 
-    @SuppressLint("ResourceAsColor")
+    var listener: ((LanguageContent) -> Unit)? = null
+
     val adapter = BaseAdapter()
         .map(R.layout.item_change_language, ChangeLanguageHolder.ItemHolder {
+            listener?.invoke(it)
             viewModel.changeList(it)
-            if (it.active) { tvName.setTextColor(R.color.darkBlue) }
         })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,36 +34,29 @@ class ChangeLanguageDialog() : BaseKotlinDialogFragment() {
         rvChangeLanguage.adapter = adapter
     }
 
-
-//    override fun onAttach(activity: Activity) {
-//        super.onAttach(activity)
-//        mListener = try {
-//            activity as NoticeDialogListener
-//        } catch (e: ClassCastException) {
-//            throw ClassCastException(
-//                activity.toString()
-//                        + " must implement NoticeDialogListener"
-//            )
-//        }
-//    }
+    fun initListeners(onChoosen: (LanguageContent) -> Unit) {
+        listener = onChoosen
+    }
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.languagesLiveData, ::initLanguages)
-        //bindDataTo(viewModel.currentLanguagesLiveData, ::changeLanguage)
     }
 
-
     private fun initLanguages(list: List<LanguageContent>) {
+        if (list.none { it.active }) {
+            list.map { it.apply { it.checkActive(activeIcon) } }
+        }
+
         adapter.itemsLoaded(list)
     }
 
-    // private fun changeLanguage(item: LanguageContent) {}
-
     companion object {
         val TAG = ChangeLanguageDialog::class.java.name
-        fun newInstance(): DialogFragment {
+
+        fun newInstance(icon: Int): ChangeLanguageDialog {
             val fragment = ChangeLanguageDialog()
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            fragment.activeIcon = icon
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogWhiteBG)
             return fragment
         }
     }
