@@ -35,7 +35,7 @@ class AcceptDialog : BaseKotlinDialogFragment() {
             val fragment = AcceptDialog()
             val bundle = bundleOf(keyBundleBalance to balance, keyBundleLink to link)
             fragment.arguments = bundle
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogGreenBG)
             return fragment
         }
     }

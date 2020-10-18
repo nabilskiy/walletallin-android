@@ -27,7 +27,7 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
         val TAG: String = ForgotPassDialog::class.java.name
         fun newInstance(): DialogFragment {
             val fragment = ForgotPassDialog()
-            //fragment.setStyle(STYLE_NO_FRAME, 0)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogWhiteBG)
             return fragment
         }
     }

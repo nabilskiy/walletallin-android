@@ -8,6 +8,7 @@ class LoginViewModel(): BaseViewModel() {
 
     val ldNavigate = MutableLiveData<NavigationConfig>()
 
+
     fun navigate() {
 
     }

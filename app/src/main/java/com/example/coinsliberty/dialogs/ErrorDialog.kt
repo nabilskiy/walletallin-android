@@ -34,7 +34,7 @@ class ErrorDialog : BaseKotlinDialogFragment() {
             val fragment = ErrorDialog()
             val bundle = bundleOf(keyBundle to title)
             fragment.arguments = bundle
-            fragment.setStyle(STYLE_NO_FRAME, 0)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogRedBG)
             return fragment
         }
     }

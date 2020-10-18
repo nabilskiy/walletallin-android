@@ -29,6 +29,7 @@
 
     <dimen name="btn_border_size">1dp</dimen>
     <dimen name="btn_corners_radius">10dp</dimen>
+    <dimen name="btn_dialog_corners_radius">10dp</dimen>
     <dimen name="btn_grey_corners_radius">5dp</dimen>
     <dimen name="btn_setting_corners_radius">15dp</dimen>
 

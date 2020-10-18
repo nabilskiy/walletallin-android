@@ -1,5 +1,6 @@
 package com.example.coinsliberty.di
 
+import com.example.coinsliberty.ui.dialogs.ChangeLanguageViewModel
 import com.example.coinsliberty.ui.exchange.ExchangeViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
 import com.example.coinsliberty.ui.profile.ProfileViewModel
@@ -19,4 +20,5 @@ val viewModelModule = module {
     viewModel { SettingsViewModel() }
     viewModel { ProfileViewModel() }
     viewModel { ExchangeViewModel() }
+    viewModel { ChangeLanguageViewModel() }
 }
