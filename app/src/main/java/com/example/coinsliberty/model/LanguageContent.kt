@@ -7,6 +7,11 @@ import kotlinx.android.parcel.Parcelize
 data class LanguageContent(
     val name: Int,
     val ico: Int,
-    var active: Boolean
+    var active: Boolean = false
 
-): Parcelable
+): Parcelable {
+
+    fun checkActive(icon: Int?) {
+        active = ico == icon
+    }
+}
