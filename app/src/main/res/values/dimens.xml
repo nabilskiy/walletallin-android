@@ -11,6 +11,7 @@
     <dimen name="h8_text_size">12sp</dimen>
     <dimen name="h9_text_size">12sp</dimen>
     <dimen name="h10_text_size">12sp</dimen>
+    <dimen name="h11_text_size">10sp</dimen>
 
     <!--    Line height-->
     <dimen name="h1_text_line_height">20dp</dimen>
@@ -23,6 +24,7 @@
     <dimen name="h8_text_line_height">20dp</dimen>
     <dimen name="h9_text_line_height">20dp</dimen>
     <dimen name="h10_text_line_height">20dp</dimen>
+    <dimen name="h11_text_line_height">20dp</dimen>
 
 
     <dimen name="btn_border_size">1dp</dimen>

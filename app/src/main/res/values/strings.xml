@@ -84,4 +84,9 @@
     <string name="portuguese">Portuguese</string>
     <string name="espanol">Espanol</string>
     <string name="change_language">Change Language</string>
+    <string-array name="item_exchange">
+        <item>BTC</item>
+        <item>USD</item>
+    </string-array>
+
 </resources>

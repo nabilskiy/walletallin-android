@@ -1,5 +1,6 @@
 package com.example.coinsliberty.di
 
+import com.example.coinsliberty.ui.exchange.ExchangeNavigator
 import com.example.coinsliberty.ui.login.LoginNavigation
 import com.example.coinsliberty.ui.profile.ProfileNavigation
 import com.example.coinsliberty.ui.settings.SettingsNavigation
@@ -17,4 +18,5 @@ val navigatorsModule = module {
     factory { SettingsNavigation() }
     factory { SignUpNavigation() }
     factory { SplashNavigation() }
+    factory { ExchangeNavigator() }
 }

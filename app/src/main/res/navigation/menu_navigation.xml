@@ -41,11 +41,22 @@
         app:popUpToInclusive="true"
         app:destination="@id/myWalletFragment2"/>
 
-
     <action
         android:id="@+id/action_global_settings"
         app:launchSingleTop="true"
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true"
         app:destination="@id/settingsFragment"/>
+    <fragment
+        android:id="@+id/exchangeFragment"
+        android:name="com.example.coinsliberty.ui.exchange.ExchangeFragment"
+        android:label="ExchangeFragment"
+        tools:layout="@layout/fragment_exchange"/>
+
+    <action
+        android:id="@+id/action_global_exchange"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true"
+        app:destination="@id/exchangeFragment"/>
 </navigation>
