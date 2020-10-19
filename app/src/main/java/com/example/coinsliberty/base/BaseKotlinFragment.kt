@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 
 abstract class BaseKotlinFragment : Fragment() {

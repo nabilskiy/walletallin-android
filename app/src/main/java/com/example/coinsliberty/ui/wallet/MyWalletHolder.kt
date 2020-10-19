@@ -20,3 +20,9 @@ class MyWalletHolder(private val onItemClick: (WalletContent) -> Unit) : Holder<
         itemView.rootView.setOnClickListener { onItemClick.invoke(item) }
     }
 }
+
+class TransactionHolder() : Holder<Unit>() {
+    override fun bind(itemView: View, item: Unit) {
+
+    }
+}

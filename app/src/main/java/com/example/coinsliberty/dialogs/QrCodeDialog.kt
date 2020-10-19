@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.example.coinsliberty.R
@@ -35,6 +36,7 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
         tvLink.text = arguments?.getString(keyBundleLink)
         ivQrCode.setImageBitmap(arguments?.getString(keyBundleLink)?.let { create(it) })
         ivClose.setOnClickListener { dismiss() }
+        ivCopy.setOnClickListener { Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show() }
 
     }
 

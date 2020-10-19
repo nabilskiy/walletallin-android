@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_dialog_green">
 
     <TextView
@@ -96,18 +97,21 @@
             app:layout_constraintTop_toBottomOf="@+id/tvAmountToSend">
 
 
-            <TextView
+            <EditText
                 android:id="@+id/tvAmountCripto"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
-                android:gravity="center"
-                android:text="0.25947531"
+                android:gravity="start"
+                tools:text="0.25947531"
+                android:inputType="number"
+                android:background="@null"
                 android:textAppearance="@style/H8"
                 android:textColor="@color/darkGrey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvCriptoName"/>
 
             <TextView
                 android:id="@+id/tvCriptoName"
@@ -135,18 +139,21 @@
             app:layout_constraintTop_toBottomOf="@+id/clSumCripto">
 
 
-            <TextView
+            <EditText
                 android:id="@+id/tvAmountFiat"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
-                android:gravity="center"
-                android:text="2671.53"
+                android:gravity="start"
+                android:background="@null"
+                tools:text="2671.53"
+                android:inputType="number"
                 android:textAppearance="@style/H10"
                 android:textColor="@color/darkGrey"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvFiatName"/>
 
             <TextView
                 android:id="@+id/tvFiatName"

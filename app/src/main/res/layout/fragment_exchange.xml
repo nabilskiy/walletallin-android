@@ -116,20 +116,20 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="90dp"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/spinnerPay"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bitcoin_cash_logo" />
 
-<!--        <Spinner-->
-<!--            android:id="@+id/spinnerPay"-->
-
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <Spinner
+            android:id="@+id/spinnerPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:entries="@array/item_exchange"
+            app:layout_constraintTop_toTopOf="@id/ivPayLogo"
+            app:layout_constraintBottom_toBottomOf="@id/ivPayLogo"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -184,12 +184,20 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="90dp"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/spinnerTo"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bitcoin_cash_logo" />
+
+        <Spinner
+            android:id="@+id/spinnerTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:entries="@array/item_exchange"
+            app:layout_constraintTop_toTopOf="@id/ivGetLogo"
+            app:layout_constraintBottom_toBottomOf="@id/ivGetLogo"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

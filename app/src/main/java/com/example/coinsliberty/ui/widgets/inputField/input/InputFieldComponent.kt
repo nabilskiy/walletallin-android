@@ -98,6 +98,8 @@ class InputFieldComponent @JvmOverloads constructor(
         })
     }
 
+    fun getMyText() = etField.text.toString()
+
     private fun modifyNumber(number: String) {
         if (number.isNotEmpty()) {
             if (!number.startsWith("+")) {

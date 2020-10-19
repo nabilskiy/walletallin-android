@@ -4,6 +4,8 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.dialogs.AcceptDialog
+import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
 import com.example.coinsliberty.ui.wallet.data.WalletContent
@@ -17,9 +19,12 @@ class MyWalletFragment : BaseKotlinFragment() {
     override val viewModel: MyWalletViewModel = MyWalletViewModel()
     override val navigator: MyWalletNavigation = MyWalletNavigation()
 
-    val adapter = BaseAdapter().map(R.layout.item_wallet, MyWalletHolder{
-        navigator.goToTransactions(navController)
-    })
+    val adapter = BaseAdapter()
+        .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController) })
+        .map(R.layout.item_transaction, TransactionHolder())
+
+    private val sendDialog = SendDialog
+        .newInstance("Sent eth", "test", "100", "100", "USD", "EUR")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,7 +32,13 @@ class MyWalletFragment : BaseKotlinFragment() {
             rvWallet.adapter = adapter
 
         walletToolbarSendButton.setOnClickListener {
-            SendDialog.newInstance("Sent eth", "test", "100", "100", "test", "test").show(childFragmentManager, SendDialog.TAG)
+            sendDialog
+                .apply {
+                    initListeners {
+                        showResult(it)
+                    }
+                }
+                .show(childFragmentManager, SendDialog.TAG)
         }
         walletToolbarRecieveButton.setOnClickListener {
             QrCodeDialog.newInstance("Sent eth", "test").show(childFragmentManager, QrCodeDialog.TAG)
@@ -41,7 +52,18 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun initLanguages(list: List<WalletContent>) {
         adapter.itemsLoaded(list)
+        adapter.itemsAdded(listOf(Unit))
     }
+
+    private fun showResult(it: Boolean) {
+        if(it) {
+            sendDialog.dismiss()
+            AcceptDialog.newInstance("1000.00", "Success").show(childFragmentManager, AcceptDialog.TAG)
+        } else {
+            ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
+        }
+    }
+
 
     companion object { val TAG = MyWalletFragment::class.java.name }
 }

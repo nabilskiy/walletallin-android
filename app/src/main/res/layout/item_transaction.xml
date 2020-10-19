@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Transactions"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/H3"
+        android:textColor="@color/darkGrey"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 Jan  2020"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/grey"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog">
+
+        <ImageView
+            android:id="@+id/ivFirstIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_send_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivFirstIcon"
+            app:layout_constraintTop_toTopOf="@id/ivFirstIcon"
+            android:text="Deposite"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivFirstIcon"
+            app:layout_constraintStart_toEndOf="@id/ivFirstIcon"
+            android:text="Litecoin Wallet | Bank Transfer"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="$ 405.6"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog">
+
+        <ImageView
+            android:id="@+id/ivSecondIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_transfer_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivSecondIcon"
+            app:layout_constraintTop_toTopOf="@id/ivSecondIcon"
+            android:text="BTC to Litecoin"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivSecondIcon"
+            app:layout_constraintStart_toEndOf="@id/ivSecondIcon"
+            android:text="Litecoin Wallet"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="$ 405.6"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19 Jan  2020"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/grey"
+        android:layout_marginTop="8dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog">
+
+        <ImageView
+            android:id="@+id/ivThirdIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_transfer_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivThirdIcon"
+            app:layout_constraintTop_toTopOf="@id/ivThirdIcon"
+            android:text="Withdrawal"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivThirdIcon"
+            app:layout_constraintStart_toEndOf="@id/ivThirdIcon"
+            android:text="Litecoin Wallet | Bank Transfer"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="$ 405.6"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog">
+
+        <ImageView
+            android:id="@+id/ivFourthIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_send_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivFourthIcon"
+            app:layout_constraintTop_toTopOf="@id/ivFourthIcon"
+            android:text="Deposite"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivFourthIcon"
+            app:layout_constraintStart_toEndOf="@id/ivFourthIcon"
+            android:text="Litecoin Wallet | Bank Transfer"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="$ 405.6"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

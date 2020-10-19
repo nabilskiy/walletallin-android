@@ -22,22 +22,31 @@ class SendDialog : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_send
     override val viewModel: StubViewModel by viewModel()
 
+    var listener: ((Boolean) -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = true
     }
 
+    fun initListeners(onChoosen: (Boolean) -> Unit) {
+        listener = onChoosen
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTittle.text = arguments?.getString(keyBundleTittle)
         tvLink.text = arguments?.getString(keyBundleLink)
-        tvAmountCripto.text = arguments?.getString(keyBundleAmountCripto)
-        tvAmountFiat.text = arguments?.getString(keyBundleAmountFiat)
+        //tvAmountCripto.text = arguments?.getString(keyBundleAmountCripto)
+        //tvAmountFiat.text = arguments?.getString(keyBundleAmountFiat)
         tvCriptoName.text = arguments?.getString(keyBundleNameCripto)
         tvFiatName.text = arguments?.getString(keyBundleNameFiat)
 
         ivClose.setOnClickListener { dismiss() }
+
+        btnSentCoin.setOnClickListener {
+            listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
+        }
     }
 
     companion object {
@@ -45,7 +54,7 @@ class SendDialog : BaseKotlinDialogFragment() {
         fun newInstance(
             tittle: String, link: String, amountCripto: String, amountFiat: String,
             nameCripto: String, nameFiat: String
-        ): DialogFragment {
+        ): SendDialog {
             val fragment = SendDialog()
             val bundle = bundleOf(
                 keyBundleTittle to tittle,
