@@ -256,8 +256,8 @@
     <!--  Wallet fragment -->
     <dimen name="wallet_toolbar_title_margin_top">36dp</dimen>
     <dimen name="wallet_total_margin_top">2dp</dimen>
-    <dimen name="wallet_total_icon_margin_top">24dp</dimen>
-    <dimen name="wallet_total_icon_margin_end">10dp</dimen>
+    <dimen name="wallet_total_icon_margin_top">30dp</dimen>
+    <dimen name="wallet_total_icon_margin_end">22dp</dimen>
     <dimen name="wallet_toolbar_send_width">136dp</dimen>
     <dimen name="wallet_toolbar_send_height">40dp</dimen>
     <dimen name="wallet_toolbar_send_margin_start">40dp</dimen>

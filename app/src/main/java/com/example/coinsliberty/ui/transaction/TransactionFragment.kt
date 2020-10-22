@@ -8,8 +8,11 @@ import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
+import com.example.coinsliberty.utils.extensions.gone
+import com.example.coinsliberty.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.android.synthetic.main.item_transaction.*
 import kotlinx.android.synthetic.main.item_transaction.view.*
 
 
@@ -36,6 +39,42 @@ class TransactionFragment : BaseKotlinFragment() {
             QrCodeDialog.newInstance("Sent eth", "test").show(childFragmentManager, QrCodeDialog.TAG)
         }
         transactions.tvTitle.text = "Transaction"
+
+        first.setOnClickListener {
+            it.gone()
+            firstOpen.visible()
+        }
+        firstOpen.setOnClickListener {
+            it.gone()
+            first.visible()
+        }
+
+        second.setOnClickListener {
+            it.gone()
+            secondOpen.visible()
+        }
+        secondOpen.setOnClickListener {
+            it.gone()
+            second.visible()
+        }
+
+        third.setOnClickListener {
+            it.gone()
+            thirdOpen.visible()
+        }
+        thirdOpen.setOnClickListener {
+            it.gone()
+            third.visible()
+        }
+
+        fourth.setOnClickListener {
+            it.gone()
+            fourthOpen.visible()
+        }
+        fourthOpen.setOnClickListener {
+            it.gone()
+            fourth.visible()
+        }
     }
 
     private fun showResult(it: Boolean) {

@@ -28,6 +28,7 @@ class SettingsFragment() : BaseKotlinFragment() {
 
         settingsToolbar.ivToolbarIconLeft.invisible()
         settingsToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.selector_notification)
+        settingsToolbar.ivToolbarRightIcon.setColorFilter(resources.getColor(R.color.white))
         settingsToolbar.tvToolbarTitle.setText(R.string.settings)
 
         itemChangeLanguage.tvTittle.setText(R.string.change_language)

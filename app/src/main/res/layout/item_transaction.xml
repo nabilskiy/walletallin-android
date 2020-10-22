@@ -24,6 +24,7 @@
         android:textColor="@color/grey"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/first"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -70,7 +71,107 @@
             android:layout_marginEnd="18dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstOpen"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivFirstOpenIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_send_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivFirstOpenIcon"
+            app:layout_constraintTop_toTopOf="@id/ivFirstOpenIcon"
+            android:text="Deposite"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:id="@+id/tvFirstOpenWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivFirstOpenIcon"
+            app:layout_constraintStart_toEndOf="@id/ivFirstOpenIcon"
+            android:text="Wallet: Bitcoin Wallet"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvFirstOpenWalletAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvFirstOpenWallet"
+            app:layout_constraintStart_toEndOf="@id/ivFirstOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivFirstOpenWalletAddressCopy"
+            android:text="Wallet Address: 16azaQHPThoQcf14o2XqmbGdfdfdsfdsfdsfdsfdddds"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivFirstOpenWalletAddressCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvFirstOpenWalletAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFirstOpenWalletAddress"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvFirstOpenBlockchainList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvFirstOpenWalletAddress"
+            app:layout_constraintStart_toEndOf="@id/ivFirstOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivFirstOpenBlockchainCopy"
+            android:text="Blockchain Link:   https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivFirstOpenBlockchainCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvFirstOpenBlockchainList"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFirstOpenBlockchainList"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="0.01215951 BTC\n$ 405.6"
+            android:gravity="end"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:lineHeight="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/second"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -118,6 +219,103 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/secondOpen"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivSecondOpenIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_transfer_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivSecondOpenIcon"
+            app:layout_constraintTop_toTopOf="@id/ivSecondOpenIcon"
+            android:text="BTC to Litecoin"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:id="@+id/tvSecondOpenWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivSecondOpenIcon"
+            app:layout_constraintStart_toEndOf="@id/ivSecondOpenIcon"
+            android:text="Wallet: Bitcoin Wallet"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvSecondOpenWalletAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvSecondOpenWallet"
+            app:layout_constraintStart_toEndOf="@id/ivSecondOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivSecondOpenWalletAddressCopy"
+            android:text="Wallet Address: 16azaQHPThoQcf14o2XqmbGdfdfdsfdsfdsfdsfdddds"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivSecondOpenWalletAddressCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvSecondOpenWalletAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSecondOpenWalletAddress"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvSecondOpenBlockchainList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvSecondOpenWalletAddress"
+            app:layout_constraintStart_toEndOf="@id/ivSecondOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivSecondOpenBlockchainCopy"
+            android:text="Blockchain Link:   https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivSecondOpenBlockchainCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvSecondOpenBlockchainList"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSecondOpenBlockchainList"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="0.01215951 BTC\n$ 405.6"
+            android:gravity="end"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:lineHeight="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -128,6 +326,7 @@
         android:layout_marginTop="8dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/third"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -176,6 +375,105 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/thirdOpen"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivThirdOpenIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_transfer_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivThirdOpenIcon"
+            app:layout_constraintTop_toTopOf="@id/ivThirdOpenIcon"
+            android:text="Withdrawal"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:id="@+id/tvThirdOpenWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivThirdOpenIcon"
+            app:layout_constraintStart_toEndOf="@id/ivThirdOpenIcon"
+            android:text="Wallet: Bitcoin Wallet"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvThirdOpenWalletAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvThirdOpenWallet"
+            app:layout_constraintStart_toEndOf="@id/ivThirdOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivThirdOpenWalletAddressCopy"
+            android:text="Wallet Address: 16azaQHPThoQcf14o2XqmbGdfdfdsfdsfdsfdsfdddds"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivThirdOpenWalletAddressCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvThirdOpenWalletAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/tvThirdOpenWalletAddress"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvThirdOpenBlockchainList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvThirdOpenWalletAddress"
+            app:layout_constraintStart_toEndOf="@id/ivThirdOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivThirdOpenBlockchainCopy"
+            android:text="Blockchain Link:   https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivThirdOpenBlockchainCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvThirdOpenBlockchainList"
+            app:layout_constraintBottom_toBottomOf="@+id/tvThirdOpenBlockchainList"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="0.01215951 BTC\n$ 405.6"
+            android:gravity="end"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:lineHeight="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fourth"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -218,6 +516,104 @@
             android:text="$ 405.6"
             android:textColor="@color/darkBlue"
             android:textAppearance="@style/H4"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fourthOpen"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_dialog"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivFourthOpenIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_send_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivFourthOpenIcon"
+            app:layout_constraintTop_toTopOf="@id/ivFourthOpenIcon"
+            android:text="Deposit"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"/>
+
+        <TextView
+            android:id="@+id/tvFourthOpenWallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/ivFourthOpenIcon"
+            app:layout_constraintStart_toEndOf="@id/ivFourthOpenIcon"
+            android:text="Wallet: Bitcoin Wallet"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"/>
+
+
+        <TextView
+            android:id="@+id/tvFourthOpenWalletAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvFourthOpenWallet"
+            app:layout_constraintStart_toEndOf="@id/ivFourthOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivFourthOpenWalletAddressCopy"
+            android:text="Wallet Address: 16azaQHPThoQcf14o2XqmbGdfdfdsfdsfdsfdsfdddds"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivFourthOpenWalletAddressCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvFourthOpenWalletAddress"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFourthOpenWalletAddress"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvFourthOpenBlockchainList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvFourthOpenWalletAddress"
+            app:layout_constraintStart_toEndOf="@id/ivFourthOpenIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivFourthOpenBlockchainCopy"
+            android:text="Blockchain Link:   https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
+            android:textAppearance="@style/H11"
+            android:layout_marginStart="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <ImageView
+            android:id="@+id/ivFourthOpenBlockchainCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_copy"
+            app:layout_constraintTop_toTopOf="@id/tvFourthOpenBlockchainList"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFourthOpenBlockchainList"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="0.01215951 BTC\n$ 405.6"
+            android:gravity="end"
+            android:textColor="@color/darkBlue"
+            android:textAppearance="@style/H4"
+            android:lineHeight="12dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="18dp"/>
 

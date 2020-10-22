@@ -7,6 +7,8 @@ import android.widget.Spinner
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
 import kotlinx.android.synthetic.main.fragment_exchange.*
+import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
