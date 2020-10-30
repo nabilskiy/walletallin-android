@@ -75,7 +75,7 @@
             tools:hint="result"
             android:textColor="@color/grey"
             style="@style/H4"
-            />
+            app:layout_constraintTop_toBottomOf="@id/tvItemWalletPrice"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
