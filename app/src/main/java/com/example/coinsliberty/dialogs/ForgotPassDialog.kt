@@ -5,6 +5,8 @@ import android.view.View
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
+import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_forgot_pass.*
 
 class ForgotPassDialog : BaseKotlinDialogFragment() {
@@ -21,14 +23,16 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         btnSentToMail.setOnClickListener {
             viewModel.forgotPass(forgotPasswordMail.getMyText())
+        }
+        bindDataTo(viewModel.resultRecovery, ::getDialogError)
+    }
 
-            if (viewModel.resultRecovery.value == false) {
-                ErrorDialog.newInstance(viewModel.messageRecovery.value.toString())
-                    .show(parentFragmentManager, ErrorDialog.TAG)
-            }
+    private fun getDialogError(signUpResponse: SignUpResponse?) {
+        if (signUpResponse != null) {
+            ErrorDialog.newInstance(signUpResponse.error?.message.toString())
+                .show(parentFragmentManager, ErrorDialog.TAG)
         }
     }
 
