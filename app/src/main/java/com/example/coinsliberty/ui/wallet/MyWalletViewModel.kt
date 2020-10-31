@@ -1,10 +1,11 @@
 package com.example.coinsliberty.ui.wallet
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 
-class MyWalletViewModel: BaseViewModel() {
+class MyWalletViewModel(private val app: Application): BaseViewModel(app) {
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData(getListData())
 
     fun getListData(): ArrayList<WalletContent> {

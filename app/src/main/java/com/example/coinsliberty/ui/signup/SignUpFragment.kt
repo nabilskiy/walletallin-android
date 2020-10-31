@@ -21,7 +21,7 @@ class SignUpFragment: BaseKotlinFragment() {
 
         tvLogin.setOnClickListener { activity?.onBackPressed() }
         btnSignUp.setOnClickListener {
-            navigator.goToProfile(navController)
+            viewModel.signUp(ifcEmail.getMyText(), ifcSignUpPassword.getMyText(), ifcFirstName.getMyText(), ifcLastName.getMyText())
         }
     }
 }

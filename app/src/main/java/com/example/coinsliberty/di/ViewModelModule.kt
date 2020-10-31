@@ -7,18 +7,18 @@ import com.example.coinsliberty.ui.profile.ProfileViewModel
 import com.example.coinsliberty.ui.settings.SettingsViewModel
 import com.example.coinsliberty.ui.signup.SignUpViewModel
 import com.example.coinsliberty.utils.stub.StubViewModel
-import com.example.moneybee.ui.splash.SplashViewModel
+import com.example.coinsliberty.ui.splash.SplashViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { StubViewModel() }
+    viewModel { StubViewModel(get()) }
 
-    viewModel { SplashViewModel() }
-    viewModel { LoginViewModel() }
-    viewModel { SignUpViewModel() }
-    viewModel { SettingsViewModel() }
-    viewModel { ProfileViewModel() }
-    viewModel { ExchangeViewModel() }
-    viewModel { ChangeLanguageViewModel() }
+    viewModel { SplashViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
+    viewModel { SignUpViewModel(get(), get()) }
+    viewModel { SettingsViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
+    viewModel { ExchangeViewModel(get()) }
+    viewModel { ChangeLanguageViewModel(get()) }
 }

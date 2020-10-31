@@ -14,11 +14,12 @@ import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import kotlinx.android.synthetic.main.item_transaction.*
 import kotlinx.android.synthetic.main.item_transaction.view.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class TransactionFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_transaction
-    override val viewModel: TransactionViewModel = TransactionViewModel()
+    override val viewModel: TransactionViewModel by viewModel()
     override val navigator: TransactionNavigation = TransactionNavigation()
 
     private val sendDialog = SendDialog

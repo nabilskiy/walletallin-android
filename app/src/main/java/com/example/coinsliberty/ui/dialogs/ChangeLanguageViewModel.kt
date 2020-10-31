@@ -1,5 +1,6 @@
 package com.example.coinsliberty.ui.dialogs
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.R
@@ -8,7 +9,7 @@ import com.example.coinsliberty.model.LanguageContent
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 
-class ChangeLanguageViewModel() : BaseViewModel() {
+class ChangeLanguageViewModel(private val app: Application) : BaseViewModel(app) {
 
     val languagesLiveData: MutableLiveData<List<LanguageContent>> = MutableLiveData(getListData())
     val currentLanguagesLiveData: MutableLiveData<LanguageContent> = MutableLiveData()
