@@ -1,7 +1,5 @@
 package com.example.coinsliberty.dialogs
 
-
-
 import android.os.Bundle
 import android.view.View
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,9 +24,11 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
 
         btnSentToMail.setOnClickListener {
             viewModel.forgotPass(forgotPasswordMail.getMyText())
-            // с этим не рабоатет
-            //      listener?.invoke(forgotPasswordMail.getMyText().isNotEmpty())
 
+            if (viewModel.resultRecovery.value == false) {
+                ErrorDialog.newInstance(viewModel.messageRecovery.value.toString())
+                    .show(parentFragmentManager, ErrorDialog.TAG)
+            }
         }
     }
 
