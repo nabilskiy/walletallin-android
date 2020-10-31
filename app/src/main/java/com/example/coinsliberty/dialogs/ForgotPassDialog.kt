@@ -1,24 +1,17 @@
 package com.example.coinsliberty.dialogs
 
-
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
-import com.example.coinsliberty.model.LanguageContent
-import com.example.coinsliberty.utils.stub.StubViewModel
+import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_forgot_pass.*
 
 class ForgotPassDialog : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_forgot_pass
-    override val viewModel: StubViewModel by viewModel()
+    override val viewModel: ForgotPassViewModel by viewModel()
 
     var listener: ((Boolean) -> Unit)? = null
 
@@ -30,9 +23,16 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         btnSentToMail.setOnClickListener {
-            listener?.invoke(forgotPasswordMail.getMyText().isNotEmpty())
+            viewModel.forgotPass(forgotPasswordMail.getMyText())
+        }
+        bindDataTo(viewModel.resultRecovery, ::getDialogError)
+    }
+
+    private fun getDialogError(signUpResponse: SignUpResponse?) {
+        if (signUpResponse != null) {
+            ErrorDialog.newInstance(signUpResponse.error?.message.toString())
+                .show(parentFragmentManager, ErrorDialog.TAG)
         }
     }
 

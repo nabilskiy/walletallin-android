@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 
 abstract class BaseKotlinDialogFragment : DialogFragment() {
@@ -13,14 +14,26 @@ abstract class BaseKotlinDialogFragment : DialogFragment() {
 
     abstract val viewModel: BaseViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(layoutRes, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(layoutRes, container, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindDataTo(viewModel.onStartProgress) { }
-        bindDataTo(viewModel.onEndProgress) { }
+        bindDataTo(viewModel.onStartProgress, ::startProgress)
+        bindDataTo(viewModel.onEndProgress, ::endProgress)
         onReceiveParams(arguments)
+    }
+
+    private fun startProgress(unit: Unit?) {
+        dialogProgressBar.show(parentFragmentManager, ProgressBarDialog.TAG)
+    }
+
+    private fun endProgress(unit: Unit?) {
+        dialogProgressBar.dismiss()
     }
 
     protected open fun onReceiveParams(arguments: Bundle?) {}

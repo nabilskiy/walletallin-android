@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.coinsliberty.dialogs.AcceptDialog
+import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
+
+val dialogProgressBar = ProgressBarDialog.newInstance()
 
 abstract class BaseKotlinFragment : Fragment() {
 
@@ -26,9 +28,17 @@ abstract class BaseKotlinFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindDataTo(viewModel.onStartProgress) { }
-        bindDataTo(viewModel.onEndProgress) { }
+        bindDataTo(viewModel.onStartProgress, ::startProgress)
+        bindDataTo(viewModel.onEndProgress, ::endProgress)
         onReceiveParams(arguments)
+    }
+
+    private fun startProgress(unit: Unit?) {
+        dialogProgressBar.show(parentFragmentManager, ProgressBarDialog.TAG)
+    }
+
+    private fun endProgress(unit: Unit?) {
+        dialogProgressBar.dismiss()
     }
 
     fun toast(message: String) {

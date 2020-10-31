@@ -1,24 +1,27 @@
-package com.example.coinsliberty.ui.signup
+package com.example.coinsliberty.dialogs
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
-import com.example.coinsliberty.data.SignUpRequest
-import com.example.coinsliberty.ui.config.NavigationConfig
+import com.example.coinsliberty.data.ForgotPassRequest
+import com.example.coinsliberty.data.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class SignUpViewModel(
+class ForgotPassViewModel(
     app: Application,
-    private val repository: SignUpRepository
-): BaseViewModel(app) {
+    private val repository: ForgotPassRepository
+) : BaseViewModel(app) {
 
-    fun signUp(email: String, password: String, firstName: String, lastName: String) {
+    val resultRecovery = MutableLiveData<SignUpResponse>()
+
+    fun forgotPass(email: String) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.signUp(SignUpRequest(email, password, firstName, lastName))
+            val response = repository.forgotPass(ForgotPassRequest(email))
             Log.e("!!!", response.toString())
+            resultRecovery.postValue(response)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
