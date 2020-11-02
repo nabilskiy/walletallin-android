@@ -11,5 +11,4 @@ interface UserApi {
     suspend fun changePassword(
         @Body body: ChangePasswordRequest
     ): SignUpResponse
-    ////???
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.DialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.stub.StubViewModel
 import kotlinx.android.synthetic.main.dialog_reset_pass.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
@@ -37,8 +38,8 @@ class ResetPassDialog : BaseKotlinDialogFragment() {
             }
             //listener?.invoke(true)
         }
+        bindDataTo(viewModel.timeToDismiss, ::dismissThisDialog)
     }
-
 
     fun initListeners(onChoosen: (Boolean) -> Unit) {
         listener = onChoosen
@@ -51,6 +52,12 @@ class ResetPassDialog : BaseKotlinDialogFragment() {
     private fun getErrorDialog() {
         ErrorDialog.newInstance("New password does not match")
             .show(parentFragmentManager, ErrorDialog.TAG)
+    }
+
+    fun dismissThisDialog(boolean: Boolean) {
+        if (boolean) {
+            dismiss()
+        }
     }
 
     companion object {
