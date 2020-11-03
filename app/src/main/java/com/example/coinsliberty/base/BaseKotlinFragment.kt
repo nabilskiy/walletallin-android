@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 
@@ -30,7 +31,14 @@ abstract class BaseKotlinFragment : Fragment() {
         super.onCreate(savedInstanceState)
         bindDataTo(viewModel.onStartProgress, ::startProgress)
         bindDataTo(viewModel.onEndProgress, ::endProgress)
+        bindDataTo(viewModel.showError, ::showError)
         onReceiveParams(arguments)
+    }
+
+    private fun showError(s: String?) {
+        if(s == null) return
+
+        ErrorDialog.newInstance(s).show(parentFragmentManager, ErrorDialog.TAG)
     }
 
     private fun startProgress(unit: Unit?) {

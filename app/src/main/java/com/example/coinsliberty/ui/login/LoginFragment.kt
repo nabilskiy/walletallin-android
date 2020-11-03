@@ -2,18 +2,14 @@ package com.example.coinsliberty.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.dialogs.ErrorDialog
-import com.example.coinsliberty.dialogs.ForgotPassDialog
-import com.example.coinsliberty.ui.config.NavigationConfig
+import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassDialog
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.lang.Error
 
 class LoginFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_login
@@ -42,7 +38,7 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            navigate()
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
             }
 
         tvForgotPassword.setOnClickListener {

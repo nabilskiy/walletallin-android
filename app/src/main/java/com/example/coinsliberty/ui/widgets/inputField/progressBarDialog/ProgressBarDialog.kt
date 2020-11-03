@@ -20,6 +20,7 @@ class ProgressBarDialog : BaseKotlinDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
     companion object {

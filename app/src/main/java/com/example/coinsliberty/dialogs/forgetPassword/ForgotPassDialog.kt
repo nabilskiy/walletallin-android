@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.forgetPassword
 
 import android.os.Bundle
 import android.view.View
@@ -30,9 +30,8 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
     }
 
     private fun getDialogError(signUpResponse: SignUpResponse?) {
-        if (signUpResponse != null) {
-            ErrorDialog.newInstance(signUpResponse.error?.message.toString())
-                .show(parentFragmentManager, ErrorDialog.TAG)
+        if(signUpResponse?.result == true) {
+            activity?.onBackPressed()
         }
     }
 
