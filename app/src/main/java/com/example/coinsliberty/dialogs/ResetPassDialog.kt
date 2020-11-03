@@ -3,14 +3,11 @@ package com.example.coinsliberty.dialogs
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.DialogFragment
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
 import com.example.coinsliberty.utils.extensions.bindDataTo
-import com.example.coinsliberty.utils.stub.StubViewModel
 import kotlinx.android.synthetic.main.dialog_reset_pass.*
-import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 
 class ResetPassDialog : BaseKotlinDialogFragment() {

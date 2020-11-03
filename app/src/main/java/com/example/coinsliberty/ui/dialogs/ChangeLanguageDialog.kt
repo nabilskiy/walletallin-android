@@ -2,7 +2,6 @@ package com.example.coinsliberty.ui.dialogs
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.DialogFragment
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinDialogFragment

@@ -14,7 +14,7 @@ class ParamsInterceptor(val securePreferenceHelper: SharedPreferencesProvider) :
         val request = chain.request().newBuilder().apply {
             url(url)
             header("Content-Type", "application/json")
-            header("Content-Length", "68")
+//            header("Content-Length", "68")
             header("Date", Date().toString())
             header("Connection", "keep-alive")
             header("X-Powered-By", "Express")
@@ -22,7 +22,7 @@ class ParamsInterceptor(val securePreferenceHelper: SharedPreferencesProvider) :
             header("Access-Control-Allow-Credentials", "true")
             header("ETag", "W/\"44-Q9BmkzXWFxPhNN+eNc7Yvklw7bM\"")
             if(securePreferenceHelper.getToken()?.isNotEmpty() == true) {
-                addHeader("authorization", "Bearer" + securePreferenceHelper.getToken())
+                addHeader("authorization", "Bearer " + securePreferenceHelper.getToken())
             }
         }.build()
 

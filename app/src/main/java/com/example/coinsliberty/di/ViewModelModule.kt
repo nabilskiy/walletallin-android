@@ -18,7 +18,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { StubViewModel(get()) }
 
-    viewModel { SplashViewModel(get()) }
+    viewModel { SplashViewModel(get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { SignUpViewModel(get(), get()) }
     viewModel { SettingsViewModel(get()) }
@@ -27,6 +27,6 @@ val viewModelModule = module {
     viewModel { ChangeLanguageViewModel(get()) }
     viewModel { ForgotPassViewModel(get(),get()) }
     viewModel { ResetPassViewModel(get(),get()) }
-    viewModel { MyWalletViewModel(get()) }
+    viewModel { MyWalletViewModel(get(), get()) }
     viewModel { TransactionViewModel(get()) }
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.ui.config.NavigationConfig
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import org.koin.android.ext.android.get

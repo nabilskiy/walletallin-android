@@ -30,6 +30,7 @@ class LoginViewModel(
     private fun handleResponse(signUp: SignUpResponse) {
         if(signUp.result == true) {
             sharedPreferencesProvider.setToken(signUp.token ?: "")
+            Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
             result.postValue(true)
             return
         }

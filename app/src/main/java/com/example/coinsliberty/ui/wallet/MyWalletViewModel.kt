@@ -1,62 +1,31 @@
 package com.example.coinsliberty.ui.wallet
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseViewModel
+import com.example.coinsliberty.data.SignUpRequest
 import com.example.coinsliberty.ui.wallet.data.WalletContent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class MyWalletViewModel(private val app: Application): BaseViewModel(app) {
-    val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData(getListData())
+class MyWalletViewModel(private val app: Application, private val repository: WalletRepository): BaseViewModel(app) {
+    val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
 
-    fun getListData(): ArrayList<WalletContent> {
-        val listData: ArrayList<WalletContent> = ArrayList()
-
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
-        listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
-        listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
-        listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
-        listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure,
-                                    R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        listData.add(WalletContent(R.drawable.ic_etherium, R.string.ethereum_wallet, R.string.ethereum_abreviatoure, "".toInt(), "".toInt(), R.color.lightPurple))
-//        listData.add(WalletContent(R.drawable.ic_litecoin, R.string.litecoin_wallet, R.string.litecoin_abreviatoure, "".toInt(), "".toInt(), R.color.walletGrey))
-//        listData.add(WalletContent(R.drawable.ic_ripple, R.string.ripple_wallet, R.string.ripple_abreviatoure, "".toInt(), "".toInt(), R.color.walletLightBlue))
-        listData.add(WalletContent(R.drawable.ic_bitcoin_cash, R.string.bitcoin_cash_wallet, R.string.bitcoin_cash_abreviatoure,
-            R.string.bitcoin_cash_price, R.string.bitcoin_cash_result, R.color.walletLightGreen))
-        listData.add(WalletContent(R.drawable.ic_dashcoin, R.string.dashcoin_wallet, R.string.dashcoin_abreviatoure,
-            R.string.dashcoin_price, R.string.dashcoin_result, R.color.walletMiddleBlue))
-
-        return listData
+//    fun getListData(): ArrayList<WalletContent> {
+//        val listData: ArrayList<WalletContent> = ArrayList()
+//        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
+//        return listData
+//    }
+//
+    fun walletList() {
+        launch(::onErrorHandler) {
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            val response = repository.walletList()
+            Log.e("!!!", response.toString())
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
     }
+
+
 }
