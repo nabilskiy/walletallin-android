@@ -1,5 +1,6 @@
 package com.example.coinsliberty.di
 
+import com.example.coinsliberty.dialogs.ResetPassRepository
 import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassRepository
 import com.example.coinsliberty.ui.login.LoginRepository
 import com.example.coinsliberty.ui.signup.SignUpRepository
@@ -10,4 +11,5 @@ val repositoryModule = module {
     factory { SignUpRepository(get()) }
     factory { ForgotPassRepository(get()) }
     factory { LoginRepository(get()) }
+    factory { ResetPassRepository(get()) }
 }
