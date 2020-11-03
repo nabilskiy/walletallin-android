@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 
@@ -25,7 +26,14 @@ abstract class BaseKotlinDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         bindDataTo(viewModel.onStartProgress, ::startProgress)
         bindDataTo(viewModel.onEndProgress, ::endProgress)
+        bindDataTo(viewModel.showError, ::showError)
         onReceiveParams(arguments)
+    }
+
+    private fun showError(s: String?) {
+        if(s == null) return
+
+        ErrorDialog.newInstance(s).show(parentFragmentManager, ErrorDialog.TAG)
     }
 
     private fun startProgress(unit: Unit?) {
