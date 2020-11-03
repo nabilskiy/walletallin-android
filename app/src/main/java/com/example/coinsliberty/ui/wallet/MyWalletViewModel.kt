@@ -10,14 +10,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MyWalletViewModel(private val app: Application, private val repository: WalletRepository): BaseViewModel(app) {
-    val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData(getListData())
+    val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
 
-    fun getListData(): ArrayList<WalletContent> {
-        val listData: ArrayList<WalletContent> = ArrayList()
-        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-        return listData
-    }
-
+//    fun getListData(): ArrayList<WalletContent> {
+//        val listData: ArrayList<WalletContent> = ArrayList()
+//        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
+//        return listData
+//    }
+//
     fun walletList() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}

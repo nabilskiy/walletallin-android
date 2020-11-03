@@ -10,12 +10,8 @@ import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 import com.example.coinsliberty.utils.extensions.bindDataTo
-import com.google.zxing.qrcode.encoder.QRCode
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.io.IOException
-import java.net.URI
-import java.net.URL
 
 
 class MyWalletFragment : BaseKotlinFragment() {
