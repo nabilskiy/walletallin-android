@@ -2,20 +2,15 @@ package com.example.coinsliberty.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.dialogs.ErrorDialog
-import com.example.coinsliberty.dialogs.ForgotPassDialog
-import com.example.coinsliberty.ui.config.NavigationConfig
+import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassDialog
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.lang.Error
-import java.util.*
-import kotlin.collections.ArrayList
 
 class LoginFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_login
@@ -26,6 +21,8 @@ class LoginFragment : BaseKotlinFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        subscribeLiveData()
 
         loginToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.logout_icon)
         loginToolbar.ivToolbarIconLeft.setOnClickListener {
@@ -44,8 +41,8 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            navigator.goToContent(navController)
-        }
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
+            }
 
         tvForgotPassword.setOnClickListener {
             ForgotPassDialog.newInstance()
@@ -62,9 +59,19 @@ class LoginFragment : BaseKotlinFragment() {
         loginToolbar.ivToolbarIconLeft.setImageResource(icon)
     }
 
-//    private fun navigate() {
-//        navigator.goToContent(navController)
-//    }
+    private fun navigate() {
+        navigator.goToContent(navController)
+    }
+
+    private fun subscribeLiveData() {
+        bindDataTo(viewModel.result, ::showResult)
+    }
+
+    private fun showResult(b: Boolean?) {
+        if(b == true) {
+            navigate()
+        }
+    }
 
 }
 

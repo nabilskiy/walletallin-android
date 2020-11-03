@@ -1,6 +1,7 @@
 package com.example.coinsliberty.api
 
 import com.example.coinsliberty.data.ForgotPassRequest
+import com.example.coinsliberty.data.LoginRequest
 import com.example.coinsliberty.data.SignUpRequest
 import com.example.coinsliberty.data.SignUpResponse
 import retrofit2.http.Body
@@ -18,6 +19,8 @@ interface LoginApi {
         @Body body: ForgotPassRequest
     ): SignUpResponse
 
-    @POST("/api/userLogin")
-    suspend fun login(): Any
+    @POST("/api/newaccesstoken")
+    suspend fun login(
+        @Body body: LoginRequest
+    ): SignUpResponse
 }

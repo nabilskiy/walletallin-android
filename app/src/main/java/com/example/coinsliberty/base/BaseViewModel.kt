@@ -20,6 +20,8 @@ abstract class BaseViewModel(private val app: Application) : AndroidViewModel(ap
     val onStartProgress: MutableLiveData<Unit> = MutableLiveData()
     val onEndProgress: MutableLiveData<Unit> = MutableLiveData()
 
+    val showError: MutableLiveData<String> = MutableLiveData()
+
 
     private val coroutineHelper = CoroutineHelper(viewModelScope)
 

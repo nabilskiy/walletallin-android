@@ -1,6 +1,7 @@
 package com.example.coinsliberty.di
 
-import com.example.coinsliberty.dialogs.ForgotPassViewModel
+import com.example.coinsliberty.dialogs.ResetPassViewModel
+import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassViewModel
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageViewModel
 import com.example.coinsliberty.ui.exchange.ExchangeViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
@@ -18,13 +19,16 @@ val viewModelModule = module {
     viewModel { StubViewModel(get()) }
 
     viewModel { SplashViewModel(get()) }
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { SignUpViewModel(get(), get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { ExchangeViewModel(get()) }
     viewModel { ChangeLanguageViewModel(get()) }
     viewModel { ForgotPassViewModel(get(),get()) }
+    viewModel { ResetPassViewModel(get(),get()) }
+    viewModel { MyWalletViewModel(get()) }
+    viewModel { TransactionViewModel(get()) }
     viewModel { MyWalletViewModel(get(), get()) }
     viewModel { TransactionViewModel(get()) }
 }

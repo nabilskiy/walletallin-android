@@ -2,6 +2,7 @@ package com.example.coinsliberty.di
 
 import com.example.coinsliberty.api.LoginApi
 import com.example.coinsliberty.api.WalletApi
+import com.example.coinsliberty.api.UserApi
 import com.example.coinsliberty.network.interceptors.ParamsInterceptor
 import com.example.coinsliberty.network.interceptors.ResponseInterceptor
 import com.example.coinsliberty.network.retrofit.RetrofitFactory
@@ -24,4 +25,5 @@ val retrofitModule = module(override = true) {
 
     single { get<Retrofit>().create(LoginApi::class.java) }
     single { get<Retrofit>().create(WalletApi::class.java) }
+    single { get<Retrofit>().create(UserApi::class.java) }
 }
