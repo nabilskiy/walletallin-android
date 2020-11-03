@@ -9,6 +9,8 @@ import com.example.coinsliberty.ui.settings.SettingsViewModel
 import com.example.coinsliberty.ui.signup.SignUpViewModel
 import com.example.coinsliberty.utils.stub.StubViewModel
 import com.example.coinsliberty.ui.splash.SplashViewModel
+import com.example.coinsliberty.ui.transaction.TransactionViewModel
+import com.example.coinsliberty.ui.wallet.MyWalletViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,4 +25,6 @@ val viewModelModule = module {
     viewModel { ExchangeViewModel(get()) }
     viewModel { ChangeLanguageViewModel(get()) }
     viewModel { ForgotPassViewModel(get(),get()) }
+    viewModel { MyWalletViewModel(get(), get()) }
+    viewModel { TransactionViewModel(get()) }
 }

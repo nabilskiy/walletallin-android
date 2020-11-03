@@ -1,0 +1,17 @@
+Index: app/src/main/java/com/example/coinsliberty/ui/dialogs/ChangeLanguageViewModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.coinsliberty.ui.dialogs\n\nimport android.util.Log\nimport androidx.lifecycle.MutableLiveData\nimport com.example.coinsliberty.R\nimport com.example.coinsliberty.base.BaseViewModel\nimport com.example.coinsliberty.model.LanguageContent\nimport kotlinx.android.synthetic.main.fragment_login.*\nimport kotlinx.android.synthetic.main.item_change_language.view.*\nimport kotlinx.android.synthetic.main.toolbar.view.*\n\nclass ChangeLanguageViewModel() : BaseViewModel() {\n\n    val languagesLiveData: MutableLiveData<List<LanguageContent>> = MutableLiveData(getListData())\n    val currentLanguagesLiveData: MutableLiveData<LanguageContent> = MutableLiveData()\n\n\n    fun getListData(): ArrayList<LanguageContent> {\n        val listData: ArrayList<LanguageContent> = ArrayList()\n\n//        listData.add(LanguageContent(R.string.english, R.drawable.ic_unitedstates, false))\n//        listData.add(LanguageContent(R.string.russian, R.drawable.ic_russia, false))\n//        listData.add(LanguageContent(R.string.arabic, R.drawable.ic_united_arab_emirates, false))\n//        listData.add(LanguageContent(R.string.deutch, R.drawable.ic_germany, false))\n//        listData.add(LanguageContent(R.string.italiano, R.drawable.ic_italy, false))\n//        listData.add(LanguageContent(R.string.portuguese, R.drawable.ic_brazil, false))\n//        listData.add(LanguageContent(R.string.espanol, R.drawable.ic_spain, false))\n\n        return listData\n    }\n\n    fun changeList(list: LanguageContent) {\n        val listData: ArrayList<LanguageContent> = getListData()\n        for (i in listData) {\n            if (i.name.equals(list.name)) {\n                Log.d(\"eee\", currentLanguagesLiveData.toString())\n                i.active = true\n                currentLanguagesLiveData.postValue(i)\n            }\n        }\n        languagesLiveData.postValue(listData)\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/coinsliberty/ui/dialogs/ChangeLanguageViewModel.kt	(revision 6a0e232cbb72ff78645aa53abc8bf667c6d7764a)
++++ app/src/main/java/com/example/coinsliberty/ui/dialogs/ChangeLanguageViewModel.kt	(date 1603184076000)
+@@ -14,7 +14,6 @@
+     val languagesLiveData: MutableLiveData<List<LanguageContent>> = MutableLiveData(getListData())
+     val currentLanguagesLiveData: MutableLiveData<LanguageContent> = MutableLiveData()
+ 
+-
+     fun getListData(): ArrayList<LanguageContent> {
+         val listData: ArrayList<LanguageContent> = ArrayList()
+ 

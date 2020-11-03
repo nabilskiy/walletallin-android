@@ -17,5 +17,6 @@ class DemoActivity : AppCompatActivity() {
                 dismiss()
             }
         }.show(supportFragmentManager, ChangeLanguageDialog.TAG)
+
     }
 }

@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.Error
+import java.util.*
+import kotlin.collections.ArrayList
 
 class LoginFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_login
@@ -42,8 +44,8 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            navigate()
-            }
+            navigator.goToContent(navController)
+        }
 
         tvForgotPassword.setOnClickListener {
             ForgotPassDialog.newInstance()
@@ -60,9 +62,9 @@ class LoginFragment : BaseKotlinFragment() {
         loginToolbar.ivToolbarIconLeft.setImageResource(icon)
     }
 
-    private fun navigate() {
-        navigator.goToContent(navController)
-    }
+//    private fun navigate() {
+//        navigator.goToContent(navController)
+//    }
 
 }
 

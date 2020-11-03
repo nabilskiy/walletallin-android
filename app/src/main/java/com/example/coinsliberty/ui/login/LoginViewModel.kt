@@ -6,12 +6,5 @@ import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.ui.config.NavigationConfig
 
 class LoginViewModel(private val app: Application): BaseViewModel(app) {
-
     val ldNavigate = MutableLiveData<NavigationConfig>()
-
-
-    fun navigate() {
-
-    }
-
 }
