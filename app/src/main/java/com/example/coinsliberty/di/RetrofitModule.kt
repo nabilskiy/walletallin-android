@@ -1,5 +1,6 @@
 package com.example.coinsliberty.di
 
+import com.example.coinsliberty.api.FileUploadService
 import com.example.coinsliberty.api.LoginApi
 import com.example.coinsliberty.api.WalletApi
 import com.example.coinsliberty.api.UserApi
@@ -26,4 +27,5 @@ val retrofitModule = module(override = true) {
     single { get<Retrofit>().create(LoginApi::class.java) }
     single { get<Retrofit>().create(WalletApi::class.java) }
     single { get<Retrofit>().create(UserApi::class.java) }
+    single { get<Retrofit>().create(FileUploadService::class.java) }
 }

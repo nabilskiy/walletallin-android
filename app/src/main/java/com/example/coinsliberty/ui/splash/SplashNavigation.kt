@@ -1,4 +1,4 @@
-package com.example.moneybee.ui.splash
+package com.example.coinsliberty.ui.splash
 
 import androidx.navigation.NavController
 import com.example.coinsliberty.R
