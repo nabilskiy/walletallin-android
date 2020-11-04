@@ -22,7 +22,7 @@ class ParamsInterceptor(val securePreferenceHelper: SharedPreferencesProvider) :
             header("Access-Control-Allow-Credentials", "true")
             header("ETag", "W/\"44-Q9BmkzXWFxPhNN+eNc7Yvklw7bM\"")
             if(securePreferenceHelper.getToken()?.isNotEmpty() == true) {
-                addHeader("authorization", "Bearer " + securePreferenceHelper.getToken())
+                addHeader("slc-auth", securePreferenceHelper.getToken() ?: "")
             }
         }.build()
 

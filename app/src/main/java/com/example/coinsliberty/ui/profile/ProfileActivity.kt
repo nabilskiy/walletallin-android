@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinActivity
+import com.example.coinsliberty.data.ProfileResponse
 import com.example.coinsliberty.dialogs.ErrorDialog
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.setTransparentLightStatusBar
 import com.example.coinsliberty.utils.extensions.setupFullScreen
 import kotlinx.android.synthetic.main.attach_component.*
@@ -43,9 +45,27 @@ class ProfileActivity : BaseKotlinActivity() {
                     file = null
                 )
             } else {
-                getErrorDialog()
+                getErrorDialog("Empty fields")
             }
         }
+        subscribeLiveData()
+    }
+
+    private fun subscribeLiveData() {
+        bindDataTo(viewModel.showError, ::getErrorDialog)
+        bindDataTo(viewModel.ldProfile, ::initProfileData)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getProfile()
+    }
+
+    private fun initProfileData(profileResponse: ProfileResponse?) {
+        ifcProfileFirstName.setText(profileResponse?.user?.firstName ?: "")
+        ifcProfileLastName.setText(profileResponse?.user?.lastName ?: "")
+        ifcProfilePhone.setText(profileResponse?.user?.phone ?: "")
+        ifcProfileEmail.setText(profileResponse?.user?.login ?: "")
     }
 
     fun openGallery(req_code: Int) {
@@ -66,8 +86,8 @@ class ProfileActivity : BaseKotlinActivity() {
                 || ifcProfilePhone.getMyText().isNotEmpty())
     }
 
-    private fun getErrorDialog() {
-        ErrorDialog.newInstance("Empty fields")
+    private fun getErrorDialog(message: String) {
+        ErrorDialog.newInstance(message)
             .show(supportFragmentManager, ErrorDialog.TAG)
     }
 

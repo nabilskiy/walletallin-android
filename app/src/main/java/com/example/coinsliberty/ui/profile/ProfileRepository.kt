@@ -5,5 +5,7 @@ import com.example.coinsliberty.data.EditProfileRequest
 
 class ProfileRepository(private val api: UserApi) {
 
+    suspend fun getProfile() = api.getProfile()
+
     suspend fun editProfile(data: EditProfileRequest) = api.editProfile(data)
 }

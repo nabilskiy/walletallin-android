@@ -21,11 +21,12 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { SignUpViewModel(get(), get()) }
-    viewModel { SettingsViewModel(get()) }
-    viewModel { ProfileViewModel(get(),get()) }
+    viewModel { SettingsViewModel(get(), get(), get()) }
+    viewModel { ProfileViewModel(get(), get()) }
     viewModel { ExchangeViewModel(get()) }
     viewModel { ChangeLanguageViewModel(get()) }
-    viewModel { ForgotPassViewModel(get(),get()) }
-    viewModel { MyWalletViewModel(get()) }
+    viewModel { ForgotPassViewModel(get(), get()) }
+    viewModel { MyWalletViewModel(get(), get()) }
     viewModel { TransactionViewModel(get()) }
-    viewModel { ResetPassViewModel(get(),get()) }
+    viewModel { ResetPassViewModel(get(), get()) }
+}

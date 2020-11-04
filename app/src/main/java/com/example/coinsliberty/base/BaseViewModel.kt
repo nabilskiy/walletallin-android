@@ -32,7 +32,7 @@ abstract class BaseViewModel(private val app: Application) : AndroidViewModel(ap
         block: suspend CoroutineScope.() -> Unit) = coroutineHelper.launch(checkInternetConnection, coroutineContext, app, block, onError)
 
 
-    protected fun onErrorHandler(throwable: Throwable) {
+    open fun onErrorHandler(throwable: Throwable) {
         Log.e("!!!", throwable.message.toString())
 //        Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
 //        val body = (throwable as HttpException).response()?.errorBody()

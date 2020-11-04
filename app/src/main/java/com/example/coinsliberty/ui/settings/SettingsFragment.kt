@@ -6,6 +6,7 @@ import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.dialogs.ResetPassDialog
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.invisible
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.item_settings.view.*
@@ -22,6 +23,16 @@ class SettingsFragment() : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
+        subscribeLiveData()
+    }
+
+    private fun subscribeLiveData() {
+        bindDataTo(viewModel.ldLogout, ::logout)
+    }
+
+    private fun logout(b: Boolean?) {
+        if(b == true) activity?.finish()
     }
 
     private fun initView() {
@@ -66,6 +77,9 @@ class SettingsFragment() : BaseKotlinFragment() {
 
         itemLogOut.ivLeft.setImageResource(R.drawable.ic_logout)
         itemLogOut.tvTittle.setText(R.string.log_out)
+        itemLogOut.setOnClickListener {
+            viewModel.logout()
+        }
         itemLogOut.imNext.invisible()
     }
 

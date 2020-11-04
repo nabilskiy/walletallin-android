@@ -54,7 +54,6 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun initLanguages(list: List<WalletContent>) {
         adapter.itemsLoaded(list)
-        adapter.itemsAdded(listOf(Unit))
     }
 
     private fun showResult(it: Boolean) {

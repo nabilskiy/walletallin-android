@@ -3,13 +3,11 @@ package com.example.coinsliberty.ui.splash
 import android.animation.Animator
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.ui.config.NavigationConfig
 import com.example.coinsliberty.utils.extensions.bindDataTo
-import com.example.moneybee.ui.splash.SplashNavigation
 import kotlinx.android.synthetic.main.fragment_splash.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,6 +26,11 @@ class SplashFragment: BaseKotlinFragment() {
         startFragmentAnimation()
     }
 
+    override fun onStart() {
+        super.onStart()
+        lavCoinsLiberty.progress = 0.0f
+        lavCoinsLiberty.playAnimation()
+    }
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.ldNavigate, ::navigate)

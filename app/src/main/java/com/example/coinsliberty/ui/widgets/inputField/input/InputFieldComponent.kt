@@ -100,6 +100,10 @@ class InputFieldComponent @JvmOverloads constructor(
 
     fun getMyText() = etField.text.toString()
 
+    fun setText(text: String) {
+        etField.setText(text)
+    }
+
     private fun modifyNumber(number: String) {
         if (number.isNotEmpty()) {
             if (!number.startsWith("+")) {

@@ -2,9 +2,9 @@ package com.example.coinsliberty.ui.wallet.data
 
 data class WalletContent(
     val ico: Int,
-    val title: Int,
-    val type: Int,
-    val price: Int? = null,
-    val result: Int? = null,
+    val title: String,
+    val type: String? = null,
+    val price: String? = null,
+    val result: String? = null,
     val itemBackground: Int
 )

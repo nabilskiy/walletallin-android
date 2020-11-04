@@ -1,21 +1,25 @@
 package com.example.coinsliberty.api
 
-import com.example.coinsliberty.data.EditProfileRequest
-import com.example.coinsliberty.data.EditProfileResponse
-import com.example.coinsliberty.data.ChangePasswordRequest
-import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.data.*
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserApi {
+    @GET("/api/account")
+    suspend fun getProfile(): ProfileResponse
+
     @POST("/api/account")
     suspend fun editProfile(
         @Body body: EditProfileRequest
-    ): EditProfileResponse
+    ): SignUpResponse
     ////???
 
     @POST("/api/account/password")
     suspend fun changePassword(
         @Body body: ChangePasswordRequest
     ): SignUpResponse
+
+    @POST("/api/logout")
+    suspend fun logout(): SignUpResponse
 }
