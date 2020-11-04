@@ -2,7 +2,7 @@ package com.example.coinsliberty.data
 
 import com.google.gson.annotations.SerializedName
 
-data class EditProfileRequest(
+data class EditProfileResponse(
     @SerializedName("first_name")
     val firstName: String? = null,
     @SerializedName("last_name")
@@ -13,4 +13,5 @@ data class EditProfileRequest(
     val optEnabled: Boolean? = null,
     @SerializedName("file")
     val photo: Any? = null,
+
 )

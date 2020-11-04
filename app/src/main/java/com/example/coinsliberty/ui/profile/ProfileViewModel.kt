@@ -10,11 +10,13 @@ import kotlinx.coroutines.withContext
 class ProfileViewModel(private val app: Application, private val repository: ProfileRepository) :
     BaseViewModel(app) {
 
-    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean) {
+    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled))
+            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, file))
             Log.e("!!!", response.toString())
+
+
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
