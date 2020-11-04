@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.ui.config.NavigationConfig
+import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -22,6 +22,17 @@ class SignUpFragment: BaseKotlinFragment() {
         tvLogin.setOnClickListener { activity?.onBackPressed() }
         btnSignUp.setOnClickListener {
             viewModel.signUp(ifcEmail.getMyText(), ifcSignUpPassword.getMyText(), ifcFirstName.getMyText(), ifcLastName.getMyText())
+        }
+        subscribeLiveData()
+    }
+
+    private fun subscribeLiveData() {
+        bindDataTo(viewModel.result, ::showResult)
+    }
+
+    private fun showResult(b: Boolean?) {
+        if(b == true) {
+            activity?.onBackPressed()
         }
     }
 }

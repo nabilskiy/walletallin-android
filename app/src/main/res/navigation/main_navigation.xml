@@ -13,10 +13,22 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_signUpFragmnet"
-            app:destination="@id/signUpFragmnet" />
+            app:destination="@id/signUpFragmnet"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_bottomTabNavigator"
+            app:destination="@id/bottomTabNavigator"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

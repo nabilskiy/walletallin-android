@@ -6,5 +6,7 @@ data class SignUpResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("error")
-    val error: ErrorResponse? = null
+    val error: ErrorResponse? = null,
+    @SerializedName("token")
+    val token: String? = null
 )

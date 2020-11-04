@@ -12,4 +12,8 @@ class SplashNavigation : BaseNavigator() {
         navController?.navigate(R.id.action_splashFragment_to_loginFragment)
     }
 
+    fun goToMainScreen(navController: NavController?) {
+        navController?.navigate(R.id.action_splashFragment_to_bottomTabNavigator)
+    }
+
 }

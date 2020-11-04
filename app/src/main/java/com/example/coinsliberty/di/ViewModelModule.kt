@@ -1,6 +1,7 @@
 package com.example.coinsliberty.di
 
-import com.example.coinsliberty.dialogs.ForgotPassViewModel
+import com.example.coinsliberty.dialogs.ResetPassViewModel
+import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassViewModel
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageViewModel
 import com.example.coinsliberty.ui.exchange.ExchangeViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
@@ -17,8 +18,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { StubViewModel(get()) }
 
-    viewModel { SplashViewModel(get()) }
-    viewModel { LoginViewModel(get()) }
+    viewModel { SplashViewModel(get(), get()) }
+    viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { SignUpViewModel(get(), get()) }
     viewModel { SettingsViewModel(get()) }
     viewModel { ProfileViewModel(get(),get()) }
@@ -27,4 +28,4 @@ val viewModelModule = module {
     viewModel { ForgotPassViewModel(get(),get()) }
     viewModel { MyWalletViewModel(get()) }
     viewModel { TransactionViewModel(get()) }
-}
+    viewModel { ResetPassViewModel(get(),get()) }
