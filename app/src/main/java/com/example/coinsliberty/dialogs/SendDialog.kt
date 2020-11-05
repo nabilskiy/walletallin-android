@@ -12,8 +12,8 @@ import com.example.coinsliberty.utils.stub.StubViewModel
 import kotlinx.android.synthetic.main.dialog_send.*
 
 private const val keyBundleTittle = "tittle"
-private const val keyBundleBalance = "0.0"
-private const val keyBundleRates = "0.0"
+private const val keyBundleBalance = "balance"
+private const val keyBundleRates = "rates"
 
 
 class SendDialog : BaseKotlinDialogFragment() {
@@ -34,10 +34,12 @@ class SendDialog : BaseKotlinDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTittle.text = arguments?.getString(keyBundleTittle)
-        val rates = arguments?.getString(keyBundleRates)!!.toDouble()
-        val bundle = arguments?.getString(keyBundleBalance)!!.toDouble()
-      println("${rates} + ${bundle}")
+        val rates = arguments?.getString(keyBundleRates)
+        val bundle = arguments?.getString(keyBundleBalance)
 
+        println("111111")
+        println(rates)
+        println("111111")
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {

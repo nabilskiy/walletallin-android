@@ -14,9 +14,6 @@ import kotlinx.coroutines.withContext
 
 class MyWalletViewModel(private val app: Application, private val repository: WalletRepository): BaseViewModel(app) {
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
-    val ldRates = MutableLiveData<Double>()
-    val ldBalance = MutableLiveData<Double>()
-
 //    fun getListData(): ArrayList<WalletContent> {
 //        val listData: ArrayList<WalletContent> = ArrayList()
 //        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
@@ -36,6 +33,7 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
             val wallet = getWallet(it.id)
             val rates = balance.rates?.btc
             val balance = if(it.locked == false) getValue(balance, it.id) else null
+
             WalletContent(
                 wallet.getImg(),
                 wallet.getTitle(),
@@ -45,8 +43,6 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
                 wallet.getBackground()
             )
         })
-        ldRates.postValue(balance.rates?.btc)
-        ldBalance.postValue(balance.balances?.btc)
     }
 
     fun getValue(balance: BalanceInfoResponse, string: String?) =

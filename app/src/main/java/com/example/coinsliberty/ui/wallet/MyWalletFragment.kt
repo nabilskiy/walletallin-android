@@ -13,6 +13,8 @@ import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
+private var rate: String = ""
+private var balance: String = ""
 
 class MyWalletFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_my_wallet
@@ -24,7 +26,7 @@ class MyWalletFragment : BaseKotlinFragment() {
         .map(R.layout.item_transaction, TransactionHolder())
 
     private val sendDialog = SendDialog
-        .newInstance("Sent eth", viewModel.ldRates.value.toString(), viewModel.ldBalance.value.toString())
+        .newInstance("Sent eth", rate, balance)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,7 +45,6 @@ class MyWalletFragment : BaseKotlinFragment() {
         walletToolbarRecieveButton.setOnClickListener {
             QrCodeDialog.newInstance("Sent eth", "test").show(childFragmentManager, QrCodeDialog.TAG)
         }
-
         viewModel.walletList()
     }
 
@@ -54,6 +55,8 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun initLanguages(list: List<WalletContent>) {
         adapter.itemsLoaded(list)
+        rate = list[0].result.toString()
+        balance = list[0].price.toString()
     }
 
     private fun showResult(it: Boolean) {
