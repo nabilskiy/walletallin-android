@@ -10,7 +10,6 @@ import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
 import com.example.coinsliberty.utils.extensions.gone
 import com.example.coinsliberty.utils.extensions.visible
-import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import kotlinx.android.synthetic.main.item_transaction.*
 import kotlinx.android.synthetic.main.item_transaction.view.*
@@ -23,7 +22,7 @@ class TransactionFragment : BaseKotlinFragment() {
     override val navigator: TransactionNavigation = TransactionNavigation()
 
     private val sendDialog = SendDialog
-        .newInstance("Sent eth", "test", "100", "100", "USD", "EUR")
+        .newInstance("Sent eth", "test", "100")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

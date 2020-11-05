@@ -24,7 +24,7 @@ class MyWalletFragment : BaseKotlinFragment() {
         .map(R.layout.item_transaction, TransactionHolder())
 
     private val sendDialog = SendDialog
-        .newInstance("Sent eth", "test", "100", "100", "USD", "EUR")
+        .newInstance("Sent eth", viewModel.ldRates.value.toString(), viewModel.ldBalance.value.toString())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

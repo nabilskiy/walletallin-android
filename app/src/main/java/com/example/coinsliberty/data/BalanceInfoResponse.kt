@@ -6,7 +6,9 @@ data class BalanceInfoResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("balances")
-    val balances: BalanceInfoContent? = null
+    val balances: BalanceInfoContent? = null,
+    @SerializedName("rates")
+    val rates: RatesPrice? = null
 )
 
 data class BalanceInfoContent(
@@ -16,4 +18,9 @@ data class BalanceInfoContent(
     val eth: Double? = null,
     @SerializedName("usdt")
     val usdt: Double? = null
+)
+
+data class RatesPrice(
+    @SerializedName("btc")
+    val btc: Double? = null
 )
