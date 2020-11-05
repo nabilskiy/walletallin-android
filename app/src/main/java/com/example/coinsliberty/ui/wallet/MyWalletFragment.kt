@@ -4,10 +4,12 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.data.BalanceInfoContent
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
+import com.example.coinsliberty.ui.transaction.TransactionFragment
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
@@ -19,7 +21,7 @@ class MyWalletFragment : BaseKotlinFragment() {
     override val navigator: MyWalletNavigation = MyWalletNavigation()
 
     val adapter = BaseAdapter()
-        .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController) })
+        .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController, TransactionFragment.getBundle(viewModel.rates, viewModel.balanceData?.btc, it.ico)) })
         .map(R.layout.item_transaction, TransactionHolder())
 
     private var sendDialog: SendDialog? = null
@@ -36,14 +38,14 @@ class MyWalletFragment : BaseKotlinFragment() {
 
             sendDialog
                 ?.apply {
-                    initListeners {
-                        showResult(it)
+                    initListeners { result, text ->
+                        showResult(result, text)
                     }
                 }
                 ?.show(childFragmentManager, SendDialog.TAG)
         }
         walletToolbarRecieveButton.setOnClickListener {
-            QrCodeDialog.newInstance("Sent eth", "test").show(childFragmentManager, QrCodeDialog.TAG)
+            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
         }
         viewModel.walletList()
     }
@@ -57,15 +59,17 @@ class MyWalletFragment : BaseKotlinFragment() {
         adapter.itemsLoaded(list)
     }
 
-    private fun showResult(it: Boolean) {
+    private fun showResult(it: Boolean, balance: String? = null) {
         if(it) {
             sendDialog?.dismiss()
-            AcceptDialog.newInstance("1000.00", "Success").show(childFragmentManager, AcceptDialog.TAG)
+            AcceptDialog.newInstance(balance ?: "", "Success").show(childFragmentManager, AcceptDialog.TAG)
         } else {
             ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
         }
     }
 
 
-    companion object { val TAG = MyWalletFragment::class.java.name }
+    companion object {
+        val TAG = MyWalletFragment::class.java.name
+    }
 }

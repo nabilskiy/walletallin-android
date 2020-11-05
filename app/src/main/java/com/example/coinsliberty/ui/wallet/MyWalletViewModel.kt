@@ -18,6 +18,7 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
 
     var rates: Double? = null
     var balanceData: BalanceInfoContent? = null
+    var wallet: Wallets? = null
 //    fun getListData(): ArrayList<WalletContent> {
 //        val listData: ArrayList<WalletContent> = ArrayList()
 //        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
@@ -34,21 +35,19 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
 
     private fun handleResponse(walletList: WalletInfoResponse, balance: BalanceInfoResponse) {
         walletLiveData.postValue(walletList.list?.map {
-            val wallet = getWallet(it.id)
+            wallet = getWallet(it.id)
             rates = balance.rates?.btc ?: 0.0
             balanceData = balance.balances
 
-            Log.e("!!!", rates.toString())
-            Log.e("!!!", balanceData.toString())
             val balanceValue = if(it.locked == false) getValue(balance, it.id) else null
 
             WalletContent(
-                wallet.getImg(),
-                wallet.getTitle(),
+                wallet?.getImg() ?: 0,
+                wallet?.getTitle() ?: "",
                 it.label,
                 if(balanceValue != null ) balanceValue.toString() + " " + it.label else null,
                 if(balanceValue != null ) String.format("%.2f", rates) + " $" else null,
-                wallet.getBackground()
+                wallet?.getBackground() ?: 0
             )
         })
     }
