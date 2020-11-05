@@ -13,9 +13,6 @@ import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-private var rate: String = ""
-private var balance: String = ""
-
 class MyWalletFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_my_wallet
     override val viewModel: MyWalletViewModel by viewModel()
@@ -25,8 +22,7 @@ class MyWalletFragment : BaseKotlinFragment() {
         .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController) })
         .map(R.layout.item_transaction, TransactionHolder())
 
-    private val sendDialog = SendDialog
-        .newInstance("Sent eth", rate, balance)
+    private var sendDialog: SendDialog? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,13 +30,17 @@ class MyWalletFragment : BaseKotlinFragment() {
             rvWallet.adapter = adapter
 
         walletToolbarSendButton.setOnClickListener {
+            if(sendDialog == null) {
+                sendDialog = SendDialog.newInstance("Sent eth", viewModel.rates ?: 0.0, viewModel.balanceData?.btc ?: 0.0)
+            }
+
             sendDialog
-                .apply {
+                ?.apply {
                     initListeners {
                         showResult(it)
                     }
                 }
-                .show(childFragmentManager, SendDialog.TAG)
+                ?.show(childFragmentManager, SendDialog.TAG)
         }
         walletToolbarRecieveButton.setOnClickListener {
             QrCodeDialog.newInstance("Sent eth", "test").show(childFragmentManager, QrCodeDialog.TAG)
@@ -49,19 +49,17 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun subscribeLiveData() {
-        bindDataTo(viewModel.walletLiveData, ::initLanguages)
+        bindDataTo(viewModel.walletLiveData, ::initData)
     }
 
 
-    private fun initLanguages(list: List<WalletContent>) {
+    private fun initData(list: List<WalletContent>) {
         adapter.itemsLoaded(list)
-        rate = list[0].result.toString()
-        balance = list[0].price.toString()
     }
 
     private fun showResult(it: Boolean) {
         if(it) {
-            sendDialog.dismiss()
+            sendDialog?.dismiss()
             AcceptDialog.newInstance("1000.00", "Success").show(childFragmentManager, AcceptDialog.TAG)
         } else {
             ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)

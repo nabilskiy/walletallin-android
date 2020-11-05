@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseViewModel
+import com.example.coinsliberty.data.BalanceInfoContent
 import com.example.coinsliberty.data.BalanceInfoResponse
 import com.example.coinsliberty.data.SignUpRequest
 import com.example.coinsliberty.data.WalletInfoResponse
@@ -14,6 +15,9 @@ import kotlinx.coroutines.withContext
 
 class MyWalletViewModel(private val app: Application, private val repository: WalletRepository): BaseViewModel(app) {
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
+
+    var rates: Double? = null
+    var balanceData: BalanceInfoContent? = null
 //    fun getListData(): ArrayList<WalletContent> {
 //        val listData: ArrayList<WalletContent> = ArrayList()
 //        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
@@ -31,15 +35,19 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
     private fun handleResponse(walletList: WalletInfoResponse, balance: BalanceInfoResponse) {
         walletLiveData.postValue(walletList.list?.map {
             val wallet = getWallet(it.id)
-            val rates = balance.rates?.btc
-            val balance = if(it.locked == false) getValue(balance, it.id) else null
+            rates = balance.rates?.btc ?: 0.0
+            balanceData = balance.balances
+
+            Log.e("!!!", rates.toString())
+            Log.e("!!!", balanceData.toString())
+            val balanceValue = if(it.locked == false) getValue(balance, it.id) else null
 
             WalletContent(
                 wallet.getImg(),
                 wallet.getTitle(),
                 it.label,
-                if(balance != null ) balance.toString() + " " + it.label else null,
-                if(balance != null ) String.format("%.2f", rates) + " $" else null,
+                if(balanceValue != null ) balanceValue.toString() + " " + it.label else null,
+                if(balanceValue != null ) String.format("%.2f", rates) + " $" else null,
                 wallet.getBackground()
             )
         })

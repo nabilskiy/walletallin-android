@@ -2,6 +2,7 @@ package com.example.coinsliberty.dialogs
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
@@ -34,12 +35,13 @@ class SendDialog : BaseKotlinDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTittle.text = arguments?.getString(keyBundleTittle)
-        val rates = arguments?.getString(keyBundleRates)
-        val bundle = arguments?.getString(keyBundleBalance)
+        val rates = arguments?.getDouble(keyBundleRates)
+        val bundle = arguments?.getDouble(keyBundleBalance)
 
-        println("111111")
-        println(rates)
-        println("111111")
+        Log.e("!!!", "rates")
+        Log.e("!!!", rates.toString() ?: "empty")
+        Log.e("!!!", "balance")
+        Log.e("!!!", bundle.toString() ?: "empty")
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
@@ -51,7 +53,7 @@ class SendDialog : BaseKotlinDialogFragment() {
     companion object {
         val TAG: String = SendDialog::class.java.name
         fun newInstance(
-            tittle: String, rates: String, balance: String
+            tittle: String, rates: Double, balance: Double
         ): SendDialog {
             val fragment = SendDialog()
             val bundle = bundleOf(

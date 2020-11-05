@@ -21,8 +21,7 @@ class TransactionFragment : BaseKotlinFragment() {
     override val viewModel: TransactionViewModel by viewModel()
     override val navigator: TransactionNavigation = TransactionNavigation()
 
-    private val sendDialog = SendDialog
-        .newInstance("Sent eth", "test", "100")
+    private val sendDialog = SendDialog()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
