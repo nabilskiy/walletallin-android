@@ -101,14 +101,13 @@
             app:layout_constraintTop_toBottomOf="@+id/tvAmountToSend">
 
 
-            <EditText
+            <TextView
                 android:id="@+id/tvAmountCripto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
                 android:gravity="start"
                 tools:text="0.25947531"
-                android:inputType="number"
                 android:background="@null"
                 android:textAppearance="@style/H8"
                 android:textColor="@color/darkGrey"

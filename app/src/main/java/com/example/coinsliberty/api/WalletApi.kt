@@ -3,6 +3,7 @@ package com.example.coinsliberty.api
 import com.example.coinsliberty.data.BalanceInfoResponse
 import com.example.coinsliberty.data.WalletInfoResponse
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface WalletApi {
     @GET("/api/list/assets")

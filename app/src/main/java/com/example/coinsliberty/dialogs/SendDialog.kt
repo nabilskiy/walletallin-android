@@ -19,7 +19,7 @@ private const val keyBundleRates = "rates"
 
 class SendDialog : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_send
-    override val viewModel: StubViewModel by viewModel()
+    override val viewModel: SendBtcViewModel by viewModel()
 
     var listener: ((Boolean) -> Unit)? = null
 
@@ -37,15 +37,22 @@ class SendDialog : BaseKotlinDialogFragment() {
         tvTittle.text = arguments?.getString(keyBundleTittle)
         val rates = arguments?.getDouble(keyBundleRates)
         val bundle = arguments?.getDouble(keyBundleBalance)
+        val result = bundle!! * rates!!
 
-        Log.e("!!!", "rates")
-        Log.e("!!!", rates.toString() ?: "empty")
-        Log.e("!!!", "balance")
-        Log.e("!!!", bundle.toString() ?: "empty")
+        tvAmountCripto.text = bundle.toString()
+        tvAmountFiat.text = result.toString()
+
+
+        Log.e("!", "rates")
+        Log.e("!!", rates.toString() ?: "empty")
+        Log.e("!", "balance")
+        Log.e("!!", bundle.toString() ?: "empty")
+
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
             listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
+            viewModel.sendBtc("btc", "${result}", "nfkjwnfkjnfknerkjfj")
         }
 
     }
