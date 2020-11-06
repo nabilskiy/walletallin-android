@@ -13,7 +13,6 @@ interface UserApi {
     suspend fun editProfile(
         @Body body: EditProfileRequest
     ): SignUpResponse
-    ////???
 
     @POST("/api/account/password")
     suspend fun changePassword(

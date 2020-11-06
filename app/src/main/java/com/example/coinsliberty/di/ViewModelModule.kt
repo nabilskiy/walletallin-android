@@ -28,7 +28,7 @@ val viewModelModule = module {
     viewModel { ChangeLanguageViewModel(get()) }
     viewModel { ForgotPassViewModel(get(), get()) }
     viewModel { MyWalletViewModel(get(), get()) }
-    viewModel { TransactionViewModel(get()) }
+    viewModel { TransactionViewModel(get(), get()) }
     viewModel { ResetPassViewModel(get(), get()) }
     viewModel { SendBtcViewModel(get(), get()) }
 }

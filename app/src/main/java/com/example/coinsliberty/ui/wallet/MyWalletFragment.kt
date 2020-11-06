@@ -4,14 +4,19 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.data.BalanceInfoContent
+import com.example.coinsliberty.data.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.QrCodeDialog
 import com.example.coinsliberty.dialogs.SendDialog
 import com.example.coinsliberty.ui.transaction.TransactionFragment
+import com.example.coinsliberty.ui.wallet.adapters.MyWalletHolder
+import com.example.coinsliberty.ui.wallet.adapters.TransactionDataHolder
+import com.example.coinsliberty.ui.wallet.adapters.TransactionHolder
+import com.example.coinsliberty.ui.wallet.adapters.TransactionTitleHolder
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 import com.example.coinsliberty.utils.extensions.bindDataTo
+import com.example.coinsliberty.utils.isSameDay
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,6 +28,8 @@ class MyWalletFragment : BaseKotlinFragment() {
     val adapter = BaseAdapter()
         .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController, TransactionFragment.getBundle(viewModel.rates, viewModel.balanceData?.btc, it.ico)) })
         .map(R.layout.item_transaction, TransactionHolder())
+        .map(R.layout.item_data, TransactionDataHolder())
+        .map(R.layout.item_title, TransactionTitleHolder())
 
     private var sendDialog: SendDialog? = null
 
@@ -52,6 +59,26 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.walletLiveData, ::initData)
+        bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
+    }
+
+    private fun initTransactions(list: List<TransactionItem>?) {
+        adapter.itemsAdded(listOf("Last Transactions"))
+        adapter.itemsAdded(getTransactions(list))
+    }
+
+    private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
+        if(list.isNullOrEmpty()) return emptyList()
+        val resultList = ArrayList<Any>()
+        var data: Long? = null
+        list.forEach {
+            if (data == null || isSameDay(data ?: 0, it.time ?: 0)) {
+                resultList.add(it.time ?: 0)
+                data = it.time
+            }
+            resultList.add(it.apply { it.amountUsd = ((it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0)).toString() })
+        }
+        return resultList
     }
 
 
