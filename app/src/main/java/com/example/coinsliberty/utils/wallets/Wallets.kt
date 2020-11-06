@@ -1,8 +1,11 @@
 package com.example.coinsliberty.utils.wallets
 
+import android.os.Parcelable
 import com.example.coinsliberty.R
+import kotlinx.android.parcel.Parcelize
 
-enum class Wallets {
+@Parcelize
+enum class Wallets: Parcelable{
     BITCOIN_WALLET{
         override fun getBackground(): Int = R.drawable.bg_wallet_item_light_orange
 
