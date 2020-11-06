@@ -6,9 +6,9 @@ data class AddressInfoResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("error")
-    val error: ErrorResponse? = null
-//    @SerializedName("address")
-//    val address: String? = null
+    val error: ErrorResponse? = null,
+    @SerializedName("address")
+    val address: String? = null
 
 //    @SerializedName("addressInfo")
 //    val addressInfo: AddressInfoContent? = null

@@ -17,6 +17,6 @@ interface WalletApi {
     @GET("/api/finance/transactions/btc")
    suspend fun getTransaction(): TransactionResponse
 
-    @GET("/api/finance/address")
+    @GET("/api/finance/address/btc")
     suspend fun getAddress(): AddressInfoResponse
 }

@@ -26,7 +26,7 @@ class QrCodeViewModel(
 
     private fun handleResponse(address: AddressInfoResponse) {
         if(address.result == true) {
-
+            resultRecovery.postValue(address.address)
             return
         }
         showError.postValue(address.error?.message)
