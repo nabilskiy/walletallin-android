@@ -7,8 +7,8 @@ import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.data.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
-import com.example.coinsliberty.dialogs.QrCodeDialog
-import com.example.coinsliberty.dialogs.SendDialog
+import com.example.coinsliberty.dialogs.qrCode.QrCodeDialog
+import com.example.coinsliberty.dialogs.sendDialog.SendDialog
 import com.example.coinsliberty.ui.transaction.TransactionFragment
 import com.example.coinsliberty.ui.wallet.adapters.MyWalletHolder
 import com.example.coinsliberty.ui.wallet.adapters.TransactionDataHolder
@@ -63,7 +63,6 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
-        adapter.itemsAdded(listOf("Last Transactions"))
         adapter.itemsAdded(getTransactions(list))
     }
 
@@ -84,6 +83,8 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun initData(list: List<WalletContent>) {
         adapter.itemsLoaded(list)
+        adapter.itemsAdded(listOf("Last Transactions"))
+
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

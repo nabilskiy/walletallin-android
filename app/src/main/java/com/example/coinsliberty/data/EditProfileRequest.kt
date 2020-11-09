@@ -1,7 +1,10 @@
 package com.example.coinsliberty.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class EditProfileRequest(
     @SerializedName("first_name")
     val firstName: String? = null,
@@ -9,8 +12,8 @@ data class EditProfileRequest(
     val lastName: String? = null,
     @SerializedName("phone")
     val phone: String? = null,
-    @SerializedName("opt_enabled")
-    val optEnabled: Boolean? = null,
-    @SerializedName("file")
-    val photo: Any? = null,
-)
+    @SerializedName("otp_enabled")
+    val otpEnabled: Boolean? = null,
+    @SerializedName("otp")
+    var otp: String? = null
+): Parcelable

@@ -1,20 +1,15 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.sendDialog
 
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.core.text.isDigitsOnly
-import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.MutableLiveData
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
 import com.example.coinsliberty.utils.extensions.bindDataTo
-import com.example.coinsliberty.utils.stub.StubViewModel
 import kotlinx.android.synthetic.main.dialog_send.*
 
 private const val keyBundleTittle = "tittle"

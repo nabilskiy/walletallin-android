@@ -173,12 +173,12 @@
 
     <dimen name="dialog_tvPleaseVerify_marginTop">16dp</dimen>
 
-    <dimen name="dialog_ll_qr_code_width_height">136dp</dimen>
+    <dimen name="dialog_ll_qr_code_width_height">236dp</dimen>
     <dimen name="dialog_ll_qr_code_elevation">4dp</dimen>
     <dimen name="dialog_ll_qr_code_marginStartEnd">88dp</dimen>
     <dimen name="dialog_ll_qr_code_marginTop">30dp</dimen>
     <dimen name="dialog_ll_qr_code_marginBottom">144dp</dimen>
-    <dimen name="dialog_iv_qr_code_width_height">160dp</dimen>
+    <dimen name="dialog_iv_qr_code_width_height">220dp</dimen>
     <dimen name="setting_fragment_sv_layout_marginTop">26dp</dimen>
     <dimen name="item_setting_width">64dp</dimen>
     <dimen name="item_setting_layout_marginStartEnd">16dp</dimen>
@@ -219,7 +219,7 @@
     <dimen name="dialog_reset_tv_tittle_marginStart">24dp</dimen>
     <dimen name="dialog_reset_tv_tittle_marginTop">20dp</dimen>
     <dimen name="dialog_reset_cc_new_marginTop">8dp</dimen>
-    <dimen name="dialog_reset_btn_update_marginTop">358dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginTop">60dp</dimen>
     <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
     <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
 

@@ -13,6 +13,7 @@ class ProfileViewModel(private val app: Application, private val repository: Pro
     BaseViewModel(app) {
 
     val ldProfile = MutableLiveData<ProfileResponse>()
+    val ldOtp = MutableLiveData<String>()
 
     fun getProfile() {
         launch(::onErrorHandler) {
@@ -24,10 +25,20 @@ class ProfileViewModel(private val app: Application, private val repository: Pro
     fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, file))
+            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = null))
             Log.e("!!!", response.toString())
 
 
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
+    }
+
+    fun getOtp() {
+        launch(::onErrorHandler) {
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            val response = repository.getOtp()
+            Log.e("!!!", response.token ?: "")
+            ldOtp.postValue(response.token)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }

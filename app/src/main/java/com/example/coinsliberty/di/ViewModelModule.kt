@@ -1,9 +1,10 @@
 package com.example.coinsliberty.di
 
-import com.example.coinsliberty.dialogs.QrCodeViewModel
-import com.example.coinsliberty.dialogs.ResetPassViewModel
-import com.example.coinsliberty.dialogs.SendBtcViewModel
+import com.example.coinsliberty.dialogs.qrCode.QrCodeViewModel
+import com.example.coinsliberty.dialogs.ressPassword.ResetPassViewModel
+import com.example.coinsliberty.dialogs.sendDialog.SendBtcViewModel
 import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassViewModel
+import com.example.coinsliberty.dialogs.secureCode.SecureCodeViewModel
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageViewModel
 import com.example.coinsliberty.ui.exchange.ExchangeViewModel
 import com.example.coinsliberty.ui.login.LoginViewModel
@@ -32,5 +33,6 @@ val viewModelModule = module {
     viewModel { TransactionViewModel(get(), get()) }
     viewModel { ResetPassViewModel(get(), get()) }
     viewModel { QrCodeViewModel(get(), get()) }
+    viewModel { SecureCodeViewModel(get(), get()) }
     viewModel { SendBtcViewModel(get(), get()) }
 }

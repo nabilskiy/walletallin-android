@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.qrCode
 
 import com.example.coinsliberty.api.LoginApi
 import com.example.coinsliberty.api.WalletApi

@@ -21,4 +21,7 @@ interface UserApi {
 
     @POST("/api/logout")
     suspend fun logout(): SignUpResponse
+
+    @GET("/api/account/otp")
+    suspend fun getOtp(): TokenResponse
 }

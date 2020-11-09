@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.sendDialog
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import com.example.coinsliberty.data.BtcBalance
 import com.example.coinsliberty.data.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.ResponseBody
 
 class SendBtcViewModel (
     private val app: Application,

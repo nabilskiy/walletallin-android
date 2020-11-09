@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_white">
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dialog_reset_iv_close_marginEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTittle"
+        app:srcCompat="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_reset_tv_tittle_marginStart"
+        android:layout_marginTop="@dimen/dialog_reset_tv_tittle_marginTop"
+        android:text="Enter 2FA code"
+        android:textAppearance="@style/H3"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        android:id="@+id/secureCode"
+        android:layout_width="@dimen/dialog_forgot_cc_password_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_cc_password_marginStartEnd"
+        android:layout_marginTop="@dimen/dialog_forgot_cc_password_marginTop"
+        android:layout_marginEnd="@dimen/dialog_forgot_cc_password_marginStartEnd"
+        app:ifc_header="2FA"
+        app:ifc_type="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTittle" />
+
+
+
+    <Button
+        android:id="@+id/btnUpdate"
+        style="@style/ButtonGreyBorder"
+        android:layout_width="@dimen/sign_up_button_width"
+        android:layout_height="@dimen/sign_up_button_height"
+        android:layout_marginStart="@dimen/dialog_reset_btn_update_marginStartEnd"
+        android:layout_marginTop="@dimen/dialog_reset_btn_update_marginTop"
+        android:layout_marginEnd="@dimen/dialog_reset_btn_update_marginStartEnd"
+        android:layout_marginBottom="@dimen/dialog_reset_btn_update_marginBottom"
+        android:gravity="center"
+        android:text="@string/update"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secureCode" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

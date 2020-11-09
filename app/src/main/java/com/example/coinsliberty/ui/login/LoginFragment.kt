@@ -7,6 +7,7 @@ import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassDialog
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
+import com.example.coinsliberty.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
@@ -41,7 +42,7 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText())
             }
 
         tvForgotPassword.setOnClickListener {
@@ -70,6 +71,8 @@ class LoginFragment : BaseKotlinFragment() {
     private fun showResult(b: Boolean?) {
         if(b == true) {
             navigate()
+        } else {
+            ifcCode.visible()
         }
     }
 

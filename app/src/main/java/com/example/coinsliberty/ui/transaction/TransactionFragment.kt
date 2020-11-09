@@ -3,14 +3,13 @@ package com.example.coinsliberty.ui.transaction
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.fragment.app.DialogFragment
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.data.BalanceInfoContent
 import com.example.coinsliberty.data.TransactionItem
 import com.example.coinsliberty.dialogs.*
-import com.example.coinsliberty.ui.wallet.adapters.MyWalletHolder
+import com.example.coinsliberty.dialogs.qrCode.QrCodeDialog
+import com.example.coinsliberty.dialogs.sendDialog.SendDialog
 import com.example.coinsliberty.ui.wallet.adapters.TransactionDataHolder
 import com.example.coinsliberty.ui.wallet.adapters.TransactionHolder
 import com.example.coinsliberty.ui.wallet.adapters.TransactionTitleHolder
@@ -18,10 +17,7 @@ import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.gone
 import com.example.coinsliberty.utils.extensions.visible
 import com.example.coinsliberty.utils.isSameDay
-import com.example.coinsliberty.utils.wallets.Wallets
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import kotlinx.android.synthetic.main.item_transaction.*
-import kotlinx.android.synthetic.main.item_transaction.view.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 private const val keyBundleBalance = "balance"

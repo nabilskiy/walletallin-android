@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.dialogs.ResetPassDialog
+import com.example.coinsliberty.dialogs.ressPassword.ResetPassDialog
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.invisible

@@ -13,6 +13,8 @@ class SwitchComponent @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    var listener: ((Boolean) -> Unit)? = null
+
     init {
         initView()
         readAttributes(attrs)
@@ -46,6 +48,10 @@ class SwitchComponent @JvmOverloads constructor(
         switchRightButton.text = rightBtnText
     }
 
+    fun initListeners(onChoosen: (Boolean) -> Unit) {
+        listener = onChoosen
+    }
+
     fun changeStatus(status: Boolean){
         if(status){
             switchLeftButton.isActivated = true
@@ -58,9 +64,11 @@ class SwitchComponent @JvmOverloads constructor(
 
     fun btnStatusListener(){
         switchLeftButton.setOnClickListener {
+            listener?.invoke(true)
             changeStatus(true)
         }
         switchRightButton.setOnClickListener {
+            listener?.invoke(false)
             changeStatus(false)
         }
     }

@@ -8,5 +8,5 @@ data class LoginRequest(
     @SerializedName("password")
     val password: String? = null,
     @SerializedName("otp")
-    val otp: Boolean? = null
+    val otp: String? = null
 )

@@ -23,7 +23,4 @@ interface LoginApi {
     suspend fun login(
         @Body body: LoginRequest
     ): SignUpResponse
-
-    @POST("/api/account/otp")
-    suspend fun getOtp(): SignUpResponse
 }

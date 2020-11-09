@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.sendDialog
 
 import com.example.coinsliberty.api.BtcApi
 import com.example.coinsliberty.data.BtcBalance

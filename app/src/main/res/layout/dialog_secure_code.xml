@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
-        android:text="TextView"
+        android:text="2FA"
         android:textAppearance="@style/H7"
         android:textColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,21 +38,12 @@
             android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
-            android:text="@string/verify_address"
+            android:gravity="center"
+            android:text="Use authenticator app to add two-factor\nauthentication"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/llQrCode" />
 
-        <TextView
-            android:id="@+id/tvSentBTC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/H8"
-            android:textColor="@color/grey"
-            android:text="@string/sent_btc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPleaseVerify" />
 
         <LinearLayout
             android:id="@+id/llQrCode"
@@ -66,7 +57,6 @@
             android:elevation="@dimen/dialog_ll_qr_code_elevation"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -76,12 +66,78 @@
                 android:layout_width="@dimen/dialog_iv_qr_code_width_height"
                 android:layout_height="@dimen/dialog_iv_qr_code_width_height" />
         </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLink"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="@dimen/dialog_clLink_height"
+            android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
+            android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
+            android:layout_marginBottom="@dimen/dialog_clLink_marginBottom"
+            android:background="@drawable/bg_item_dialog_receive"
+            app:layout_constraintTop_toBottomOf="@id/tvPleaseVerify"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
+                android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
+                android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_copy" />
+
+            <TextView
+                android:id="@+id/tvLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
+                android:text="TextView"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/darkGrey"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+            android:id="@+id/ifc2FA"
+            android:layout_width="@dimen/dialog_clLink_width"
+            android:layout_height="wrap_content"
+            app:ifc_header="2FA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clLink"
+            android:paddingBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="@dimen/login_update_button_width"
+            android:layout_height="@dimen/login_update_button_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ifc2FA"
+            style="@style/ButtonGreyBorder"
+            android:gravity="center"
+            android:text="Send"
+            android:textColor="@color/lightBlue"
+            android:layout_marginBottom="12dp"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
         android:id="@+id/ivClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
         android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,43 +145,5 @@
         app:srcCompat="@drawable/ic_close" />
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clLink"
-        android:layout_width="@dimen/dialog_clLink_width"
-        android:layout_height="@dimen/dialog_clLink_height"
-        android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
-        android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
-        android:layout_marginBottom="@dimen/dialog_clLink_marginBottom"
-        android:background="@drawable/bg_item_dialog_receive"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/ivCopy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
-            android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
-            android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_copy" />
-
-        <TextView
-            android:id="@+id/tvLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
-            android:text="TextView"
-            android:textAppearance="@style/H8"
-            android:textColor="@color/darkGrey"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

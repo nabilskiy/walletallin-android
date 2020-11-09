@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.secureCode
 
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -9,37 +9,54 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
+import com.example.coinsliberty.data.EditProfileRequest
+import com.example.coinsliberty.data.ProfileResponse
+import com.example.coinsliberty.data.UserResponse
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
-import kotlinx.android.synthetic.main.dialog_qr_code.*
-import kotlinx.android.synthetic.main.dialog_qr_code.ivClose
-import kotlinx.android.synthetic.main.dialog_qr_code.tvLink
+import kotlinx.android.synthetic.main.dialog_secure_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-private const val keyBundleTitle = "title"
+private const val keyBundleData = "qr"
+private const val keyBundleLoginData = "login"
 private const val keyBundleLink = "link"
 
-class QrCodeDialog : BaseKotlinDialogFragment() {
-    override val layoutRes: Int = R.layout.dialog_qr_code
-    override val viewModel: QrCodeViewModel by viewModel()
+class SecureCodeDialog : BaseKotlinDialogFragment() {
+    override val layoutRes: Int = R.layout.dialog_secure_code
+    override val viewModel: SecureCodeViewModel by viewModel()
+
+    private var qrCode: String? = null
+    private var login: String? = null
+    private var data: EditProfileRequest? = null
+
+    var listener: ((Boolean) -> Unit)? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = true
 
-       viewModel.getAddress()
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvTittle.text = arguments?.getString(keyBundleTitle)
-        ivQrCode.setImageBitmap(arguments?.getString(keyBundleLink)?.let { create(it) })
+        qrCode = arguments?.getString(keyBundleLink)
+        login = arguments?.getString(keyBundleLoginData)
+        data = arguments?.getParcelable(keyBundleData)
+        tvLink.text = qrCode
+        ivQrCode.setImageBitmap(arguments?.getString(keyBundleLink)?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
 
-        ivClose.setOnClickListener { dismiss() }
+        ivClose.setOnClickListener {
+            listener?.invoke(false)
+            dismiss()
+        }
+
+        btnUpdate.setOnClickListener {
+            viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
+        }
         ivCopy.setOnClickListener { Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show() }
 
 
@@ -47,8 +64,12 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
         subscribeLiveData()
     }
 
+    fun initListeners(onChoosen: (Boolean) -> Unit) {
+        listener = onChoosen
+    }
+
     private fun subscribeLiveData() {
-        bindDataTo(viewModel.resultRecovery, ::create)
+        bindDataTo(viewModel.resultRecovery, ::updateProfile)
     }
 
 //    private fun setAddress(addressInfo: AddressInfoResponse) {
@@ -58,9 +79,15 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
 //        }
 //    }
 
+    fun updateProfile(b: Boolean) {
+        listener?.invoke(b)
+        if(b) {
+            dismiss()
+        }
+    }
+
 
     fun create(text: String): Bitmap? {
-        tvLink.text = text
         val writer = QRCodeWriter()
         return try {
             val bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, 512, 512)
@@ -80,10 +107,14 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
     }
 
     companion object {
-        val TAG: String = QrCodeDialog::class.java.name
-        fun newInstance(title: String, link: String): DialogFragment {
-            val fragment = QrCodeDialog()
-            val bundle = bundleOf(keyBundleTitle to title, keyBundleLink to link)
+        val TAG: String = SecureCodeDialog::class.java.name
+        fun newInstance(data: EditProfileRequest, link: String, login: String): SecureCodeDialog {
+            val fragment = SecureCodeDialog()
+            val bundle = bundleOf(
+                keyBundleData to data,
+                keyBundleLink to link,
+                keyBundleLoginData to login
+            )
             fragment.arguments = bundle
             fragment.setStyle(STYLE_NO_TITLE, R.style.DialogBlueBG)
             return fragment

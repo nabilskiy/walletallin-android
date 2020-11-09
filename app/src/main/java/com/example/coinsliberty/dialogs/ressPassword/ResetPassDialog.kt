@@ -1,4 +1,4 @@
-package com.example.coinsliberty.dialogs
+package com.example.coinsliberty.dialogs.ressPassword
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
+import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_reset_pass.*
 
