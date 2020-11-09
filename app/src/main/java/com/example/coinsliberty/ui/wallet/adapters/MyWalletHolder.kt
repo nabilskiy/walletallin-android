@@ -1,4 +1,4 @@
-package com.example.coinsliberty.ui.wallet.adapters
+ package com.example.coinsliberty.ui.wallet.adapters
 
 import android.content.ClipData
 import android.content.ClipboardManager

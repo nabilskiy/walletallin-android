@@ -23,18 +23,20 @@ class LoginViewModel(
     fun login(email: String, password: String) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            handleResponse(repository.login(LoginRequest(email, password)))
+            val login = repository.login(LoginRequest(email, password, true))
+            if(login.result == true) {
+                withContext(Dispatchers.Main){ sharedPreferencesProvider.setToken(login.token ?: "") }
+                Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
+            }
+            val
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
     private fun handleResponse(signUp: SignUpResponse) {
-        if(signUp.result == true) {
-            sharedPreferencesProvider.setToken(signUp.token ?: "")
-            Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
-            result.postValue(true)
-            return
-        }
+
 
         showError.postValue(signUp.error?.message)
     }
+
+
 }
