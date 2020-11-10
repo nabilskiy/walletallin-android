@@ -82,6 +82,7 @@ class MyWalletFragment : BaseKotlinFragment() {
 
 
     private fun initData(list: List<WalletContent>) {
+        walletToolbarTitle.text = (list.firstOrNull()?.result ?: 0.0).toString() + " USD"
         adapter.itemsLoaded(list)
         adapter.itemsAdded(listOf("Last Transactions"))
 

@@ -15,10 +15,10 @@ class SendBtcViewModel (
 
     val result = MutableLiveData<Boolean>()
 
-    fun sendBtc(asset: String, amount: String, address: String) {
+    fun sendBtc(asset: String, amount: String, address: String, otp: String) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            handleResponse(repository.sendBtcBalance(BtcBalance(asset, amount, address)))
+            handleResponse(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
