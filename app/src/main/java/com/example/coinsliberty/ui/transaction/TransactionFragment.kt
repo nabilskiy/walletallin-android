@@ -48,9 +48,9 @@ class TransactionFragment : BaseKotlinFragment() {
         balanceData = arguments?.getDouble(keyBundleBalance) ?: 0.0
         wallet = arguments?.getInt(keyBundleWallet)
 
-        ivTransactionLogo.setImageResource(wallet ?: 0)
-        tvTransactionTitle.text = "$balanceData BTC"
-        tvTransactionTotalBalance.text = "= " + (balanceData * rates).toString() + " $"
+        //ivTransactionLogo.setImageResource(wallet ?: 0)
+        //tvTransactionTitle.text = "$balanceData BTC"
+        //tvTransactionTotalBalance.text = "= " + (balanceData * rates).toString() + " $"
 
         transactionSendButton.setOnClickListener {
             if(sendDialog == null) {
@@ -76,6 +76,7 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
+        bindDataTo(viewModel.availableBalanceLiveData, :: initAvailableBalance)
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
@@ -89,6 +90,11 @@ class TransactionFragment : BaseKotlinFragment() {
 
         adapter.itemsAdded(listOf("Transactions"))
         adapter.itemsAdded(getTransactions(list))
+    }
+
+    private fun initAvailableBalance(balance : Double){
+        tvBalanceCrypto.text = balance.toString()
+        tvBalanceFiat.text = (balance * rates).toString()
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
