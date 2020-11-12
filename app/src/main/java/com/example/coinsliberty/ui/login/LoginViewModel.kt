@@ -5,10 +5,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.data.LoginRequest
-import com.example.coinsliberty.data.SignUpRequest
-import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.data.response.SignUpResponse
 import com.example.coinsliberty.model.SharedPreferencesProvider
-import com.example.coinsliberty.ui.config.NavigationConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinActivity
 import com.example.coinsliberty.data.EditProfileRequest
-import com.example.coinsliberty.data.ProfileResponse
+import com.example.coinsliberty.data.response.ProfileResponse
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.secureCode.SecureCodeDialog
 import com.example.coinsliberty.dialogs.secureCode.UndoSecureCodeDialog

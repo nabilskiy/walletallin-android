@@ -1,17 +1,18 @@
 package com.example.coinsliberty.dialogs.secureCode
 
+import android.content.ClipData
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.text.ClipboardManager
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.fragment.app.DialogFragment
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
 import com.example.coinsliberty.data.EditProfileRequest
-import com.example.coinsliberty.data.ProfileResponse
-import com.example.coinsliberty.data.UserResponse
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -47,7 +48,9 @@ class SecureCodeDialog : BaseKotlinDialogFragment() {
         login = arguments?.getString(keyBundleLoginData)
         data = arguments?.getParcelable(keyBundleData)
         tvLink.text = qrCode
-        ivQrCode.setImageBitmap(arguments?.getString(keyBundleLink)?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
+        ivQrCode.setImageBitmap(
+            arguments?.getString(keyBundleLink)
+                ?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
 
         ivClose.setOnClickListener {
             listener?.invoke(false)
@@ -57,7 +60,13 @@ class SecureCodeDialog : BaseKotlinDialogFragment() {
         btnUpdate.setOnClickListener {
             viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
         }
-        ivCopy.setOnClickListener { Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show() }
+        ivCopy.setOnClickListener {
+            val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            val clip = ClipData.newPlainText("Copied Text", tvLink.text.toString())
+            clipboard.setPrimaryClip(clip)
+
+            Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show()
+        }
 
 
 

@@ -5,7 +5,7 @@ import android.view.View
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
-import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.data.response.SignUpResponse
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_forgot_pass.*
 

@@ -7,6 +7,7 @@ import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.data.AvailableBalanceInfoContent
 import com.example.coinsliberty.data.BalanceInfoContent
 import com.example.coinsliberty.data.TransactionItem
+import com.example.coinsliberty.data.response.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.qrCode.QrCodeDialog

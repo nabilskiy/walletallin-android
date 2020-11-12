@@ -1,5 +1,7 @@
 package com.example.coinsliberty.base
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.coinsliberty.dialogs.ErrorDialog
+import com.example.coinsliberty.ui.MainActivity
 import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 
@@ -58,6 +61,23 @@ abstract class BaseKotlinFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+        subscribeLiveData()
+    }
+
+    private fun subscribeLiveData() {
+        bindDataTo(viewModel.baseLogout, ::logout)
+    }
+
+    private fun logout(b: Boolean?) {
+        if(b == true) {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context?.startActivity(intent)
+            if (context is Activity) {
+                (context as Activity).finish()
+            }
+            Runtime.getRuntime().exit(0)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

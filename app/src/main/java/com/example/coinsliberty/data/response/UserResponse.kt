@@ -1,4 +1,4 @@
-package com.example.coinsliberty.data
+package com.example.coinsliberty.data.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

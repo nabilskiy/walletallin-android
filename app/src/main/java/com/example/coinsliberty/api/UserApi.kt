@@ -1,6 +1,9 @@
 package com.example.coinsliberty.api
 
 import com.example.coinsliberty.data.*
+import com.example.coinsliberty.data.response.ProfileResponse
+import com.example.coinsliberty.data.response.SignUpResponse
+import com.example.coinsliberty.data.response.TokenResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

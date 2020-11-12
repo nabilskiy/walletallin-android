@@ -1,16 +1,19 @@
 package com.example.coinsliberty.ui.wallet
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseViewModel
-import com.example.coinsliberty.data.*
+import com.example.coinsliberty.data.response.*
+import com.example.coinsliberty.model.SharedPreferencesProvider
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 import com.example.coinsliberty.utils.wallets.Wallets
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
-class MyWalletViewModel(private val app: Application, private val repository: WalletRepository): BaseViewModel(app) {
+class MyWalletViewModel(
+    private val app: Application,
+    private val sharedPreferencesProvider: SharedPreferencesProvider,
+    private val repository: WalletRepository): BaseViewModel(app) {
 
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
@@ -41,6 +44,19 @@ class MyWalletViewModel(private val app: Application, private val repository: Wa
     }
 
     private fun handleResponse(walletList: WalletInfoResponse, balance: BalanceInfoResponse) {
+        if((walletList.result == false && walletList.error?.code == 1002) ||(balance.result == false && balance.error?.code == 1002)) {
+            launch(::onErrorHandler) {
+                sharedPreferencesProvider.setToken("")
+
+                delay(200)
+
+                baseLogout.postValue(true)
+            }
+
+            return
+
+        }
+
         walletLiveData.postValue(walletList.list?.map {
             wallet = getWallet(it.id)
             rates = balance.rates?.btc ?: 0.0

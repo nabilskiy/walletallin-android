@@ -3,7 +3,7 @@ package com.example.coinsliberty.api
 import com.example.coinsliberty.data.ForgotPassRequest
 import com.example.coinsliberty.data.LoginRequest
 import com.example.coinsliberty.data.SignUpRequest
-import com.example.coinsliberty.data.SignUpResponse
+import com.example.coinsliberty.data.response.SignUpResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

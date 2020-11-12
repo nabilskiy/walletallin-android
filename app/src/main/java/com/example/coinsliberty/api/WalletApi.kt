@@ -1,11 +1,10 @@
 package com.example.coinsliberty.api
 
-import com.example.coinsliberty.data.AddressInfoResponse
-import com.example.coinsliberty.data.BalanceInfoResponse
-import com.example.coinsliberty.data.TransactionResponse
-import com.example.coinsliberty.data.WalletInfoResponse
+import com.example.coinsliberty.data.response.AddressInfoResponse
+import com.example.coinsliberty.data.response.BalanceInfoResponse
+import com.example.coinsliberty.data.response.TransactionResponse
+import com.example.coinsliberty.data.response.WalletInfoResponse
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 interface WalletApi {
     @GET("/api/list/assets")

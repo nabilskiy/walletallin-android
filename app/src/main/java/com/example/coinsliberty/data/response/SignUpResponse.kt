@@ -1,8 +1,8 @@
-package com.example.coinsliberty.data
+package com.example.coinsliberty.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class TokenResponse(
+data class SignUpResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("error")

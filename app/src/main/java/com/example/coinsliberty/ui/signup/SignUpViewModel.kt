@@ -1,12 +1,10 @@
 package com.example.coinsliberty.ui.signup
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.data.SignUpRequest
-import com.example.coinsliberty.data.SignUpResponse
-import com.example.coinsliberty.ui.config.NavigationConfig
+import com.example.coinsliberty.data.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

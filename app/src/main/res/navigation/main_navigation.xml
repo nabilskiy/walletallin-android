@@ -15,19 +15,19 @@
             android:id="@+id/action_splashFragment_to_signUpFragmnet"
             app:destination="@id/signUpFragmnet"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/main_navigation"
+            app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/main_navigation"
+            app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_bottomTabNavigator"
             app:destination="@id/bottomTabNavigator"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/main_navigation"
+            app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
@@ -54,6 +54,9 @@
 
         <action
             android:id="@+id/action_loginFragment_to_bottomTabNavigator"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/bottomTabNavigator" />
     </fragment>
 

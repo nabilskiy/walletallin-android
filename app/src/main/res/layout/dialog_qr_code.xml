@@ -38,6 +38,7 @@
             android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
+            android:paddingHorizontal="12dp"
             android:text="@string/verify_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
+            android:paddingHorizontal="12dp"
             android:text="@string/sent_btc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -115,16 +117,18 @@
 
         <TextView
             android:id="@+id/tvLink"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
-            android:text="TextView"
+            tools:text="TextView"
             android:textAppearance="@style/H8"
             android:textColor="@color/darkGrey"
-            android:gravity="center"
+            android:gravity="start"
+            android:layout_marginEnd="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivCopy"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

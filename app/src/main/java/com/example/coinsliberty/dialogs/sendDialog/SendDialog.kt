@@ -1,27 +1,46 @@
 package com.example.coinsliberty.dialogs.sendDialog
 
 
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinDialogFragment
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_send.*
+import java.io.File
+import java.io.IOException
 
 private const val keyBundleTittle = "tittle"
 private const val keyBundleBalance = "balance"
 private const val keyBundleRates = "rates"
 
 
+const val REQUEST_CODE_SCAN = 101
+private val REQUEST_IMAGE_CAPTURE = 1
+private val REQUEST_CODE = 333
+private val REQUEST_SCAN =222
+
 class SendDialog : BaseKotlinDialogFragment() {
     override val layoutRes: Int = R.layout.dialog_send
     override val viewModel: SendBtcViewModel by viewModel()
 
     var listener: ((Boolean, String) -> Unit)? = null
+
+    private var barcode = ""
+    private lateinit var cardPhotoPath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +71,10 @@ class SendDialog : BaseKotlinDialogFragment() {
             }
         })
 
+        ivQrCode.setOnClickListener {
+            barcodeScan()
+        }
+
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
@@ -68,6 +91,88 @@ class SendDialog : BaseKotlinDialogFragment() {
 
     private fun initResult(b: Boolean?) {
         listener?.invoke(b == true, tvAmountCripto.text.toString())
+    }
+
+    private fun cardPhotoCaptureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            //perform check is there is an app that can handle this intent -> in not - just close
+            takePictureIntent.resolveActivity(requireActivity().packageManager).also {
+                var photoFile: File? = null
+                try {
+                    photoFile = createImageFile()
+                } catch (e: IOException) {
+                    Toast.makeText(context, "error whle creating file", Toast.LENGTH_SHORT).show()
+                }
+                if (photoFile != null) {
+                    val photoUri: Uri = FileProvider.getUriForFile(
+                        requireContext(),
+                        "com.coinsliberty.provider",
+                        photoFile
+                    )
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                }
+            }
+        }
+    }
+
+    private fun createImageFile(): File {
+        val file = File((activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES))?.absolutePath
+                + "IMG_${barcode}.jpg")
+        cardPhotoPath = file.absolutePath
+        return file
+    }
+
+
+    private fun requestPermissionAndCapturePhoto() {
+        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            cardPhotoCaptureIntent() //if granted
+        } else {
+            requestPermissions(arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_CODE) //request
+        }
+    }
+
+    private fun barcodeScan() {
+        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+            startActivityForResult(Intent(context, ScanQRcodeActivity::class.java), REQUEST_CODE_SCAN)
+
+        } else {
+            requestPermissions(arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_SCAN) //request
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.size == 3 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                cardPhotoCaptureIntent()
+            } else {
+                requestPermissionAndCapturePhoto()
+            }
+        } else if(requestCode == REQUEST_SCAN) {
+            if (grantResults.size == 3 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                barcodeScan()
+            } else {
+                barcodeScan()
+
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+
+            tvLink.setText(data?.extras?.getString(BARCODE_EXTRA) ?: "")
+        }
     }
 
     companion object {

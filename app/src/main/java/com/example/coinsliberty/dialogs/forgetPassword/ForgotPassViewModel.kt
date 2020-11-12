@@ -4,8 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.data.ForgotPassRequest
-import com.example.coinsliberty.data.SignUpResponse
-import com.example.coinsliberty.dialogs.forgetPassword.ForgotPassRepository
+import com.example.coinsliberty.data.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
