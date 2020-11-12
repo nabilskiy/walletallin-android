@@ -39,6 +39,7 @@
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
             android:gravity="center"
+            android:paddingHorizontal="12dp"
             android:text="Use authenticator app to add two-factor\nauthentication"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,16 +95,18 @@
 
             <TextView
                 android:id="@+id/tvLink"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textAppearance="@style/H8"
                 android:textColor="@color/darkGrey"
-                android:gravity="center"
+                android:gravity="start"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivCopy"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,7 +145,7 @@
         android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
+        android:src="@drawable/ic_close" />
 
 
 

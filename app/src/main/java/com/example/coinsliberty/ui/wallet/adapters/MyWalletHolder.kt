@@ -7,12 +7,11 @@ import android.view.View
 import android.widget.Toast
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.Holder
-import com.example.coinsliberty.data.TransactionItem
+import com.example.coinsliberty.data.response.TransactionItem
 import com.example.coinsliberty.ui.wallet.data.WalletContent
 import com.example.coinsliberty.utils.convertTimestampForUI
 import com.example.coinsliberty.utils.extensions.gone
 import com.example.coinsliberty.utils.extensions.visible
-import kotlinx.android.synthetic.main.item_data.view.*
 import kotlinx.android.synthetic.main.item_data.view.tvData
 import kotlinx.android.synthetic.main.item_title.view.*
 import kotlinx.android.synthetic.main.item_transaction.view.*
@@ -49,10 +48,10 @@ class TransactionTitleHolder() : Holder<String>() {
 class TransactionHolder() : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
         itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvType.text = if(item.category == "send") "Deposite" else "Withrawal"
+        itemView.tvType.text = if(item.category != "send") "Deposite" else "Withrawal"
         itemView.tvPrice.text = item.amountUsd + " $"
         itemView.ivOpenIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvOpenType.text = if(item.category == "send") "Deposite" else "Withrawal"
+        itemView.tvOpenType.text = if(item.category != "send") "Deposite" else "Withrawal"
         itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + " $"
         itemView.tvOpenWalletAddress.text = "Wallet Address: " + item.address
         itemView.clFull.setOnClickListener {

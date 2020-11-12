@@ -1,8 +1,7 @@
 package com.example.coinsliberty.api
 
 import com.example.coinsliberty.data.BtcBalance
-import com.example.coinsliberty.data.SignUpResponse
-import okhttp3.ResponseBody
+import com.example.coinsliberty.data.response.SignUpResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

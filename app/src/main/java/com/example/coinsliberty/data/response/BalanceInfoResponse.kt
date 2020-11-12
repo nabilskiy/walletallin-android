@@ -1,4 +1,4 @@
-package com.example.coinsliberty.data
+package com.example.coinsliberty.data.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,6 +7,8 @@ data class BalanceInfoResponse(
     val result: Boolean? = null,
     @SerializedName("balances")
     val balances: BalanceInfoContent? = null,
+    @SerializedName("error")
+    val error: ErrorResponse? = null,
     @SerializedName("rates")
     val rates: RatesPrice? = null
 )

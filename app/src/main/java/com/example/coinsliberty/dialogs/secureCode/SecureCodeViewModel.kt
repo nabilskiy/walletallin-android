@@ -3,10 +3,8 @@ package com.example.coinsliberty.dialogs.secureCode
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
-import com.example.coinsliberty.data.AddressInfoResponse
 import com.example.coinsliberty.data.EditProfileRequest
-import com.example.coinsliberty.data.SignUpResponse
-import com.example.coinsliberty.dialogs.qrCode.QrCodeRepository
+import com.example.coinsliberty.data.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,4 +1,4 @@
-package com.example.coinsliberty.data
+package com.example.coinsliberty.data.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -12,5 +12,7 @@ data class EditProfileResponse(
     @SerializedName("opt_enabled")
     val optEnabled: Boolean? = null,
     @SerializedName("file")
-    val photo: Any? = null
+    val photo: Any? = null,
+    @SerializedName("error")
+    val error: ErrorResponse? = null
 )

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.coinsliberty.base.BaseViewModel
 import com.example.coinsliberty.data.EditProfileRequest
-import com.example.coinsliberty.data.ProfileResponse
+import com.example.coinsliberty.data.response.ProfileResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

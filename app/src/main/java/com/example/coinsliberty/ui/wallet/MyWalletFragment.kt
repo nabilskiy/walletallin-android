@@ -4,7 +4,7 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.data.TransactionItem
+import com.example.coinsliberty.data.response.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.dialogs.qrCode.QrCodeDialog

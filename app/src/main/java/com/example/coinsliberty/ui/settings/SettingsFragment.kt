@@ -1,10 +1,13 @@
 package com.example.coinsliberty.ui.settings
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.dialogs.ressPassword.ResetPassDialog
+import com.example.coinsliberty.ui.MainActivity
 import com.example.coinsliberty.ui.dialogs.ChangeLanguageDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.invisible
@@ -32,7 +35,15 @@ class SettingsFragment() : BaseKotlinFragment() {
     }
 
     private fun logout(b: Boolean?) {
-        if(b == true) activity?.finish()
+        if(b == true) {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context?.startActivity(intent)
+            if (context is Activity) {
+                (context as Activity).finish()
+            }
+            Runtime.getRuntime().exit(0)
+        }
     }
 
     private fun initView() {

@@ -12,9 +12,11 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        renderscriptSupportModeEnabled true
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "CoinsLiberty." + versionCode + "(" + versionName + ")-" + new Date().format("dd.MM.yyyy'-'HHmm"))
+
     }
 
     buildTypes {
@@ -86,7 +88,11 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
 
-
+    //qrcode_scan
+    implementation 'com.kroegerama:barcode-kaiteki:1.1.1' //scan lib
+    implementation 'com.github.yalantis:ucrop:2.2.4'
+    implementation "com.google.guava:guava:28.2-android"
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
 
 
 }

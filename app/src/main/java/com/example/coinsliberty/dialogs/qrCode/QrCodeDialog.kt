@@ -1,5 +1,7 @@
 package com.example.coinsliberty.dialogs.qrCode
 
+import android.content.ClipData
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -15,7 +17,11 @@ import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.dialog_qr_code.*
 import kotlinx.android.synthetic.main.dialog_qr_code.ivClose
+import kotlinx.android.synthetic.main.dialog_qr_code.ivCopy
+import kotlinx.android.synthetic.main.dialog_qr_code.ivQrCode
 import kotlinx.android.synthetic.main.dialog_qr_code.tvLink
+import kotlinx.android.synthetic.main.dialog_qr_code.tvTittle
+import kotlinx.android.synthetic.main.dialog_secure_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 private const val keyBundleTitle = "title"
@@ -40,7 +46,13 @@ class QrCodeDialog : BaseKotlinDialogFragment() {
         ivQrCode.setImageBitmap(arguments?.getString(keyBundleLink)?.let { create(it) })
 
         ivClose.setOnClickListener { dismiss() }
-        ivCopy.setOnClickListener { Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show() }
+        ivCopy.setOnClickListener {
+            val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            val clip = ClipData.newPlainText("Copied Text", tvLink.text.toString())
+            clipboard.setPrimaryClip(clip)
+            
+            Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show()
+        }
 
 
 
