@@ -5,12 +5,12 @@ import java.util.*
 
 const val FORMAT_DATE_MONTH = "dd MMM yyy"
 
-fun isSameDay(date1: Long, date2: Long): Boolean {
+fun isDifferrentDate(date1: Long, date2: Long): Boolean {
     val cal1 = Calendar.getInstance();
     val cal2 = Calendar.getInstance();
     cal1.time = Date(date1)
     cal2.time = Date(date2)
-    return cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) &&
+    return cal1.get(Calendar.DAY_OF_YEAR) != cal2.get(Calendar.DAY_OF_YEAR) &&
             cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
 }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.example.coinsliberty.R
 import kotlinx.android.synthetic.main.switch_component.view.*
 
@@ -14,6 +15,7 @@ class SwitchComponent @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     var listener: ((Boolean) -> Unit)? = null
+    var checkListener: Boolean? = null
 
     init {
         initView()
@@ -53,6 +55,7 @@ class SwitchComponent @JvmOverloads constructor(
     }
 
     fun changeStatus(status: Boolean){
+        checkListener = status
         if(status){
             switchLeftButton.isActivated = true
             switchRightButton.isActivated = false
@@ -64,12 +67,24 @@ class SwitchComponent @JvmOverloads constructor(
 
     fun btnStatusListener(){
         switchLeftButton.setOnClickListener {
-            listener?.invoke(true)
-            changeStatus(true)
+            when (checkListener){
+                true -> return@setOnClickListener
+                false -> {
+                    checkListener = true
+                    listener?.invoke(true)
+                    changeStatus(true)
+                }
+            }
         }
         switchRightButton.setOnClickListener {
-            listener?.invoke(false)
-            changeStatus(false)
+            when (checkListener){
+                false -> return@setOnClickListener
+                true -> {
+                    checkListener = false
+                    listener?.invoke(false)
+                    changeStatus(false)
+                }
+            }
         }
     }
 

@@ -16,7 +16,7 @@ import com.example.coinsliberty.ui.wallet.adapters.TransactionTitleHolder
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.gone
 import com.example.coinsliberty.utils.extensions.visible
-import com.example.coinsliberty.utils.isSameDay
+import com.example.coinsliberty.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -102,7 +102,7 @@ class TransactionFragment : BaseKotlinFragment() {
         val resultList = ArrayList<Any>()
         var data: Long? = null
         list.forEach {
-            if (data == null || isSameDay(data ?: 0, it.time ?: 0)) {
+            if (data == null || isDifferrentDate(data ?: 0, it.time ?: 0)) {
                 resultList.add(it.time ?: 0)
                 data = it.time
             }
