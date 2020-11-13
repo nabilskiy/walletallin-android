@@ -71,7 +71,7 @@ class MyWalletViewModel(
                 wallet?.getImg() ?: 0,
                 wallet?.getTitle() ?: "",
                 it.label,
-                if(balanceValue != null ) balanceValue.toString() + " " + it.label else null,
+                if(balanceValue != null ) String.format("%.8f", balanceValue) + " " + it.label else null,
                 if(balanceValue != null ) String.format("%.2f", rates) + " $" else null,
                 wallet?.getBackground() ?: 0
             )

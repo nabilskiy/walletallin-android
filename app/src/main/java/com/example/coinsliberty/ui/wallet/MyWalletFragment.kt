@@ -4,9 +4,8 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.data.AvailableBalanceInfoContent
-import com.example.coinsliberty.data.BalanceInfoContent
-import com.example.coinsliberty.data.TransactionItem
+import com.example.coinsliberty.data.response.AvailableBalanceInfoContent
+import com.example.coinsliberty.data.response.BalanceInfoContent
 import com.example.coinsliberty.data.response.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
@@ -94,14 +93,14 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance : BalanceInfoContent){
-        tvTotalBalanceCrypto.text = balance.btc.toString()
-        tvTotalBalanceFiat.text = ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)).toString()
+        tvTotalBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvTotalBalanceFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
 
     }
 
     private fun initAvailableBalance(balance : AvailableBalanceInfoContent){
-        tvAvailableCrypto.text = balance.btc.toString()
-        tvAvailableFiat.text = ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)).toString()
+        tvAvailableCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvAvailableFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {
