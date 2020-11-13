@@ -54,7 +54,7 @@ class TransactionFragment : BaseKotlinFragment() {
 
         transactionSendButton.setOnClickListener {
             if(sendDialog == null) {
-                sendDialog = SendDialog.newInstance("Sent btc", String.format("%.2f", rates ?: 0.0), balanceData ?: 0.0)
+                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
             }
             sendDialog
                 ?.apply {
