@@ -23,12 +23,12 @@ class SettingsViewModel(private val app: Application, private val sharedPreferen
     private fun handleResponse(logout: SignUpResponse) {
         if(logout.result == true) {
             sharedPreferencesProvider.setToken("")
-            ldLogout.postValue(true)
+            baseLogout.postValue(true)
 
             return
         }
         if(logout.error?.code == 1002) {
-            ldLogout.postValue(true)
+            baseLogout.postValue(true)
 
             return
         }

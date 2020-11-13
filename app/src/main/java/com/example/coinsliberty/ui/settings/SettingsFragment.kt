@@ -3,7 +3,9 @@ package com.example.coinsliberty.ui.settings
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.navigation.fragment.NavHostFragment
 import com.example.coinsliberty.BottomFragmant
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
@@ -59,7 +61,11 @@ class SettingsFragment() : BaseKotlinFragment() {
         itemEditProfile.ivLeft.setImageResource(R.drawable.ic_profile_1)
         itemEditProfile.tvTittle.setText(R.string.edit_profile)
 
-        itemEditProfile.setOnClickListener { (parentFragment?.targetFragment as BottomFragmant).goToProfile() }
+        itemEditProfile.setOnClickListener {
+//            Log.e("!!!", (parentFragment as NavHostFragment).parentFragment.toString())
+//            Log.e("!!!", parentFragmentManager.primaryNavigationFragment.toString())
+            ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)?.goToProfile()
+        }
 
         itemResetPassword.ivLeft.setImageResource(R.drawable.ic_password)
         itemResetPassword.tvTittle.setText(R.string.reset_password)

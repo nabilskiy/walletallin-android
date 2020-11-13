@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.example.coinsliberty.BottomFragmant
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.ui.MainActivity
@@ -70,8 +71,9 @@ abstract class BaseKotlinFragment : Fragment() {
     }
 
     private fun logout(b: Boolean?) {
-        if(parentFragment != null) {
-            (parentFragment as BottomFragmant).goToLogin()
+        val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)
+        if(rootFragment != null) {
+            rootFragment.goToLogin()
         } else {
             navigator.goToLogin(navController)
         }

@@ -93,7 +93,7 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initAvailableBalance(balance : Double){
-        tvBalanceCrypto.text = balance.toString()
+        tvBalanceCrypto.text = String.format("%.8f",balance)
         tvBalanceFiat.text = (balance * rates).toString()
     }
 
@@ -106,7 +106,7 @@ class TransactionFragment : BaseKotlinFragment() {
                 resultList.add(it.time ?: 0)
                 data = it.time
             }
-            resultList.add(it.apply { it.amountUsd = ((it.amount?.toDouble() ?: 0.0) * (rates)).toString() })
+            resultList.add(it.apply { it.amountUsd = String.format("%.2f",(it.amount?.toDouble() ?: 0.0) * (rates)) })
         }
         return resultList
     }
