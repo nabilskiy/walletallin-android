@@ -93,14 +93,14 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance : BalanceInfoContent){
-        tvTotalBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
-        tvTotalBalanceFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+        tvTotalBalanceCrypto.text = String.format("%.4f",balance.btc ?: 0.0)
+        tvTotalBalanceFiat.text = String.format("%.4f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
 
     }
 
     private fun initAvailableBalance(balance : AvailableBalanceInfoContent){
-        tvAvailableCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
-        tvAvailableFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+        tvAvailableCrypto.text = String.format("%.4f",balance.btc ?: 0.0)
+        tvAvailableFiat.text = String.format("%.4f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

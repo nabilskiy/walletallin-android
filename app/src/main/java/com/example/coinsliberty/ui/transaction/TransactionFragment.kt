@@ -93,7 +93,7 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initAvailableBalance(balance : Double){
-        tvBalanceCrypto.text = balance.toString()
+        tvBalanceCrypto.text = String.format("%.8f",balance)
         tvBalanceFiat.text = (balance * rates).toString()
     }
 
