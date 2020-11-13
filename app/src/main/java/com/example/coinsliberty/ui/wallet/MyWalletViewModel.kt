@@ -72,7 +72,7 @@ class MyWalletViewModel(
                 wallet?.getTitle() ?: "",
                 it.label,
                 if(balanceValue != null ) String.format("%.8f", balanceValue) + " " + it.label else null,
-                if(balanceValue != null ) String.format("%.2f", rates) + " $" else null,
+                if(balanceValue != null ) String.format("%.2f", (rates ?: 0.0) * balanceValue) + " $" else null,
                 wallet?.getBackground() ?: 0
             )
         })

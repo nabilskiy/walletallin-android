@@ -58,7 +58,7 @@ class SendDialog : BaseKotlinDialogFragment() {
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
-        tvAmountCripto.setText(bundle.toString())
+        tvAmountCripto.setText(String.format("%.8f",bundle.toString()))
         tvAmountFiat.text = result.toString()
 
         tvAmountCripto.addTextChangedListener(object : TextWatcher {
@@ -67,7 +67,7 @@ class SendDialog : BaseKotlinDialogFragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                tvAmountFiat.text = ((s.toString().toDoubleOrNull() ?: 0.0) * rates).toString()
+                tvAmountFiat.text = String.format("%.2f", ((s.toString().toDoubleOrNull() ?: 0.0) * rates))
             }
         })
 

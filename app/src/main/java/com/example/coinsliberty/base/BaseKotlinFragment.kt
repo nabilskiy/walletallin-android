@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import com.example.coinsliberty.BottomFragmant
 import com.example.coinsliberty.dialogs.ErrorDialog
 import com.example.coinsliberty.ui.MainActivity
 import com.example.coinsliberty.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
@@ -69,14 +71,11 @@ abstract class BaseKotlinFragment : Fragment() {
     }
 
     private fun logout(b: Boolean?) {
-        if(b == true) {
-            val intent = Intent(context, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context?.startActivity(intent)
-            if (context is Activity) {
-                (context as Activity).finish()
-            }
-            Runtime.getRuntime().exit(0)
+        val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)
+        if(rootFragment != null) {
+            rootFragment.goToLogin()
+        } else {
+            navigator.goToLogin(navController)
         }
     }
 
