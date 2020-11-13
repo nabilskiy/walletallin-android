@@ -7,8 +7,8 @@ import com.example.coinsliberty.base.BaseNavigator
 
 class SignUpNavigation : BaseNavigator() {
 
-    fun goToProfile(navController: NavController?) {
-        navController?.navigate(R.id.action_signUpFragmnet_to_profileFragment)
-    }
+//    fun goToProfile(navController: NavController?) {
+//        navController?.navigate(R.id.action_signUpFragmnet_to_profileFragment)
+//    }
 
 }

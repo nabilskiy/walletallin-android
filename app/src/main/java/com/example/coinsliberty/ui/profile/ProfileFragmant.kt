@@ -2,8 +2,11 @@ package com.example.coinsliberty.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinActivity
+import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.base.BaseNavigator
 import com.example.coinsliberty.data.EditProfileRequest
 import com.example.coinsliberty.data.response.ProfileResponse
 import com.example.coinsliberty.dialogs.ErrorDialog
@@ -12,23 +15,23 @@ import com.example.coinsliberty.dialogs.secureCode.UndoSecureCodeDialog
 import com.example.coinsliberty.utils.extensions.bindDataTo
 import com.example.coinsliberty.utils.extensions.setTransparentLightStatusBar
 import com.example.coinsliberty.utils.extensions.setupFullScreen
+import com.example.moneybee.utils.stub.StubNavigator
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class ProfileActivity : BaseKotlinActivity() {
+class ProfileFragmant : BaseKotlinFragment() {
+    override val layoutRes: Int = R.layout.fragment_profile
 
     override val viewModel: ProfileViewModel by viewModel()
+    override val navigator: StubNavigator = get()
     var bufferFile : Any? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_profile)
-
-        setTransparentLightStatusBar()
-        setupFullScreen()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         tvAttachButton.setOnClickListener {
             openGallery(1);
@@ -62,7 +65,7 @@ class ProfileActivity : BaseKotlinActivity() {
                     initListeners {
                         update2FA(it)
                     }
-                }.show(supportFragmentManager, UndoSecureCodeDialog.TAG)
+                }.show(childFragmentManager, UndoSecureCodeDialog.TAG)
             }
         }
         subscribeLiveData()
@@ -83,7 +86,7 @@ class ProfileActivity : BaseKotlinActivity() {
             initListeners {
                 update2FA(it)
             }
-        }.show(supportFragmentManager, SecureCodeDialog.TAG)
+        }.show(childFragmentManager, SecureCodeDialog.TAG)
     }
 
     fun update2FA(b: Boolean) {
@@ -123,7 +126,7 @@ class ProfileActivity : BaseKotlinActivity() {
 
     private fun getErrorDialog(message: String) {
         ErrorDialog.newInstance(message)
-            .show(supportFragmentManager, ErrorDialog.TAG)
+            .show(childFragmentManager, ErrorDialog.TAG)
     }
 
 

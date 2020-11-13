@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.example.coinsliberty.BottomFragmant
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseKotlinFragment
 import com.example.coinsliberty.dialogs.ressPassword.ResetPassDialog
@@ -58,7 +59,7 @@ class SettingsFragment() : BaseKotlinFragment() {
         itemEditProfile.ivLeft.setImageResource(R.drawable.ic_profile_1)
         itemEditProfile.tvTittle.setText(R.string.edit_profile)
 
-        itemEditProfile.setOnClickListener { navigator.goToProfile(navController) }
+        itemEditProfile.setOnClickListener { (parentFragment?.targetFragment as BottomFragmant).goToProfile() }
 
         itemResetPassword.ivLeft.setImageResource(R.drawable.ic_password)
         itemResetPassword.tvTittle.setText(R.string.reset_password)

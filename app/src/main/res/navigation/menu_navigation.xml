@@ -30,7 +30,7 @@
     </fragment>
     <activity
         android:id="@+id/profileFragment2"
-        android:name="com.example.coinsliberty.ui.profile.ProfileActivity"
+        android:name="com.example.coinsliberty.ui.profile.ProfileFragmant"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
 
