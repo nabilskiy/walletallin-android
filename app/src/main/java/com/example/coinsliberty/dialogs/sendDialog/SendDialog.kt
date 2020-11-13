@@ -58,7 +58,7 @@ class SendDialog : BaseKotlinDialogFragment() {
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
-        tvAmountCripto.setText(String.format("%.8f",bundle.toString()))
+        tvAmountCripto.setText(bundle.toString())
         tvAmountFiat.text = result.toString()
 
         tvAmountCripto.addTextChangedListener(object : TextWatcher {
