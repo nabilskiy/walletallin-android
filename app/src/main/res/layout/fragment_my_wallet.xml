@@ -1,105 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/walletToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/bg_toolbar">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/walletToolbarTitle"
+        <ImageView
+            android:id="@+id/ivWallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="34dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/wallet_toolbar_title_margin_top"
-            tools:text="@string/wallet_toolbar_title"
-            style="@style/H5"
-            android:textColor="@color/white"
-            />
+            app:srcCompat="@drawable/ic_wallet_disactive" />
 
         <TextView
-            android:id="@+id/tvTotalBalance"
+            android:id="@+id/tvAvailable"
+            style="@style/H11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/walletToolbarTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/wallet_total_margin_top"
-            style="@style/H9"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="38dp"
+            android:text="Available"
             android:textColor="@color/lightBlueLowOpacity"
-            android:text="@string/wallet_toolbar_total"
-            />
+            app:layout_constraintStart_toEndOf="@+id/ivWallet"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewLeft"
+            android:layout_width="130dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="2dp"
+            android:background="@color/lightBlueLowOpacity"
+            app:layout_constraintStart_toEndOf="@+id/ivWallet"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvailable" />
+
+        <TextView
+            android:id="@+id/tvAvailableCrypto"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="4dp"
+            android:text="0.00000000"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLeft" />
+
+        <TextView
+            android:id="@+id/tvAvailableFiat"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46dp"
+            android:text="0.000000000000000000"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvailableCrypto" />
+
 
         <ImageView
             android:id="@+id/ivWalletToolbarIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/wallet_total_icon_margin_top"
             android:layout_marginEnd="@dimen/wallet_total_icon_margin_end"
             android:background="@drawable/ic_ring"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTotalBalance"
+            style="@style/H11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:text="Total balance"
+            android:textColor="@color/lightBlueLowOpacity"
+            app:layout_constraintStart_toStartOf="@+id/viewRight"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewRight"
+            android:layout_width="130dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="6dp"
+            android:background="@color/lightBlueLowOpacity"
+            app:layout_constraintEnd_toStartOf="@+id/ivWalletToolbarIcon"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalBalance" />
+
+        <TextView
+            android:id="@+id/tvTotalBalanceCrypto"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="0.00000000"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/viewRight"
+            app:layout_constraintTop_toBottomOf="@+id/viewRight" />
+
+        <TextView
+            android:id="@+id/tvTotalBalanceFiat"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00000000"
+            android:maxEms="5"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/tvTotalBalanceCrypto"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvailableCrypto" />
+
+
+        <TextView
+            android:id="@+id/tvNameCrypto"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="BTC"
+            android:textColor="@color/lightBlueLowOpacity"
+            app:layout_constraintEnd_toEndOf="@+id/viewRight"
+            app:layout_constraintTop_toBottomOf="@+id/viewRight" />
+
+         <TextView
+            android:id="@+id/tvNameFiat"
+            style="@style/H9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USD"
+            android:textColor="@color/lightBlueLowOpacity"
+            app:layout_constraintEnd_toEndOf="@+id/viewRight"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameCrypto" />
 
         <View
             android:id="@+id/walletToolbarSendButton"
             android:layout_width="@dimen/wallet_toolbar_send_width"
             android:layout_height="@dimen/wallet_toolbar_send_height"
+            android:layout_marginStart="@dimen/wallet_toolbar_send_margin_start"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="@dimen/wallet_toolbar_send_margin_bottom"
             android:background="@drawable/btn_green"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTotalBalance"
-            android:layout_marginStart="@dimen/wallet_toolbar_send_margin_start"
-            android:layout_marginTop="@dimen/wallet_toolbar_send_margin_top"
-            android:layout_marginBottom="@dimen/wallet_toolbar_send_margin_bottom"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tvAvailableFiat" />
 
         <TextView
             android:id="@+id/tvWalletSend"
+            style="@style/H9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/send"
-            style="@style/H9"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="@id/walletToolbarSendButton"
-            app:layout_constraintStart_toEndOf="@id/ivWalletSendIcon"
-            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
             android:layout_marginStart="@dimen/wallet_toolbar_send_text_margin_start"
-            />
+            android:text="@string/send"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
+            app:layout_constraintStart_toEndOf="@id/ivWalletSendIcon"
+            app:layout_constraintTop_toTopOf="@id/walletToolbarSendButton" />
 
         <ImageView
             android:id="@+id/ivWalletSendIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_up"
-            app:layout_constraintTop_toTopOf="@id/walletToolbarSendButton"
-            app:layout_constraintStart_toStartOf="@id/walletToolbarSendButton"
-            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
             android:layout_marginStart="@dimen/wallet_toolbar_send_icon_margin_start"
-            />
+            android:background="@drawable/ic_arrow_up"
+            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
+            app:layout_constraintStart_toStartOf="@id/walletToolbarSendButton"
+            app:layout_constraintTop_toTopOf="@id/walletToolbarSendButton" />
 
         <View
             android:id="@+id/walletToolbarRecieveButton"
             android:layout_width="@dimen/wallet_toolbar_receive_width"
             android:layout_height="@dimen/wallet_toolbar_receive_height"
+            android:layout_marginEnd="@dimen/wallet_toolbar_receive_margin_end"
+            android:layout_marginBottom="@dimen/wallet_toolbar_receive_margin_bottom"
             android:background="@drawable/btn_blue"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTotalBalance"
-            android:layout_marginEnd="@dimen/wallet_toolbar_receive_margin_end"
-            android:layout_marginTop="@dimen/wallet_toolbar_receive_margin_top"
-            android:layout_marginBottom="@dimen/wallet_toolbar_receive_margin_bottom"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/tvWalletRecieve"
@@ -117,12 +210,12 @@
             android:id="@+id/ivWalletReceiveIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_arrow_up"
-            app:layout_constraintTop_toTopOf="@id/walletToolbarRecieveButton"
-            app:layout_constraintStart_toStartOf="@id/walletToolbarRecieveButton"
-            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
             android:layout_marginStart="@dimen/wallet_toolbar_receive_icon_margin_start"
-            />
+            android:background="@drawable/ic_arrow_down"
+            app:layout_constraintBottom_toBottomOf="@id/walletToolbarSendButton"
+            app:layout_constraintStart_toStartOf="@id/walletToolbarRecieveButton"
+            app:layout_constraintTop_toTopOf="@id/walletToolbarRecieveButton" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,10 +223,11 @@
         android:id="@+id/rvWallet"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/walletToolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/walletToolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,9 +17,12 @@ class MyWalletViewModel(
 
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
+    val balanceDataLiveData: MutableLiveData<BalanceInfoContent> = MutableLiveData()
+    val availableBalanceDataLiveData: MutableLiveData<AvailableBalanceInfoContent> = MutableLiveData()
 
     var rates: Double? = null
     var balanceData: BalanceInfoContent? = null
+//    var availableBalanceData: AvailableBalanceInfoContent? = null
     var wallet: Wallets? = null
 //    fun getListData(): ArrayList<WalletContent> {
 //        val listData: ArrayList<WalletContent> = ArrayList()
@@ -58,6 +61,9 @@ class MyWalletViewModel(
             wallet = getWallet(it.id)
             rates = balance.rates?.btc ?: 0.0
             balanceData = balance.balances
+           // availableBalanceData = balance.availableBalances
+            balanceDataLiveData.postValue(balance.balances)
+            availableBalanceDataLiveData.postValue(balance.availableBalances)
 
             val balanceValue = if(it.locked == false) getValue(balance, it.id) else null
 
@@ -65,7 +71,7 @@ class MyWalletViewModel(
                 wallet?.getImg() ?: 0,
                 wallet?.getTitle() ?: "",
                 it.label,
-                if(balanceValue != null ) balanceValue.toString() + " " + it.label else null,
+                if(balanceValue != null ) String.format("%.8f", balanceValue) + " " + it.label else null,
                 if(balanceValue != null ) String.format("%.2f", rates) + " $" else null,
                 wallet?.getBackground() ?: 0
             )

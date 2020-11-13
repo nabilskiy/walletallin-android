@@ -4,6 +4,8 @@ import android.view.View
 import com.example.coinsliberty.R
 import com.example.coinsliberty.base.BaseAdapter
 import com.example.coinsliberty.base.BaseKotlinFragment
+import com.example.coinsliberty.data.response.AvailableBalanceInfoContent
+import com.example.coinsliberty.data.response.BalanceInfoContent
 import com.example.coinsliberty.data.response.TransactionItem
 import com.example.coinsliberty.dialogs.AcceptDialog
 import com.example.coinsliberty.dialogs.ErrorDialog
@@ -60,6 +62,8 @@ class MyWalletFragment : BaseKotlinFragment() {
     private fun subscribeLiveData() {
         bindDataTo(viewModel.walletLiveData, ::initData)
         bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
+        bindDataTo(viewModel.balanceDataLiveData, ::initBalance)
+        bindDataTo(viewModel.availableBalanceDataLiveData, ::initAvailableBalance)
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
@@ -82,10 +86,21 @@ class MyWalletFragment : BaseKotlinFragment() {
 
 
     private fun initData(list: List<WalletContent>) {
-        walletToolbarTitle.text = (list.firstOrNull()?.result ?: 0.0).toString() + " USD"
+        //walletToolbarTitle.text = (list.firstOrNull()?.result ?: 0.0).toString() + " USD"
         adapter.itemsLoaded(list)
         adapter.itemsAdded(listOf("Last Transactions"))
 
+    }
+
+    private fun initBalance(balance : BalanceInfoContent){
+        tvTotalBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvTotalBalanceFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+
+    }
+
+    private fun initAvailableBalance(balance : AvailableBalanceInfoContent){
+        tvAvailableCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvAvailableFiat.text = String.format("%.8f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {
