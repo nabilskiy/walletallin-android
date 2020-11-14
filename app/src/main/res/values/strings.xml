@@ -89,4 +89,9 @@
         <item>USD</item>
     </string-array>
 
+    <string-array name="network_fees">
+        <item>Standard</item>
+        <item>Medium</item>
+        <item>Normal</item>
+    </string-array>
 </resources>

@@ -81,7 +81,7 @@
     <dimen name="sign_up_login_margin_top">16dp</dimen>
     <dimen name="sign_up_button_margin_bottom">56dp</dimen>
     <dimen name="sign_up_button_height">40dp</dimen>
-    <dimen name="sign_up_button_width">200dp</dimen>
+    <dimen name="sign_up_button_width">140dp</dimen>
 
     <!--  Input Field  -->
     <dimen name="if_edit_text_margin_top">2dp</dimen>
@@ -161,7 +161,7 @@
     <dimen name="dialog_iv_close_marginTop">6dp</dimen>
     <dimen name="dialog_iv_close_marginEnd">10dp</dimen>
 
-    <dimen name="dialog_clLink_width">280dp</dimen>
+    <dimen name="dialog_clLink_width">296dp</dimen>
     <dimen name="dialog_clLink_height">40dp</dimen>
     <dimen name="dialog_clLink_marginStartEnd">16dp</dimen>
     <dimen name="dialog_clLink_marginBottom">32dp</dimen>
@@ -197,9 +197,9 @@
     <dimen name="dialog_send_tv_marginEnd">8dp</dimen>
     <dimen name="dialog_send_tv_amount_marginTop">18dp</dimen>
     <dimen name="dialog_send_iv_obmen_marginTop">31dp</dimen>
-    <dimen name="dialog_send_btn_send_marginStartEnd">56dp</dimen>
+    <dimen name="dialog_send_btn_send_marginStartEnd">8dp</dimen>
     <dimen name="dialog_send_btn_send_marginTop">250dp</dimen>
-    <dimen name="dialog_send_btn_send_marginBottom">20dp</dimen>
+    <dimen name="dialog_send_btn_send_marginBottom">8dp</dimen>
 
     <dimen name="dialog_forgot_iv_lock_marginStart">24dp</dimen>
     <dimen name="dialog_forgot_iv_lock_marginTop">22dp</dimen>

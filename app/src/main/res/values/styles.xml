@@ -56,4 +56,13 @@
         <item name="android:windowBackground">@drawable/bg_dialog_red</item>
     </style>
 
+    <style name="SendSpinnerStyle" >
+        <item name="android:textSize">@dimen/h10_text_size</item>
+        <item name="android:textColor">@color/darkGrey</item>
+    </style>
+
+    <style name="ColorSwitchStyle">
+        <item name="android:colorForeground">@color/grey</item>
+        <item name="colorControlActivated">@color/darkGrey</item>
+    </style>
 </resources>
