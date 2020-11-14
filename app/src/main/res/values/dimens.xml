@@ -110,6 +110,35 @@
     <dimen name="toolbar_add_photo_margin_start">70dp</dimen>
     <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
 
+    <!--  Wallet Toolbar -->
+    <dimen name="toolbar_wallet_icon_back_size">30dp</dimen>
+    <dimen name="toolbar_cl2_margi_top">48dp</dimen>
+    <dimen name="toolbar_cl3_margin_top">6dp</dimen>
+    <dimen name="toolbar_cl_width">312dp</dimen>
+    <dimen name="toolbar_cl_margin">24dp</dimen>
+    <dimen name="toolbar_cl_margin_top">16dp</dimen>
+    <dimen name="toolbar_iv_wallet_size">16dp</dimen>
+    <dimen name="toolbar_iv_wallet_margin_top">2dp</dimen>
+    <dimen name="toolbar_iv_wallet_margin_end">4dp</dimen>
+    <dimen name="toolbar_tv_name_crypto_margin_start">6dp</dimen>
+    <dimen name="toolbar_tv_name_crypto_margin_top">16dp</dimen>
+    <dimen name="toolbar_tv_name_fiat_margin_top">2dp</dimen>
+    <dimen name="toolbar_tv_name_fiat_margin_start">4dp</dimen>
+    <dimen name="toolbar_tv_total_balance_margin_start">16dp</dimen>
+    <dimen name="toolbar_tv_total_balance_margin_top">12dp</dimen>
+    <dimen name="toolbar_tv_total_balance_margin_bottom">12dp</dimen>
+    <dimen name="toolbar_tv_name_total">2dp</dimen>
+    <dimen name="toolbar_v_line_width">1dp</dimen>
+    <dimen name="toolbar_v_line_height">24dp</dimen>
+    <dimen name="toolbar_v_line_margin_start">6dp</dimen>
+    <dimen name="toolbar_tv_bal_fiat_margin_start">6dp</dimen>
+    <dimen name="toolbar_iv_exchange_margin_start">86dp</dimen>
+    <dimen name="toolbar_tv_exchange_margin_start">10dp</dimen>
+    <dimen name="toolbar_tv_exchange_margin_top">8dp</dimen>
+    <dimen name="toolbar_tv_exchange_margin_bottom">8dp</dimen>
+
+
+
     <!--  Profile  -->
     <dimen name="profile_input_first_name_width">136dp</dimen>
     <dimen name="profile_input_first_name_margin_top">74dp</dimen>
@@ -219,7 +248,7 @@
     <dimen name="dialog_reset_tv_tittle_marginStart">24dp</dimen>
     <dimen name="dialog_reset_tv_tittle_marginTop">20dp</dimen>
     <dimen name="dialog_reset_cc_new_marginTop">8dp</dimen>
-    <dimen name="dialog_reset_btn_update_marginTop">60dp</dimen>
+    <dimen name="dialog_reset_btn_update_marginTop">40dp</dimen>
     <dimen name="dialog_reset_btn_update_marginBottom">38dp</dimen>
     <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
 
