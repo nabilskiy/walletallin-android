@@ -30,7 +30,7 @@
         style="@style/H1"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         android:layout_marginEnd="@dimen/sign_up_first_name_margin_end"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:layout_marginEnd="@dimen/sign_up_last_name_margin_end"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         android:layout_marginEnd="@dimen/sign_up_email_margin_end"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcSignUpPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
