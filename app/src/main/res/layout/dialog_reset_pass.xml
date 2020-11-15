@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/oldPass"
         android:layout_width="@dimen/dialog_forgot_cc_password_width"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTittle" />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/newPass"
         android:layout_width="@dimen/dialog_forgot_cc_password_width"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/oldPass" />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/confirmPass"
         android:layout_width="@dimen/dialog_forgot_cc_password_width"
         android:layout_height="wrap_content"

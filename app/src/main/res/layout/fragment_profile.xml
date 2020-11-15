@@ -10,7 +10,7 @@
         android:id="@+id/profileToolbar"
         layout="@layout/toolbar" />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcProfileFirstName"
         android:layout_width="@dimen/profile_input_first_name_width"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         app:ifc_header="@string/first_name"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcProfileLastName"
         android:layout_width="@dimen/profile_input_last_name_width"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:ifc_header="@string/last_name"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcProfileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         android:layout_marginEnd="@dimen/profile_email_margin_end"
         />
 
-    <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
         android:id="@+id/ifcProfilePhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
         android:layout_marginEnd="@dimen/profile_switch_title_margin_end"
         />
 
-    <com.example.coinsliberty.ui.widgets.inputField.switch.SwitchComponent
+    <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchComponent
         android:id="@+id/profileSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
         android:layout_marginTop="@dimen/profile_choose_title_margin_top"
         />
 
-    <com.example.coinsliberty.ui.widgets.inputField.attach.AttachComponent
+    <com.coinsliberty.wallet.ui.widgets.inputField.attach.AttachComponent
         android:id="@+id/profileAttachComponent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

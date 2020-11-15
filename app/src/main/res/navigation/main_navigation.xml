@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.coinsliberty.ui.splash.SplashFragment"
+        android:name="com.coinsliberty.wallet.ui.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -33,14 +33,14 @@
 
     <fragment
         android:id="@+id/signUpFragmnet"
-        android:name="com.example.coinsliberty.ui.signup.SignUpFragment"
+        android:name="com.coinsliberty.wallet.ui.signup.SignUpFragment"
         android:label="SignUpFragmnet"
         tools:layout="@layout/fragment_sign_up"
         />
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.coinsliberty.ui.login.LoginFragment"
+        android:name="com.coinsliberty.wallet.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"
         >
@@ -58,21 +58,21 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.coinsliberty.ui.profile.ProfileFragmant"
+        android:name="com.coinsliberty.wallet.ui.profile.ProfileFragmant"
         tools:layout="@layout/fragment_profile"
         android:label="ProfileFragment"
         />
 
     <fragment
         android:id="@+id/myWalletFragment"
-        android:name="com.example.coinsliberty.ui.wallet.MyWalletFragment"
+        android:name="com.coinsliberty.wallet.ui.wallet.MyWalletFragment"
         tools:layout="@layout/fragment_my_wallet"
         android:label="WalletFragment"
         />
 
     <fragment
         android:id="@+id/bottomTabNavigator"
-        android:name="com.example.coinsliberty.BottomFragmant"
+        android:name="com.coinsliberty.wallet.BottomFragmant"
         android:label="BottomActivityy"
         tools:layout="@layout/activity_bottom">
 
