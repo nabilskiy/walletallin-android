@@ -46,10 +46,6 @@ class MyWalletFragment : BaseKotlinFragment() {
             subscribeLiveData()
             rvWallet.adapter = adapter
 
-        ivTransactionLeftIcon.setOnClickListener {
-            activity?.onBackPressed()
-        }
-
 //        walletToolbarSendButton.setOnClickListener {
 //            if(sendDialog == null) {
 //                sendDialog = SendDialog.newInstance("Sent eth", viewModel.rates ?: 0.0, viewModel.balanceData?.btc ?: 0.0)
