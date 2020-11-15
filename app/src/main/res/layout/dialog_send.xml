@@ -77,13 +77,13 @@
 
             <ImageView
                 android:id="@+id/ivQrCode"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/dialog_send_small_qr_code_width"
+                android:layout_height="@dimen/dialog_send_small_qr_code_height"
                 android:src="@drawable/ic_qrcode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="12dp"/>
+                android:layout_marginEnd="@dimen/dialog_send_small_qr_code_margin_end"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -185,13 +185,13 @@
             android:id="@+id/tvSendMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send Max"
+            android:text="@string/send_max"
             android:textAppearance="@style/H10"
             android:textColor="@color/darkGrey"
             app:layout_constraintTop_toBottomOf="@id/clSumFiat"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/dialog_send_text_send_max_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_text_send_max_margin_top"
             />
 
         <ImageView
@@ -200,8 +200,8 @@
             android:src="@drawable/ic_icon_little_ask"
             app:layout_constraintTop_toBottomOf="@id/clSumFiat"
             app:layout_constraintStart_toEndOf="@id/tvSendMax"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="6dp"
+            android:layout_marginTop="@dimen/dialog_send_icon_ask_margin_top"
+            android:layout_marginStart="@dimen/dialog_send_icon_ask_margin_start"
             />
 
         <TextView
@@ -210,9 +210,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvSendMax"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="6dp"
-            android:text="Maximum amount is"
+            android:layout_marginStart="@dimen/dialog_send_max_amount_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_max_amount_margin_top"
+            android:text="@string/max_amount"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
             />
@@ -223,9 +223,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvSendMax"
             app:layout_constraintStart_toEndOf="@id/tvMaxAmount"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="6dp"
-            android:text="~BTC 0.04324352"
+            android:layout_marginStart="@dimen/dialog_send_btc_max_amount_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_btc_max_amount_margin_top"
+            android:text="@string/btc_max_amount"
             android:textAppearance="@style/H10"
             android:textColor="@color/grey"
             />
@@ -234,24 +234,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="@dimen/dialog_send_switch_margin_end"
             app:layout_constraintTop_toBottomOf="@+id/clSumFiat"
             app:thumbTint="@color/darkGrey"
             android:theme="@style/ColorSwitchStyle"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dialog_send_switch_margin_top"
             />
 
         <TextView
             android:id="@+id/tvNetworkFees"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Network fees"
+            android:text="@string/network_fees"
             android:textAppearance="@style/H10"
             android:textColor="@color/darkBlue"
             app:layout_constraintTop_toBottomOf="@id/tvMaxAmount"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/dialog_send_network_fees_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_network_fees_margin_top"
             />
 
         <ImageView
@@ -260,18 +260,18 @@
             android:src="@drawable/ic_icon_ask_blue"
             app:layout_constraintTop_toBottomOf="@id/tvMaxAmount"
             app:layout_constraintStart_toEndOf="@id/tvNetworkFees"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="6dp"
+            android:layout_marginTop="@dimen/dialog_send_network_fees_icon_margin_top"
+            android:layout_marginStart="@dimen/dialog_send_network_fees_icon_margin_start"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clSendSpinner"
-            android:layout_width="114dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dialog_send_constraint_spinner_width"
+            android:layout_height="@dimen/dialog_send_constraint_spinner_height"
             app:layout_constraintTop_toBottomOf="@id/tvNetworkFees"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginStart="@dimen/dialog_send_constraint_spinner_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_constraint_spinner_margin_top"
             android:background="@drawable/bg_item_dialog_send"
             >
             <Spinner
@@ -281,61 +281,61 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/dialog_send_spinner_margin_top"
+                android:layout_marginBottom="@dimen/dialog_send_spinner_margin_bottom"
+                android:layout_marginStart="@dimen/dialog_send_spinner_margin_start"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clSatPerByte"
-            android:layout_width="180dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dialog_send_constraint_sat_width"
+            android:layout_height="@dimen/dialog_send_constraint_sat_height"
             app:layout_constraintTop_toBottomOf="@id/tvNetworkFees"
             app:layout_constraintStart_toEndOf="@+id/clSendSpinner"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginStart="@dimen/dialog_send_constraint_sat_margin_start"
+            android:layout_marginEnd="@dimen/dialog_send_constraint_sat_margin_end"
+            android:layout_marginTop="@dimen/dialog_send_constraint_sat_margin_top"
             android:background="@drawable/bg_item_dialog_send"
             >
            <TextView
                android:id="@+id/tvAmountSatPerByte"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="49"
+               android:text="@string/sat_number"
                android:textAppearance="@style/H8"
                android:textColor="@color/darkGrey"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintBottom_toBottomOf="parent"
-               android:layout_marginStart="16dp"
+               android:layout_marginStart="@dimen/dialog_send_sat_margin_start"
                />
 
             <TextView
                 android:id="@+id/tvsatPerByte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sat per byte"
+                android:text="@string/sat_per_byte"
                 android:textAppearance="@style/H11"
                 android:textColor="@color/darkGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/dialog_send_sat_margin_end"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView
             android:id="@+id/tvAllowUnconfirmed"
-            android:layout_width="194dp"
+            android:layout_width="@dimen/dialog_send_unconfirmed_width"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/clSendSpinner"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Allow unconfirmed replaceable transactions"
+            android:layout_marginStart="@dimen/dialog_send_unconfirmed_start"
+            android:layout_marginTop="@dimen/dialog_send_unconfirmed_top"
+            android:text="@string/allow_uncinfirmed"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
             />
@@ -347,8 +347,8 @@
             app:layout_constraintTop_toBottomOf="@+id/clSatPerByte"
             app:thumbTint="@color/darkGrey"
             android:theme="@style/ColorSwitchStyle"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="@dimen/dialog_send_switch_margin_top"
+            android:layout_marginEnd="@dimen/dialog_send_switch_margin_end"
             />
 
 <!--        <com.example.moneybee.ui.widgets.inputField.InputFieldComponent-->
@@ -367,13 +367,13 @@
             android:id="@+id/tv2FA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2FA Code"
+            android:text="@string/fa_code"
             android:textAppearance="@style/H10"
             android:textColor="@color/darkBlue"
             app:layout_constraintTop_toBottomOf="@id/tvAllowUnconfirmed"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/dialog_send_fa_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_fa_margin_top"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -410,13 +410,13 @@
 
         <View
             android:id="@+id/devideLine"
-            android:layout_width="296dp"
-            android:layout_height="1dp"
+            android:layout_width="@dimen/dialog_send_deliver_line_width"
+            android:layout_height="@dimen/dialog_send_deliver_line_height"
             android:background="@color/lightGrey"
             app:layout_constraintTop_toBottomOf="@id/cl2FA"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/dialog_send_deliver_line_margin_top"
             />
 
         <Button
@@ -424,7 +424,7 @@
             style="@style/ButtonGreyBorder"
             android:layout_width="@dimen/sign_up_button_width"
             android:layout_height="@dimen/sign_up_button_height"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/dialog_send_btn_margin_top"
             android:layout_marginEnd="@dimen/dialog_send_btn_send_marginStartEnd"
             android:layout_marginBottom="@dimen/dialog_send_btn_send_marginBottom"
             android:gravity="center"
@@ -451,9 +451,9 @@
             android:background="@drawable/ic_bitcoin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/devideLine"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/dialog_send_btc_logo_margin_top"
+            android:layout_marginStart="@dimen/dialog_send_btc_logo_margin_start"
+            android:layout_marginBottom="@dimen/dialog_send_btc_logo_margin_bottom"
             />
 
         <TextView
@@ -462,9 +462,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/devideLine"
             app:layout_constraintStart_toEndOf="@id/ivDownLogo"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="16dp"
-            android:text="Network fees"
+            android:layout_marginStart="@dimen/dialog_send_btc_title_margin_start"
+            android:layout_marginTop="@dimen/dialog_send_btc_logo_margin_top"
+            android:text="@string/network_fees"
             android:textAppearance="@style/H8"
             android:textColor="@color/grey"
             />
@@ -473,14 +473,14 @@
             android:id="@+id/tvBTCDownResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BTC 0.75894509"
+            android:text="@string/btc_down_result"
             android:textAppearance="@style/H10"
             android:textColor="@color/darkGrey"
             app:layout_constraintTop_toBottomOf="@id/tvDownNetworkFees"
             app:layout_constraintStart_toEndOf="@id/ivDownLogo"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="@dimen/dialog_send_btc_down_result_margin_start"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/dialog_send_btc_down_result_margin_bottom"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -273,4 +273,55 @@
     <dimen name="wallet_toolbar_receive_text_margin_start">20dp</dimen>
     <dimen name="wallet_toolbar_receive_icon_margin_start">20dp</dimen>
     <dimen name="wallet_recycle_margin">16dp</dimen>
+
+    <!--  new dialog send -->
+    <dimen name="dialog_send_small_qr_code_width">24dp</dimen>
+    <dimen name="dialog_send_small_qr_code_height">24dp</dimen>
+    <dimen name="dialog_send_small_qr_code_margin_end">12dp</dimen>
+    <dimen name="dialog_send_text_send_max_margin_start">24dp</dimen>
+    <dimen name="dialog_send_text_send_max_margin_top">10dp</dimen>
+    <dimen name="dialog_send_icon_ask_margin_start">6dp</dimen>
+    <dimen name="dialog_send_icon_ask_margin_top">12dp</dimen>
+    <dimen name="dialog_send_max_amount_margin_start">24dp</dimen>
+    <dimen name="dialog_send_max_amount_margin_top">6dp</dimen>
+    <dimen name="dialog_send_btc_max_amount_margin_start">6dp</dimen>
+    <dimen name="dialog_send_btc_max_amount_margin_top">6dp</dimen>
+    <dimen name="dialog_send_switch_margin_top">8dp</dimen>
+    <dimen name="dialog_send_switch_margin_end">20dp</dimen>
+    <dimen name="dialog_send_network_fees_margin_start">24dp</dimen>
+    <dimen name="dialog_send_network_fees_margin_top">16dp</dimen>
+    <dimen name="dialog_send_network_fees_icon_margin_start">6dp</dimen>
+    <dimen name="dialog_send_network_fees_icon_margin_top">18dp</dimen>
+    <dimen name="dialog_send_constraint_spinner_margin_start">8dp</dimen>
+    <dimen name="dialog_send_constraint_spinner_margin_top">2dp</dimen>
+    <dimen name="dialog_send_constraint_spinner_width">114dp</dimen>
+    <dimen name="dialog_send_constraint_spinner_height">40dp</dimen>
+    <dimen name="dialog_send_spinner_margin_start">16dp</dimen>
+    <dimen name="dialog_send_spinner_margin_top">12dp</dimen>
+    <dimen name="dialog_send_spinner_margin_bottom">12dp</dimen>
+    <dimen name="dialog_send_constraint_sat_margin_start">4dp</dimen>
+    <dimen name="dialog_send_constraint_sat_margin_end">8dp</dimen>
+    <dimen name="dialog_send_constraint_sat_margin_top">2dp</dimen>
+    <dimen name="dialog_send_constraint_sat_width">180dp</dimen>
+    <dimen name="dialog_send_constraint_sat_height">40dp</dimen>
+    <dimen name="dialog_send_sat_margin_start">16dp</dimen>
+    <dimen name="dialog_send_sat_margin_end">10dp</dimen>
+    <dimen name="dialog_send_unconfirmed_width">194dp</dimen>
+    <dimen name="dialog_send_unconfirmed_start">24dp</dimen>
+    <dimen name="dialog_send_unconfirmed_top">8dp</dimen>
+    <dimen name="dialog_send_fa_margin_start">24dp</dimen>
+    <dimen name="dialog_send_fa_margin_top">16dp</dimen>
+    <dimen name="dialog_send_deliver_line_margin_top">16dp</dimen>
+    <dimen name="dialog_send_deliver_line_width">296dp</dimen>
+    <dimen name="dialog_send_deliver_line_height">1dp</dimen>
+    <dimen name="dialog_send_btn_margin_top">12dp</dimen>
+    <dimen name="dialog_send_btc_logo_margin_top">16dp</dimen>
+    <dimen name="dialog_send_btc_logo_margin_start">8dp</dimen>
+    <dimen name="dialog_send_btc_logo_margin_bottom">10dp</dimen>
+    <dimen name="dialog_send_btc_title_margin_start">6dp</dimen>
+    <dimen name="dialog_send_btc_down_result_margin_bottom">10dp</dimen>
+    <dimen name="dialog_send_btc_down_result_margin_start">6dp</dimen>
+
+
+
 </resources>
