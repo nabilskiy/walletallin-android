@@ -181,7 +181,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.example.moneybee.ui.widgets.inputField.InputFieldComponent
+        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/ifc2FA"
             app:ifc_header="2FA"
             android:layout_width="276dp"
