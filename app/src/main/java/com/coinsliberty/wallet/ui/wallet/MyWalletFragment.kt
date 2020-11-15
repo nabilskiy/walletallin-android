@@ -20,6 +20,12 @@ import com.coinsliberty.wallet.ui.wallet.data.WalletContent
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
+import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.android.synthetic.main.fragment_transaction.ivTransactionLeftIcon
+import kotlinx.android.synthetic.main.fragment_transaction.tvBalanceCrypto
+import kotlinx.android.synthetic.main.fragment_transaction.tvBalanceFiat
+import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceCrypto
+import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceFiat
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MyWalletFragment : BaseKotlinFragment() {
@@ -40,22 +46,26 @@ class MyWalletFragment : BaseKotlinFragment() {
             subscribeLiveData()
             rvWallet.adapter = adapter
 
-        walletToolbarSendButton.setOnClickListener {
-            if(sendDialog == null) {
-                sendDialog = SendDialog.newInstance("Sent eth", viewModel.rates ?: 0.0, viewModel.balanceData?.btc ?: 0.0)
-            }
+        ivTransactionLeftIcon.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
-            sendDialog
-                ?.apply {
-                    initListeners { result, text ->
-                        showResult(result, text)
-                    }
-                }
-                ?.show(childFragmentManager, SendDialog.TAG)
-        }
-        walletToolbarRecieveButton.setOnClickListener {
-            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
-        }
+//        walletToolbarSendButton.setOnClickListener {
+//            if(sendDialog == null) {
+//                sendDialog = SendDialog.newInstance("Sent eth", viewModel.rates ?: 0.0, viewModel.balanceData?.btc ?: 0.0)
+//            }
+//
+//            sendDialog
+//                ?.apply {
+//                    initListeners { result, text ->
+//                        showResult(result, text)
+//                    }
+//                }
+//                ?.show(childFragmentManager, SendDialog.TAG)
+//        }
+//        walletToolbarRecieveButton.setOnClickListener {
+//            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
+//        }
         viewModel.walletList()
     }
 
@@ -93,14 +103,14 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance : BalanceInfoContent){
-        tvTotalBalanceCrypto.text = String.format("%.4f",balance.btc ?: 0.0)
-        tvTotalBalanceFiat.text = String.format("%.4f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+        tvTotalBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvTotalBalanceFiat.text = String.format("%.2f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
 
     }
 
     private fun initAvailableBalance(balance : AvailableBalanceInfoContent){
-        tvAvailableCrypto.text = String.format("%.4f",balance.btc ?: 0.0)
-        tvAvailableFiat.text = String.format("%.4f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+        tvBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
+        tvBalanceFiat.text = String.format("%.2f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

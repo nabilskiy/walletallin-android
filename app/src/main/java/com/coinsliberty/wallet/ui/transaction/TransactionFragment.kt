@@ -6,9 +6,10 @@ import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
 import com.coinsliberty.wallet.base.BaseKotlinFragment
+import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionItem
-import com.coinsliberty.wallet.dialogs.*
-import com.coinsliberty.wallet.dialogs.qrCode.QrCodeDialog
+import com.coinsliberty.wallet.dialogs.AcceptDialog
+import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.SendDialog
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
@@ -18,7 +19,7 @@ import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val keyBundleBalance = "balance"
 private const val keyBundleWallet = "wallet"
@@ -48,25 +49,26 @@ class TransactionFragment : BaseKotlinFragment() {
         balanceData = arguments?.getDouble(keyBundleBalance) ?: 0.0
         wallet = arguments?.getInt(keyBundleWallet)
 
-        //ivTransactionLogo.setImageResource(wallet ?: 0)
-        //tvTransactionTitle.text = "$balanceData BTC"
-        //tvTransactionTotalBalance.text = "= " + (balanceData * rates).toString() + " $"
+        ivTransactionLeftIcon.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
-        transactionSendButton.setOnClickListener {
-            if(sendDialog == null) {
-                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
-            }
-            sendDialog
-                ?.apply {
-                    initListeners { result, text ->
-                        showResult(result, text)
-                    }
-                }
-                ?.show(childFragmentManager, SendDialog.TAG)
-        }
-        transactionRecieveButton.setOnClickListener {
-            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
-        }
+
+//        transactionSendButton.setOnClickListener {
+//            if(sendDialog == null) {
+//                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
+//            }
+//            sendDialog
+//                ?.apply {
+//                    initListeners { result, text ->
+//                        showResult(result, text)
+//                    }
+//                }
+//                ?.show(childFragmentManager, SendDialog.TAG)
+//        }
+//        transactionRecieveButton.setOnClickListener {
+//            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
+//        }
         subscribeLiveData()
 
         viewModel.getTransaction()
@@ -76,11 +78,11 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
-        bindDataTo(viewModel.availableBalanceLiveData, :: initAvailableBalance)
+        bindDataTo(viewModel.balanceLiveData, ::initBalance)
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
-        if(list.isNullOrEmpty()) {
+        if (list.isNullOrEmpty()) {
             ivNoTransaction.visible()
             tvNoTransaction.visible()
             return
@@ -92,13 +94,16 @@ class TransactionFragment : BaseKotlinFragment() {
         adapter.itemsAdded(getTransactions(list))
     }
 
-    private fun initAvailableBalance(balance : Double){
-        tvBalanceCrypto.text = String.format("%.8f",balance)
-        tvBalanceFiat.text = (balance * rates).toString()
+    private fun initBalance(balance: BalanceInfoResponse) {
+        tvBalanceCrypto.text = String.format("%.8f", balance.availableBalances?.btc)
+        tvBalanceFiat.text = String.format("%.2f",balance.availableBalances?.btc?.times(rates))
+
+        tvTotalBalanceCrypto.text = String.format("%.8f", balance.balances?.btc)
+        tvTotalBalanceFiat.text = String.format("%.2f",balance.balances?.btc?.times(rates))
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
-        if(list.isNullOrEmpty()) return emptyList()
+        if (list.isNullOrEmpty()) return emptyList()
         val resultList = ArrayList<Any>()
         var data: Long? = null
         list.forEach {
@@ -106,22 +111,25 @@ class TransactionFragment : BaseKotlinFragment() {
                 resultList.add(it.time ?: 0)
                 data = it.time
             }
-            resultList.add(it.apply { it.amountUsd = String.format("%.2f",(it.amount?.toDouble() ?: 0.0) * (rates)) })
+            resultList.add(it.apply {
+                it.amountUsd = String.format("%.2f", (it.amount?.toDouble() ?: 0.0) * (rates))
+            })
         }
         return resultList
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {
-        if(it) {
+        if (it) {
             sendDialog?.dismiss()
-            AcceptDialog.newInstance(balance ?: "", "Success").show(childFragmentManager, AcceptDialog.TAG)
+            AcceptDialog.newInstance(balance ?: "", "Success")
+                .show(childFragmentManager, AcceptDialog.TAG)
         } else {
             ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
         }
     }
 
     companion object {
-        val TAG: String = TransactionFragment::class.java.name
+        val TAG: String = com.coinsliberty.wallet.ui.transaction.TransactionFragment::class.java.name
         fun getBundle(rates: Double?, balance: Double?, wallet: Int?): Bundle {
             val bundle = bundleOf(
                 keyBundleRates to rates,

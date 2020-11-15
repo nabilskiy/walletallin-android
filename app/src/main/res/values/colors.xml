@@ -23,7 +23,9 @@
     <color name="darkGreyLowOpacity">#B3474954</color>
     <color name="lightBlueLowOpacity">#B340DBFB</color>
     <color name="red">#FF2507</color>
-    
+    <color name="blackLowOpacity">#1A000000</color>
+    <color name="whiteLowOpacity">#33FFFFFF</color>
+
     <!-- Wallet background color -->
     <color name="lightOrange">#EFDECC</color>
     <color name="lightPurple">#D4DCF4</color>

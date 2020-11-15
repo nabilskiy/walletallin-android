@@ -26,85 +26,19 @@
 
         <ImageView
             android:id="@+id/ivTransactionLeftIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/toolbar_wallet_icon_back_size"
+            android:layout_height="@dimen/toolbar_wallet_icon_back_size"
             android:layout_marginStart="@dimen/transaction_left_icon_margin_start"
             android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
             android:background="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/transactionSendButton"
-            android:layout_width="@dimen/transaction_button_width"
-            android:layout_height="@dimen/transaction_button_height"
-            android:layout_marginStart="@dimen/transaction_button_margin_start"
-            android:layout_marginTop="152dp"
-            android:background="@drawable/btn_green"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTransactionSend"
-            style="@style/H9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/transaction_button_text_margin_start"
-            android:text="@string/transaction_send"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
-            app:layout_constraintStart_toEndOf="@id/ivTransactionSendIcon"
-            app:layout_constraintTop_toTopOf="@id/transactionSendButton" />
-
-        <ImageView
-            android:id="@+id/ivTransactionSendIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/transaction_button_image_margin_start"
-            android:background="@drawable/ic_arrow_up"
-            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
-            app:layout_constraintStart_toStartOf="@id/transactionSendButton"
-            app:layout_constraintTop_toTopOf="@id/transactionSendButton" />
-
-        <View
-            android:id="@+id/transactionRecieveButton"
-            android:layout_width="@dimen/transaction_button_width"
-            android:layout_height="@dimen/transaction_button_height"
-            android:layout_marginEnd="@dimen/transaction_button_margin_end"
-            android:layout_marginBottom="@dimen/transaction_button_margin_bottom"
-            android:background="@drawable/btn_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/transactionSendButton" />
-
-        <TextView
-            android:id="@+id/tvTransactionRecieve"
-            style="@style/H9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/transaction_button_text_margin_start"
-            android:text="@string/transaction_receive"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/transactionRecieveButton"
-            app:layout_constraintStart_toEndOf="@id/ivTransactionReceiveIcon"
-            app:layout_constraintTop_toTopOf="@id/transactionRecieveButton" />
-
-        <ImageView
-            android:id="@+id/ivTransactionReceiveIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/transaction_button_image_margin_start"
-            android:background="@drawable/ic_arrow_down"
-            app:layout_constraintBottom_toBottomOf="@id/transactionSendButton"
-            app:layout_constraintStart_toStartOf="@id/transactionRecieveButton"
-            app:layout_constraintTop_toTopOf="@id/transactionRecieveButton" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="@dimen/toolbar_cl2_margi_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -122,10 +56,10 @@
 
             <ImageView
                 android:id="@+id/imWallet"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="4dp"
+                android:layout_width="@dimen/toolbar_iv_wallet_size"
+                android:layout_height="@dimen/toolbar_iv_wallet_size"
+                android:layout_marginTop="@dimen/toolbar_iv_wallet_margin_top"
+                android:layout_marginEnd="@dimen/toolbar_iv_wallet_margin_end"
                 app:layout_constraintEnd_toStartOf="@+id/tvAvBalance"
                 app:layout_constraintTop_toTopOf="@+id/tvAvBalance"
                 app:srcCompat="@drawable/ic_wallet_disactive" />
@@ -135,7 +69,7 @@
             android:id="@+id/constraintLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/toolbar_cl3_margin_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -157,8 +91,8 @@
                 style="@style/H4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/toolbar_tv_name_crypto_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_name_crypto_margin_top"
                 android:text="BTC"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/tvBalanceCrypto"
@@ -166,6 +100,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -188,11 +123,143 @@
                 style="@style/H11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginStart="@dimen/toolbar_tv_name_fiat_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_name_fiat_margin_top"
                 android:text="USD"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/tvBalanceFiat"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTotalBalance"
+            android:layout_width="@dimen/toolbar_cl_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/toolbar_cl_margin"
+            android:background="@drawable/bg_low_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+            <TextView
+                android:id="@+id/tvTotalBalance"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_total_balance_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:layout_marginBottom="@dimen/toolbar_tv_total_balance_margin_bottom"
+                android:text="Total Balance"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceCrypto"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:ellipsize="middle"
+                android:maxEms="4"
+                android:singleLine="true"
+                android:text="4.8729129444444"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalance"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceNameCrypto"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="BTC"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceCrypto"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceCrypto" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/toolbar_v_line_width"
+                android:layout_height="@dimen/toolbar_v_line_height"
+                android:layout_marginStart="@dimen/toolbar_v_line_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:background="@color/whiteLowOpacity"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceNameCrypto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiat"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_bal_fiat_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:ellipsize="end"
+                android:maxEms="3"
+
+                android:singleLine="true"
+                android:text="9999.19,34"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiatName"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="USD"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceFiat"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceFiat" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnMakeTransfer"
+            android:layout_width="@dimen/toolbar_cl_width"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/toolbar_cl_margin_top"
+            android:layout_marginBottom="@dimen/toolbar_cl_margin"
+            android:background="@drawable/btn_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clTotalBalance">
+
+            <ImageView
+                android:id="@+id/ivExchange"
+                android:layout_width="@dimen/ab_icon_size"
+                android:layout_height="@dimen/ab_icon_size"
+                android:layout_marginStart="@dimen/toolbar_iv_exchange_margin_start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_exchange_active" />
+
+            <TextView
+                android:id="@+id/tvMakeTransfer"
+                style="@style/H7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_exchange_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_exchange_margin_start"
+                android:layout_marginBottom="@dimen/toolbar_tv_exchange_margin_bottom"
+                android:text="Make Transfer"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivExchange"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

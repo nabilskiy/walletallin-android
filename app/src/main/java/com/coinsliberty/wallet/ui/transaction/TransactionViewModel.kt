@@ -20,7 +20,7 @@ class TransactionViewModel(
 
 
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
-    val availableBalanceLiveData: MutableLiveData<Double> = MutableLiveData()
+    val balanceLiveData: MutableLiveData<BalanceInfoResponse> = MutableLiveData()
 
     fun getTransaction() {
         launch(::onErrorHandler) {
@@ -47,6 +47,6 @@ class TransactionViewModel(
     }
 
     private fun handleBalanceResponse(balance: BalanceInfoResponse) {
-        availableBalanceLiveData.postValue(balance.availableBalances?.btc)
+        balanceLiveData.postValue(balance)
     }
 }
