@@ -1,26 +1,25 @@
-package com.example.coinsliberty.ui.transaction
+package com.coinsliberty.wallet.ui.transaction
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
-import com.example.coinsliberty.R
-import com.example.coinsliberty.base.BaseAdapter
-import com.example.coinsliberty.base.BaseKotlinFragment
-import com.example.coinsliberty.data.response.BalanceInfoResponse
-import com.example.coinsliberty.data.response.TransactionItem
-import com.example.coinsliberty.dialogs.*
-import com.example.coinsliberty.dialogs.qrCode.QrCodeDialog
-import com.example.coinsliberty.dialogs.sendDialog.SendDialog
-import com.example.coinsliberty.ui.wallet.adapters.TransactionDataHolder
-import com.example.coinsliberty.ui.wallet.adapters.TransactionHolder
-import com.example.coinsliberty.ui.wallet.adapters.TransactionTitleHolder
-import com.example.coinsliberty.utils.extensions.bindDataTo
-import com.example.coinsliberty.utils.extensions.gone
-import com.example.coinsliberty.utils.extensions.visible
-import com.example.coinsliberty.utils.isDifferrentDate
+import com.coinsliberty.wallet.R
+import com.coinsliberty.wallet.base.BaseAdapter
+import com.coinsliberty.wallet.base.BaseKotlinFragment
+import com.coinsliberty.wallet.data.response.BalanceInfoResponse
+import com.coinsliberty.wallet.data.response.TransactionItem
+import com.coinsliberty.wallet.dialogs.AcceptDialog
+import com.coinsliberty.wallet.dialogs.ErrorDialog
+import com.coinsliberty.wallet.dialogs.sendDialog.SendDialog
+import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
+import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
+import com.coinsliberty.wallet.ui.wallet.adapters.TransactionTitleHolder
+import com.coinsliberty.wallet.utils.extensions.bindDataTo
+import com.coinsliberty.wallet.utils.extensions.gone
+import com.coinsliberty.wallet.utils.extensions.visible
+import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val keyBundleBalance = "balance"
 private const val keyBundleWallet = "wallet"
@@ -130,7 +129,7 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     companion object {
-        val TAG: String = TransactionFragment::class.java.name
+        val TAG: String = com.coinsliberty.wallet.ui.transaction.TransactionFragment::class.java.name
         fun getBundle(rates: Double?, balance: Double?, wallet: Int?): Bundle {
             val bundle = bundleOf(
                 keyBundleRates to rates,
