@@ -58,8 +58,9 @@ class SendDialog : BaseKotlinDialogFragment() {
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
-        tvAmountCripto.setText(bundle.toString())
-        tvAmountFiat.text = result.toString()
+        tvAmountCripto.setText(String.format("%.8f", bundle))
+        tvAmountFiat.text = String.format("%.2f", result)
+
 
         tvAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
@@ -78,7 +79,7 @@ class SendDialog : BaseKotlinDialogFragment() {
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
-            viewModel.sendBtc("btc", tvAmountCripto.text.toString(), tvLink.text.toString(), ifc2FA.getMyText())
+            viewModel.sendBtc("btc", tvAmountCripto.text.toString(), tvLink.text.toString(), etCL2FA.text)
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
         subscribeLiveData()
