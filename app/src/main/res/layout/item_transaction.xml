@@ -118,26 +118,44 @@
             app:layout_constraintBottom_toBottomOf="@+id/tvOpenWalletAddress"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <TextView
-            android:id="@+id/tvOpenBlockchainList"
+        <LinearLayout
+            android:id="@+id/llOpenBlockchainList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvOpenWalletAddress"
             app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
-            app:layout_constraintEnd_toStartOf="@id/ivOpenBlockchainCopy"
-            android:text="Blockchain Link:   https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
-            android:textAppearance="@style/H11"
-            android:layout_marginStart="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            app:layout_constraintEnd_toStartOf="@id/ivOpenBlockchainCopy">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blockchain Link: "
+                android:textAppearance="@style/H11"
+                android:layout_marginStart="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+            <TextView
+                android:id="@+id/tvOpenBlockchainList"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
+                android:textAppearance="@style/H11"
+                android:layout_marginStart="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+
+        </LinearLayout>
+
+
 
         <ImageView
             android:id="@+id/ivOpenBlockchainCopy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_copy"
-            app:layout_constraintTop_toTopOf="@id/tvOpenBlockchainList"
-            app:layout_constraintBottom_toBottomOf="@+id/tvOpenBlockchainList"
+            app:layout_constraintTop_toTopOf="@id/llOpenBlockchainList"
+            app:layout_constraintBottom_toBottomOf="@+id/llOpenBlockchainList"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView

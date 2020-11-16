@@ -5,6 +5,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -59,6 +61,10 @@ class TransactionHolder() : Holder<TransactionItem>() {
         itemView.tvOpenType.text = if(item.category != "send") "Deposite" else "Withrawal"
         itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + " $"
         itemView.tvOpenWalletAddress.text = "Wallet Address: " + item.address
+
+        itemView.tvOpenBlockchainList.isClickable = true;
+        itemView.tvOpenBlockchainList.movementMethod = LinkMovementMethod.getInstance()
+        itemView.tvOpenBlockchainList.text = Html.fromHtml("<a href='https://www.blockchain.com/btc/tx/${item.txid}'>" + item.txid + "</a>")
         itemView.clFull.setOnClickListener {
             itemView.clFull.gone()
             itemView.clSample.visible()
@@ -66,16 +72,9 @@ class TransactionHolder() : Holder<TransactionItem>() {
         itemView.clSample.setOnClickListener {
             itemView.clSample.gone()
             itemView.clFull.visible()
-            try{
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.blockchain.com/btc/tx"))
-                browserIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                itemView.rootView.context.startActivity(browserIntent)
-            } catch (error: Error){
-                Log.e("!!", error.toString())
-            }
-
         }
-        itemView.tvOpenWalletAddress.setOnClickListener { copyLink(itemView.rootView.context, item.address ?: "") }
+
+        itemView.ivOpenBlockchainCopy.setOnClickListener { copyLink(itemView.rootView.context, "https://www.blockchain.com/btc/tx/${item.txid}") }
     }
 
     private fun copyLink(context: Context, copyText: String) {
