@@ -54,18 +54,18 @@ class TransactionFragment : BaseKotlinFragment() {
         }
 
 
-//        transactionSendButton.setOnClickListener {
-//            if(sendDialog == null) {
-//                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
-//            }
-//            sendDialog
-//                ?.apply {
-//                    initListeners { result, text ->
-//                        showResult(result, text)
-//                    }
-//                }
-//                ?.show(childFragmentManager, SendDialog.TAG)
-//        }
+        btnMakeTransfer.setOnClickListener {
+            if(sendDialog == null) {
+                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
+            }
+            sendDialog
+                ?.apply {
+                    initListeners { result, text ->
+                        showResult(result, text)
+                    }
+                }
+                ?.show(childFragmentManager, SendDialog.TAG)
+        }
 //        transactionRecieveButton.setOnClickListener {
 //            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
 //        }
