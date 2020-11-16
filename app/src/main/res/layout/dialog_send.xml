@@ -274,17 +274,24 @@
             android:layout_marginTop="@dimen/dialog_send_constraint_spinner_margin_top"
             android:background="@drawable/bg_item_dialog_send"
             >
-            <Spinner
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/network_fees"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/dialog_send_spinner_margin_top"
-                android:layout_marginBottom="@dimen/dialog_send_spinner_margin_bottom"
-                android:layout_marginStart="@dimen/dialog_send_spinner_margin_start"
-                />
+                android:text="Standart"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/darkGrey"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_drop_down"
+                android:layout_marginEnd="12dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
