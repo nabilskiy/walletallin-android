@@ -106,4 +106,10 @@
     <string name="fa_code">2FA Code</string>
     <string name="btc_down_result">BTC 0.75894509</string>
 
+    <!--  Dialog Exchange Soon  -->
+    <string name="exchange_soon">Exchange Coming Soon</string>
+    <string name="exchange_soon_description">Stay tuned! We’ll let you know once exchange will released in our app.</string>
+    <string name="back_to_wallet">Back to Wallet</string>
+
+
 </resources>
