@@ -87,5 +87,10 @@
             app:destination="@id/profileFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/pinFragment"
+        tools:layout="@layout/fragment_pin"
+        android:name="com.coinsliberty.wallet.ui.pin.PinFragment"
+        android:label="PinFragment" />
 
 </navigation>
