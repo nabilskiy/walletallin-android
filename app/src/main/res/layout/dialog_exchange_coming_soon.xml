@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog">
+
+    <ImageView
+        android:id="@+id/ivDialogEchangeClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/exchange_close_margin_top"
+        android:layout_marginEnd="@dimen/exchange_close_margin_end"
+        />
+
+    <ImageView
+        android:id="@+id/ivExchangeSoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_exchange_soon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/exchange_soon_image_margin_top"
+        />
+
+    <TextView
+        android:id="@+id/tvExchangeSoon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exchange_soon"
+        android:textAppearance="@style/H2"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintTop_toBottomOf="@id/ivExchangeSoon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/exchange_soon_title_margin_top"
+        />
+
+    <TextView
+        android:id="@+id/tvExchangeSoonDescription"
+        android:layout_width="@dimen/exchange_soon_description_width"
+        android:layout_height="wrap_content"
+        android:text="@string/exchange_soon_description"
+        android:textAppearance="@style/H8"
+        android:textColor="@color/grey"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvExchangeSoon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/exchange_soon_description_margin_top"
+        android:layout_marginStart="@dimen/exchange_soon_description_margin_start"
+        android:layout_marginEnd="@dimen/exchange_soon_description_margin_end"
+        />
+
+    <Button
+        android:id="@+id/buttonExchangeClose"
+        android:layout_width="@dimen/exchange_soon_button_width"
+        android:layout_height="@dimen/exchange_soon_button_height"
+        android:background="@drawable/btn_grey_border"
+        android:layout_marginStart="@dimen/exchange_soon_button_margin_start"
+        android:layout_marginEnd="@dimen/exchange_soon_button_margin_end"
+        android:text="@string/back_to_wallet"
+        style="@style/H5"
+        android:textColor="@color/lightBlueLowOpacity"
+        app:layout_constraintTop_toBottomOf="@id/tvExchangeSoonDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/exchange_soon_button_margin_top"
+        android:layout_marginBottom="@dimen/exchange_soon_button_margin_bottom"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
