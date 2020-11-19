@@ -98,10 +98,10 @@
 
     <!-- Toolbar-->
     <dimen name="toolbar_view_margin_bottom">12dp</dimen>
-    <dimen name="toolbar_icon_left_margin_top">30dp</dimen>
-    <dimen name="toolbar_icon_left_margin_start">22dp</dimen>
-    <dimen name="toolbar_icon_right_margin_top">30dp</dimen>
-    <dimen name="toolbar_icon_right_margin_end">22dp</dimen>
+    <dimen name="toolbar_icon_left_margin_top">22dp</dimen>
+    <dimen name="toolbar_icon_left_margin_start">14dp</dimen>
+    <dimen name="toolbar_icon_right_margin_top">22dp</dimen>
+    <dimen name="toolbar_icon_right_margin_end">14dp</dimen>
     <dimen name="toolbar_title_margin_top">30dp</dimen>
     <dimen name="toolbar_linerlayout_margin_top">12dp</dimen>
     <dimen name="toolbar_logo_margin">2dp</dimen>
@@ -111,7 +111,7 @@
     <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
 
     <!--  Wallet Toolbar -->
-    <dimen name="toolbar_wallet_icon_back_size">30dp</dimen>
+    <dimen name="toolbar_wallet_icon_back_size">38dp</dimen>
     <dimen name="toolbar_cl2_margi_top">48dp</dimen>
     <dimen name="toolbar_cl3_margin_top">6dp</dimen>
     <dimen name="toolbar_cl_width">312dp</dimen>
@@ -127,7 +127,7 @@
     <dimen name="toolbar_tv_total_balance_margin_start">16dp</dimen>
     <dimen name="toolbar_tv_total_balance_margin_top">12dp</dimen>
     <dimen name="toolbar_tv_total_balance_margin_bottom">12dp</dimen>
-    <dimen name="toolbar_tv_name_total">2dp</dimen>
+    <dimen name="toolbar_tv_name_total">8dp</dimen>
     <dimen name="toolbar_v_line_width">1dp</dimen>
     <dimen name="toolbar_v_line_height">24dp</dimen>
     <dimen name="toolbar_v_line_margin_start">6dp</dimen>
@@ -257,8 +257,8 @@
     <dimen name="transaction_title_margin_top">12dp</dimen>
     <dimen name="transaction_right_icon_margin_top">28dp</dimen>
     <dimen name="transaction_right_icon_margin_end">10dp</dimen>
-    <dimen name="transaction_left_icon_margin_top">28dp</dimen>
-    <dimen name="transaction_left_icon_margin_start">10dp</dimen>
+    <dimen name="transaction_left_icon_margin_top">22dp</dimen>
+    <dimen name="transaction_left_icon_margin_start">4dp</dimen>
     <dimen name="transaction_button_width">136dp</dimen>
     <dimen name="transaction_button_height">40dp</dimen>
     <dimen name="transaction_button_margin_end">40dp</dimen>

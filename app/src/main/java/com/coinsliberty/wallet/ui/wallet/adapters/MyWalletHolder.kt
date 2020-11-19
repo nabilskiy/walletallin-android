@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -31,6 +33,8 @@ import kotlinx.android.synthetic.main.item_wallet.view.*
         itemView.tvItemWalletTitle.text = item.title
         itemView.tvItemWalletType.text = item.type
         if (item.price == null || item.result == null){
+            itemView.tvItemWalletPrice.setTypeface(itemView.tvItemWalletPrice.typeface, Typeface.BOLD_ITALIC)
+            itemView.tvItemWalletPrice.setTextColor(itemView.context.resources.getColor(R.color.grey))
             itemView.tvItemWalletPrice.text = "Coming Soon"
         } else {
             itemView.tvItemWalletPrice.text = item.price

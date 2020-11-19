@@ -16,6 +16,7 @@ class ParamsInterceptor(val securePreferenceHelper: SharedPreferencesProvider) :
             header("Content-Type", "application/json")
 //            header("Content-Length", "68")
             header("Date", Date().toString())
+            header("User-Agent", "coinsliberty-app")
             header("Connection", "keep-alive")
             header("X-Powered-By", "Express")
             header("Vary", "Origin")
