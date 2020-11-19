@@ -10,7 +10,7 @@ import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
-import com.coinsliberty.wallet.dialogs.sendDialog.SendDialog
+import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionDialog
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionTitleHolder
@@ -20,6 +20,7 @@ import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 private const val keyBundleBalance = "balance"
 private const val keyBundleWallet = "wallet"
@@ -31,7 +32,7 @@ class TransactionFragment : BaseKotlinFragment() {
     override val viewModel: TransactionViewModel by viewModel()
     override val navigator: TransactionNavigation = TransactionNavigation()
 
-    private var sendDialog: SendDialog? = null
+    private var makeTransactionDialog: MakeTransactionDialog? = null
 
     private var rates: Double = 0.0
     private var balanceData: Double = 0.0
@@ -45,6 +46,28 @@ class TransactionFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btnMakeTransfer.setOnClickListener {
+
+            if (makeTransactionDialog == null) {
+                makeTransactionDialog =
+                    MakeTransactionDialog.newInstance(
+                        "BTC",
+                        rates ?: 0.0,
+                        balanceData ?: 0.0,
+                        null,
+                        "17325782351905019asdofjkas",
+                        "ss"
+                    )
+            }
+            makeTransactionDialog?.apply {
+                initListeners { result, text ->
+                    showResult(result, text)
+                }
+            }
+                ?.show(childFragmentManager, MakeTransactionDialog.TAG)
+        }
+
+
         rates = arguments?.getDouble(keyBundleRates) ?: 0.0
         balanceData = arguments?.getDouble(keyBundleBalance) ?: 0.0
         wallet = arguments?.getInt(keyBundleWallet)
@@ -53,22 +76,6 @@ class TransactionFragment : BaseKotlinFragment() {
             activity?.onBackPressed()
         }
 
-
-        btnMakeTransfer.setOnClickListener {
-            if(sendDialog == null) {
-                sendDialog = SendDialog.newInstance("Sent btc", rates ?: 0.0, balanceData ?: 0.0)
-            }
-            sendDialog
-                ?.apply {
-                    initListeners { result, text ->
-                        showResult(result, text)
-                    }
-                }
-                ?.show(childFragmentManager, SendDialog.TAG)
-        }
-//        transactionRecieveButton.setOnClickListener {
-//            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
-//        }
         subscribeLiveData()
 
         viewModel.getTransaction()
@@ -96,10 +103,10 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun initBalance(balance: BalanceInfoResponse) {
         tvBalanceCrypto.text = String.format("%.8f", balance.availableBalances?.btc)
-        tvBalanceFiat.text = String.format("%.2f",balance.availableBalances?.btc?.times(rates))
+        tvBalanceFiat.text = String.format("%.2f", balance.availableBalances?.btc?.times(rates))
 
         tvTotalBalanceCrypto.text = String.format("%.8f", balance.balances?.btc)
-        tvTotalBalanceFiat.text = String.format("%.2f",balance.balances?.btc?.times(rates))
+        tvTotalBalanceFiat.text = String.format("%.2f", balance.balances?.btc?.times(rates))
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
@@ -120,7 +127,7 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun showResult(it: Boolean, balance: String? = null) {
         if (it) {
-            sendDialog?.dismiss()
+            makeTransactionDialog?.dismiss()
             AcceptDialog.newInstance(balance ?: "", "Success")
                 .show(childFragmentManager, AcceptDialog.TAG)
         } else {
@@ -129,7 +136,9 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     companion object {
-        val TAG: String = com.coinsliberty.wallet.ui.transaction.TransactionFragment::class.java.name
+        val TAG: String =
+            com.coinsliberty.wallet.ui.transaction.TransactionFragment::class.java.name
+
         fun getBundle(rates: Double?, balance: Double?, wallet: Int?): Bundle {
             val bundle = bundleOf(
                 keyBundleRates to rates,

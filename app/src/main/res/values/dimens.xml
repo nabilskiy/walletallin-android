@@ -352,5 +352,9 @@
     <dimen name="dialog_send_btc_down_result_margin_start">6dp</dimen>
 
 
+    <!--    Dialog Make Transaction-->
+    <dimen name="dialog_make_cl_transaction_margin_start_end">32dp</dimen>
+    <dimen name="dialog_make_transaction_tv_margin_start_end">48dp</dimen>
+
 
 </resources>
