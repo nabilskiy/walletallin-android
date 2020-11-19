@@ -67,6 +67,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private var login: String? = null
     private var data: EditProfileRequest? = null
 
+    override fun getTheme(): Int = R.style.SendDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
