@@ -98,10 +98,10 @@
 
     <!-- Toolbar-->
     <dimen name="toolbar_view_margin_bottom">12dp</dimen>
-    <dimen name="toolbar_icon_left_margin_top">30dp</dimen>
-    <dimen name="toolbar_icon_left_margin_start">22dp</dimen>
-    <dimen name="toolbar_icon_right_margin_top">30dp</dimen>
-    <dimen name="toolbar_icon_right_margin_end">22dp</dimen>
+    <dimen name="toolbar_icon_left_margin_top">22dp</dimen>
+    <dimen name="toolbar_icon_left_margin_start">14dp</dimen>
+    <dimen name="toolbar_icon_right_margin_top">22dp</dimen>
+    <dimen name="toolbar_icon_right_margin_end">14dp</dimen>
     <dimen name="toolbar_title_margin_top">30dp</dimen>
     <dimen name="toolbar_linerlayout_margin_top">12dp</dimen>
     <dimen name="toolbar_logo_margin">2dp</dimen>
@@ -111,7 +111,7 @@
     <dimen name="toolbar_add_photo_margin_bottom">8dp</dimen>
 
     <!--  Wallet Toolbar -->
-    <dimen name="toolbar_wallet_icon_back_size">30dp</dimen>
+    <dimen name="toolbar_wallet_icon_back_size">38dp</dimen>
     <dimen name="toolbar_cl2_margi_top">48dp</dimen>
     <dimen name="toolbar_cl3_margin_top">6dp</dimen>
     <dimen name="toolbar_cl_width">312dp</dimen>
@@ -127,7 +127,7 @@
     <dimen name="toolbar_tv_total_balance_margin_start">16dp</dimen>
     <dimen name="toolbar_tv_total_balance_margin_top">12dp</dimen>
     <dimen name="toolbar_tv_total_balance_margin_bottom">12dp</dimen>
-    <dimen name="toolbar_tv_name_total">2dp</dimen>
+    <dimen name="toolbar_tv_name_total">8dp</dimen>
     <dimen name="toolbar_v_line_width">1dp</dimen>
     <dimen name="toolbar_v_line_height">24dp</dimen>
     <dimen name="toolbar_v_line_margin_start">6dp</dimen>
@@ -257,8 +257,8 @@
     <dimen name="transaction_title_margin_top">12dp</dimen>
     <dimen name="transaction_right_icon_margin_top">28dp</dimen>
     <dimen name="transaction_right_icon_margin_end">10dp</dimen>
-    <dimen name="transaction_left_icon_margin_top">28dp</dimen>
-    <dimen name="transaction_left_icon_margin_start">10dp</dimen>
+    <dimen name="transaction_left_icon_margin_top">22dp</dimen>
+    <dimen name="transaction_left_icon_margin_start">4dp</dimen>
     <dimen name="transaction_button_width">136dp</dimen>
     <dimen name="transaction_button_height">40dp</dimen>
     <dimen name="transaction_button_margin_end">40dp</dimen>
@@ -351,6 +351,41 @@
     <dimen name="dialog_send_btc_down_result_margin_bottom">10dp</dimen>
     <dimen name="dialog_send_btc_down_result_margin_start">6dp</dimen>
 
+    <!--  Dialog Exchange Soon   -->
+    <dimen name="exchange_close_margin_top">12dp</dimen>
+    <dimen name="exchange_close_margin_end">12dp</dimen>
+    <dimen name="exchange_soon_image_margin_top">24dp</dimen>
+    <dimen name="exchange_soon_title_margin_top">16dp</dimen>
+    <dimen name="exchange_soon_description_margin_top">8dp</dimen>
+    <dimen name="exchange_soon_description_margin_start">68dp</dimen>
+    <dimen name="exchange_soon_description_margin_end">68dp</dimen>
+    <dimen name="exchange_soon_description_width">214dp</dimen>
+    <dimen name="exchange_soon_button_margin_top">32dp</dimen>
+    <dimen name="exchange_soon_button_margin_bottom">16dp</dimen>
+    <dimen name="exchange_soon_button_margin_start">16dp</dimen>
+    <dimen name="exchange_soon_button_margin_end">16dp</dimen>
+    <dimen name="exchange_soon_button_height">40dp</dimen>
+    <dimen name="exchange_soon_button_width">312dp</dimen>
+    <!--    Pin Code -->
+    <dimen name="dialog_id_tv_tittle_margin_layout_bottom">14dp</dimen>
+    <dimen name="dialog_id_ico_size">56dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_start">136dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_top">68dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_end">136dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_bottom">80dp</dimen>
+    <dimen name="dialog_id_tv_scan_margin_layout_top">4dp</dimen>
+    <dimen name="dialog_id_tv_MPin_margin_layout_top">12dp</dimen>
+
+    <dimen name="item_id_little_size">15dp</dimen>
+    <dimen name="item_id_big_size">32dp</dimen>
+
+    <dimen name="fragment_pin_im_logo_margin_top">64dp</dimen>
+    <dimen name="fragment_pin_tv_enter_margin_top">64dp</dimen>
+    <dimen name="fragment_pin_cl_code_margin_top">16dp</dimen>
+    <dimen name="fragment_pin_cl_code_width">240dp</dimen>
+    <dimen name="fragment_pin_ll_height">64dp</dimen>
+    <dimen name="fragment_pin_iv_size">56dp</dimen>
+    <dimen name="fragment_pin_iv_margin_top">40dp</dimen>
 
     <!--    Dialog Make Transaction-->
     <dimen name="dialog_make_cl_transaction_margin_start_end">32dp</dimen>

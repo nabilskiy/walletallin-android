@@ -23,10 +23,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/ic_germany"
+        android:src="@drawable/ic_germany"
         android:layout_marginTop="@dimen/toolbar_icon_left_margin_top"
         android:layout_marginStart="@dimen/toolbar_icon_left_margin_start"
-        />
+        android:padding="8dp" />
 
     <ImageView
         android:id="@+id/ivToolbarRightIcon"
@@ -34,10 +34,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/ic_germany"
+        android:src="@drawable/ic_germany"
         android:layout_marginTop="@dimen/toolbar_icon_right_margin_top"
         android:layout_marginEnd="@dimen/toolbar_icon_right_margin_end"
-        />
+        android:padding="8dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvToolbarTitle"

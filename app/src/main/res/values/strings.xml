@@ -108,4 +108,19 @@
 
     <string name="close">Close</string>
 
+    <!--  Dialog Exchange Soon  -->
+    <string name="exchange_soon">Exchange Coming Soon</string>
+    <string name="exchange_soon_description">Stay tuned! We’ll let you know once exchange will released in our app.</string>
+    <string name="back_to_wallet">Back to Wallet</string>
+
+
+    <string name="use_your_fingerprint_to_enter">Use your fingerprint to enter</string>
+    <string name="use_your_face_ID_to_enter">Use your face ID to enter</string>
+    <string name="scan_your_face">scan your face</string>
+    <string name="scan_your_fingerprint">scan your fingerprint</string>
+    <string name="or_use_MPin">or use MPin</string>
+    <string name="enter_your_4_digit_PIN_code">Enter your 4 digit PIN code.</string>
+
+
+
 </resources>
