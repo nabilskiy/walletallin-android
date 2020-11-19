@@ -1,6 +1,7 @@
 package com.coinsliberty.wallet.dialogs.faceIdDialog
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.biometric.BiometricPrompt
 import com.coinsliberty.wallet.R
@@ -24,6 +25,13 @@ class FaceIdDialog : BaseKotlinDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val window = dialog!!.window
+
+        window!!.setGravity(Gravity.BOTTOM)
+        val params = window.attributes
+        params.y = 100
+        window.attributes = params
 
         icoId.setOnClickListener {
             BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
