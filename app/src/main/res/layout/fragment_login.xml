@@ -1,109 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <include
-        android:id="@+id/loginToolbar"
-        layout="@layout/toolbar"/>
-
-    <ImageView
-        android:id="@+id/ivLock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_lock"
-        app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/login_image_view_margin_top"
-        android:layout_marginStart="@dimen/login_image_view_margin_start"
-        />
-
-    <TextView
-        android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        app:layout_constraintStart_toEndOf="@+id/ivLock"
-        app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
-        android:layout_marginTop="@dimen/login_text_margin_top"
-        android:layout_marginStart="@dimen/login_text_margin_start"
-        android:textColor="@color/darkGrey"
-        style="@style/H1"
-        />
-
-    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/loginEmailInput"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:ifc_header="Email"
-        app:ifc_type="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/ivLock"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp" />
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/loginPasswordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ifc_header="Password"
-        app:ifc_type="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/loginEmailInput"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        />
+        <include
+            android:id="@+id/loginToolbar"
+            layout="@layout/toolbar"/>
 
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forgot_password"
-        android:textColor="@color/blue"
-        style="@style/H4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
-        android:layout_marginTop="@dimen/login_password_margin_top"
-        android:layout_marginEnd="@dimen/login_password_margin_end"
-        />
+        <ImageView
+            android:id="@+id/ivLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/login_image_view_margin_top"
+            android:layout_marginStart="@dimen/login_image_view_margin_start"
+            />
 
-    <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-        android:id="@+id/ifcCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ifc_header="2FA"
-        app:ifc_type="text"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            app:layout_constraintStart_toEndOf="@+id/ivLock"
+            app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
+            android:layout_marginTop="@dimen/login_text_margin_top"
+            android:layout_marginStart="@dimen/login_text_margin_start"
+            android:textColor="@color/darkGrey"
+            style="@style/H1"
+            />
 
-    <TextView
-        android:id="@+id/tvLoginSignUpButton"
-        style="@style/H4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/login_signup_margin_start"
-        android:text="@string/sign_up"
-        android:textColor="@color/blue"
-        app:layout_constraintBottom_toTopOf="@id/btnLoginUpdate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ifcCode"
-        app:layout_constraintVertical_bias="0.5" />
+        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            android:id="@+id/loginEmailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ifc_header="Email"
+            app:ifc_type="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/ivLock"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp" />
 
-    <Button
-        android:id="@+id/btnLoginUpdate"
-        android:layout_width="@dimen/login_update_button_width"
-        android:layout_height="@dimen/login_update_button_height"
-        android:layout_marginBottom="@dimen/login_update_button_margin_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/ButtonGreyBorder"
-        android:gravity="center"
-        android:text="@string/login"
-        android:textColor="@color/lightBlue"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            android:id="@+id/loginPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ifc_header="Password"
+            app:ifc_type="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/loginEmailInput"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            />
+
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:textColor="@color/blue"
+            style="@style/H4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
+            android:layout_marginTop="@dimen/login_password_margin_top"
+            android:layout_marginEnd="@dimen/login_password_margin_end"
+            />
+
+        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            android:id="@+id/ifcCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ifc_header="2FA"
+            app:ifc_type="text"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"/>
+
+        <TextView
+            android:id="@+id/tvLoginSignUpButton"
+            style="@style/H4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_signup_margin_start"
+            android:text="@string/sign_up"
+            android:textColor="@color/blue"
+            app:layout_constraintBottom_toTopOf="@id/btnLoginUpdate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ifcCode"
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginVertical="8dp"/>
+
+        <Button
+            android:id="@+id/btnLoginUpdate"
+            android:layout_width="@dimen/login_update_button_width"
+            android:layout_height="@dimen/login_update_button_height"
+            android:layout_marginBottom="@dimen/login_update_button_margin_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            style="@style/ButtonGreyBorder"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/lightBlue"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

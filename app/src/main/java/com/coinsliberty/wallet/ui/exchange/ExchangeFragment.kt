@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
+import com.coinsliberty.wallet.dialogs.exchangeComingSoon.ExchangeDialog
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
