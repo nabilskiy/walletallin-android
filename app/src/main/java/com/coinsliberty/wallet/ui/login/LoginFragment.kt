@@ -25,7 +25,7 @@ class LoginFragment : BaseKotlinFragment() {
 
         subscribeLiveData()
 
-        loginToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.logout_icon)
+        loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
         loginToolbar.ivToolbarIconLeft.setOnClickListener {
                ChangeLanguageDialog.newInstance(icon)
                    .apply {

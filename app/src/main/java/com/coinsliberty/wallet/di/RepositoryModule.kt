@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.ui.profile.ProfileRepository
 import com.coinsliberty.wallet.ui.settings.SettingsRepository
 import com.coinsliberty.wallet.ui.signup.SignUpRepository
 import com.coinsliberty.wallet.ui.wallet.WalletRepository
+import com.coinsliberty.wallet.utils.manager.BiometricManager
 import org.koin.dsl.module
 
 
@@ -30,4 +31,6 @@ val repositoryModule = module {
     factory { TouchIdRepository(get()) }
     factory { FaceIdRepository(get()) }
     factory { PinRepository(get()) }
+
+    factory { BiometricManager(get(), get()) }
 }

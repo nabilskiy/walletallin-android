@@ -40,5 +40,5 @@ val viewModelModule = module {
     viewModel { SendBtcViewModel(get(), get()) }
     viewModel { TouchIdViewModel(get(), get()) }
     viewModel { FaceIdViewModel(get(), get()) }
-    viewModel { PinViewModel(get(), get()) }
+    viewModel { PinViewModel(get(), get(), get(), get()) }
 }

@@ -3,12 +3,16 @@ package com.coinsliberty.wallet.ui.pin
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
+import com.coinsliberty.wallet.dialogs.faceIdDialog.FaceIdDialog
+import com.coinsliberty.wallet.dialogs.touchIdDialog.TouchIdDialog
 import com.coinsliberty.wallet.utils.extensions.invisible
 import com.coinsliberty.wallet.utils.extensions.visible
+import com.coinsliberty.wallet.utils.manager.TypeBiometrics
 import kotlinx.android.synthetic.main.fragment_pin.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,56 +24,70 @@ class PinFragment : BaseKotlinFragment() {
     override val viewModel: PinViewModel by viewModel()
     override val navigator: PinNavigation = get()
 
-    val bundle = Bundle()
+    private var addData: String? = null
+
     var pinCode: String? = null
     var isFaceId: Boolean? = false
     var isTouchId: Boolean? = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pinCode = arguments?.getString("code").toString()
+        pinCode = viewModel.getPin()
+
+        if(pinCode.isNullOrEmpty().not()) {
+            when (viewModel.getTypeOfBiometric()) {
+                TypeBiometrics.TOUCH_ID -> {
+                    ivTouchId.visible()
+                    TouchIdDialog().apply {
+                        initListeners {
+                            navigator.goToMain(navController)
+                        }
+                    }.show(childFragmentManager, TouchIdDialog.TAG)
+                }
+                TypeBiometrics.FACE_ID -> {
+                    ivFaceId.visible()
+                    FaceIdDialog().apply {
+                        initListeners {
+                            navigator.goToMain(navController)
+                        }
+                    }.show(childFragmentManager, FaceIdDialog.TAG)
+                }
+                else -> {
+                }
+            }
+        }
 
         prepareData()
 
 
         etPin.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) = Unit
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) = Unit
 
             override fun afterTextChanged(s: Editable) {
                 changeColorPin(s.length)
-
-                if (s.toString() == pinCode) {
-                    //OK
-                    toast("OK")
-                }
             }
         })
 
-//        ivTouchId.setOnClickListener {  }
-//        ivFaceId.setOnClickListener {  }
+        ivTouchId.setOnClickListener {
+            TouchIdDialog().apply {
+                initListeners {
+                    navigator.goToMain(navController)
+                }
+            }.show(childFragmentManager, TouchIdDialog.TAG)
+        }
+        ivFaceId.setOnClickListener {
+            FaceIdDialog().apply {
+                initListeners {
+                    navigator.goToMain(navController)
+                }
+            }.show(childFragmentManager, FaceIdDialog.TAG)
+        }
 
     }
 
     private fun prepareData() {
         changeColorPin(0)
-
-        isFaceId = arguments?.getBoolean("isFaceId")
-        isTouchId = arguments?.getBoolean("isTouchId")
-
-        if (isFaceId == null) {
-            isFaceId = false
-        }
-        if (isTouchId == null) {
-            isTouchId = false
-        }
-
-        if(!(isFaceId as Boolean)) {
-            ivFaceId.invisible()
-        }
-        if(!(isTouchId as Boolean)) {
-            ivTouchId.invisible()
-        }
     }
 
     private fun changeColorPin(length: Int) {
@@ -137,9 +155,25 @@ class PinFragment : BaseKotlinFragment() {
                 tvFourthValue.isEnabled = false
 
                 tvFourthValueActive.invisible()
+
+                if(pinCode.isNullOrEmpty()) {
+                    if(addData.isNullOrEmpty()) {
+                        addData = etPin.text.toString()
+                        etPin.setText("")
+                        changeColorPin(0)
+                    } else {
+                        viewModel.savePin(addData ?: "")
+                        navigator.goToMain(navController)
+                    }
+                } else {
+                    if (etPin.text.toString() == pinCode) {
+                        navigator.goToMain(navController)
+                    } else {
+                        toast("Fail")
+                    }
+                }
             }
         }
     }
-
 
 }
