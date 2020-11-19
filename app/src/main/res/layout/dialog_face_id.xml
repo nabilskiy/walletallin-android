@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_white">
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_id_tv_tittle_margin_layout_bottom"
+        android:text="@string/use_your_face_ID_to_enter"
+        android:textAppearance="@style/H2"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintBottom_toTopOf="@+id/icoId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/icoId"
+        android:layout_width="@dimen/dialog_id_ico_size"
+        android:layout_height="@dimen/dialog_id_ico_size"
+        android:layout_marginStart="@dimen/dialog_id_ico_margin_layout_end"
+        android:layout_marginTop="@dimen/dialog_id_ico_margin_layout_top"
+        android:layout_marginEnd="@dimen/dialog_id_ico_margin_layout_end"
+        android:layout_marginBottom="@dimen/dialog_id_ico_margin_layout_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_face_id" />
+
+    <TextView
+        android:id="@+id/tvScanYour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_id_tv_scan_margin_layout_top"
+        android:text="@string/scan_your_face"
+        style="@style/H8"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icoId" />
+
+    <TextView
+        android:id="@+id/tvOrUseMPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dialog_id_tv_MPin_margin_layout_top"
+        android:text="@string/or_use_MPin"
+        android:textAppearance="@style/H4"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanYour" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

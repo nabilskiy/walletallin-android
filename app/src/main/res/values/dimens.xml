@@ -366,6 +366,26 @@
     <dimen name="exchange_soon_button_margin_end">16dp</dimen>
     <dimen name="exchange_soon_button_height">40dp</dimen>
     <dimen name="exchange_soon_button_width">312dp</dimen>
+    <!--    Pin Code -->
+    <dimen name="dialog_id_tv_tittle_margin_layout_bottom">14dp</dimen>
+    <dimen name="dialog_id_ico_size">56dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_start">136dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_top">68dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_end">136dp</dimen>
+    <dimen name="dialog_id_ico_margin_layout_bottom">80dp</dimen>
+    <dimen name="dialog_id_tv_scan_margin_layout_top">4dp</dimen>
+    <dimen name="dialog_id_tv_MPin_margin_layout_top">12dp</dimen>
+
+    <dimen name="item_id_little_size">15dp</dimen>
+    <dimen name="item_id_big_size">32dp</dimen>
+
+    <dimen name="fragment_pin_im_logo_margin_top">64dp</dimen>
+    <dimen name="fragment_pin_tv_enter_margin_top">64dp</dimen>
+    <dimen name="fragment_pin_cl_code_margin_top">16dp</dimen>
+    <dimen name="fragment_pin_cl_code_width">240dp</dimen>
+    <dimen name="fragment_pin_ll_height">64dp</dimen>
+    <dimen name="fragment_pin_iv_size">56dp</dimen>
+    <dimen name="fragment_pin_iv_margin_top">40dp</dimen>
 
 
 </resources>

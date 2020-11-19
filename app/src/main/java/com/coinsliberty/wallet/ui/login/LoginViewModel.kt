@@ -22,19 +22,19 @@ class LoginViewModel(
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val login = repository.login(LoginRequest(email, password, otp))
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
             if(login.result == false && otp.isNullOrEmpty()) {
                 result.postValue(false)
             } else {
                 handleResponse(login)
             }
 
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+
         }
     }
     private fun handleResponse(signUp: SignUpResponse) {
         if(signUp.result == true) {
             sharedPreferencesProvider.setToken(signUp.token ?: "")
-            Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
             result.postValue(true)
             return
         }

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
+
+    <ImageView
+        android:id="@+id/imLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_pin_im_logo_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo_little" />
+
+    <TextView
+        android:id="@+id/tvEnterPin"
+        style="@style/H2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_pin_tv_enter_margin_top"
+        android:text="@string/enter_your_4_digit_PIN_code"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imLogo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="@dimen/fragment_pin_cl_code_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_pin_cl_code_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnterPin">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_pin_ll_height"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tvFirstValue"
+                android:layout_width="@dimen/item_id_little_size"
+                android:layout_height="@dimen/item_id_little_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin" />
+
+            <ImageView
+                android:id="@+id/tvSecondValue"
+                android:layout_width="@dimen/item_id_little_size"
+                android:layout_height="@dimen/item_id_little_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin" />
+
+            <ImageView
+                android:id="@+id/tvThirdValue"
+                android:layout_width="@dimen/item_id_little_size"
+                android:layout_height="@dimen/item_id_little_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin" />
+
+            <ImageView
+                android:id="@+id/tvFourthValue"
+                android:layout_width="@dimen/item_id_little_size"
+                android:layout_height="@dimen/item_id_little_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutActive"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_pin_ll_height"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/tvFirstValueActive"
+                android:layout_width="@dimen/item_id_big_size"
+                android:layout_height="@dimen/item_id_big_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/tvSecondValueActive"
+                android:layout_width="@dimen/item_id_big_size"
+                android:layout_height="@dimen/item_id_big_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/tvThirdValueActive"
+                android:layout_width="@dimen/item_id_big_size"
+                android:layout_height="@dimen/item_id_big_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/tvFourthValueActive"
+                android:layout_width="@dimen/item_id_big_size"
+                android:layout_height="@dimen/item_id_big_size"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/selector_ellipse_pin"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etPin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_pin_ll_height"
+            android:cursorVisible="false"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="0sp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivFaceId"
+        android:layout_width="@dimen/fragment_pin_iv_size"
+        android:layout_height="@dimen/fragment_pin_iv_size"
+        android:layout_marginTop="@dimen/fragment_pin_iv_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+        app:srcCompat="@drawable/ic_face_id_white"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/ivTouchId"
+        android:layout_width="@dimen/fragment_pin_iv_size"
+        android:layout_height="@dimen/fragment_pin_iv_size"
+        android:layout_marginTop="@dimen/fragment_pin_iv_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+        app:srcCompat="@drawable/ic_touch_id_white"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ class SplashNavigation : BaseNavigator() {
     }
 
     fun goToMainScreen(navController: NavController?) {
-        navController?.navigate(R.id.action_splashFragment_to_bottomTabNavigator)
+        navController?.navigate(R.id.action_splashFragment_to_pinFragment)
     }
 
 }

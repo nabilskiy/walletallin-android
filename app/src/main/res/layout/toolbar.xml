@@ -37,7 +37,8 @@
         android:src="@drawable/ic_germany"
         android:layout_marginTop="@dimen/toolbar_icon_right_margin_top"
         android:layout_marginEnd="@dimen/toolbar_icon_right_margin_end"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvToolbarTitle"

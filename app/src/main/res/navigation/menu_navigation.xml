@@ -59,4 +59,5 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true"
         app:destination="@id/exchangeFragment"/>
+
 </navigation>

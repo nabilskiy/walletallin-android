@@ -23,6 +23,7 @@ class SettingsViewModel(private val app: Application, private val sharedPreferen
     private fun handleResponse(logout: SignUpResponse) {
         if(logout.result == true) {
             sharedPreferencesProvider.setToken("")
+            sharedPreferencesProvider.savePin("")
             baseLogout.postValue(true)
 
             return
