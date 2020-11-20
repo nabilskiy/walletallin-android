@@ -15,8 +15,8 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -26,8 +26,9 @@ import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.EditProfileRequest
-import com.coinsliberty.wallet.data.response.AddressInfoResponse
 import com.coinsliberty.wallet.data.response.Rates
+import com.coinsliberty.wallet.dialogs.AcceptDialog
+import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
 import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
 import com.coinsliberty.wallet.utils.extensions.*
@@ -78,6 +79,11 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private var login: String? = null
     private var data: EditProfileRequest? = null
 
+
+    var addressForSend: String = " "
+    var balanceForSend: String = " "
+    var ress: Boolean? = null
+
     override fun getTheme(): Int = R.style.SendDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,6 +102,9 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val tittle = arguments?.getString(keyBundleTittle)
+        tvTittle.text = "SEND $tittle"
+        viewModel.updateData()
+
 
         dialogReceive()
         dialogSend()
@@ -104,7 +113,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             showPopupMenu()
         }
 
-        viewModel.updateData()
+
 
 
         switchDialog.changeStatus(isSend)
@@ -174,7 +183,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 //                ?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
 
         btnUpdate.setOnClickListener {
-           // viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
+            // viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
         }
         ivCopy.setOnClickListener {
             val clipboard =
@@ -195,7 +204,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
         tvAmountCripto.setText(String.format("%.8f", bundle))
         tvAmountFiat.text = String.format("%.2f", result)
-
+        balanceForSend = tvAmountFiat.text.toString() + " $"
 
         tvAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
@@ -214,6 +223,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
+
             viewModel.sendBtc(
                 "btc",
                 tvAmountCripto.text.toString(),
@@ -221,26 +231,51 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 etCL2FA.text,
                 tvAmountSatPerByte.text.toString()
             )
+
+            Log.e("!!!g", ress.toString())
+            if(ress == true){
+                getAcceptDialog(balanceForSend,addressForSend)
+            }else if (ress == false){
+                getErrorDialog(viewModel.messageError.value.toString())
+            }
+
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
+
     }
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
         listener = onChoosen
     }
 
+    fun sendBtc(result: Boolean) {
+    }
+
+
+    private fun getErrorDialog(value: String) {
+        ErrorDialog.newInstance(value)
+            .show(parentFragmentManager, ErrorDialog.TAG)
+    }
+
+    private fun getAcceptDialog(balance: String, link: String) {
+        AcceptDialog.newInstance(balance, link)
+            .show(parentFragmentManager, AcceptDialog.TAG)
+    }
+
     private fun subscribeLiveData() {
         bindDataTo(viewModel.result, ::initResult)
         bindDataTo(viewModel.feeInit, ::initFee)
         bindDataTo(viewModel.resultRecovery, ::setAddress)
+        //  bindDataTo(viewModel.result, ::sendBtc)
 
     }
 
     private fun setAddress(link: String) {
-       // if (addressInfo.result == true) {
-            tvLinkReceive.text = link
-            ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
-       // }
+        // if (addressInfo.result == true) {
+        tvLinkReceive.text = link
+        ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
+        addressForSend = link
+        // }
     }
 
     private fun initFee(rates: Rates?) {
@@ -251,6 +286,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     private fun initResult(b: Boolean?) {
         listener?.invoke(b == true, tvAmountCripto.text.toString())
+        ress = b
     }
 
     @SuppressLint("QueryPermissionsNeeded")
@@ -419,7 +455,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 keyBundleLoginData to login
             )
             dialog.arguments = bundle
-             dialog.setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme)
+            dialog.setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme)
             return dialog
         }
     }

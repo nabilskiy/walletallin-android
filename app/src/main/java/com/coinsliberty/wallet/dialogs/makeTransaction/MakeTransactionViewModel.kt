@@ -22,9 +22,11 @@ class MakeTransactionViewModel (
     val result = MutableLiveData<Boolean>()
     val resultRecovery = MutableLiveData<String>()
     val feeInit = MutableLiveData<Rates>()
+    val messageError = MutableLiveData<String>()
 
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
         launch(::onErrorHandler) {
+
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponseSend(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp.toString(), fee)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
@@ -49,8 +51,13 @@ class MakeTransactionViewModel (
         if(signUp.result == true) {
             result.postValue(true)
             return
+        }else{
+            result.postValue(false)
+            messageError.postValue(signUp.error?.message.toString())
+           // showError.postValue(signUp.error?.message)
+            return
         }
-        showError.postValue(signUp.error?.message)
+
     }
 
     private fun handleResponseReceive(address: AddressInfoResponse) {
