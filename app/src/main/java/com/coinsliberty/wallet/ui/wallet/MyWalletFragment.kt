@@ -21,11 +21,6 @@ import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import kotlinx.android.synthetic.main.fragment_transaction.ivTransactionLeftIcon
-import kotlinx.android.synthetic.main.fragment_transaction.tvBalanceCrypto
-import kotlinx.android.synthetic.main.fragment_transaction.tvBalanceFiat
-import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceCrypto
-import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceFiat
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MyWalletFragment : BaseKotlinFragment() {

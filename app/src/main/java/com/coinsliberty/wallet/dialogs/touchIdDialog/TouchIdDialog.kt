@@ -1,7 +1,9 @@
 package com.coinsliberty.wallet.dialogs.touchIdDialog
 
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import androidx.biometric.BiometricPrompt
@@ -18,6 +20,8 @@ class TouchIdDialog : BaseKotlinDialogFragment() {
 
     var listener: ((Boolean) -> Unit)? = null
 
+    var checkBiometric: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = true
@@ -32,6 +36,18 @@ class TouchIdDialog : BaseKotlinDialogFragment() {
         val params = window.attributes
         params.y = 100
         window.attributes = params
+
+        dialog?.setOnDismissListener {
+            listener?.invoke(checkBiometric)
+            Log.e("!!!", "test")
+        }
+
+        BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+            BiometricHelper.buildDefaultBiometricDialog(
+                "Authorization",
+                "Confirm login",
+                "Cancel"
+            ))
 
         icoId.setOnClickListener {
             BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
@@ -54,9 +70,15 @@ class TouchIdDialog : BaseKotlinDialogFragment() {
     private val biometricCallBack = object : BiometricPrompt.AuthenticationCallback() {
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
+            checkBiometric = true
             listener?.invoke(true)
             dismiss()
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        listener?.invoke(false)
+        super.onDismiss(dialog)
     }
 
     companion object {

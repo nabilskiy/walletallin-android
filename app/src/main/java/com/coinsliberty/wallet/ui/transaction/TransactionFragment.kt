@@ -18,6 +18,7 @@ import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.isDifferrentDate
+import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

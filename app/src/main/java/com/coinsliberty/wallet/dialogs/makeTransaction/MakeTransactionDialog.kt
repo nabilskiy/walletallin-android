@@ -81,8 +81,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.bottom_sheet_make_transfer, container, false)
     }
 
-
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

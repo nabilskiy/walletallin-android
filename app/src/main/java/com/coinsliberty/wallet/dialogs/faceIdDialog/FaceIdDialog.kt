@@ -33,6 +33,13 @@ class FaceIdDialog : BaseKotlinDialogFragment() {
         params.y = 100
         window.attributes = params
 
+        BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+            BiometricHelper.buildDefaultBiometricDialog(
+                "Authorization",
+                "Confirm login",
+                "Cancel"
+            ))
+
         icoId.setOnClickListener {
             BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
                 BiometricHelper.buildDefaultBiometricDialog(
