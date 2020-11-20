@@ -1,6 +1,7 @@
 package com.coinsliberty.wallet.data
 
 import com.google.gson.annotations.SerializedName
+import java.util.stream.Stream
 
 data class BtcBalance (
     @SerializedName("asset")
@@ -12,6 +13,6 @@ data class BtcBalance (
     @SerializedName("otp")
     val otp: String? = null,
     @SerializedName("rate")
-    val rate: Long? = null
+    val rate: String? = null
 
 )

@@ -211,7 +211,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 "btc",
                 tvAmountCripto.text.toString(),
                 tvLink.text.toString(),
-                etCL2FA.text
+                etCL2FA.text,
+                tvAmountSatPerByte.text.toString()
             )
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }

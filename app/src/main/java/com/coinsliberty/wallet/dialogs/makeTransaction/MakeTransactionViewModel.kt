@@ -22,10 +22,10 @@ class MakeTransactionViewModel (
     val resultRecovery = MutableLiveData<Boolean>()
     val feeInit = MutableLiveData<Rates>()
 
-    fun sendBtc(asset: String, amount: String, address: String, otp: Editable) {
+    fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            handleResponseSend(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp.toString())))
+            handleResponseSend(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp.toString(), fee)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
