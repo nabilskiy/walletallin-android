@@ -10,4 +10,6 @@ class MakeTransactionRepository(private val api: UserApi, private val apiBtc: Bt
     suspend fun updateUser(body: EditProfileRequest) = api.editProfile(body)
 
     suspend fun sendBtcBalance(data: BtcBalance) = apiBtc.sendBtcRate(data)
+
+    suspend fun getFee() = apiBtc.getFee()
 }

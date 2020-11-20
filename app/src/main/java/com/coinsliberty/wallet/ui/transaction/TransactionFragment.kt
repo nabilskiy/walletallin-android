@@ -18,7 +18,6 @@ import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.isDifferrentDate
-import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -103,11 +102,9 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance: BalanceInfoResponse) {
-        tvBalanceCrypto.text = String.format("%.8f", balance.availableBalances?.btc)
-        tvBalanceFiat.text = String.format("%.2f", balance.availableBalances?.btc?.times(rates))
 
-        tvTotalBalanceCrypto.text = String.format("%.8f", balance.balances?.btc)
-        tvTotalBalanceFiat.text = String.format("%.2f", balance.balances?.btc?.times(rates))
+        tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
+        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + " $"
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {

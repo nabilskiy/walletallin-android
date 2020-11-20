@@ -16,18 +16,20 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.EditProfileRequest
-import com.coinsliberty.wallet.dialogs.sendDialog.*
-import com.coinsliberty.wallet.utils.extensions.bindDataTo
-import com.coinsliberty.wallet.utils.extensions.invisible
-import com.coinsliberty.wallet.utils.extensions.visible
+import com.coinsliberty.wallet.data.response.Rates
+import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
+import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
+import com.coinsliberty.wallet.utils.extensions.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -59,6 +61,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     var listener: ((Boolean, String) -> Unit)? = null
 
+    private var rates: Rates? = null
+
     private var isSend: Boolean = true
     private var barcode = ""
     private lateinit var cardPhotoPath: String
@@ -89,6 +93,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         dialogReceive()
         dialogSend()
 
+        clSendSpinner.setOnClickListener {
+            showPopupMenu()
+        }
+
+        viewModel.updateData()
+
 
         switchDialog.changeStatus(isSend)
         switchDialog.setOnClickListener {
@@ -111,6 +121,40 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             }
         }
         subscribeLiveData()
+    }
+
+    private fun showPopupMenu() {
+        val popupMenu = PopupMenu(requireContext(), clSendSpinner)
+        popupMenu.inflate(R.menu.fee_menu)
+
+        popupMenu
+            .setOnMenuItemClickListener { item ->
+                ivText.text = item.title
+                when (item.itemId) {
+                    R.id.slow -> {
+                        tvAmountSatPerByte.disable()
+                        tvAmountSatPerByte.setText(rates?.min.toString())
+                        true
+                    }
+                    R.id.medium -> {
+                        tvAmountSatPerByte.disable()
+                        tvAmountSatPerByte.setText(rates?.mid.toString())
+                        true
+                    }
+                    R.id.fast -> {
+                        tvAmountSatPerByte.disable()
+                        tvAmountSatPerByte.setText(rates?.max.toString())
+                        true
+                    }
+                    R.id.custom -> {
+                        tvAmountSatPerByte.enable()
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+        popupMenu.show()
     }
 
     private fun dialogReceive() {
@@ -179,6 +223,13 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.result, ::initResult)
+        bindDataTo(viewModel.feeInit, ::initFee)
+    }
+
+    private fun initFee(rates: Rates?) {
+        this.rates = rates
+        tvAmountSatPerByte.disable()
+        tvAmountSatPerByte.setText(rates?.min.toString())
     }
 
     private fun initResult(b: Boolean?) {
