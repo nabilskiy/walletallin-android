@@ -2,12 +2,12 @@ package com.coinsliberty.wallet.dialogs.makeTransaction
 
 import com.coinsliberty.wallet.api.BtcApi
 import com.coinsliberty.wallet.api.UserApi
+import com.coinsliberty.wallet.api.WalletApi
 import com.coinsliberty.wallet.data.BtcBalance
-import com.coinsliberty.wallet.data.EditProfileRequest
 
-class MakeTransactionRepository(private val api: UserApi, private val apiBtc: BtcApi) {
+class MakeTransactionRepository(private val api: UserApi, private val apiBtc: BtcApi, private val apiAddress: WalletApi) {
 
-    suspend fun updateUser(body: EditProfileRequest) = api.editProfile(body)
+    suspend fun getAddress() = apiAddress.getAddress()
 
     suspend fun sendBtcBalance(data: BtcBalance) = apiBtc.sendBtcRate(data)
 

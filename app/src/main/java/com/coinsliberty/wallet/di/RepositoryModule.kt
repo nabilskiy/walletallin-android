@@ -29,7 +29,7 @@ val repositoryModule = module {
     factory { QrCodeRepository(get()) }
     factory { SecureCodeRepository(get()) }
     factory { BtcRepository(get()) }
-    factory { MakeTransactionRepository(get(),get()) }
+    factory { MakeTransactionRepository(get(),get(),get()) }
     factory { TouchIdRepository(get()) }
     factory { FaceIdRepository(get()) }
     factory { PinRepository(get()) }

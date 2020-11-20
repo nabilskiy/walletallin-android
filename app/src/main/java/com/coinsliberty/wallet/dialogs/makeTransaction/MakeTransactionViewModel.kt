@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.EditProfileRequest
+import com.coinsliberty.wallet.data.response.AddressInfoResponse
 import com.coinsliberty.wallet.data.response.FeeResponse
 import com.coinsliberty.wallet.data.response.Rates
 import com.coinsliberty.wallet.data.response.SignUpResponse
@@ -19,7 +20,7 @@ class MakeTransactionViewModel (
 ): BaseViewModel(app) {
 
     val result = MutableLiveData<Boolean>()
-    val resultRecovery = MutableLiveData<Boolean>()
+    val resultRecovery = MutableLiveData<String>()
     val feeInit = MutableLiveData<Rates>()
 
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
@@ -34,7 +35,7 @@ class MakeTransactionViewModel (
         Log.e("!!!", "test")
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            //handleResponseReceive(repository.updateUser())
+            handleResponseReceive(repository.getAddress())
             handleResponseFee(repository.getFee())
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
@@ -52,9 +53,9 @@ class MakeTransactionViewModel (
         showError.postValue(signUp.error?.message)
     }
 
-    private fun handleResponseReceive(address: SignUpResponse) {
+    private fun handleResponseReceive(address: AddressInfoResponse) {
         if(address.result == true) {
-            resultRecovery.postValue(address.result)
+            resultRecovery.postValue(address.address)
             return
         }
         showError.postValue(address.error?.message)

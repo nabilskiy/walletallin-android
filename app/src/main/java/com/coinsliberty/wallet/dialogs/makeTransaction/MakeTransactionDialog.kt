@@ -26,6 +26,7 @@ import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.EditProfileRequest
+import com.coinsliberty.wallet.data.response.AddressInfoResponse
 import com.coinsliberty.wallet.data.response.Rates
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
 import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
@@ -35,6 +36,12 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivClose
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivCopy
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivQrCode
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.tvLink
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.tvTittle
+import kotlinx.android.synthetic.main.dialog_qr_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
@@ -161,10 +168,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         qrCode = arguments?.getString(keyBundleLink)
         login = arguments?.getString(keyBundleLoginData)
         data = arguments?.getParcelable(keyBundleData)
-        tvLinkReceive.text = qrCode
-        ivQrCodeReceive.setImageBitmap(
-            arguments?.getString(keyBundleLink)
-                ?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
+        //tvLinkReceive.text = qrCode
+//        ivQrCodeReceive.setImageBitmap(
+//            arguments?.getString(keyBundleLink)
+//                ?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
 
         btnUpdate.setOnClickListener {
            // viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
@@ -225,6 +232,15 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun subscribeLiveData() {
         bindDataTo(viewModel.result, ::initResult)
         bindDataTo(viewModel.feeInit, ::initFee)
+        bindDataTo(viewModel.resultRecovery, ::setAddress)
+
+    }
+
+    private fun setAddress(link: String) {
+       // if (addressInfo.result == true) {
+            tvLinkReceive.text = link
+            ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
+       // }
     }
 
     private fun initFee(rates: Rates?) {
