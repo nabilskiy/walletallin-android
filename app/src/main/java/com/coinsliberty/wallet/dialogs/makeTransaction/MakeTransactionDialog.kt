@@ -27,6 +27,7 @@ import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.Rates
+import com.coinsliberty.wallet.data.response.SendMaxResponse
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
@@ -199,6 +200,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     private fun dialogSend() {
         val rates = arguments?.getDouble(keyBundleRates)
+        val ratesDouble :Double? = arguments?.getDouble(keyBundleRates)
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
@@ -242,6 +244,11 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
 
+        tvSendMax.setOnClickListener {
+            val rate :String = tvAmountSatPerByte.text.toString()
+            viewModel.sendMax("btc", rate)
+            //Log.e("!!!ava", (String.format("%.8f", viewModel.maxAvailable.value)))
+            }
     }
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
@@ -266,16 +273,22 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         bindDataTo(viewModel.result, ::initResult)
         bindDataTo(viewModel.feeInit, ::initFee)
         bindDataTo(viewModel.resultRecovery, ::setAddress)
-        //  bindDataTo(viewModel.result, ::sendBtc)
+        bindDataTo(viewModel.maxAvailable, ::sendMax)
 
     }
 
+    private fun sendMax(response : SendMaxResponse){
+        if (response.result == true){
+            tvAmountCripto.setText(String.format("%.8f", response.withdrawData?.available))
+            val rs :Double = response.withdrawData?.available!! * arguments?.getDouble(keyBundleRates)!!
+            tvAmountFiat.setText(String.format("%.2f", rs))
+        }
+    }
+
     private fun setAddress(link: String) {
-        // if (addressInfo.result == true) {
         tvLinkReceive.text = link
         ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
         addressForSend = link
-        // }
     }
 
     private fun initFee(rates: Rates?) {

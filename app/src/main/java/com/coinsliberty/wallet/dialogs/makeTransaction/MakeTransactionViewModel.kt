@@ -6,11 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.BtcBalance
-import com.coinsliberty.wallet.data.EditProfileRequest
-import com.coinsliberty.wallet.data.response.AddressInfoResponse
-import com.coinsliberty.wallet.data.response.FeeResponse
-import com.coinsliberty.wallet.data.response.Rates
-import com.coinsliberty.wallet.data.response.SignUpResponse
+import com.coinsliberty.wallet.data.response.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -23,10 +19,10 @@ class MakeTransactionViewModel (
     val resultRecovery = MutableLiveData<String>()
     val feeInit = MutableLiveData<Rates>()
     val messageError = MutableLiveData<String>()
+    val maxAvailable = MutableLiveData<SendMaxResponse>()
 
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
         launch(::onErrorHandler) {
-
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponseSend(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp.toString(), fee)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
@@ -43,8 +39,20 @@ class MakeTransactionViewModel (
         }
     }
 
+    fun sendMax(asset: String, rate: String) {
+        launch(::onErrorHandler) {
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            handleResponseSendMax(repository.sendMax(asset,rate))
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
+    }
+
     private fun handleResponseFee(fee: FeeResponse) {
         feeInit.postValue(fee.rates)
+    }
+
+    private fun handleResponseSendMax(sendMax: SendMaxResponse) {
+        maxAvailable.postValue(sendMax)
     }
 
     private fun handleResponseSend(signUp: SignUpResponse) {
