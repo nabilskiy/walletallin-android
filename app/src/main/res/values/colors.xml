@@ -25,6 +25,7 @@
     <color name="red">#FF2507</color>
     <color name="blackLowOpacity">#1A000000</color>
     <color name="whiteLowOpacity">#33FFFFFF</color>
+    <color name="whiteGreySwitch">#1F767680</color>
 
     <!-- Wallet background color -->
     <color name="lightOrange">#EFDECC</color>

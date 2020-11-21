@@ -70,4 +70,16 @@
         <item name="android:colorForeground">@color/grey</item>
         <item name="colorControlActivated">@color/darkGrey</item>
     </style>
+
+
+    <!--BottomSheetDialog-->
+    <style name="BottomSheetDialogTheme" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:statusBarColor">#00FFFFFF</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="SendDialog" parent="BottomSheetDialogTheme">
+        <item name="bottomSheetStyle">@drawable/bg_dialog_white</item>
+    </style>
+
 </resources>

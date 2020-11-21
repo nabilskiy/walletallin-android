@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="288dp"
+    android:layout_height="32dp"
+    android:background="@drawable/bg_switch_transaction">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnLeft"
+        android:layout_width="142dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="2dp"
+        android:elevation="2dp"
+        android:background="@drawable/btn_switch_transaction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTextLeft"
+            style="@style/H4"
+            android:layout_width="@dimen/switch_button_width"
+            android:layout_height="@dimen/switch_button_height"
+            android:gravity="center"
+            android:text="@string/send"
+            android:textColor="@drawable/selector_color_green_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnRight"
+        android:layout_width="142dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="2dp"
+        android:elevation="2dp"
+        android:background="@drawable/btn_switch_transaction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTextRight"
+            style="@style/H4"
+            android:layout_width="@dimen/switch_button_width"
+            android:layout_height="@dimen/switch_button_height"
+            android:gravity="center"
+            android:text="@string/receive"
+            android:textColor="@drawable/selector_color_blue_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import com.coinsliberty.wallet.dialogs.qrCode.QrCodeViewModel
 import com.coinsliberty.wallet.dialogs.ressPassword.ResetPassViewModel
 import com.coinsliberty.wallet.dialogs.sendDialog.SendBtcViewModel
 import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassViewModel
+import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionViewModel
 import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeViewModel
 import com.coinsliberty.wallet.dialogs.touchIdDialog.TouchIdViewModel
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageViewModel
@@ -38,6 +39,7 @@ val viewModelModule = module {
     viewModel { QrCodeViewModel(get(), get()) }
     viewModel { SecureCodeViewModel(get(), get()) }
     viewModel { SendBtcViewModel(get(), get()) }
+    viewModel { MakeTransactionViewModel(get(), get()) }
     viewModel { TouchIdViewModel(get(), get()) }
     viewModel { FaceIdViewModel(get(), get()) }
     viewModel { PinViewModel(get(), get(), get(), get()) }

@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.wallet
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.response.*
@@ -30,6 +31,10 @@ class MyWalletViewModel(
 //        return listData
 //    }
 //
+
+    init {
+        Log.e("!!!", sharedPreferencesProvider.getToken().toString())
+    }
     fun walletList() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}

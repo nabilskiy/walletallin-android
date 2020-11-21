@@ -387,5 +387,9 @@
     <dimen name="fragment_pin_iv_size">56dp</dimen>
     <dimen name="fragment_pin_iv_margin_top">40dp</dimen>
 
+    <!--    Dialog Make Transaction-->
+    <dimen name="dialog_make_cl_transaction_margin_start_end">32dp</dimen>
+    <dimen name="dialog_make_transaction_tv_margin_start_end">48dp</dimen>
+
 
 </resources>
