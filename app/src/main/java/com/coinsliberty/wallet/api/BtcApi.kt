@@ -18,11 +18,6 @@ interface BtcApi {
     @GET("/api/fees")
     suspend fun getFee(): FeeResponse
 
-    //
-//    @GET("/api/calc_withdraw_all")
-//    suspend fun sendMax(
-//        @Body body: SendMaxRequest
-//    ): BtcBalance
     @GET("/api/calc_withdraw_all")
     suspend fun sendMax(
         @Query("asset") asset: String,
