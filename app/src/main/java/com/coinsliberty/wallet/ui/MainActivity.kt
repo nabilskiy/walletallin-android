@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.e("!!!", "onPause")
-        Log.e("!!!a", Navigation.findNavController(this, R.id.navHostFragment).currentDestination.toString())
-        val currentFragment: String = Navigation.findNavController(this, R.id.navHostFragment).currentDestination.toString()
-        val loginFragment: String = "Destination(com.coinsliberty.wallet:id/loginFragment) label=LoginFragment class=com.coinsliberty.wallet.ui.login.LoginFragment"
-        if(currentFragment != loginFragment) {
+
+        val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
+        if(currentFragment != "LoginFragment") {
             isActivePin = true
         }
 
@@ -47,10 +45,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        Log.e("!!!", "onStop")
-        val currentFragment: String = Navigation.findNavController(this, R.id.navHostFragment).currentDestination.toString()
-        val loginFragment: String = "Destination(com.coinsliberty.wallet:id/loginFragment) label=LoginFragment class=com.coinsliberty.wallet.ui.login.LoginFragment"
-        if(currentFragment != loginFragment) {
+
+        val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
+        if(currentFragment != "LoginFragment") {
             isActivePin = true
         }
 

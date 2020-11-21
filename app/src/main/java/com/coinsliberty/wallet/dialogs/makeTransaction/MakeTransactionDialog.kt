@@ -110,6 +110,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         dialogReceive()
         dialogSend()
 
+
+
         clSendSpinner.setOnClickListener {
             showPopupMenu()
         }
@@ -217,6 +219,16 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 tvAmountFiat.text =
                     String.format("%.2f", ((s.toString().toDoubleOrNull() ?: 0.0) * rates))
+            }
+        })
+        tvAmountSatPerByte.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) = Unit
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                tvBTCDownResult.text = String.format("%.8f",(240 * (s.toString().toLong())).toDouble() / 100000000.0) + " BTC"
             }
         })
 
