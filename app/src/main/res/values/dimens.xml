@@ -390,6 +390,16 @@
     <!--    Dialog Make Transaction-->
     <dimen name="dialog_make_cl_transaction_margin_start_end">32dp</dimen>
     <dimen name="dialog_make_transaction_tv_margin_start_end">48dp</dimen>
-
+    <dimen name="dialog_make_transaction_switch_margin_start_top">16dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_send_margin_start_top">12dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_send_tv_text_margin_start">8dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_send_iv_drop_margin_end">12dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_send_tv_verify_padding">12dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_ll_code_size">136dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_iv_code_size">120dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_cl_link_margin_top">20dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_iv_copy_padding">4dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_link_receive_margin_end">12dp</dimen>
+    <dimen name="dialog_make_transaction_dialog_btn_send_margin_top">124dp</dimen>
 
 </resources>

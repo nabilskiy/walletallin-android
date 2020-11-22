@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
-        android:text="TextView"
+        android:text=""
         android:textAppearance="@style/H7"
         android:textColor="@color/darkGrey"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:id="@+id/switchDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/dialog_make_transaction_switch_margin_start_top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
             android:id="@+id/clDialogSend"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/dialog_make_transaction_dialog_send_margin_start_top"
             android:background="@drawable/bg_dialog_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
 
                 <EditText
                     android:id="@+id/tvLink"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
                     android:layout_marginEnd="@dimen/dialog_send_tv_marginStart"
@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dialog_send_tv_amount_marginTop"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="@dimen/dialog_make_transaction_tv_margin_start_end"
                 android:text="@string/send_max"
                 android:textAppearance="@style/H10"
                 android:textColor="@color/blue"
@@ -252,8 +252,8 @@
                     android:id="@+id/ivText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Slow"
+                    android:layout_marginStart="@dimen/dialog_make_transaction_dialog_send_tv_text_margin_start"
+                    android:text=""
                     android:textColor="@color/darkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -262,7 +262,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="@dimen/dialog_make_transaction_dialog_send_iv_drop_margin_end"
                     android:src="@drawable/ic_drop_down"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -330,18 +330,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/clSatPerByte"
                 app:thumbTint="@color/darkGrey" />
 
-            <!--        <com.example.moneybee.ui.widgets.inputField.InputFieldComponent-->
-            <!--            android:id="@+id/ifc2FA"-->
-            <!--            app:ifc_header="2FA Code"-->
-            <!--            android:layout_width="276dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            app:layout_constraintStart_toStartOf="parent"-->
-            <!--            app:layout_constraintEnd_toEndOf="parent"-->
-            <!--            app:layout_constraintTop_toBottomOf="@id/tvAllowUnconfirmed"-->
-            <!--            app:layout_constraintBottom_toTopOf="@id/btnSentCoin"-->
-            <!--            android:layout_marginTop="16dp"-->
-            <!--            />-->
-
             <TextView
                 android:id="@+id/tv2FA"
                 android:layout_width="wrap_content"
@@ -369,7 +357,7 @@
 
                 <EditText
                     android:id="@+id/etCL2FA"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
                     android:layout_marginEnd="@dimen/dialog_send_tv_marginStart"
@@ -404,7 +392,7 @@
                 android:layout_height="@dimen/sign_up_button_height"
                 android:layout_marginTop="@dimen/dialog_send_btn_margin_top"
                 android:layout_marginEnd="@dimen/dialog_make_cl_transaction_margin_start_end"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="@dimen/dialog_make_cl_transaction_margin_start_end"
                 android:gravity="center"
                 android:text="@string/send_coin"
                 android:textColor="@color/lightBlue"
@@ -461,7 +449,7 @@
             android:id="@+id/clDialogReceive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/dialog_make_transaction_dialog_send_margin_start_top"
             android:background="@drawable/bg_dialog_white"
             android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/switchDialog">
@@ -471,7 +459,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
                 android:text="@string/verify_address"
                 android:textAppearance="@style/H8"
                 android:textColor="@color/grey"
@@ -483,7 +471,7 @@
                 android:id="@+id/tvSentBTC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="12dp"
+                android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
                 android:text="@string/sent_btc"
                 android:textAppearance="@style/H8"
                 android:textColor="@color/grey"
@@ -494,8 +482,8 @@
 
             <LinearLayout
                 android:id="@+id/llQrCode"
-                android:layout_width="136dp"
-                android:layout_height="136dp"
+                android:layout_width="@dimen/dialog_make_transaction_dialog_ll_code_size"
+                android:layout_height="@dimen/dialog_make_transaction_dialog_ll_code_size"
                 android:layout_marginTop="@dimen/dialog_ll_qr_code_marginTop"
                 android:background="@color/white"
                 android:elevation="@dimen/dialog_ll_qr_code_elevation"
@@ -507,8 +495,8 @@
 
                 <ImageView
                     android:id="@+id/ivQrCodeReceive"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp" />
+                    android:layout_width="@dimen/dialog_make_transaction_dialog_iv_code_size"
+                    android:layout_height="@dimen/dialog_make_transaction_dialog_iv_code_size" />
             </LinearLayout>
 
 
@@ -517,7 +505,7 @@
                 android:layout_width="@dimen/dialog_clLink_width"
                 android:layout_height="@dimen/dialog_clLink_height"
                 android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dialog_make_transaction_dialog_cl_link_margin_top"
                 android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
                 android:background="@drawable/bg_item_dialog_receive"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -531,7 +519,7 @@
                     android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
                     android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
                     android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
-                    android:padding="4dp"
+                    android:padding="@dimen/dialog_make_transaction_dialog_iv_copy_padding"
                     android:src="@drawable/ic_copy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -542,7 +530,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="@dimen/dialog_make_transaction_dialog_link_receive_margin_end"
                     android:gravity="start"
                     android:textAppearance="@style/H8"
                     android:textColor="@color/darkGrey"
@@ -560,7 +548,7 @@
                 style="@style/ButtonGreyBorder"
                 android:layout_width="@dimen/login_update_button_width"
                 android:layout_height="@dimen/login_update_button_height"
-                android:layout_marginTop="124dp"
+                android:layout_marginTop="@dimen/dialog_make_transaction_dialog_btn_send_margin_top"
                 android:gravity="center"
                 android:text="@string/close"
                 android:textColor="@color/lightBlue"
