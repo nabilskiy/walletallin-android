@@ -21,7 +21,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumberPhone"
+        app:layout_constraintTop_toBottomOf="@id/settingsToolbar"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -76,29 +76,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
-    <TextView
-        android:id="@+id/tvMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/setting_fragment_tv_mail_layout_marginTop"
-        tools:text="mithilamac@gmail.com"
-        android:textAppearance="@style/H9"
-        android:textColor="@color/darkGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsToolbar" />
-
-    <TextView
-        android:id="@+id/tvNumberPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="67894569803456"
-        android:textAppearance="@style/H7"
-        android:textColor="@color/darkGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
