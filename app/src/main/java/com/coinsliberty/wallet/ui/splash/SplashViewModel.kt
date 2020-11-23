@@ -13,8 +13,6 @@ class SplashViewModel(private val app: Application,private val sharedPreferences
     val ldNavigate = MutableLiveData<NavigationConfig>()
 
     fun navigate() {
-        Log.e("!!!", "==empty")
-        Log.e("!!!", sharedPreferencesProvider.getToken() ?: "empty")
        if(sharedPreferencesProvider.getToken().isNullOrEmpty()) {
            ldNavigate.postValue(NavigationConfig.GO_TO_LOGIN)
        } else {

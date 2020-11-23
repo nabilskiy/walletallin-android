@@ -26,8 +26,6 @@ class ProfileViewModel(private val app: Application, private val repository: Pro
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = null))
-            Log.e("!!!", response.toString())
-
 
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
@@ -37,7 +35,6 @@ class ProfileViewModel(private val app: Application, private val repository: Pro
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.getOtp()
-            Log.e("!!!", response.token ?: "")
             ldOtp.postValue(response.token)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }

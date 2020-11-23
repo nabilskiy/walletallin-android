@@ -23,20 +23,21 @@ class MyWalletViewModel(
 
     var rates: Double? = null
     var balanceData: BalanceInfoContent? = null
-//    var availableBalanceData: AvailableBalanceInfoContent? = null
     var wallet: Wallets? = null
-//    fun getListData(): ArrayList<WalletContent> {
-//        val listData: ArrayList<WalletContent> = ArrayList()
-//        listData.add(WalletContent(R.drawable.ic_bitcoin, R.string.bitcoin_wallet, R.string.bitcoin_abreviatoure, R.string.bitcoin_price, R.string.bitcoin_result, R.color.lightOrange))
-//        return listData
-//    }
-//
 
-    init {
-        Log.e("!!!", sharedPreferencesProvider.getToken().toString())
-    }
+
     fun walletList() {
         launch(::onErrorHandler) {
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            handleResponse(repository.walletList(), repository.getBalance())
+            handleTransactionResponse(repository.getTransactions())
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
+    }
+
+    fun refreshData() {
+        launch(::onErrorHandler) {
+            delay(6000)
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.walletList(), repository.getBalance())
             handleTransactionResponse(repository.getTransactions())

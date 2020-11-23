@@ -35,8 +35,6 @@ abstract class BaseViewModel(private val app: Application) : AndroidViewModel(ap
 
 
     open fun onErrorHandler(throwable: Throwable) {
-        Log.e("!!!", "error")
-        Log.e("!!!", throwable.message.toString())
         Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
         val body = (throwable as HttpException).response()?.errorBody()
 

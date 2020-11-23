@@ -7,6 +7,7 @@ import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class MakeTransactionViewModel(
@@ -42,6 +43,15 @@ class MakeTransactionViewModel(
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseReceive(repository.getAddress())
+            handleResponseFee(repository.getFee())
+            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
+        }
+    }
+
+    fun refreshFee() {
+        launch(::onErrorHandler) {
+            delay(5000)
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseFee(repository.getFee())
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }

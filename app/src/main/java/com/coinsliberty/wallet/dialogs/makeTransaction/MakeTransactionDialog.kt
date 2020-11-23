@@ -60,6 +60,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     var listener: ((Boolean, String) -> Unit)? = null
 
+    var itemRate: Int = 0
+
     private lateinit var cardPhotoPath: String
     private var rates: Rates? = null
     private var isSend: Boolean = true
@@ -131,16 +133,19 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 ivText.text = item.title
                 when (item.itemId) {
                     R.id.slow -> {
+                        itemRate = 0
                         tvAmountSatPerByte.disable()
                         tvAmountSatPerByte.setText(rates?.min.toString())
                         true
                     }
                     R.id.medium -> {
+                        itemRate = 1
                         tvAmountSatPerByte.disable()
                         tvAmountSatPerByte.setText(rates?.mid.toString())
                         true
                     }
                     R.id.fast -> {
+                        itemRate = 2
                         tvAmountSatPerByte.disable()
                         tvAmountSatPerByte.setText(rates?.max.toString())
                         true
@@ -273,8 +278,23 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     private fun initFee(rates: Rates?) {
         this.rates = rates
-        tvAmountSatPerByte.disable()
-        tvAmountSatPerByte.setText(rates?.min.toString())
+
+        when(itemRate) {
+            0 -> {
+                tvAmountSatPerByte.disable()
+                tvAmountSatPerByte.setText(rates?.min.toString())
+            }
+            1 -> {
+                tvAmountSatPerByte.disable()
+                tvAmountSatPerByte.setText(rates?.mid.toString())
+            }
+            2 -> {
+                tvAmountSatPerByte.disable()
+                tvAmountSatPerByte.setText(rates?.max.toString())
+            }
+        }
+
+        viewModel.refreshFee()
     }
 
     private fun initResult(b: Boolean?) {

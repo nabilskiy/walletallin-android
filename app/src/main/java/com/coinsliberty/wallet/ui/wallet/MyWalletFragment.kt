@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.wallet
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
@@ -69,19 +70,29 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private fun initTransactions(list: List<TransactionItem>?) {
         adapter.itemsAdded(getTransactions(list))
+        viewModel.refreshData()
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
         if(list.isNullOrEmpty()) return emptyList()
         val resultList = ArrayList<Any>()
         var data: Long? = null
-        list.forEach {
+        list.forEachIndexed { index, it ->
             if (data == null || isDifferrentDate(data ?: 0, it.time ?: 0)) {
+                if(index > 0)
+                    (resultList[index] as? TransactionItem)?.typeItem = 2
+
                 resultList.add(it.time ?: 0)
                 data = it.time
+                it.typeItem = 0
             }
-            resultList.add(it.apply { it.amountUsd = String.format("%.2f", (it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0)) })
+            if(index == 0) it.typeItem = 0
+            resultList.add(it.apply {
+                it.amountUsd = String.format("%.2f", (it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0))
+
+            })
         }
+        (resultList[resultList.size - 1] as? TransactionItem)?.typeItem = 2
         return resultList
     }
 

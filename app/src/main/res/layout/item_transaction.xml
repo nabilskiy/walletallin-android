@@ -4,14 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginTop="8dp">
+    android:paddingTop="2dp"
+    android:background="@drawable/bg_dialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clSample"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:autoLink="web"
-        android:background="@drawable/bg_dialog">
+        android:autoLink="web">
 
         <ImageView
             android:id="@+id/ivIcon"
@@ -62,7 +62,6 @@
         android:id="@+id/clFull"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="@drawable/bg_dialog"
         android:visibility="gone">
         <ImageView
             android:id="@+id/ivOpenIcon"
@@ -175,6 +174,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/whiteGrey"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="gone"/>
 
 </LinearLayout>
 

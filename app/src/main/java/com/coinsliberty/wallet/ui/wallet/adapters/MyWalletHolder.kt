@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.item_data.view.*
 import kotlinx.android.synthetic.main.item_title.view.*
 import kotlinx.android.synthetic.main.item_transaction.view.*
 import kotlinx.android.synthetic.main.item_wallet.view.*
+import java.io.File.separator
 
 
  class MyWalletHolder(private val onItemClick: (WalletContent) -> Unit) : Holder<WalletContent>() {
@@ -58,6 +59,22 @@ class TransactionTitleHolder() : Holder<String>() {
 
 class TransactionHolder() : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
+
+        when(item.typeItem) {
+            0 -> {
+                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_top)
+                itemView.separator.visible()
+            }
+            1 -> {
+                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_middle)
+                itemView.separator.visible()
+            }
+            2 -> {
+                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_bottom)
+                itemView.separator.gone()
+            }
+        }
+
         itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvType.text = if(item.category != "send") "Deposite" else "Withrawal"
         itemView.tvPrice.text = item.amountUsd + " $"

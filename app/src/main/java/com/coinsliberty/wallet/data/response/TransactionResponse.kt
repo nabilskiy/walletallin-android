@@ -28,5 +28,6 @@ data class TransactionItem(
     @SerializedName("timereceived")
     val timereceived: Long? = null,
     @SerializedName("txid")
-    val txid: String? = null
+    val txid: String? = null,
+    var typeItem: Int? = 1
 )

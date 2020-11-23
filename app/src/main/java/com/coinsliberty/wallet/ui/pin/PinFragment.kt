@@ -104,6 +104,13 @@ class PinFragment : BaseKotlinFragment() {
 
     }
 
+
+    override fun onStart() {
+        super.onStart()
+
+        showKeyboard()
+    }
+
     private fun showKeyboard() {
         etPin.requestFocus()
         val imgr: InputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
