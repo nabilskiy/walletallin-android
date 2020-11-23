@@ -12,4 +12,7 @@ class MakeTransactionRepository(private val api: UserApi, private val apiBtc: Bt
     suspend fun sendBtcBalance(data: BtcBalance) = apiBtc.sendBtcRate(data)
 
     suspend fun getFee() = apiBtc.getFee()
+
+//    suspend fun sendMax(data: SendMaxRequest) = apiBtc.sendMax(data)
+    suspend fun sendMax(asset:String,rate :String) = apiBtc.sendMax(asset, rate)
 }

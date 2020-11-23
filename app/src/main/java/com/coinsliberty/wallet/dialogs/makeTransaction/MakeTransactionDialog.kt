@@ -1,7 +1,6 @@
 package com.coinsliberty.wallet.dialogs.makeTransaction
 
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.content.Context
@@ -15,7 +14,6 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +25,7 @@ import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.Rates
+import com.coinsliberty.wallet.data.response.SendMaxResponse
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
@@ -37,12 +36,6 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivClose
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivCopy
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.ivQrCode
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.tvLink
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.tvTittle
-import kotlinx.android.synthetic.main.dialog_qr_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
@@ -55,7 +48,6 @@ private const val keyBundleData = "qr"
 private const val keyBundleLoginData = "login"
 private const val keyBundleLink = "link"
 
-
 const val REQUEST_CODE_SCAN = 101
 private val REQUEST_IMAGE_CAPTURE = 1
 private val REQUEST_CODE = 333
@@ -63,22 +55,18 @@ private val REQUEST_SCAN = 222
 
 
 class MakeTransactionDialog : BottomSheetDialogFragment() {
-    //private var mListener: ItemClickListener? = null
     val layoutRes: Int = R.layout.bottom_sheet_make_transfer
     val viewModel: MakeTransactionViewModel by viewModel()
 
     var listener: ((Boolean, String) -> Unit)? = null
 
+    private lateinit var cardPhotoPath: String
     private var rates: Rates? = null
-
     private var isSend: Boolean = true
     private var barcode = ""
-    private lateinit var cardPhotoPath: String
-
     private var qrCode: String? = null
     private var login: String? = null
     private var data: EditProfileRequest? = null
-
 
     var addressForSend: String = " "
     var balanceForSend: String = " "
@@ -88,7 +76,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         isCancelable = true
     }
 
@@ -100,23 +87,17 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val tittle = arguments?.getString(keyBundleTittle)
         tvTittle.text = "SEND $tittle"
-        viewModel.updateData()
 
+        viewModel.updateData()
 
         dialogReceive()
         dialogSend()
 
-
-
         clSendSpinner.setOnClickListener {
             showPopupMenu()
         }
-
-
-
 
         switchDialog.changeStatus(isSend)
         switchDialog.setOnClickListener {
@@ -179,10 +160,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         qrCode = arguments?.getString(keyBundleLink)
         login = arguments?.getString(keyBundleLoginData)
         data = arguments?.getParcelable(keyBundleData)
-        //tvLinkReceive.text = qrCode
-//        ivQrCodeReceive.setImageBitmap(
-//            arguments?.getString(keyBundleLink)
-//                ?.let { create("otpauth://totp/CoinsLiberty:$login?secret=$qrCode&period=30&digits=6&algorithm=SHA1&issuer=Testing") })
 
         btnUpdate.setOnClickListener {
             // viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
@@ -195,9 +172,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
             Toast.makeText(context, "Copy", Toast.LENGTH_SHORT).show()
         }
-
     }
-
 
     private fun dialogSend() {
         val rates = arguments?.getDouble(keyBundleRates)
@@ -226,7 +201,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                tvBTCDownResult.text = String.format("%.8f",(240 * (s.toString().toLong())).toDouble() / 100000000.0) + " BTC"
+                tvBTCDownResult.text = String.format(
+                    "%.8f",
+                    (240 * (s.toString().toLong())).toDouble() / 100000000.0
+                ) + " BTC"
             }
         })
 
@@ -235,7 +213,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
-
             viewModel.sendBtc(
                 "btc",
                 tvAmountCripto.text.toString(),
@@ -244,25 +221,22 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 tvAmountSatPerByte.text.toString()
             )
 
-            Log.e("!!!g", ress.toString())
-            if(ress == true){
-                getAcceptDialog(balanceForSend,addressForSend)
-            }else if (ress == false){
+            if (ress == true) {
+                getAcceptDialog(balanceForSend, addressForSend)
+            } else if (ress == false) {
                 getErrorDialog(viewModel.messageError.value.toString())
             }
-
-            //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
 
+        tvSendMax.setOnClickListener {
+            val rate: String = tvAmountSatPerByte.text.toString()
+            viewModel.sendMax("btc", rate)
+        }
     }
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
         listener = onChoosen
     }
-
-    fun sendBtc(result: Boolean) {
-    }
-
 
     private fun getErrorDialog(value: String) {
         ErrorDialog.newInstance(value)
@@ -278,16 +252,23 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         bindDataTo(viewModel.result, ::initResult)
         bindDataTo(viewModel.feeInit, ::initFee)
         bindDataTo(viewModel.resultRecovery, ::setAddress)
-        //  bindDataTo(viewModel.result, ::sendBtc)
+        bindDataTo(viewModel.maxAvailable, ::sendMax)
 
     }
 
+    private fun sendMax(response: SendMaxResponse) {
+        if (response.result == true) {
+            tvAmountCripto.setText(String.format("%.8f", response.withdrawData?.available))
+            val rs: Double =
+                response.withdrawData?.available!! * arguments?.getDouble(keyBundleRates)!!
+            tvAmountFiat.setText(String.format("%.2f", rs))
+        }
+    }
+
     private fun setAddress(link: String) {
-        // if (addressInfo.result == true) {
         tvLinkReceive.text = link
         ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
         addressForSend = link
-        // }
     }
 
     private fun initFee(rates: Rates?) {
@@ -301,7 +282,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         ress = b
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
     private fun cardPhotoCaptureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             //perform check is there is an app that can handle this intent -> in not - just close
@@ -333,7 +313,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         cardPhotoPath = file.absolutePath
         return file
     }
-
 
     private fun requestPermissionAndCapturePhoto() {
         if (ContextCompat.checkSelfPermission(
@@ -422,7 +401,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-
             tvLinkReceive.text = data?.extras?.getString(BARCODE_EXTRA) ?: ""
         }
     }
@@ -444,7 +422,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             null
         }
     }
-
 
     companion object {
         const val TAG = "MakeTransaction"
