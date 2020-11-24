@@ -25,8 +25,9 @@ class LoginFragment : BaseKotlinFragment() {
 
         subscribeLiveData()
 
-        loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
-        loginToolbar.ivToolbarIconLeft.setOnClickListener {
+
+        //loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
+        ivLanguage.setOnClickListener {
                ChangeLanguageDialog.newInstance(icon)
                    .apply {
                        initListeners {
@@ -37,12 +38,12 @@ class LoginFragment : BaseKotlinFragment() {
                    }.show(childFragmentManager, ChangeLanguageDialog.TAG)
 
         }
-        loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
+        //loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText())
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), " " /*if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText()*/)
             }
 
         tvForgotPassword.setOnClickListener {
@@ -57,7 +58,7 @@ class LoginFragment : BaseKotlinFragment() {
     }
 
     private fun changeLanguage() {
-        loginToolbar.ivToolbarIconLeft.setImageResource(icon)
+        ivLanguage.setImageResource(icon)
     }
 
     private fun navigate() {
@@ -72,7 +73,7 @@ class LoginFragment : BaseKotlinFragment() {
         if(b == true) {
             navigate()
         } else {
-            ifcCode.visible()
+            //ifcCode.visible()
         }
     }
 

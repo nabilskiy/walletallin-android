@@ -26,6 +26,7 @@
     <color name="blackLowOpacity">#1A000000</color>
     <color name="whiteLowOpacity">#33FFFFFF</color>
     <color name="whiteGreySwitch">#1F767680</color>
+    <color name="btn_blue">#51B7DB</color>
 
     <!-- Wallet background color -->
     <color name="lightOrange">#EFDECC</color>

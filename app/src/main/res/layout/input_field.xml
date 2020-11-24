@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/H8"
-        android:textColor="@color/grey"
+        android:textColor="@color/darkGrey"
         />
 
     <EditText
@@ -23,6 +23,7 @@
         android:layout_marginTop="@dimen/if_edit_text_margin_top"
         android:background="@drawable/bg_input_field"
         style="@style/H5"
+        android:textColor="@color/darkGrey"
         android:paddingStart="@dimen/if_edit_text_padding_start"
         android:paddingTop="@dimen/if_edit_text_padding_top"
         android:paddingBottom="@dimen/if_edit_text_padding_bottom"

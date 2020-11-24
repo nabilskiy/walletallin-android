@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CoinsLiberty</string>
-    <string name="forgot_password">forgot password?</string>
+    <string name="forgot_password">Forgot password?</string>
     <string name="sign_up">sign up</string>
     <string name="update">Update</string>
     <string name="sign_up_with_upper">Sign Up</string>
@@ -120,7 +120,7 @@
     <string name="scan_your_fingerprint">scan your fingerprint</string>
     <string name="or_use_MPin">or use MPin</string>
     <string name="enter_your_4_digit_PIN_code">Enter your 4 digit PIN code.</string>
-
+    <string name="Dont_have_an_account">Don’t have an account yet?</string>
 
 
 </resources>
