@@ -184,6 +184,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
+        tvBTCTransferResult.text = String.format("%.2f", result) + " $"
         tvAmountCripto.setText(String.format("%.8f", bundle))
         tvAmountFiat.text = String.format("%.2f", result)
         balanceForSend = tvAmountFiat.text.toString() + " $"
@@ -206,10 +207,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                tvBTCDownResult.text = String.format(
-                    "%.8f",
-                    (240 * (s.toString().toLong())).toDouble() / 100000000.0
-                ) + " BTC"
+//                tvBTCTransferResult.text = String.format(
+//                    "%.8f",
+//                    (240 * (s.toString().toLong())).toDouble() / 100000000.0
+//                ) + " BTC"
             }
         })
 

@@ -434,7 +434,7 @@
                 app:layout_constraintTop_toBottomOf="@id/devideLine" />
 
             <TextView
-                android:id="@+id/tvBTCDownResult"
+                android:id="@+id/tvBTCTransferResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dialog_send_btc_down_result_margin_start"

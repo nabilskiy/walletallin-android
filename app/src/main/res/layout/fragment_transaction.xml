@@ -51,17 +51,6 @@
             />
 
         <ImageView
-            android:id="@+id/ivTransactionToolbarRightIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/transaction_right_icon_margin_top"
-            android:layout_marginEnd="@dimen/transaction_right_icon_margin_end"
-            android:background="@drawable/ic_save_transaction"
-            />
-
-        <ImageView
             android:id="@+id/ivTransactionLeftIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
