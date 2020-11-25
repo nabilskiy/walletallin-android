@@ -477,7 +477,7 @@
             />
 
         <TextView
-            android:id="@+id/tvBTCDownResult"
+            android:id="@+id/tvBTCTransferResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btc_down_result"
