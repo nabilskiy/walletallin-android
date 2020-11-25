@@ -25,6 +25,8 @@ class LoginFragment : BaseKotlinFragment() {
 
         loginToolbar.ivToolbarIconLeft.visibility = View.GONE
         loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
+        loginToolbar.ivToolbarIconLeft.visibility = View.GONE
+
         loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
@@ -43,6 +45,7 @@ class LoginFragment : BaseKotlinFragment() {
                 .show(childFragmentManager, ForgotPassDialog.TAG)
         }
     }
+
 
     private fun navigate() {
         navigator.goToContent(navController)
