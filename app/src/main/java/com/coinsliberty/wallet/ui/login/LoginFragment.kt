@@ -18,25 +18,13 @@ class LoginFragment : BaseKotlinFragment() {
     override val viewModel: LoginViewModel by viewModel()
     override val navigator: LoginNavigation = get()
 
-    var icon = R.drawable.ic_germany
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeLiveData()
 
+        loginToolbar.ivToolbarIconLeft.visibility = View.GONE
         loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
-        loginToolbar.ivToolbarIconLeft.setOnClickListener {
-               ChangeLanguageDialog.newInstance(icon)
-                   .apply {
-                       initListeners {
-                           icon = it.ico
-                           dismiss()
-                           changeLanguage()
-                       }
-                   }.show(childFragmentManager, ChangeLanguageDialog.TAG)
-
-        }
         loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
@@ -54,10 +42,6 @@ class LoginFragment : BaseKotlinFragment() {
                 } }
                 .show(childFragmentManager, ForgotPassDialog.TAG)
         }
-    }
-
-    private fun changeLanguage() {
-        loginToolbar.ivToolbarIconLeft.setImageResource(icon)
     }
 
     private fun navigate() {

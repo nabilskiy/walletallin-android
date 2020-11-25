@@ -18,7 +18,11 @@
         android:id="@+id/transactionFragment"
         android:name="com.coinsliberty.wallet.ui.transaction.TransactionFragment"
         android:label="TransactionFragment"
-        tools:layout="@layout/fragment_transaction"/>
+        tools:layout="@layout/fragment_transaction">
+        <action
+            android:id="@+id/action_transactionFragment_to_diagramFragment"
+            app:destination="@id/diagramFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.coinsliberty.wallet.ui.settings.SettingsFragment"
@@ -59,5 +63,11 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true"
         app:destination="@id/exchangeFragment"/>
+    <fragment
+        android:id="@+id/diagramFragment"
+        android:name="com.coinsliberty.wallet.ui.diagram.DiagramFragment"
+        android:label="DiagramFragment"
+        tools:layout="@layout/fragment_diagram"
+        />
 
 </navigation>
