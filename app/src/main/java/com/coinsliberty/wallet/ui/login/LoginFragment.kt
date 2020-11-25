@@ -23,6 +23,7 @@ class LoginFragment : BaseKotlinFragment() {
 
         subscribeLiveData()
 
+        loginToolbar.ivToolbarIconLeft.visibility = View.GONE
         loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
         loginToolbar.ivToolbarIconLeft.visibility = View.GONE
 
