@@ -1,117 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/whiteGrey">
 
-        <include
-            android:id="@+id/loginToolbar"
-            layout="@layout/toolbar"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/clMain"
+        android:background="@drawable/bg_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <ImageView
-            android:id="@+id/ivLock"
+            android:id="@+id/ivLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_lock"
-            app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
+            android:layout_marginStart="@dimen/login_iv_lang_margin_start"
+            android:layout_marginTop="@dimen/login_iv_lang_margin_top"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/login_image_view_margin_top"
-            android:layout_marginStart="@dimen/login_image_view_margin_start"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_germany" />
 
-        <TextView
-            android:id="@+id/tvLogin"
+        <ImageView
+            android:id="@+id/ivLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            app:layout_constraintStart_toEndOf="@+id/ivLock"
-            app:layout_constraintTop_toBottomOf="@+id/loginToolbar"
-            android:layout_marginTop="@dimen/login_text_margin_top"
-            android:layout_marginStart="@dimen/login_text_margin_start"
-            android:textColor="@color/darkGrey"
-            style="@style/H1"
-            />
+            android:layout_marginTop="@dimen/login_iv_logo_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo_grey" />
+
 
         <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/loginEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_cc_margin_end_start"
+            android:layout_marginTop="@dimen/login_cc_mail_margin_top"
+            android:layout_marginEnd="@dimen/login_cc_margin_end_start"
             app:ifc_header="Email"
             app:ifc_type="textEmailAddress"
-            app:layout_constraintTop_toBottomOf="@+id/ivLock"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp" />
+            app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
         <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/loginPasswordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_cc_margin_end_start"
+            android:layout_marginTop="@dimen/login_cc_pass_margin_top"
+            android:layout_marginEnd="@dimen/login_cc_margin_end_start"
             app:ifc_header="Password"
             app:ifc_type="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/loginEmailInput"
-            android:layout_marginTop="18dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            />
+            app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
 
         <TextView
             android:id="@+id/tvForgotPassword"
+            style="@style/H4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:textColor="@color/blue"
-            style="@style/H4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput"
             android:layout_marginTop="@dimen/login_password_margin_top"
             android:layout_marginEnd="@dimen/login_password_margin_end"
-            />
+            android:text="@string/forgot_password"
+            android:textColor="@color/btn_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginPasswordInput" />
 
-        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-            android:id="@+id/ifcCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:ifc_header="2FA"
-            app:ifc_type="text"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/tvLoginSignUpButton"
-            style="@style/H4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_signup_margin_start"
-            android:text="@string/sign_up"
-            android:textColor="@color/blue"
-            app:layout_constraintBottom_toTopOf="@id/btnLoginUpdate"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ifcCode"
-            app:layout_constraintVertical_bias="0.5"
-            android:layout_marginVertical="8dp"/>
 
         <Button
             android:id="@+id/btnLoginUpdate"
-            android:layout_width="@dimen/login_update_button_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/login_update_button_height"
-            android:layout_marginBottom="@dimen/login_update_button_margin_bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            style="@style/ButtonGreyBorder"
+            android:layout_marginStart="@dimen/login_btn_login_margin_start_end"
+            android:layout_marginEnd="@dimen/login_btn_login_margin_start_end"
+            android:layout_marginBottom="@dimen/login_btn_login_margin_bottom"
+            android:background="@drawable/btn_blue_login"
             android:gravity="center"
             android:text="@string/login"
-            android:textColor="@color/lightBlue"
-            />
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLoginUpdate">
+
+            <TextView
+                android:id="@+id/tvLoginSignUpButton"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/login_btn_sing_up_margin_vertical"
+                android:layout_marginStart="@dimen/login_btn_sing_up_margin_start"
+                android:text="@string/sign_up"
+                android:textColor="@color/btn_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvDontHave"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDontHave"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Dont_have_an_account"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

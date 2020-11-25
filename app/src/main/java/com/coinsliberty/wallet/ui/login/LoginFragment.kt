@@ -18,21 +18,32 @@ class LoginFragment : BaseKotlinFragment() {
     override val viewModel: LoginViewModel by viewModel()
     override val navigator: LoginNavigation = get()
 
+    var icon = R.drawable.ic_germany
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeLiveData()
 
-        loginToolbar.ivToolbarIconLeft.visibility = View.GONE
-        loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
-        loginToolbar.ivToolbarIconLeft.visibility = View.GONE
 
-        loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
+        //loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
+        ivLanguage.setOnClickListener {
+               ChangeLanguageDialog.newInstance(icon)
+                   .apply {
+                       initListeners {
+                           icon = it.ico
+                           dismiss()
+                           changeLanguage()
+                       }
+                   }.show(childFragmentManager, ChangeLanguageDialog.TAG)
+
+        }
+        //loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText())
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), " " /*if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText()*/)
             }
 
         tvForgotPassword.setOnClickListener {
@@ -46,6 +57,9 @@ class LoginFragment : BaseKotlinFragment() {
         }
     }
 
+    private fun changeLanguage() {
+        ivLanguage.setImageResource(icon)
+    }
 
     private fun navigate() {
         navigator.goToContent(navController)
@@ -59,7 +73,7 @@ class LoginFragment : BaseKotlinFragment() {
         if(b == true) {
             navigate()
         } else {
-            ifcCode.visible()
+            //ifcCode.visible()
         }
     }
 
