@@ -76,6 +76,10 @@ class TransactionFragment : BaseKotlinFragment() {
             activity?.onBackPressed()
         }
 
+        clBTCPriceForOne.setOnClickListener {
+            navigator.goToDiagram(navController)
+        }
+
         subscribeLiveData()
 
         viewModel.getTransaction()

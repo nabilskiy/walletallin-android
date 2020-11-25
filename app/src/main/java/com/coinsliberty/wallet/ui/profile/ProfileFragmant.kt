@@ -33,7 +33,7 @@ class ProfileFragmant : BaseKotlinFragment() {
             openGallery(1);
         }
 
-        profileToolbar.ivToolbarIconLeft.setBackgroundResource(R.drawable.ic_arrow_back)
+        profileToolbar.ivToolbarIconLeft.visibility = View.GONE
         profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
         profileToolbar.tvToolbarTitle.text = "Profile"
 

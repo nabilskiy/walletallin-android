@@ -61,7 +61,6 @@ class SendDialog : BaseKotlinDialogFragment() {
         tvAmountCripto.setText(String.format("%.8f", bundle))
         tvAmountFiat.text = String.format("%.2f", result)
 
-
         tvAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
 
@@ -83,7 +82,6 @@ class SendDialog : BaseKotlinDialogFragment() {
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
         subscribeLiveData()
-
     }
 
     private fun subscribeLiveData() {
