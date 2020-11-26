@@ -7,10 +7,12 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.biometric.BiometricPrompt
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.dialogs.faceIdDialog.FaceIdDialog
 import com.coinsliberty.wallet.dialogs.touchIdDialog.TouchIdDialog
+import com.coinsliberty.wallet.utils.biometric.BiometricHelper
 import com.coinsliberty.wallet.utils.extensions.invisible
 import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.manager.TypeBiometrics
@@ -39,27 +41,21 @@ class PinFragment : BaseKotlinFragment() {
             when (viewModel.getTypeOfBiometric()) {
                 TypeBiometrics.TOUCH_ID -> {
                     ivTouchId.visible()
-                    TouchIdDialog().apply {
-                        initListeners {
-                            if(it) {
-                                navigator.goToMain(navController)
-                            } else {
-                                showKeyboard()
-                            }
-                        }
-                    }.show(childFragmentManager, TouchIdDialog.TAG)
+                    BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+                        BiometricHelper.buildDefaultBiometricDialog(
+                            "Authorization",
+                            "Confirm login",
+                            "Cancel"
+                        ))
                 }
                 TypeBiometrics.FACE_ID -> {
                     ivFaceId.visible()
-                    FaceIdDialog().apply {
-                        initListeners {
-                            if(it) {
-                                navigator.goToMain(navController)
-                            } else {
-                                showKeyboard()
-                            }
-                        }
-                    }.show(childFragmentManager, FaceIdDialog.TAG)
+                    BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+                        BiometricHelper.buildDefaultBiometricDialog(
+                            "Authorization",
+                            "Confirm login",
+                            "Cancel"
+                        ))
                 }
                 else -> {
                 }
@@ -80,26 +76,20 @@ class PinFragment : BaseKotlinFragment() {
         })
 
         ivTouchId.setOnClickListener {
-            TouchIdDialog().apply {
-                initListeners {
-                    if(it) {
-                        navigator.goToMain(navController)
-                    } else {
-                        showKeyboard()
-                    }
-                }
-            }.show(childFragmentManager, TouchIdDialog.TAG)
+            BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+                BiometricHelper.buildDefaultBiometricDialog(
+                    "Authorization",
+                    "Confirm login",
+                    "Cancel"
+                ))
         }
         ivFaceId.setOnClickListener {
-            FaceIdDialog().apply {
-                initListeners {
-                    if(it) {
-                        navigator.goToMain(navController)
-                    } else {
-                        showKeyboard()
-                    }
-                }
-            }.show(childFragmentManager, FaceIdDialog.TAG)
+            BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
+                BiometricHelper.buildDefaultBiometricDialog(
+                    "Authorization",
+                    "Confirm login",
+                    "Cancel"
+                ))
         }
 
     }
@@ -208,5 +198,14 @@ class PinFragment : BaseKotlinFragment() {
             }
         }
     }
+
+    private val biometricCallBack = object : BiometricPrompt.AuthenticationCallback() {
+        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+            super.onAuthenticationSucceeded(result)
+
+            navigator.goToMain(navController)
+        }
+    }
+
 
 }

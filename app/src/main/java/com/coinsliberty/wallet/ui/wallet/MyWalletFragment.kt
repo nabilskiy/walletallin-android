@@ -1,7 +1,7 @@
 package com.coinsliberty.wallet.ui.wallet
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -10,7 +10,6 @@ import com.coinsliberty.wallet.data.response.BalanceInfoContent
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
-import com.coinsliberty.wallet.dialogs.qrCode.QrCodeDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.SendDialog
 import com.coinsliberty.wallet.ui.transaction.TransactionFragment
 import com.coinsliberty.wallet.ui.wallet.adapters.MyWalletHolder
@@ -21,8 +20,9 @@ import com.coinsliberty.wallet.ui.wallet.data.WalletContent
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
-import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.coroutines.flow.merge
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class MyWalletFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_my_wallet
@@ -30,34 +30,33 @@ class MyWalletFragment : BaseKotlinFragment() {
     override val navigator: MyWalletNavigation = MyWalletNavigation()
 
     val adapter = BaseAdapter()
-        .map(R.layout.item_wallet, MyWalletHolder{ navigator.goToTransactions(navController, TransactionFragment.getBundle(viewModel.rates, viewModel.balanceData?.btc, it.ico)) })
+        .map(R.layout.item_wallet, MyWalletHolder {
+            navigator.goToTransactions(
+                navController, TransactionFragment.getBundle(
+                    viewModel.rates,
+                    viewModel.balanceData?.btc,
+                    it.ico
+                )
+            )
+        })
         .map(R.layout.item_transaction, TransactionHolder())
         .map(R.layout.item_data, TransactionDataHolder())
         .map(R.layout.item_title, TransactionTitleHolder())
 
     private var sendDialog: SendDialog? = null
 
+    private var walletData: List<WalletContent>? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            subscribeLiveData()
-            rvWallet.adapter = adapter
+        subscribeLiveData()
+    }
 
-//        walletToolbarSendButton.setOnClickListener {
-//            if(sendDialog == null) {
-//                sendDialog = SendDialog.newInstance("Sent eth", viewModel.rates ?: 0.0, viewModel.balanceData?.btc ?: 0.0)
-//            }
-//
-//            sendDialog
-//                ?.apply {
-//                    initListeners { result, text ->
-//                        showResult(result, text)
-//                    }
-//                }
-//                ?.show(childFragmentManager, SendDialog.TAG)
-//        }
-//        walletToolbarRecieveButton.setOnClickListener {
-//            QrCodeDialog.newInstance("Sent btc", "test").show(childFragmentManager, QrCodeDialog.TAG)
-//        }
+    override fun onStart() {
+        super.onStart()
+        rvWallet.adapter = null
+        adapter.removeAll()
+        rvWallet.adapter = adapter
         viewModel.walletList()
     }
 
@@ -69,7 +68,8 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
-        adapter.itemsAdded(getTransactions(list))
+        adapter.itemsLoaded(((walletData ?: emptyList()) + listOf("Last Transactions") + (getTransactions(list) ?: emptyList())))
+
         viewModel.refreshData()
     }
 
@@ -88,7 +88,10 @@ class MyWalletFragment : BaseKotlinFragment() {
             }
             if(index == 0) it.typeItem = 0
             resultList.add(it.apply {
-                it.amountUsd = String.format("%.2f", (it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0))
+                it.amountUsd = String.format(
+                    "%.2f",
+                    (it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0)
+                )
 
             })
         }
@@ -98,27 +101,34 @@ class MyWalletFragment : BaseKotlinFragment() {
 
 
     private fun initData(list: List<WalletContent>) {
-        //walletToolbarTitle.text = (list.firstOrNull()?.result ?: 0.0).toString() + " USD"
-        adapter.itemsLoaded(list)
-        adapter.itemsAdded(listOf("Last Transactions"))
+        walletData = list
 
     }
 
-    private fun initBalance(balance : BalanceInfoContent){
-        tvTotalBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
-        tvTotalBalanceFiat.text = String.format("%.2f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+    private fun initBalance(balance: BalanceInfoContent){
+        tvTotalBalanceCrypto.text = String.format("%.8f", balance.btc ?: 0.0)
+        tvTotalBalanceFiat.text = String.format(
+            "%.2f",
+            ((balance.btc ?: 0.0) * (viewModel.rates ?: 0.0))
+        )
 
     }
 
-    private fun initAvailableBalance(balance : AvailableBalanceInfoContent){
-        tvBalanceCrypto.text = String.format("%.8f",balance.btc ?: 0.0)
-        tvBalanceFiat.text = String.format("%.2f", ((balance.btc?: 0.0) * (viewModel.rates ?: 0.0)))
+    private fun initAvailableBalance(balance: AvailableBalanceInfoContent){
+        tvBalanceCrypto.text = String.format("%.8f", balance.btc ?: 0.0)
+        tvBalanceFiat.text = String.format(
+            "%.2f",
+            ((balance.btc ?: 0.0) * (viewModel.rates ?: 0.0))
+        )
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {
         if(it) {
             sendDialog?.dismiss()
-            AcceptDialog.newInstance(balance ?: "", "Success").show(childFragmentManager, AcceptDialog.TAG)
+            AcceptDialog.newInstance(balance ?: "", "Success").show(
+                childFragmentManager,
+                AcceptDialog.TAG
+            )
         } else {
             ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
         }

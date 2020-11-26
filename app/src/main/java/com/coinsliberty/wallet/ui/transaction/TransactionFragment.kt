@@ -106,25 +106,36 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance: BalanceInfoResponse) {
-
+        tvBTCPrice.text = String.format("%.2f", rates) + " USD"
         tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
         tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + " $"
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
-        if (list.isNullOrEmpty()) return emptyList()
+        if(list.isNullOrEmpty()) return emptyList()
         val resultList = ArrayList<Any>()
         var data: Long? = null
-        list.forEach {
+        list.forEachIndexed { index, it ->
             if (data == null || isDifferrentDate(data ?: 0, it.time ?: 0)) {
+                if(index > 0)
+                    (resultList[index] as? TransactionItem)?.typeItem = 2
+
                 resultList.add(it.time ?: 0)
                 data = it.time
+                it.typeItem = 0
             }
+            if(index == 0) it.typeItem = 0
             resultList.add(it.apply {
-                it.amountUsd = String.format("%.2f", (it.amount?.toDouble() ?: 0.0) * (rates))
+                it.amountUsd = String.format(
+                    "%.2f",
+                    (it.amount?.toDouble() ?: 0.0) * (rates)
+                )
+
             })
         }
+        (resultList[resultList.size - 1] as? TransactionItem)?.typeItem = 2
         return resultList
+
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

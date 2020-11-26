@@ -51,9 +51,7 @@ class MakeTransactionViewModel(
     fun refreshFee() {
         launch(::onErrorHandler) {
             delay(5000)
-            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseFee(repository.getFee())
-            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
 

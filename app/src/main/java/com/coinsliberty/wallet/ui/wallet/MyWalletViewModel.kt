@@ -38,10 +38,8 @@ class MyWalletViewModel(
     fun refreshData() {
         launch(::onErrorHandler) {
             delay(6000)
-            withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.walletList(), repository.getBalance())
             handleTransactionResponse(repository.getTransactions())
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
 

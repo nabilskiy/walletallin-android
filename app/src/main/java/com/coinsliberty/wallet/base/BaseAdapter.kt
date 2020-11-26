@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 open class BaseAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    protected val items: CopyOnWriteArrayList<Any> = CopyOnWriteArrayList()
+    protected var items: CopyOnWriteArrayList<Any> = CopyOnWriteArrayList()
 
     val entities: MutableMap<Class<*>, Int> = mutableMapOf()
 
@@ -30,6 +30,11 @@ open class BaseAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun remove(item: Any) {
         items.remove(item)
+        notifyDataSetChanged()
+    }
+
+    fun removeAll() {
+        items = CopyOnWriteArrayList()
         notifyDataSetChanged()
     }
 
