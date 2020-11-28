@@ -1,6 +1,7 @@
 package com.coinsliberty.wallet.ui.transaction
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
@@ -113,18 +114,16 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
         if(list.isNullOrEmpty()) return emptyList()
-        val resultList = ArrayList<Any>()
-        var data: Long? = null
-        list.forEachIndexed { index, it ->
-            if (data == null || isDifferrentDate(data ?: 0, it.time ?: 0)) {
-                if(index > 0)
-                    (resultList[index] as? TransactionItem)?.typeItem = 2
 
+        val resultList = ArrayList<Any>()
+        var lastItem: TransactionItem? = null
+        list.forEachIndexed { _, it ->
+            if (lastItem == null || isDifferrentDate(lastItem?.time ?: 0, it.time ?: 0)) {
                 resultList.add(it.time ?: 0)
-                data = it.time
+                lastItem?.typeItem = 2
                 it.typeItem = 0
             }
-            if(index == 0) it.typeItem = 0
+
             resultList.add(it.apply {
                 it.amountUsd = String.format(
                     "%.2f",
@@ -132,10 +131,12 @@ class TransactionFragment : BaseKotlinFragment() {
                 )
 
             })
+
+            lastItem = it
         }
         (resultList[resultList.size - 1] as? TransactionItem)?.typeItem = 2
-        return resultList
 
+        return resultList
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

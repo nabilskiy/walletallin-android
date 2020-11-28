@@ -59,7 +59,6 @@ class TransactionTitleHolder() : Holder<String>() {
 
 class TransactionHolder() : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
-
         when(item.typeItem) {
             0 -> {
                 itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_top)
