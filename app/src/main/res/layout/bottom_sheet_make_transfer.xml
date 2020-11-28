@@ -34,6 +34,121 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clDialogReceive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dialog_make_transaction_dialog_send_margin_start_top"
+            android:background="@drawable/bg_dialog_white"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchDialog">
+
+            <TextView
+                android:id="@+id/tvPleaseVerify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
+                android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
+                android:text="@string/verify_address"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llQrCode" />
+
+            <TextView
+                android:id="@+id/tvSentBTC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
+                android:text="@string/sent_btc"
+                android:textAppearance="@style/H8"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPleaseVerify" />
+
+
+            <LinearLayout
+                android:id="@+id/llQrCode"
+                android:layout_width="@dimen/dialog_make_transaction_dialog_ll_code_size"
+                android:layout_height="@dimen/dialog_make_transaction_dialog_ll_code_size"
+                android:layout_marginTop="@dimen/dialog_ll_qr_code_marginTop"
+                android:background="@color/white"
+                android:elevation="@dimen/dialog_ll_qr_code_elevation"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivQrCodeReceive"
+                    android:layout_width="@dimen/dialog_make_transaction_dialog_iv_code_size"
+                    android:layout_height="@dimen/dialog_make_transaction_dialog_iv_code_size" />
+            </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clLinkReceive"
+                android:layout_width="@dimen/dialog_clLink_width"
+                android:layout_height="@dimen/dialog_clLink_height"
+                android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
+                android:layout_marginTop="@dimen/dialog_make_transaction_dialog_cl_link_margin_top"
+                android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
+                android:background="@drawable/bg_item_dialog_receive"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSentBTC">
+
+                <ImageView
+                    android:id="@+id/ivCopy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
+                    android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
+                    android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
+                    android:padding="@dimen/dialog_make_transaction_dialog_iv_copy_padding"
+                    android:src="@drawable/ic_copy"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvLinkReceive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
+                    android:layout_marginEnd="@dimen/dialog_make_transaction_dialog_link_receive_margin_end"
+                    android:gravity="start"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/darkGrey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ivCopy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="TextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <Button
+                android:id="@+id/btnUpdate"
+                style="@style/ButtonGreyBorder"
+                android:layout_width="@dimen/login_update_button_width"
+                android:layout_height="@dimen/login_update_button_height"
+                android:layout_marginTop="@dimen/dialog_make_transaction_dialog_btn_send_margin_top"
+                android:gravity="center"
+                android:text="@string/close"
+                android:textColor="@color/lightBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clLinkReceive" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchTransaction
             android:id="@+id/switchDialog"
             android:layout_width="wrap_content"
@@ -444,116 +559,6 @@
                 app:layout_constraintStart_toEndOf="@id/ivDownLogo"
                 app:layout_constraintTop_toBottomOf="@id/tvDownNetworkFees" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clDialogReceive"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_dialog_white"
-                android:visibility="invisible">
-
-                <TextView
-                    android:id="@+id/tvPleaseVerify"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dialog_tvPleaseVerify_marginTop"
-                    android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
-                    android:text="@string/verify_address"
-                    android:textAppearance="@style/H8"
-                    android:textColor="@color/grey"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/llQrCode" />
-
-                <TextView
-                    android:id="@+id/tvSentBTC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/dialog_make_transaction_dialog_send_tv_verify_padding"
-                    android:text="@string/sent_btc"
-                    android:textAppearance="@style/H8"
-                    android:textColor="@color/grey"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPleaseVerify" />
-
-
-                <LinearLayout
-                    android:id="@+id/llQrCode"
-                    android:layout_width="@dimen/dialog_make_transaction_dialog_ll_code_size"
-                    android:layout_height="@dimen/dialog_make_transaction_dialog_ll_code_size"
-                    android:layout_marginTop="@dimen/dialog_ll_qr_code_marginTop"
-                    android:background="@color/white"
-                    android:elevation="@dimen/dialog_ll_qr_code_elevation"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/ivQrCodeReceive"
-                        android:layout_width="@dimen/dialog_make_transaction_dialog_iv_code_size"
-                        android:layout_height="@dimen/dialog_make_transaction_dialog_iv_code_size" />
-                </LinearLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clLinkReceive"
-                    android:layout_width="@dimen/dialog_clLink_width"
-                    android:layout_height="@dimen/dialog_clLink_height"
-                    android:layout_marginStart="@dimen/dialog_clLink_marginStartEnd"
-                    android:layout_marginTop="@dimen/dialog_make_transaction_dialog_cl_link_margin_top"
-                    android:layout_marginEnd="@dimen/dialog_clLink_marginStartEnd"
-                    android:background="@drawable/bg_item_dialog_receive"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSentBTC">
-
-                    <ImageView
-                        android:id="@+id/ivCopy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dialog_ivCopy_marginTopBottom"
-                        android:layout_marginEnd="@dimen/dialog_ivCopy_marginEnd"
-                        android:layout_marginBottom="@dimen/dialog_ivCopy_marginTopBottom"
-                        android:padding="@dimen/dialog_make_transaction_dialog_iv_copy_padding"
-                        android:src="@drawable/ic_copy"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvLinkReceive"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dialog_tvLink_marginStart"
-                        android:layout_marginEnd="@dimen/dialog_make_transaction_dialog_link_receive_margin_end"
-                        android:gravity="start"
-                        android:textAppearance="@style/H8"
-                        android:textColor="@color/darkGrey"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/ivCopy"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="TextView" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <Button
-                    android:id="@+id/btnUpdate"
-                    style="@style/ButtonGreyBorder"
-                    android:layout_width="@dimen/login_update_button_width"
-                    android:layout_height="@dimen/login_update_button_height"
-                    android:layout_marginTop="@dimen/dialog_make_transaction_dialog_btn_send_margin_top"
-                    android:gravity="center"
-                    android:text="@string/close"
-                    android:textColor="@color/lightBlue"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/clLinkReceive" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
