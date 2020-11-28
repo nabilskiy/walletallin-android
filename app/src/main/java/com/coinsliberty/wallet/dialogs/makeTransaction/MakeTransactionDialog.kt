@@ -153,6 +153,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     }
                     R.id.custom -> {
                         tvAmountSatPerByte.enable()
+                        tvAmountSatPerByte.setSelection(tvAmountSatPerByte.text.length)
+                        tvAmountSatPerByte.requestFocus()
                         true
                     }
                     else -> false
@@ -208,10 +210,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                tvBTCTransferResult.text = String.format(
-//                    "%.8f",
-//                    (240 * (s.toString().toLong())).toDouble() / 100000000.0
-//                ) + " BTC"
+                tvBTCTransferResult.text = String.format(
+                    "%.2f",
+                    (240 * (s.toString().toLong())).toDouble() / 100000000.0 * rates
+                ) + " USD"
             }
         })
 
@@ -236,9 +238,14 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         }
 
         tvSendMax.setOnClickListener {
-            val rate: String = tvAmountSatPerByte.text.toString()
-            viewModel.sendMax("btc", rate)
+            sendMax()
         }
+    }
+
+    fun sendMax() {
+        Log.e("!!!", "send max")
+        val rate: String = tvAmountSatPerByte.text.toString()
+        viewModel.sendMax("btc", rate)
     }
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
@@ -268,13 +275,13 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             tvAmountCripto.setText(String.format("%.8f", response.withdrawData?.available))
             val rs: Double =
                 response.withdrawData?.available!! * arguments?.getDouble(keyBundleRates)!!
-            tvAmountFiat.setText(String.format("%.2f", rs))
+            tvAmountFiat.text = String.format("%.2f", rs)
         }
     }
 
     private fun setAddress(link: String) {
         tvLinkReceive.text = link
-        ivQrCodeReceive.setImageBitmap(link.toString().let { create(it) })
+        ivQrCodeReceive.setImageBitmap(create(link))
         addressForSend = link
     }
 
@@ -284,15 +291,15 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
         when(itemRate) {
             0 -> {
-                tvAmountSatPerByte.disable()
+                //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(rates?.min.toString())
             }
             1 -> {
-                tvAmountSatPerByte.disable()
+                //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(rates?.mid.toString())
             }
             2 -> {
-                tvAmountSatPerByte.disable()
+                //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(rates?.max.toString())
             }
         }

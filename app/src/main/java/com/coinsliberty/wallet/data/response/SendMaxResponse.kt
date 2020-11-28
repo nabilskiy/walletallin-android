@@ -15,7 +15,7 @@ data class WithdrawData(
     @SerializedName("fee")
     val fee: Double? = null,
     @SerializedName("rate")
-    val rate: Int? = null,
+    val rate: Double? = null,
     @SerializedName("max")
-    val max: Int? = null
+    val max: Double? = null
 )

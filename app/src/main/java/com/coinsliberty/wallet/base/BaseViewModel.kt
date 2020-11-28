@@ -36,15 +36,15 @@ abstract class BaseViewModel(private val app: Application) : AndroidViewModel(ap
 
     open fun onErrorHandler(throwable: Throwable) {
         Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
-        val body = (throwable as HttpException).response()?.errorBody()
+//        val body = (throwable as HttpException).response()?.errorBody()
 
-        val gson = Gson()
-        val adapter = gson.getAdapter(Any::class.java)
-        try {
-            val errorParser = adapter.fromJson(body?.string())
-            //Toast.makeText(app, errorParser.message.toString(), Toast.LENGTH_SHORT).show()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+//        val gson = Gson()
+//        val adapter = gson.getAdapter(Any::class.java)
+//        try {
+//            val errorParser = adapter.fromJson(body?.string())
+//            Toast.makeText(app, errorParser.message.toString(), Toast.LENGTH_SHORT).show()
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
     }
 }

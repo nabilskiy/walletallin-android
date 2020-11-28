@@ -368,7 +368,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_make_transaction_dialog_send_tv_text_margin_start"
-                    android:text=""
+                    android:text="Slow"
                     android:textColor="@color/darkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -396,17 +396,19 @@
 
                 <EditText
                     android:id="@+id/tvAmountSatPerByte"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_sat_margin_start"
                     android:background="@null"
                     android:inputType="number"
                     android:text="@string/sat_number"
+                    android:enabled="false"
                     android:textAppearance="@style/H8"
                     android:textColor="@color/darkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvsatPerByte"/>
 
                 <TextView
                     android:id="@+id/tvsatPerByte"
