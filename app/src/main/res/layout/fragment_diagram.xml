@@ -18,7 +18,7 @@
             android:id="@+id/ivDiagramLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/etherium_logo"
+            android:background="@drawable/bitcoin_logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/transaction_title_margin_top"
-            android:text="ETHERIUM"
+            android:text="BITCOIN"
             style="@style/H1"
             android:textColor="@color/white"
             />
@@ -58,10 +58,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/arrow_white"
+            android:src="@drawable/arrow_white"
             android:layout_marginTop="22dp"
             android:layout_marginStart="6dp"
-            />
+            android:padding="6dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

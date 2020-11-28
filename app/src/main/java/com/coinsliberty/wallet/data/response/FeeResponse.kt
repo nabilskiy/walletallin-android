@@ -11,9 +11,9 @@ data class FeeResponse(
 
 data class Rates(
     @SerializedName("min")
-    val min: Long? = null,
+    val min: Long? = 0,
     @SerializedName("mid")
-    val mid: Long? = null,
+    val mid: Long? = 0,
     @SerializedName("max")
-    val max: Long? = null
+    val max: Long? = 0
 )

@@ -18,7 +18,7 @@
             android:id="@+id/ivTransactionLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/etherium_logo"
+            android:background="@drawable/bitcoin_logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/transaction_title_margin_top"
-            android:text="@string/transaction_title"
+            tools:text="@string/transaction_title"
             style="@style/H5"
             android:textColor="@color/white"
             />
@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="parent"
             style="@style/H9"
             android:textColor="@color/lightBlueLowOpacity"
-            android:text="@string/transaction_total"
+            tools:text="@string/transaction_total"
             />
 
         <ImageView
@@ -56,10 +56,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/ic_arrow_back"
+            android:src="@drawable/ic_arrow_back"
             android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
             android:layout_marginStart="@dimen/transaction_left_icon_margin_start"
-            />
+            android:padding="6dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clBTCPriceForOne"
@@ -92,7 +92,7 @@
                 android:layout_marginStart="@dimen/toolbar_tv_exchange_margin_start"
                 android:layout_marginTop="@dimen/toolbar_tv_exchange_margin_start"
                 android:layout_marginBottom="@dimen/toolbar_tv_exchange_margin_bottom"
-                android:text="478 USD"
+                tools:text="478 USD"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

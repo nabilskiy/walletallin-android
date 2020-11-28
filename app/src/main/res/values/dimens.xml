@@ -124,7 +124,7 @@
     <dimen name="toolbar_wallet_icon_back_size">38dp</dimen>
     <dimen name="toolbar_cl2_margi_top">48dp</dimen>
     <dimen name="toolbar_cl3_margin_top">6dp</dimen>
-    <dimen name="toolbar_cl_width">312dp</dimen>
+    <dimen name="toolbar_cl_width">326dp</dimen>
     <dimen name="toolbar_cl_margin">24dp</dimen>
     <dimen name="toolbar_cl_margin_top">16dp</dimen>
     <dimen name="toolbar_iv_wallet_size">16dp</dimen>

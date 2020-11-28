@@ -14,6 +14,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -278,6 +279,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     }
 
     private fun initFee(rates: Rates?) {
+        Log.e("!!!", rates.toString())
         this.rates = rates
 
         when(itemRate) {
