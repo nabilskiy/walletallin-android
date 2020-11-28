@@ -262,7 +262,7 @@
 
 
                 <EditText
-                    android:id="@+id/tvAmountCripto"
+                    android:id="@+id/etAmountCripto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
@@ -303,8 +303,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/clSumCripto">
 
 
-                <TextView
-                    android:id="@+id/tvAmountFiat"
+                <EditText
+                    android:id="@+id/etAmountFiat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
@@ -316,7 +316,8 @@
                     app:layout_constraintEnd_toStartOf="@id/tvFiatName"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2671.53" />
+                    tools:text="2671.53"
+                    android:inputType="numberDecimal" />
 
                 <TextView
                     android:id="@+id/tvFiatName"
