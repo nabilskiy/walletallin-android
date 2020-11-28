@@ -40,6 +40,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
+import kotlin.math.abs
 
 
 private const val keyBundleTittle = "tittle"
@@ -77,6 +78,9 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     var ress: Boolean? = null
 
     override fun getTheme(): Int = R.style.SendDialog
+
+    var cryptoValueChanged: Boolean = false
+    var usdValueChanged: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -196,31 +200,24 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         etAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
-                Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val amountFiat = String.format(
-                    "%.2f", ((s.toString().toDoubleOrNull() ?: 0.0) * rates)
-                )
+                val amountFiat = String.format("%.2f", ((s.toString().toDoubleOrNull() ?: 0.0) * rates))
 
-                if (!etAmountFiat.text.toString().equals(amountFiat)) {
+                if (!cryptoValueChanged) {
+                    usdValueChanged = true
                     etAmountFiat.setText(amountFiat)
+                } else {
+                    cryptoValueChanged = false
+                    usdValueChanged = false
                 }
             }
         })
         etAmountFiat.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                etAmountCripto.setText(
-                    String.format(
-                        "%.8f",
-                        ((s.toString().toDoubleOrNull() ?: 0.0) / rates)
-                    )
-                )
-            }
+            override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
-                Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val amountCrypto = String.format(
@@ -228,8 +225,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     ((s.toString().toDoubleOrNull() ?: 0.0) / rates)
                 )
 
-                if (!etAmountCripto.text.toString().equals(amountCrypto)) {
+                if (!usdValueChanged) {
+                    cryptoValueChanged = true
                     etAmountCripto.setText(amountCrypto)
+                } else {
+                    cryptoValueChanged = false
+                    usdValueChanged = false
                 }
             }
         })
