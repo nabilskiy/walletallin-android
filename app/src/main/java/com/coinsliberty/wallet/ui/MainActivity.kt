@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.utils.extensions.setupFullScreen
 class MainActivity : AppCompatActivity() {
 
     private var isActivePin: Boolean? = null
+    var showPin: Boolean = true
     //var currentFragment: Fragment = getActivity().getFragmentManager().findFragmentById(R.id.navHostFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +37,10 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
 
+        Log.e("!!!", showPin.toString())
+
         val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
-        if(currentFragment != "LoginFragment") {
-            isActivePin = true
-        }
+        isActivePin = currentFragment != "LoginFragment" && showPin
 
     }
 
@@ -47,9 +48,7 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
 
         val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
-        if(currentFragment != "LoginFragment") {
-            isActivePin = true
-        }
+        isActivePin = currentFragment != "LoginFragment" && showPin
 
     }
 }

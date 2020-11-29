@@ -31,6 +31,7 @@ import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
 import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
+import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.extensions.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.zxing.BarcodeFormat
@@ -75,6 +76,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     var addressForSend: String = " "
     var balanceForSend: String = " "
+    var refactorUsd = false
     var ress: Boolean? = null
 
     override fun getTheme(): Int = R.style.SendDialog
@@ -157,6 +159,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                         true
                     }
                     R.id.custom -> {
+                        itemRate = 3
                         tvAmountSatPerByte.enable()
                         tvAmountSatPerByte.setSelection(tvAmountSatPerByte.text.length)
                         tvAmountSatPerByte.requestFocus()
@@ -203,7 +206,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val amountFiat = String.format("%.2f", ((s.toString().toDoubleOrNull() ?: 0.0) * rates))
+
+                val amountFiat = String.format("%.2f", ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) * rates))
 
                 if (!cryptoValueChanged) {
                     usdValueChanged = true
@@ -222,8 +226,20 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val amountCrypto = String.format(
                     "%.8f",
-                    ((s.toString().toDoubleOrNull() ?: 0.0) / rates)
+                    ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) / rates)
                 )
+
+                if((s.toString().replace(",", ".", true).split(".").getOrNull(1)?.length ?: 0) > 2) {
+                    refactorUsd = true
+                    val splitValue = s.toString().replace(",", ".", true).split(".")
+                    formantText(
+                        splitValue[0] + "." + splitValue.getOrNull(1)?.substring(0,2)
+                    )
+                    return
+                } else if(refactorUsd) {
+                    refactorUsd = false
+                    return
+                }
 
                 if (!usdValueChanged) {
                     cryptoValueChanged = true
@@ -241,6 +257,15 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                if(s.isNullOrEmpty()) {
+                    return
+                }
+
+                if(s.toString().toLong() > 500) {
+                    tvAmountSatPerByte.setText("500")
+                    tvAmountSatPerByte.setSelection(3)
+                }
                 tvBTCTransferResult.text = String.format(
                     "%.2f",
                     (240 * (s.toString().toLong())).toDouble() / 100000000.0 * rates
@@ -248,7 +273,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             }
         })
 
-        ivQrCode.setOnClickListener { barcodeScan() }
+        ivQrCode.setOnClickListener {
+            (activity as MainActivity).showPin = false
+            barcodeScan()
+        }
 
         ivClose.setOnClickListener { dismiss() }
 
@@ -291,6 +319,11 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun getAcceptDialog(balance: String, link: String) {
         AcceptDialog.newInstance(balance, link)
             .show(parentFragmentManager, AcceptDialog.TAG)
+    }
+
+    private fun formantText(text: String) {
+        etAmountFiat.setText(text)
+        etAmountFiat.setSelection(text.length)
     }
 
     private fun subscribeLiveData() {
@@ -462,6 +495,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
+            (activity as MainActivity).showPin = true
             tvLinkReceive.text = data?.extras?.getString(BARCODE_EXTRA) ?: ""
         }
     }
