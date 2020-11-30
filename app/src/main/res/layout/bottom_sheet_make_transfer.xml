@@ -196,9 +196,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvToAddress">
 
-                <TextView
+                <EditText
                     android:id="@+id/tvLink"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
                     android:layout_marginEnd="@dimen/dialog_send_tv_marginStart"

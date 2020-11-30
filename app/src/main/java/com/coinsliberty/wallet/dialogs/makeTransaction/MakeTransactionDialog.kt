@@ -494,16 +494,11 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
         if (resultCode == Activity.RESULT_OK) {
             (activity as MainActivity).showPin = true
 
-            Toast.makeText(
-                context,
-                data?.extras?.getString(BARCODE_EXTRA) ?: "",
-                Toast.LENGTH_SHORT
-            ).show()
-            tvLink.text = data?.extras?.getString(BARCODE_EXTRA) ?: ""
+
+            tvLink.setText(data?.extras?.getString(BARCODE_EXTRA) ?: "")
         }
     }
 
