@@ -83,9 +83,13 @@ class TransactionFragment : BaseKotlinFragment() {
 
         subscribeLiveData()
 
-        viewModel.getTransaction()
-
         rvTransactions.adapter = adapter
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.getTransaction()
     }
 
     private fun subscribeLiveData() {
@@ -110,6 +114,7 @@ class TransactionFragment : BaseKotlinFragment() {
         tvBTCPrice.text = String.format("%.2f", rates) + " USD"
         tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
         tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + " $"
+        viewModel.updateBalance()
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {

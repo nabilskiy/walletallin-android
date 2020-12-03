@@ -2,6 +2,7 @@ package com.coinsliberty.wallet.ui.login
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassDialog
@@ -43,7 +44,7 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), " " /*if(ifcCode.getMyText().isEmpty()) null else ifcCode.getMyText()*/)
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), login2FA.getMyText())
             }
 
         tvForgotPassword.setOnClickListener {
@@ -73,7 +74,7 @@ class LoginFragment : BaseKotlinFragment() {
         if(b == true) {
             navigate()
         } else {
-            //ifcCode.visible()
+            login2FA.visible()
         }
     }
 

@@ -1,11 +1,25 @@
 package com.coinsliberty.wallet.model
 
 import android.content.Context
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 
 
 class SharedPreferencesProvider(context: Context) {
 
-    private val prefs = context.applicationContext.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+    var masterKey = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+        .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+        .build()
+
+    private val prefs =
+        EncryptedSharedPreferences.create(
+            context,
+            SHARED_PREFS,
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+
 
 
     fun getLanguage() = prefs.getString(CURRENT_LANGUAGE, "")
@@ -32,11 +46,25 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(PIN_CODE, pin).apply()
     }
 
+    fun getLogin() = prefs.getString(LOGIN, "")
+
+    fun saveLogin(login: String) {
+        prefs.edit().putString(LOGIN, login).apply()
+    }
+
+    fun getPassword() = prefs.getString(PASSWORD, "")
+
+    fun savePassword(pin: String) {
+        prefs.edit().putString(PASSWORD, pin).apply()
+    }
+
     companion object {
         private const val SHARED_PREFS = "coinsLiberty"
         private const val AUTH_TOKEN_KEY = "auth_TokenKey"
         private const val CURRENT_LANGUAGE = "English"
         private const val CAN_USE_BIOMETRIC = "canUseBiomentric"
+        private const val LOGIN = "login"
+        private const val PASSWORD = "password"
         private const val PIN_CODE = "pinCode"
     }
 

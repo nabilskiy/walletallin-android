@@ -62,7 +62,7 @@ class ResetPassDialog : BaseKotlinDialogFragment() {
         val TAG: String = ResetPassDialog::class.java.name
         fun newInstance(): ResetPassDialog {
             val fragment = ResetPassDialog()
-            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogWhiteBG)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogGrayBG)
             return fragment
         }
     }

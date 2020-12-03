@@ -5,13 +5,17 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.response.SignUpResponse
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class FaceIdViewModel(
     app: Application,
-    private val repository: FaceIdRepository
-) : BaseViewModel(app) {
+    private val repository: FaceIdRepository,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val loginRepository: LoginRepository
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val timeToDismiss: MutableLiveData<Boolean> = MutableLiveData()
 

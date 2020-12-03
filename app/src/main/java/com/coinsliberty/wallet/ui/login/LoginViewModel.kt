@@ -14,18 +14,21 @@ class LoginViewModel(
     private val app: Application,
     private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val repository: LoginRepository
-): BaseViewModel(app) {
+): BaseViewModel(app, sharedPreferencesProvider, repository) {
 
     val result = MutableLiveData<Boolean>()
 
     fun login(email: String, password: String, otp: String?) {
-        launch(::onErrorHandler) {
+        launch(::handleError) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val login = repository.login(LoginRequest(email, password, otp))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
+            Log.e("!!!", login.toString())
             if(login.result == false && otp.isNullOrEmpty()) {
                 result.postValue(false)
             } else {
+                sharedPreferencesProvider.saveLogin(email)
+                sharedPreferencesProvider.savePassword(password)
                 handleResponse(login)
             }
 
@@ -40,6 +43,10 @@ class LoginViewModel(
         }
 
         showError.postValue(signUp.error?.message)
+    }
+
+    private fun handleError(t: Throwable) {
+        result.postValue(false)
     }
 
 

@@ -249,7 +249,7 @@
     <dimen name="dialog_forgot_cc_password_width">280dp</dimen>
     <dimen name="dialog_forgot_cc_password_height">66dp</dimen>
     <dimen name="dialog_forgot_btn_marginStartEnd">64dp</dimen>
-    <dimen name="dialog_forgot_btn_marginTop">208dp</dimen>
+    <dimen name="dialog_forgot_btn_marginTop">10dp</dimen>
     <dimen name="dialog_forgot_btn_marginBottom">30dp</dimen>
     <dimen name="dialog_forgot_tv_link_marginStartEnd">76dp</dimen>
     <dimen name="dialog_forgot_tv_link_marginTop">8dp</dimen>
@@ -329,8 +329,8 @@
     <dimen name="dialog_send_switch_margin_end">20dp</dimen>
     <dimen name="dialog_send_network_fees_margin_start">24dp</dimen>
     <dimen name="dialog_send_network_fees_margin_top">16dp</dimen>
-    <dimen name="dialog_send_network_fees_icon_margin_start">6dp</dimen>
-    <dimen name="dialog_send_network_fees_icon_margin_top">18dp</dimen>
+    <dimen name="dialog_send_network_fees_icon_margin_start">2dp</dimen>
+    <dimen name="dialog_send_network_fees_icon_margin_top">14dp</dimen>
     <dimen name="dialog_send_constraint_spinner_margin_start">8dp</dimen>
     <dimen name="dialog_send_constraint_spinner_margin_top">2dp</dimen>
     <dimen name="dialog_send_constraint_spinner_width">114dp</dimen>

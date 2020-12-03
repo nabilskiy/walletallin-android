@@ -30,7 +30,8 @@ class ProfileFragmant : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvAttachButton.setOnClickListener {
-            openGallery(1);
+            //
+        // openGallery(1);
         }
 
         profileToolbar.ivToolbarIconLeft.visibility = View.GONE

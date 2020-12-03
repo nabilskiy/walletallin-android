@@ -6,14 +6,18 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class MakeTransactionViewModel(
     private val app: Application,
-    private val repository: MakeTransactionRepository
-) : BaseViewModel(app) {
+    private val repository: MakeTransactionRepository,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val loginRepository: LoginRepository
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val result = MutableLiveData<Boolean>()
     val resultRecovery = MutableLiveData<String>()

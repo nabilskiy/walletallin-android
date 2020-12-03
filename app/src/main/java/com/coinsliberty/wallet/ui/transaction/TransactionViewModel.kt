@@ -7,6 +7,7 @@ import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.data.response.TransactionResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.ui.wallet.WalletRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -15,8 +16,9 @@ import kotlinx.coroutines.withContext
 class TransactionViewModel(
     private val app: Application,
     private val sharedPreferencesProvider: SharedPreferencesProvider,
-    private val repository: WalletRepository
-): BaseViewModel(app)  {
+    private val repository: WalletRepository,
+    private val loginRepository: LoginRepository
+): BaseViewModel(app, sharedPreferencesProvider, loginRepository)  {
 
 
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
@@ -28,6 +30,13 @@ class TransactionViewModel(
             handleTransactionResponse(repository.getTransactions())
             handleBalanceResponse(repository.getBalance())
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
+    }
+
+    fun updateBalance() {
+        launch(::onErrorHandler) {
+            delay(5000)
+            handleBalanceResponse(repository.getBalance())
         }
     }
 

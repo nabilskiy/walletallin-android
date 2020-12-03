@@ -6,8 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.model.LanguageContent
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 
-class ChangeLanguageViewModel(private val app: Application) : BaseViewModel(app) {
+class ChangeLanguageViewModel(
+    private val app: Application,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    loginRepository: LoginRepository
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val languagesLiveData: MutableLiveData<List<LanguageContent>> = MutableLiveData(getListData())
     val currentLanguagesLiveData: MutableLiveData<LanguageContent> = MutableLiveData()

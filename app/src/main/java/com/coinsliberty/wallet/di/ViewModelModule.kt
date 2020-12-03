@@ -23,24 +23,24 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { StubViewModel(get()) }
+    viewModel { StubViewModel(get(), get(), get()) }
 
-    viewModel { SplashViewModel(get(), get()) }
+    viewModel { SplashViewModel(get(), get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
-    viewModel { SignUpViewModel(get(), get()) }
-    viewModel { SettingsViewModel(get(), get(), get()) }
-    viewModel { ProfileViewModel(get(), get()) }
-    viewModel { ExchangeViewModel(get()) }
-    viewModel { ChangeLanguageViewModel(get()) }
-    viewModel { ForgotPassViewModel(get(), get()) }
-    viewModel { MyWalletViewModel(get(), get(), get()) }
-    viewModel { TransactionViewModel(get(), get(), get()) }
-    viewModel { ResetPassViewModel(get(), get()) }
-    viewModel { QrCodeViewModel(get(), get()) }
-    viewModel { SecureCodeViewModel(get(), get()) }
-    viewModel { SendBtcViewModel(get(), get()) }
-    viewModel { MakeTransactionViewModel(get(), get()) }
-    viewModel { TouchIdViewModel(get(), get()) }
-    viewModel { FaceIdViewModel(get(), get()) }
-    viewModel { PinViewModel(get(), get(), get(), get()) }
+    viewModel { SignUpViewModel(get(), get(), get(), get()) }
+    viewModel { SettingsViewModel(get(), get(), get(), get()) }
+    viewModel { ProfileViewModel(get(), get(), get(), get()) }
+    viewModel { ExchangeViewModel(get(), get(), get()) }
+    viewModel { ChangeLanguageViewModel(get(), get(), get()) }
+    viewModel { ForgotPassViewModel(get(), get(), get(), get()) }
+    viewModel { MyWalletViewModel(get(), get(), get(), get()) }
+    viewModel { TransactionViewModel(get(), get(), get(), get()) }
+    viewModel { ResetPassViewModel(get(), get(), get(), get()) }
+    viewModel { QrCodeViewModel(get(), get(), get(), get()) }
+    viewModel { SecureCodeViewModel(get(), get(), get(), get()) }
+    viewModel { SendBtcViewModel(get(), get(), get(), get()) }
+    viewModel { MakeTransactionViewModel(get(), get(), get(), get()) }
+    viewModel { TouchIdViewModel(get(), get(), get(), get()) }
+    viewModel { FaceIdViewModel(get(), get(), get(), get()) }
+    viewModel { PinViewModel(get(), get(), get(), get(), get()) }
 }

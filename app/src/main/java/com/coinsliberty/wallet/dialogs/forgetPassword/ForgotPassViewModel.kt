@@ -5,13 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.ForgotPassRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ForgotPassViewModel(
     app: Application,
-    private val repository: ForgotPassRepository
-) : BaseViewModel(app) {
+    private val repository: ForgotPassRepository,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val loginRepository: LoginRepository
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val resultRecovery = MutableLiveData<SignUpResponse>()
 

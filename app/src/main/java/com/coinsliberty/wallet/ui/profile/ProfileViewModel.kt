@@ -6,11 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.ProfileResponse
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ProfileViewModel(private val app: Application, private val repository: ProfileRepository) :
-    BaseViewModel(app) {
+class ProfileViewModel(
+    private val app: Application,
+    private val repository: ProfileRepository,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val loginRepository: LoginRepository
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val ldProfile = MutableLiveData<ProfileResponse>()
     val ldOtp = MutableLiveData<String>()

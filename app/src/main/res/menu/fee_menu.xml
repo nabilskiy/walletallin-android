@@ -5,7 +5,7 @@
         android:title="Slow"/>
     <item
         android:id="@+id/medium"
-        android:title="Medium"/>
+        android:title="Normal"/>
 
     <item
         android:id="@+id/fast"

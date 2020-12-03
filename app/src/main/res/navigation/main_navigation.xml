@@ -113,5 +113,12 @@
         app:popUpToInclusive="true"
         app:destination="@id/pinFragment"/>
 
+    <action
+        android:id="@+id/action_login"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true"
+        app:destination="@id/loginFragment"/>
+
 
 </navigation>

@@ -108,4 +108,10 @@ dependencies {
 
     //Diagram
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //for hashing
+    implementation "org.bouncycastle:bcprov-jdk15on:1.64"
+
+    //Security
+    implementation "androidx.security:security-crypto:1.1.0-alpha02"
 }

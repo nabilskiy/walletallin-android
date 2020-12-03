@@ -5,13 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.SignUpRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
+import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class SignUpViewModel(
     app: Application,
-    private val repository: SignUpRepository
-): BaseViewModel(app) {
+    private val repository: SignUpRepository,
+    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val loginRepository: LoginRepository
+): BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val result = MutableLiveData<Boolean>()
 

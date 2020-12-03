@@ -1,4 +1,4 @@
-package com.coinsliberty.wallet.dialogs.forgetPassword
+package com.coinsliberty.wallet.dialogs.otp
 
 import android.os.Bundle
 import android.view.View
@@ -7,13 +7,14 @@ import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinDialogFragment
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
+import com.coinsliberty.wallet.utils.stub.StubViewModel
 import kotlinx.android.synthetic.main.dialog_forgot_pass.*
 
-class ForgotPassDialog : BaseKotlinDialogFragment() {
-    override val layoutRes: Int = R.layout.dialog_forgot_pass
-    override val viewModel: ForgotPassViewModel by viewModel()
+class OtpDialog : BaseKotlinDialogFragment() {
+    override val layoutRes: Int = R.layout.dialog_otp
+    override val viewModel: StubViewModel by viewModel()
 
-    var listener: ((Boolean) -> Unit)? = null
+    var listener: ((String) -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,25 +25,18 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnSentToMail.setOnClickListener {
-            viewModel.forgotPass(forgotPasswordMail.getMyText())
-        }
-        bindDataTo(viewModel.resultRecovery, ::getDialogError)
-    }
-
-    private fun getDialogError(signUpResponse: SignUpResponse?) {
-        if(signUpResponse?.result == true) {
-            activity?.onBackPressed()
+            listener?.invoke(forgotPasswordMail.getMyText())
         }
     }
 
-    fun initListeners(onChoosen: (Boolean) -> Unit) {
+    fun initListeners(onChoosen: (String) -> Unit) {
         listener = onChoosen
     }
 
     companion object {
-        val TAG: String = ForgotPassDialog::class.java.name
-        fun newInstance(): ForgotPassDialog {
-            val fragment = ForgotPassDialog()
+        val TAG: String = OtpDialog::class.java.name
+        fun newInstance(): OtpDialog {
+            val fragment = OtpDialog()
             fragment.setStyle(STYLE_NO_TITLE, R.style.DialogGrayBG)
             return fragment
         }

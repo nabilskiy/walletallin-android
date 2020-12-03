@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.coinsliberty.wallet.BottomFragmant
 import com.coinsliberty.wallet.dialogs.ErrorDialog
+import com.coinsliberty.wallet.dialogs.otp.OtpDialog
 import com.coinsliberty.wallet.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 
@@ -25,6 +27,9 @@ abstract class BaseKotlinFragment : Fragment() {
     abstract val navigator: BaseNavigator
 
     var navController: NavController? = null
+
+    val dialog = OtpDialog.newInstance()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(layoutRes, container, false)
@@ -65,15 +70,41 @@ abstract class BaseKotlinFragment : Fragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.baseLogout, ::logout)
+        bindDataTo(viewModel.showDialog, ::showDialog)
+        bindDataTo(viewModel.restart, ::restartFragment)
+    }
+
+    private fun restartFragment(unit: Unit?) {
+        onStart()
+    }
+
+    private fun showDialog(unit: Unit?) {
+        dialog.apply {
+            initListeners {
+                login(it)
+            }
+        }.show(childFragmentManager, OtpDialog.TAG)
+    }
+
+
+
+    private fun login(otp: String) {
+        viewModel.relogin(otp)
+        dialog.dismiss()
     }
 
     private fun logout(b: Boolean?) {
         val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)
-        if(rootFragment != null) {
-            rootFragment.goToLogin()
+        if(b == true) {
+            viewModel.relogin()
         } else {
-            navigator.goToLogin(navController)
+            if(rootFragment != null) {
+                rootFragment.goToLogin()
+            } else {
+                navigator.goToLogin(navController)
+            }
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

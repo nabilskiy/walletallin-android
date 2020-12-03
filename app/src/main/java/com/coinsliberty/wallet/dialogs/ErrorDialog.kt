@@ -17,6 +17,8 @@ class ErrorDialog : BaseKotlinDialogFragment() {
     override val viewModel: StubViewModel by viewModel()
 
 
+    var listener: ((Unit) -> Unit)? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isCancelable = true
@@ -28,9 +30,14 @@ class ErrorDialog : BaseKotlinDialogFragment() {
         ivClose.setOnClickListener { dismiss() }
     }
 
+    fun initListeners(onChoosen: (Unit) -> Unit) {
+        listener = onChoosen
+    }
+
     companion object {
         val TAG: String = ErrorDialog::class.java.name
-        fun newInstance(title: String): DialogFragment {
+
+        fun newInstance(title: String): ErrorDialog {
             val fragment = ErrorDialog()
             val bundle = bundleOf(keyBundle to title)
             fragment.arguments = bundle

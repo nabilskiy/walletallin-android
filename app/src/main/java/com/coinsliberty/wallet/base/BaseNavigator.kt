@@ -18,7 +18,7 @@ abstract class BaseNavigator {
     }
 
     fun goToLogin(navHostController: NavController?) {
-        navHostController?.navigate(R.id.action_bottomTabNavigator_to_loginFragment)
+        navHostController?.navigate(R.id.action_login)
     }
 
 

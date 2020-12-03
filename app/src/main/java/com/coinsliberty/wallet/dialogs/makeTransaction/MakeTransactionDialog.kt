@@ -29,6 +29,7 @@ import com.coinsliberty.wallet.data.response.Rates
 import com.coinsliberty.wallet.data.response.SendMaxResponse
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ErrorDialog
+import com.coinsliberty.wallet.dialogs.hint.HintDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
 import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
 import com.coinsliberty.wallet.ui.MainActivity
@@ -63,7 +64,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     var listener: ((Boolean, String) -> Unit)? = null
 
-    var itemRate: Int = 0
+    var itemRate: Int = 1
 
     private lateinit var cardPhotoPath: String
     private var rates: Rates? = null
@@ -109,6 +110,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             showPopupMenu()
         }
 
+        ivHint.setOnClickListener {
+            HintDialog.newInstance("Bitcoin network (mining) fees are small amounts of bitcoin given to incentivize bitcoin miners (and their operators) to confirm bitcoin transactions. Bitcoin miners are the special pieces of hardware that confirm and secure transactions on the bitcoin network.").show(childFragmentManager, HintDialog.TAG)
+        }
+
         switchDialog.changeStatus(isSend)
         switchDialog.setOnClickListener {
             if (isSend) {
@@ -143,19 +148,19 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     R.id.slow -> {
                         itemRate = 0
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(rates?.min.toString())
+                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.min))
                         true
                     }
                     R.id.medium -> {
                         itemRate = 1
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(rates?.mid.toString())
+                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.mid))
                         true
                     }
                     R.id.fast -> {
                         itemRate = 2
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(rates?.max.toString())
+                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.max))
                         true
                     }
                     R.id.custom -> {
@@ -262,14 +267,22 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     return
                 }
 
-                if(s.toString().toLong() > 500) {
-                    tvAmountSatPerByte.setText("500")
+                if(s.toString().replace(",", ".", true).toDouble() > 100) {
+                    tvAmountSatPerByte.setText("100")
                     tvAmountSatPerByte.setSelection(3)
+                    tvBTCTransferResult.text = String.format(
+                        "%.2f",
+                        ("100".toDouble())
+                    ) + " USD"
+                } else {
+                    tvBTCTransferResult.text = String.format(
+                        "%.2f",
+                        ((s.toString().replace(",", ".", true).toDouble()))
+                    ) + " USD"
                 }
-                tvBTCTransferResult.text = String.format(
-                    "%.2f",
-                    (240 * (s.toString().toLong())).toDouble() / 100000000.0 * rates
-                ) + " USD"
+
+
+
             }
         })
 
@@ -350,21 +363,25 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     }
 
     private fun initFee(rates: Rates?) {
-        Log.e("!!!", rates.toString())
+
         this.rates = rates
+
+        this.rates?.min = (rates?.min ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
+        this.rates?.mid = (rates?.mid ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
+        this.rates?.max = (rates?.max ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
 
         when (itemRate) {
             0 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(rates?.min.toString())
+                tvAmountSatPerByte.setText(String.format("%.2f",rates?.min))
             }
             1 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(rates?.mid.toString())
+                tvAmountSatPerByte.setText(String.format("%.2f",rates?.mid))
             }
             2 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(rates?.max.toString())
+                tvAmountSatPerByte.setText(String.format("%.2f",rates?.max))
             }
         }
 

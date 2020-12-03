@@ -5,10 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class SettingsViewModel(private val app: Application, private val sharedPreferencesProvider: SharedPreferencesProvider,private val settingsRepository: SettingsRepository): BaseViewModel(app) {
+class SettingsViewModel(
+    private val app: Application,
+    private val sharedPreferencesProvider: SharedPreferencesProvider,
+    private val settingsRepository: SettingsRepository,
+    private val loginRepository: LoginRepository
+    ): BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val ldLogout = MutableLiveData<Boolean>()
 
@@ -23,7 +29,7 @@ class SettingsViewModel(private val app: Application, private val sharedPreferen
     private fun handleResponse(logout: SignUpResponse) {
         if(logout.result == true) {
             sharedPreferencesProvider.setToken("")
-            baseLogout.postValue(true)
+            baseLogout.postValue(false)
 
             return
         }

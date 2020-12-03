@@ -101,7 +101,7 @@
     <string name="btc_max_amount">~BTC 0.04324352</string>
     <string name="network_fees">Network fees</string>
     <string name="sat_number">0</string>
-    <string name="sat_per_byte">sat per byte</string>
+    <string name="sat_per_byte">USD</string>
     <string name="allow_uncinfirmed">Allow unconfirmed replaceable transactions</string>
     <string name="fa_code">2FA Code</string>
     <string name="btc_down_result">BTC 0.75894509</string>

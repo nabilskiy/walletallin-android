@@ -71,7 +71,7 @@ class UndoSecureCodeDialog : BaseKotlinDialogFragment() {
                 keyBundleData to data
             )
             fragment.arguments = bundle
-            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogWhiteBG)
+            fragment.setStyle(STYLE_NO_TITLE, R.style.DialogGrayBG)
             return fragment
         }
     }

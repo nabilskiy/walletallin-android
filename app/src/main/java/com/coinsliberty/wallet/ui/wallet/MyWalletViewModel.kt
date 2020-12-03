@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.response.*
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.ui.wallet.data.WalletContent
 import com.coinsliberty.wallet.utils.wallets.Wallets
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,9 @@ import kotlinx.coroutines.withContext
 class MyWalletViewModel(
     private val app: Application,
     private val sharedPreferencesProvider: SharedPreferencesProvider,
-    private val repository: WalletRepository): BaseViewModel(app) {
+    private val repository: WalletRepository,
+    private val loginRepository: LoginRepository
+    ): BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
