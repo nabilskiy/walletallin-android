@@ -150,7 +150,7 @@ class TransactionFragment : BaseKotlinFragment() {
             AcceptDialog.newInstance(balance ?: "", "Success")
                 .show(childFragmentManager, AcceptDialog.TAG)
         } else {
-            ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
+            //ErrorDialog.newInstance("Empty field").show(childFragmentManager, ErrorDialog.TAG)
         }
     }
 

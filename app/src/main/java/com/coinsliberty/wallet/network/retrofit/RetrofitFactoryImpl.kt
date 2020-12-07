@@ -28,7 +28,7 @@ class RetrofitFactoryImpl(private val paramsInterceptor: ParamsInterceptor,
             .readTimeout(TIMEOUT_SECS, TimeUnit.SECONDS)
 
         val builder = Retrofit.Builder()
-            .baseUrl("http://api-mobile.coinsliberty.com")
+            .baseUrl("https://api-mobile.coinsliberty.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpBuilder.build())
 

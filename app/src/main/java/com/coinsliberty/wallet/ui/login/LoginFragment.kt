@@ -51,7 +51,7 @@ class LoginFragment : BaseKotlinFragment() {
             ForgotPassDialog.newInstance()
                 .apply { initListeners {
                     //if(!it) ErrorDialog.newInstance("Пустые поля").show(childFragmentManager, ErrorDialog.TAG)
-                    dismiss()
+                    //dismiss()
 
                 } }
                 .show(childFragmentManager, ForgotPassDialog.TAG)

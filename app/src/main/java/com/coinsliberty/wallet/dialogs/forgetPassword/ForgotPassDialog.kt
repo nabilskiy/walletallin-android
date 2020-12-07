@@ -31,7 +31,7 @@ class ForgotPassDialog : BaseKotlinDialogFragment() {
 
     private fun getDialogError(signUpResponse: SignUpResponse?) {
         if(signUpResponse?.result == true) {
-            activity?.onBackPressed()
+            dismiss()
         }
     }
 

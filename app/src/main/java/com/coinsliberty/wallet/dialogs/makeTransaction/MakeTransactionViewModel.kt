@@ -2,6 +2,7 @@ package com.coinsliberty.wallet.dialogs.makeTransaction
 
 import android.app.Application
 import android.text.Editable
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.BtcBalance
