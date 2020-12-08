@@ -28,11 +28,13 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
-    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?) {
+    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = null))
-
+            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = otp))
+            if(response.result == false) {
+                showError.postValue(response.error?.message ?: "Error")
+            }
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }

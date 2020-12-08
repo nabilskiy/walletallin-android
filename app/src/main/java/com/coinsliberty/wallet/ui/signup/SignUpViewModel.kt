@@ -33,7 +33,7 @@ class SignUpViewModel(
             return
         }
 
-        showError.postValue(signUp.error?.message)
+        showError.postValue(signUp.error?.message ?: "Error")
     }
 
 }

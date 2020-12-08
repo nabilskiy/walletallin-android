@@ -33,7 +33,7 @@ class SecureCodeViewModel(
             resultRecovery.postValue(address.result)
             return
         }
-        showError.postValue(address.error?.message)
+        showError.postValue(address.error?.message ?: "Error")
     }
 
 }

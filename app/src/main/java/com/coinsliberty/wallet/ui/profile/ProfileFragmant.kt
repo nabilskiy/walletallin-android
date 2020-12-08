@@ -3,6 +3,7 @@ package com.coinsliberty.wallet.ui.profile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.EditProfileRequest
@@ -12,6 +13,7 @@ import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeDialog
 import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
+import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
@@ -25,6 +27,8 @@ class ProfileFragmant : BaseKotlinFragment() {
     override val viewModel: ProfileViewModel by viewModel()
     override val navigator: StubNavigator = get()
     var bufferFile : Any? = null
+
+    var isNeed2fa = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +48,9 @@ class ProfileFragmant : BaseKotlinFragment() {
                     firstName = ifcProfileFirstName.getMyText(),
                     lastName = ifcProfileLastName.getMyText(),
                     phone = ifcProfilePhone.getMyText(),
-                    optEnabled = false,
-                    file = null
+                    optEnabled = isNeed2fa,
+                    file = null,
+                    otp = if(ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null
                 )
             } else {
                 getErrorDialog("Empty fields")
@@ -53,6 +58,9 @@ class ProfileFragmant : BaseKotlinFragment() {
         }
 
         profileSwitch.initListeners {
+            isNeed2fa = it
+            ifcProfile2Fa.visibleIfOrGone { it }
+
             if (it) {
                 viewModel.getOtp()
             } else {
@@ -69,7 +77,7 @@ class ProfileFragmant : BaseKotlinFragment() {
     }
 
     private fun subscribeLiveData() {
-        bindDataTo(viewModel.showError, ::getErrorDialog)
+        viewModel.showError.observe(this, ::getErrorDialog)
         bindDataTo(viewModel.ldProfile, ::initProfileData)
         bindDataTo(viewModel.ldOtp, ::initOtp)
     }
@@ -101,6 +109,8 @@ class ProfileFragmant : BaseKotlinFragment() {
         ifcProfilePhone.setText(profileResponse?.user?.phone ?: "")
         ifcProfileEmail.setText(profileResponse?.user?.login ?: "")
         profileSwitch.changeStatus(profileResponse?.user?.optEnabled == 1)
+        ifcProfile2Fa.visibleIfOrGone { profileResponse?.user?.optEnabled == 1 }
+        isNeed2fa = profileResponse?.user?.optEnabled == 1
     }
 
     fun openGallery(req_code: Int) {

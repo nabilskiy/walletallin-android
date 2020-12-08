@@ -34,7 +34,7 @@ class ResetPassViewModel(
             return
         }
 
-        showError.postValue(response.error?.message)
+        showError.postValue(response.error?.message ?: "Error")
     }
 
 }

@@ -26,7 +26,7 @@ abstract class BaseKotlinDialogFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         bindDataTo(viewModel.onStartProgress, ::startProgress)
         bindDataTo(viewModel.onEndProgress, ::endProgress)
-        bindDataTo(viewModel.showError, ::showError)
+        viewModel.showError.observe(this, ::showError)
         onReceiveParams(arguments)
     }
 

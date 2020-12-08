@@ -42,7 +42,7 @@ class LoginViewModel(
             return
         }
 
-        showError.postValue(signUp.error?.message)
+        showError.postValue(signUp.error?.message ?: "Error")
     }
 
     private fun handleError(t: Throwable) {

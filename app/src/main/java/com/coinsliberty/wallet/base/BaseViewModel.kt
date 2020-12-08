@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.coroutines.CoroutineHelper
+import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,7 @@ abstract class BaseViewModel(
     val onStartProgress: MutableLiveData<Unit> = MutableLiveData()
     val onEndProgress: MutableLiveData<Unit> = MutableLiveData()
 
-    val showError: MutableLiveData<String> = MutableLiveData()
+    val showError: SingleLiveData<String> = SingleLiveData()
 
     val showDialog: MutableLiveData<Unit> = MutableLiveData()
 
@@ -70,7 +71,7 @@ abstract class BaseViewModel(
             if(login.result == false && otp.isNullOrEmpty()) {
                 showDialog.postValue(Unit)
             } else if(login.result == false) {
-                showError.postValue(login.error?.message)
+                showError.postValue(login.error?.message ?: "")
             } else {
                 handleResponse(login)
             }

@@ -93,6 +93,6 @@ class MakeTransactionViewModel(
             resultRecovery.postValue(address.address)
             return
         }
-        showError.postValue(address.error?.message)
+        showError.postValue(address.error?.message ?: "Error")
     }
 }

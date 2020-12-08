@@ -33,7 +33,7 @@ class FaceIdViewModel(
             timeToDismiss.postValue(true)
             return
         }
-        showError.postValue(response.error?.message)
+        showError.postValue(response.error?.message ?: "Error")
     }
 
 }
