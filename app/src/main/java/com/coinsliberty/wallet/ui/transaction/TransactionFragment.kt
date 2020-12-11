@@ -15,6 +15,7 @@ import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionDialog
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionTitleHolder
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
@@ -36,6 +37,7 @@ class TransactionFragment : BaseKotlinFragment() {
     private var makeTransactionDialog: MakeTransactionDialog? = null
 
     private var rates: Double = 0.0
+    private var currency: Currency = Currency.USD
     private var balanceData: Double = 0.0
     private var wallet: Int? = null
 
@@ -89,12 +91,19 @@ class TransactionFragment : BaseKotlinFragment() {
     override fun onStart() {
         super.onStart()
 
+        viewModel.getCurrency()
         viewModel.getTransaction()
     }
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
         bindDataTo(viewModel.balanceLiveData, ::initBalance)
+        bindDataTo(viewModel.currency, ::initCurrency)
+    }
+
+    private fun initCurrency(currency: Currency?) {
+        if(currency == null) return
+        this.currency = currency
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
@@ -111,9 +120,9 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initBalance(balance: BalanceInfoResponse) {
-        tvBTCPrice.text = String.format("%.2f", rates) + " USD"
+        tvBTCPrice.text = String.format("%.2f", rates) + " ${currency.getTitle()}"
         tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
-        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + " $"
+        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + if(currency == Currency.USD)" $" else " €"
         viewModel.updateBalance()
     }
 
@@ -136,7 +145,7 @@ class TransactionFragment : BaseKotlinFragment() {
                 )
 
             })
-
+            it.currency = currency
             lastItem = it
         }
         (resultList[resultList.size - 1] as? TransactionItem)?.typeItem = 2

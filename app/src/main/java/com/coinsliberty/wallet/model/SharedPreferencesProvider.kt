@@ -3,6 +3,7 @@ package com.coinsliberty.wallet.model
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.coinsliberty.wallet.utils.currency.Currency
 
 
 class SharedPreferencesProvider(context: Context) {
@@ -52,6 +53,19 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(LOGIN, login).apply()
     }
 
+    fun getCurrency(): Currency? {
+        val currency = prefs.getString(CURRENCY, "")
+        if(currency.isNullOrEmpty()) {
+            return null
+        }
+
+        return Currency.values().firstOrNull { currency == it.getTitle() }
+    }
+
+    fun saveCurrency(currency: Currency) {
+        prefs.edit().putString(CURRENCY, currency.getTitle()).apply()
+    }
+
     fun getPassword() = prefs.getString(PASSWORD, "")
 
     fun savePassword(pin: String) {
@@ -66,6 +80,7 @@ class SharedPreferencesProvider(context: Context) {
         private const val LOGIN = "login"
         private const val PASSWORD = "password"
         private const val PIN_CODE = "pinCode"
+        private const val CURRENCY = "currency"
     }
 
 }

@@ -9,6 +9,7 @@ import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
+import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -16,7 +17,7 @@ import kotlinx.coroutines.withContext
 class MakeTransactionViewModel(
     private val app: Application,
     private val repository: MakeTransactionRepository,
-    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
@@ -25,6 +26,7 @@ class MakeTransactionViewModel(
     val feeInit = MutableLiveData<Rates>()
     val messageError = MutableLiveData<String>()
     val maxAvailable = MutableLiveData<SendMaxResponse>()
+    val currency = MutableLiveData<Currency>()
 
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
         launch(::onErrorHandler) {
@@ -42,6 +44,10 @@ class MakeTransactionViewModel(
             )
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
+    }
+
+    fun getCurrency() {
+        currency.postValue(sharedPreferencesProvider.getCurrency())
     }
 
     fun updateData() {

@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.network.retrofit
 
+import com.coinsliberty.wallet.BuildConfig
 import com.google.gson.Gson
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
@@ -28,7 +29,7 @@ class RetrofitFactoryImpl(private val paramsInterceptor: ParamsInterceptor,
             .readTimeout(TIMEOUT_SECS, TimeUnit.SECONDS)
 
         val builder = Retrofit.Builder()
-            .baseUrl("https://api-mobile.coinsliberty.com/")
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpBuilder.build())
 

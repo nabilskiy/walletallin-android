@@ -8,18 +8,20 @@ import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
+import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
     private val app: Application,
     private val repository: ProfileRepository,
-    sharedPreferencesProvider: SharedPreferencesProvider,
+    private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val ldProfile = MutableLiveData<ProfileResponse>()
     val ldOtp = MutableLiveData<String>()
+    val ldCurrency = MutableLiveData<Currency>()
 
     fun getProfile() {
         launch(::onErrorHandler) {
@@ -46,6 +48,15 @@ class ProfileViewModel(
             ldOtp.postValue(response.token)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
+    }
+
+    fun getCurrency(){
+        ldCurrency.postValue(sharedPreferencesProvider.getCurrency())
+    }
+
+    fun saveCurrency(currency: Currency) {
+        sharedPreferencesProvider.saveCurrency(currency)
+        getCurrency()
     }
 
     override fun onErrorHandler(throwable: Throwable) {

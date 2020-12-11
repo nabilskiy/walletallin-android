@@ -101,13 +101,12 @@
                 style="@style/H8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_switch_title_margin_top"
+                android:layout_marginEnd="176dp"
+                android:text="2FA"
                 android:textColor="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ifcProfilePhone"
-                android:text="2FA"
-                android:layout_marginTop="@dimen/profile_switch_title_margin_top"
-                android:layout_marginEnd="@dimen/profile_switch_title_margin_end"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/ifcProfilePhone" />
 
             <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchComponent
                 android:id="@+id/profileSwitch"
@@ -148,12 +147,37 @@
                 app:ac_button_text="Browse"
                 />
 
+            <TextView
+                android:id="@+id/tvCurrencySwitch"
+                style="@style/H8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_switch_title_margin_top"
+                android:layout_marginEnd="140dp"
+                android:text="Currency"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profileAttachComponent" />
+
+            <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchComponent
+                android:id="@+id/scCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvCurrencySwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/profile_switch_margin_end"
+                android:layout_marginTop="8dp"
+                app:sc_left_btn_text="EUR"
+                app:sc_right_btn_text="USD"
+                />
+
+
             <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcProfile2Fa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:ifc_header="@string/fa_code"
-                app:layout_constraintTop_toBottomOf="@id/profileAttachComponent"
+                app:layout_constraintTop_toBottomOf="@id/scCurrency"
                 android:layout_marginStart="@dimen/profile_phone_margin_start"
                 android:layout_marginEnd="@dimen/profile_phone_margin_end"
                 android:layout_marginTop="@dimen/profile_phone_margin_top" />

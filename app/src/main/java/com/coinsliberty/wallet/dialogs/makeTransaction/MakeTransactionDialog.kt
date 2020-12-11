@@ -33,6 +33,7 @@ import com.coinsliberty.wallet.dialogs.hint.HintDialog
 import com.coinsliberty.wallet.dialogs.sendDialog.BARCODE_EXTRA
 import com.coinsliberty.wallet.dialogs.sendDialog.ScanQRcodeActivity
 import com.coinsliberty.wallet.ui.MainActivity
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.zxing.BarcodeFormat
@@ -42,7 +43,6 @@ import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
-import kotlin.math.abs
 
 
 private const val keyBundleTittle = "tittle"
@@ -104,7 +104,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         viewModel.updateData()
 
         dialogReceive()
-        dialogSend()
+        viewModel.getCurrency()
 
         clSendSpinner.setOnClickListener {
             showPopupMenu()
@@ -195,15 +195,15 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         }
     }
 
-    private fun dialogSend() {
+    private fun dialogSend(currency: Currency) {
         val rates = arguments?.getDouble(keyBundleRates)
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
-        tvBTCTransferResult.text = String.format("%.2f", result) + " $"
+        tvBTCTransferResult.text = String.format("%.2f", result) + if(currency == Currency.USD) " $" else " €"
         etAmountCripto.setText(String.format("%.8f", bundle))
         etAmountFiat.setText(String.format("%.2f", result))
-        balanceForSend = etAmountFiat.text.toString() + " $"
+        balanceForSend = etAmountFiat.text.toString() + if(currency == Currency.USD) " $" else " €"
 
         etAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
@@ -273,12 +273,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     tvBTCTransferResult.text = String.format(
                         "%.2f",
                         ("100".toDouble())
-                    ) + " USD"
+                    ) + " ${currency.getTitle()}"
                 } else {
                     tvBTCTransferResult.text = String.format(
                         "%.2f",
                         ((s.toString().replace(",", ".", true).toDouble()))
-                    ) + " USD"
+                    ) + " ${currency.getTitle()}"
                 }
 
 
@@ -315,8 +315,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     }
 
     fun sendMax() {
-        Log.e("!!!", "send max")
-        val rate: String = tvAmountSatPerByte.text.toString()
+        val rate = String.format("%.8f", (tvAmountSatPerByte.text.toString().replace(",", ".", true).toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0)))
+
         viewModel.sendMax("btc", rate)
     }
 
@@ -344,14 +344,22 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         bindDataTo(viewModel.feeInit, ::initFee)
         bindDataTo(viewModel.resultRecovery, ::setAddress)
         bindDataTo(viewModel.maxAvailable, ::sendMax)
+        bindDataTo(viewModel.currency, ::initCurrency)
 
+    }
+
+    private fun initCurrency(currency: Currency?) {
+        if(currency == null) return
+
+        tvFiatName.text = currency.getTitle()
+        tvsatPerByte.text = currency.getTitle()
+        dialogSend(currency)
     }
 
     private fun sendMax(response: SendMaxResponse) {
         if (response.result == true) {
-            etAmountCripto.setText(String.format("%.8f", response.withdrawData?.available))
-            val rs: Double =
-                response.withdrawData?.available!! * arguments?.getDouble(keyBundleRates)!!
+            etAmountCripto.setText(String.format("%.8f", response.balance))
+            val rs: Double = (response.balance ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0)
             etAmountFiat.setText(String.format("%.2f", rs))
         }
     }

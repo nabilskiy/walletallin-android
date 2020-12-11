@@ -35,9 +35,13 @@ data class AvailableBalanceInfoContent(
 
 data class RatesPrice(
     @SerializedName("btc")
-    val btc: Double? = null,
-    @SerializedName("eth")
-    val eth: Double? = null,
-    @SerializedName("usdt")
-    val usdt: Double? = null
+    val btc: Currency? = null
+)
+
+data class Currency(
+    @SerializedName("usd")
+    val usd: Double? = null,
+    @SerializedName("eur")
+    val eur: Double? = null
+
 )

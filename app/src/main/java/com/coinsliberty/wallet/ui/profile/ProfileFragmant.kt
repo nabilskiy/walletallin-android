@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeDialog
 import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -73,6 +74,14 @@ class ProfileFragmant : BaseKotlinFragment() {
                 }.show(childFragmentManager, UndoSecureCodeDialog.TAG)
             }
         }
+
+        scCurrency.initListeners {
+            viewModel.saveCurrency(if(it){
+                Currency.EUR
+            } else {
+                Currency.USD
+            })
+        }
         subscribeLiveData()
     }
 
@@ -80,6 +89,22 @@ class ProfileFragmant : BaseKotlinFragment() {
         viewModel.showError.observe(this, ::getErrorDialog)
         bindDataTo(viewModel.ldProfile, ::initProfileData)
         bindDataTo(viewModel.ldOtp, ::initOtp)
+        bindDataTo(viewModel.ldCurrency, ::initCurrency)
+    }
+
+    private fun initCurrency(currency: Currency?) {
+        if(currency == null) {
+            return
+        }
+
+        when (currency) {
+            Currency.USD -> {
+                scCurrency.changeStatus(false)
+            }
+            Currency.EUR -> {
+                scCurrency.changeStatus(true)
+            }
+        }
     }
 
     private fun initOtp(s: String?) {
@@ -101,6 +126,7 @@ class ProfileFragmant : BaseKotlinFragment() {
     override fun onStart() {
         super.onStart()
         viewModel.getProfile()
+        viewModel.getCurrency()
     }
 
     private fun initProfileData(profileResponse: ProfileResponse?) {

@@ -18,6 +18,7 @@ import com.coinsliberty.wallet.base.Holder
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.ui.wallet.data.WalletContent
 import com.coinsliberty.wallet.utils.convertTimestampForUI
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
 import kotlinx.android.synthetic.main.item_data.view.*
@@ -59,6 +60,8 @@ class TransactionTitleHolder() : Holder<String>() {
 
 class TransactionHolder() : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
+
+        Log.e("!!!", item.currency.toString())
         when(item.typeItem) {
             0 -> {
                 itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_top)
@@ -76,10 +79,10 @@ class TransactionHolder() : Holder<TransactionItem>() {
 
         itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvType.text = if(item.category != "send") "Sent" else "Received"
-        itemView.tvPrice.text = item.amountUsd + " $"
+        itemView.tvPrice.text = item.amountUsd + if(item.currency == Currency.USD) " $" else " €"
         itemView.ivOpenIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvOpenType.text = if(item.category != "send") "Sent" else "Received"
-        itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + " $"
+        itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + if(item.currency == Currency.USD) " $" else " €"
         itemView.tvOpenWalletAddress.text = "Wallet Address: " + item.address
 
         itemView.tvOpenBlockchainList.isClickable = true;

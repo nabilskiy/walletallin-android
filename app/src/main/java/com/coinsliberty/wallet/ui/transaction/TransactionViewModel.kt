@@ -9,6 +9,7 @@ import com.coinsliberty.wallet.data.response.TransactionResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.ui.wallet.WalletRepository
+import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -23,6 +24,7 @@ class TransactionViewModel(
 
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
     val balanceLiveData: MutableLiveData<BalanceInfoResponse> = MutableLiveData()
+    val currency: MutableLiveData<Currency> = MutableLiveData()
 
     fun getTransaction() {
         launch(::onErrorHandler) {
@@ -38,6 +40,10 @@ class TransactionViewModel(
             delay(5000)
             handleBalanceResponse(repository.getBalance())
         }
+    }
+
+    fun getCurrency() {
+        currency.postValue(sharedPreferencesProvider.getCurrency())
     }
 
 

@@ -25,6 +25,16 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
+        }
+        debug {
+            buildConfigField "String", "API_URL", "\"http://api.test-wallet.coinsliberty.com/\""
+            debuggable true
+        }
+
+        debugRelease {
+            initWith debug
+            buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
         }
     }
 
@@ -51,10 +61,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
 
-    implementation "androidx.navigation:navigation-fragment:2.3.1"
-    implementation "androidx.navigation:navigation-ui:2.3.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
 
-    implementation "com.google.android.material:material:1.3.0-alpha03"
+    implementation "com.google.android.material:material:1.3.0-alpha04"
 
     implementation "org.koin:koin-android:2.1.6"
     implementation "org.koin:koin-android-viewmodel:2.1.6"
@@ -79,6 +89,7 @@ dependencies {
 
     //Chuck
     debugImplementation "com.readystatesoftware.chuck:library:1.1.0"
+    debugReleaseImplementation "com.readystatesoftware.chuck:library:1.1.0"
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:1.1.0"
 
     //Koin

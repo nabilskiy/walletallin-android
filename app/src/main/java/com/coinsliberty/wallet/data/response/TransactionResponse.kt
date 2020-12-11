@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.data.response
 
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.google.gson.annotations.SerializedName
 
 data class TransactionResponse(
@@ -29,5 +30,6 @@ data class TransactionItem(
     val timereceived: Long? = null,
     @SerializedName("txid")
     val txid: String? = null,
-    var typeItem: Int? = 1
+    var typeItem: Int? = 1,
+    var currency: Currency = Currency.USD
 )

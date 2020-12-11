@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.wallet
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.coinsliberty.wallet.R
@@ -17,6 +18,7 @@ import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionTitleHolder
 import com.coinsliberty.wallet.ui.wallet.data.WalletContent
+import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
@@ -47,6 +49,8 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     private var walletData: List<WalletContent>? = null
 
+    private var currency = Currency.USD
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeLiveData()
@@ -57,6 +61,7 @@ class MyWalletFragment : BaseKotlinFragment() {
         rvWallet.adapter = null
         adapter.removeAll()
         rvWallet.adapter = adapter
+        viewModel.getCurrency()
         viewModel.walletList()
     }
 
@@ -65,6 +70,15 @@ class MyWalletFragment : BaseKotlinFragment() {
         bindDataTo(viewModel.transactionsLiveData, ::initTransactions)
         bindDataTo(viewModel.balanceDataLiveData, ::initBalance)
         bindDataTo(viewModel.availableBalanceDataLiveData, ::initAvailableBalance)
+        bindDataTo(viewModel.currency, ::initCurrency)
+    }
+
+    private fun initCurrency(currency: Currency?) {
+        if(currency == null) return
+        this.currency = currency
+
+        tvFiatName.text = currency.getTitle()
+        tvTotalBalanceFiatName.text = currency.getTitle()
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
@@ -92,6 +106,8 @@ class MyWalletFragment : BaseKotlinFragment() {
                 )
 
             })
+
+            it.currency = currency
 
             lastItem = it
         }
