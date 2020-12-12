@@ -6,7 +6,7 @@ import com.coinsliberty.wallet.base.BaseNavigator
 
 class TransactionNavigation : BaseNavigator() {
     fun goToDiagram(navController: NavController?) {
-        navController?.navigate(R.id.action_transactionFragment_to_diagramFragment)
+        //navController?.navigate(R.id.action_transactionFragment_to_diagramFragment)
     }
 }
 

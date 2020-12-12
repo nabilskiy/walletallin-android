@@ -11,6 +11,7 @@ import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
@@ -28,8 +29,20 @@ class MakeTransactionViewModel(
     val maxAvailable = MutableLiveData<SendMaxResponse>()
     val currency = MutableLiveData<Currency>()
 
+    var sendBtcJob: Job? = null
+    var updateDataJob: Job? = null
+    var refreshFeeJob: Job? = null
+    var sendMaxJob: Job? = null
+
+    override fun stopRequest() {
+        sendBtcJob?.cancel()
+        updateDataJob?.cancel()
+        refreshFeeJob?.cancel()
+        sendMaxJob?.cancel()
+    }
+
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
-        launch(::onErrorHandler) {
+        sendBtcJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseSend(
                 repository.sendBtcBalance(
@@ -51,7 +64,7 @@ class MakeTransactionViewModel(
     }
 
     fun updateData() {
-        launch(::onErrorHandler) {
+        updateDataJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseReceive(repository.getAddress())
             handleResponseFee(repository.getFee())
@@ -60,14 +73,14 @@ class MakeTransactionViewModel(
     }
 
     fun refreshFee() {
-        launch(::onErrorHandler) {
+        refreshFeeJob = launch(::onErrorHandler) {
             delay(5000)
             handleResponseFee(repository.getFee())
         }
     }
 
     fun sendMax(asset: String, rate: String) {
-        launch(::onErrorHandler) {
+        sendMaxJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseSendMax(repository.sendMax(asset, rate))
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }

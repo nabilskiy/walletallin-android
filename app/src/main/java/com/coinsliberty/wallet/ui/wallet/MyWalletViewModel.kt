@@ -10,6 +10,7 @@ import com.coinsliberty.wallet.ui.wallet.data.WalletContent
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.wallets.Wallets
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
@@ -30,9 +31,16 @@ class MyWalletViewModel(
     var balanceData: BalanceInfoContent? = null
     var wallet: Wallets? = null
 
+    var walletListJob: Job? = null
+    var refreshDataJob: Job? = null
+
+    override fun stopRequest() {
+        walletListJob?.cancel()
+        refreshDataJob?.cancel()
+    }
 
     fun walletList() {
-        launch(::onErrorHandler) {
+        walletListJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.walletList(), repository.getBalance())
             handleTransactionResponse(repository.getTransactions())
@@ -41,7 +49,7 @@ class MyWalletViewModel(
     }
 
     fun refreshData() {
-        launch(::onErrorHandler) {
+        refreshDataJob = launch(::onErrorHandler) {
             delay(6000)
             handleResponse(repository.walletList(), repository.getBalance())
             handleTransactionResponse(repository.getTransactions())
@@ -69,7 +77,7 @@ class MyWalletViewModel(
         walletLiveData.postValue(walletList.list?.map {
             val currency = sharedPreferencesProvider.getCurrency()
             wallet = getWallet(it.id)
-            rates = if(currency == Currency.USD) { balance.rates?.btc?.usd ?: 0.0 } else { balance.rates?.btc?.eur ?: 0.0  }
+            rates = if(currency == null ||currency == Currency.USD) { balance.rates?.btc?.usd ?: 0.0 } else { balance.rates?.btc?.eur ?: 0.0  }
             balanceData = balance.balances
            // availableBalanceData = balance.availableBalances
             balanceDataLiveData.postValue(balance.balances)
@@ -82,7 +90,7 @@ class MyWalletViewModel(
                 wallet?.getTitle() ?: "",
                 it.label,
                 if(balanceValue != null ) String.format("%.8f", balanceValue) + " " + it.label else null,
-                if(balanceValue != null ) String.format("%.2f", (rates ?: 0.0) * balanceValue) + if(currency == Currency.USD) " $" else " €" else null,
+                if(balanceValue != null ) String.format("%.2f", (rates ?: 0.0) * balanceValue) + if(currency == null || currency == Currency.USD) " $" else " €" else null,
                 wallet?.getBackground() ?: 0
             )
         })

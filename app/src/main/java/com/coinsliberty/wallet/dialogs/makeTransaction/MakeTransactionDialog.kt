@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
@@ -100,6 +101,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val tittle = arguments?.getString(keyBundleTittle)
         tvTittle.text = "SEND $tittle"
+
+        //tvSendMax.text = Html.fromHtml(getString(R.string.send_max))
 
         viewModel.updateData()
 
@@ -214,9 +217,13 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
                 val amountFiat = String.format("%.2f", ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) * rates))
 
+
+
                 if (!cryptoValueChanged) {
                     usdValueChanged = true
-                    etAmountFiat.setText(amountFiat)
+                    if(etAmountFiat.text.toString() != amountFiat) {
+                        etAmountFiat.setText(amountFiat)
+                    }
                 } else {
                     cryptoValueChanged = false
                     usdValueChanged = false
@@ -248,7 +255,9 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
                 if (!usdValueChanged) {
                     cryptoValueChanged = true
-                    etAmountCripto.setText(amountCrypto)
+                    if(etAmountCripto.text.toString() != amountCrypto) {
+                        etAmountCripto.setText(amountCrypto)
+                    }
                 } else {
                     cryptoValueChanged = false
                     usdValueChanged = false
@@ -263,9 +272,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
+                Log.e("!!!", "1")
+
                 if(s.isNullOrEmpty()) {
                     return
                 }
+                Log.e("!!!", "2")
 
                 if(s.toString().replace(",", ".", true).toDouble() > 100) {
                     tvAmountSatPerByte.setText("100")
@@ -274,11 +286,13 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                         "%.2f",
                         ("100".toDouble())
                     ) + " ${currency.getTitle()}"
+                    Log.e("!!!", "3")
                 } else {
                     tvBTCTransferResult.text = String.format(
                         "%.2f",
                         ((s.toString().replace(",", ".", true).toDouble()))
                     ) + " ${currency.getTitle()}"
+                    Log.e("!!!", "4")
                 }
 
 

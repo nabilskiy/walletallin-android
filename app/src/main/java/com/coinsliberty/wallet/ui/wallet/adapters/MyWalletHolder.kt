@@ -79,10 +79,10 @@ class TransactionHolder() : Holder<TransactionItem>() {
 
         itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvType.text = if(item.category != "send") "Sent" else "Received"
-        itemView.tvPrice.text = item.amountUsd + if(item.currency == Currency.USD) " $" else " €"
+        itemView.tvPrice.text = item.amountUsd + if(item.currency == null || item.currency == Currency.USD) " $" else " €"
         itemView.ivOpenIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvOpenType.text = if(item.category != "send") "Sent" else "Received"
-        itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + if(item.currency == Currency.USD) " $" else " €"
+        itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + if(item.currency == null || item.currency == Currency.USD) " $" else " €"
         itemView.tvOpenWalletAddress.text = "Wallet Address: " + item.address
 
         itemView.tvOpenBlockchainList.isClickable = true;

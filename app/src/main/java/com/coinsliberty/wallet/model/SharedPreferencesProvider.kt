@@ -56,10 +56,10 @@ class SharedPreferencesProvider(context: Context) {
     fun getCurrency(): Currency? {
         val currency = prefs.getString(CURRENCY, "")
         if(currency.isNullOrEmpty()) {
-            return null
+            return Currency.USD
         }
 
-        return Currency.values().firstOrNull { currency == it.getTitle() }
+        return Currency.values().firstOrNull { currency == it.getTitle() } ?: Currency.USD
     }
 
     fun saveCurrency(currency: Currency) {

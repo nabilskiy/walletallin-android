@@ -8,6 +8,7 @@ import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class ForgotPassViewModel(
@@ -18,6 +19,12 @@ class ForgotPassViewModel(
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val resultRecovery = MutableLiveData<SignUpResponse>()
+
+    var forgotPassJob: Job? = null
+
+    override fun stopRequest() {
+        forgotPassJob?.cancel()
+    }
 
     fun forgotPass(email: String) {
         launch(::onErrorHandler) {

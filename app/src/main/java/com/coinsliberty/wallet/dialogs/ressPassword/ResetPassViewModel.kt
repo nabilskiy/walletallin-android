@@ -8,6 +8,7 @@ import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class ResetPassViewModel(
@@ -19,8 +20,14 @@ class ResetPassViewModel(
 
     val timeToDismiss : MutableLiveData<Boolean> = MutableLiveData()
 
+    var changePasswordJob: Job? = null
+
+    override fun stopRequest() {
+        changePasswordJob?.cancel()
+    }
+
     fun changePassword(password: String, oldPassword: String) {
-        launch(::onErrorHandler) {
+        changePasswordJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.changePassword(ChangePasswordRequest(password, oldPassword)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}

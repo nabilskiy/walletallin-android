@@ -68,6 +68,16 @@ abstract class BaseKotlinFragment : Fragment() {
         subscribeLiveData()
     }
 
+    override fun onPause() {
+        super.onPause()
+        viewModel.stopRequest()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopRequest()
+    }
+
     private fun subscribeLiveData() {
         bindDataTo(viewModel.baseLogout, ::logout)
         bindDataTo(viewModel.showDialog, ::showDialog)

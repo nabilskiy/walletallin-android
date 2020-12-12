@@ -19,6 +19,11 @@ class FaceIdViewModel(
 
     val timeToDismiss: MutableLiveData<Boolean> = MutableLiveData()
 
+
+    override fun stopRequest() {
+
+    }
+
     fun goScan(password: String, oldPassword: String) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }

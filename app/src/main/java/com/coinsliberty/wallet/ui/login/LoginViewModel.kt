@@ -8,6 +8,7 @@ import com.coinsliberty.wallet.data.LoginRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class LoginViewModel(
@@ -18,8 +19,14 @@ class LoginViewModel(
 
     val result = MutableLiveData<Boolean>()
 
+    private var loginJob: Job? = null
+
+    override fun stopRequest() {
+        loginJob?.cancel()
+    }
+
     fun login(email: String, password: String, otp: String?) {
-        launch(::handleError) {
+        loginJob = launch(::handleError) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val login = repository.login(LoginRequest(email, password, otp))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}

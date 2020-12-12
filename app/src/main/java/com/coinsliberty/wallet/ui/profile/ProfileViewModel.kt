@@ -10,6 +10,7 @@ import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
@@ -23,15 +24,25 @@ class ProfileViewModel(
     val ldOtp = MutableLiveData<String>()
     val ldCurrency = MutableLiveData<Currency>()
 
+    private var getProfileJob: Job? = null
+    private var editProfileJob: Job? = null
+    private var getOtpJob: Job? = null
+
+    override fun stopRequest() {
+        getProfileJob?.cancel()
+        editProfileJob?.cancel()
+        getOtpJob?.cancel()
+    }
+
     fun getProfile() {
-        launch(::onErrorHandler) {
+        getProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             ldProfile.postValue(repository.getProfile())
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
     fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null) {
-        launch(::onErrorHandler) {
+        editProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = otp))
             if(response.result == false) {
@@ -42,7 +53,7 @@ class ProfileViewModel(
     }
 
     fun getOtp() {
-        launch(::onErrorHandler) {
+        getOtpJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.getOtp()
             ldOtp.postValue(response.token)

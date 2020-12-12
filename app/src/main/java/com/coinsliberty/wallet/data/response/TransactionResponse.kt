@@ -17,6 +17,7 @@ data class TransactionItem(
     val address: String? = null,
     @SerializedName("amount")
     val amount: String? = null,
+    @SerializedName("amountUsd")
     var amountUsd: String? = null,
     @SerializedName("bip125-replaceable")
     val replaceable: String? = null,
@@ -30,6 +31,8 @@ data class TransactionItem(
     val timereceived: Long? = null,
     @SerializedName("txid")
     val txid: String? = null,
+    @SerializedName("typeItem")
     var typeItem: Int? = 1,
+    @SerializedName("currency")
     var currency: Currency = Currency.USD
 )

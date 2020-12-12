@@ -12,4 +12,7 @@ class ExchangeViewModel(
 ): BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
 
+    override fun stopRequest() {
+
+    }
 }

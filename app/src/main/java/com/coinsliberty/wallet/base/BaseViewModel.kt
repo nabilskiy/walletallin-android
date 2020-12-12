@@ -17,7 +17,9 @@ import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
+import org.koin.core.scope.Scope
 import retrofit2.HttpException
 import java.io.IOException
 import kotlin.coroutines.CoroutineContext
@@ -82,4 +84,6 @@ abstract class BaseViewModel(
         sharedPreferencesProvider.setToken(login.token ?: "")
         restart.postValue(Unit)
     }
+
+    abstract fun stopRequest();
 }

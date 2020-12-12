@@ -3,6 +3,7 @@ package com.coinsliberty.wallet.ui.profile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -14,8 +15,11 @@ import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.utils.currency.Currency
+import com.coinsliberty.wallet.utils.extensions.disable
+import com.coinsliberty.wallet.utils.extensions.enable
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
 import kotlinx.android.synthetic.main.attach_component.*
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
@@ -75,13 +79,17 @@ class ProfileFragmant : BaseKotlinFragment() {
             }
         }
 
-        scCurrency.initListeners {
-            viewModel.saveCurrency(if(it){
-                Currency.EUR
-            } else {
-                Currency.USD
-            })
+        tvCurrencyField.setOnClickListener {
+            showPopupMenu()
         }
+
+//        tvCurrencyField.setText(
+//            viewModel.saveCurrency(if(it){
+//                Currency.EUR.getTitle()
+//            } else {
+//                Currency.USD
+//            })
+//        }
         subscribeLiveData()
     }
 
@@ -97,14 +105,36 @@ class ProfileFragmant : BaseKotlinFragment() {
             return
         }
 
-        when (currency) {
-            Currency.USD -> {
-                scCurrency.changeStatus(false)
+        tvCurrencyField.text = currency.getTitle()
+//        when (currency) {
+//            Currency.USD -> {
+//                scCurrency.changeStatus(false)
+//            }
+//            Currency.EUR -> {
+//                scCurrency.changeStatus(true)
+//            }
+//        }
+    }
+
+    private fun showPopupMenu() {
+        val popupMenu = PopupMenu(requireContext(), tvCurrencyField)
+        popupMenu.inflate(R.menu.currency_menu)
+
+        popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.usd -> {
+                        viewModel.saveCurrency(Currency.USD)
+                        true
+                    }
+                    R.id.eur -> {
+                        viewModel.saveCurrency(Currency.EUR)
+                        true
+                    }
+                    else -> false
+                }
             }
-            Currency.EUR -> {
-                scCurrency.changeStatus(true)
-            }
-        }
+
+        popupMenu.show()
     }
 
     private fun initOtp(s: String?) {

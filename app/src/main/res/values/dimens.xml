@@ -232,7 +232,7 @@
     <dimen name="dialog_send_clLink_marginStartEnd">8dp</dimen>
     <dimen name="dialog_send_clLink_marginTop">4dp</dimen>
     <dimen name="dialog_send_clFiat_marginTop">6dp</dimen>
-    <dimen name="dialog_send_tv_marginStart">16dp</dimen>
+    <dimen name="dialog_send_tv_marginStart">12dp</dimen>
     <dimen name="dialog_send_tv_marginEnd">8dp</dimen>
     <dimen name="dialog_send_tv_amount_marginTop">18dp</dimen>
     <dimen name="dialog_send_iv_obmen_marginTop">31dp</dimen>
@@ -399,7 +399,7 @@
 
     <!--    Dialog Make Transaction-->
     <dimen name="dialog_make_cl_transaction_margin_start_end">32dp</dimen>
-    <dimen name="dialog_make_transaction_tv_margin_start_end">48dp</dimen>
+    <dimen name="dialog_make_transaction_tv_margin_start_end">42dp</dimen>
     <dimen name="dialog_make_transaction_switch_margin_start_top">16dp</dimen>
     <dimen name="dialog_make_transaction_dialog_send_margin_start_top">12dp</dimen>
     <dimen name="dialog_make_transaction_dialog_send_tv_text_margin_start">8dp</dimen>

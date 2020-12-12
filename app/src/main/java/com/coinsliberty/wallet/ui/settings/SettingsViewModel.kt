@@ -18,6 +18,10 @@ class SettingsViewModel(
 
     val ldLogout = MutableLiveData<Boolean>()
 
+    override fun stopRequest() {
+
+    }
+
     fun logout() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}

@@ -19,6 +19,10 @@ class ChangeLanguageViewModel(
     val currentLanguagesLiveData: MutableLiveData<LanguageContent> = MutableLiveData()
 
 
+    override fun stopRequest() {
+
+    }
+
     private fun getListData(): ArrayList<LanguageContent> {
         val listData: ArrayList<LanguageContent> = ArrayList()
 

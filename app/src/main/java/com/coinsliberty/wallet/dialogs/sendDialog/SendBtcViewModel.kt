@@ -20,6 +20,10 @@ class SendBtcViewModel (
 
     val result = MutableLiveData<Boolean>()
 
+    override fun stopRequest() {
+
+    }
+
     fun sendBtc(asset: String, amount: String, address: String, otp: Editable) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}

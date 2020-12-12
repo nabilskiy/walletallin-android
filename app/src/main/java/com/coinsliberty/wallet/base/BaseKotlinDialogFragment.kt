@@ -30,6 +30,16 @@ abstract class BaseKotlinDialogFragment : DialogFragment() {
         onReceiveParams(arguments)
     }
 
+    override fun onPause() {
+        super.onPause()
+        viewModel.stopRequest()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopRequest()
+    }
+
     private fun showError(s: String?) {
         if(s == null) return
 

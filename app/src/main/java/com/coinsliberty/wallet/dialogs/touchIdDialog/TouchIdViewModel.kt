@@ -21,4 +21,7 @@ class TouchIdViewModel(
 
     val timeToDismiss: MutableLiveData<Boolean> = MutableLiveData()
 
+    override fun stopRequest() {
+
+    }
 }

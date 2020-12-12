@@ -16,6 +16,10 @@ class SplashViewModel(
 
     val ldNavigate = MutableLiveData<NavigationConfig>()
 
+    override fun stopRequest() {
+
+    }
+
     fun navigate() {
        if(sharedPreferencesProvider.getToken().isNullOrEmpty()) {
            ldNavigate.postValue(NavigationConfig.GO_TO_LOGIN)

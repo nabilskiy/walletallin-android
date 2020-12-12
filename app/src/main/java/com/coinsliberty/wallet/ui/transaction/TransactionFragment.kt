@@ -55,7 +55,7 @@ class TransactionFragment : BaseKotlinFragment() {
                 makeTransactionDialog =
                     MakeTransactionDialog.newInstance(
                         "BTC",
-                        rates ?: 0.0,
+                        rates,
                         balanceData ?: 0.0,
                         null,
                         "17325782351905019asdofjkas",
@@ -122,7 +122,7 @@ class TransactionFragment : BaseKotlinFragment() {
     private fun initBalance(balance: BalanceInfoResponse) {
         tvBTCPrice.text = String.format("%.2f", rates) + " ${currency.getTitle()}"
         tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
-        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + if(currency == Currency.USD)" $" else " €"
+        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + if(currency == null || currency == Currency.USD)" $" else " €"
         viewModel.updateBalance()
     }
 

@@ -11,6 +11,7 @@ import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.ui.wallet.WalletRepository
 import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
@@ -26,8 +27,16 @@ class TransactionViewModel(
     val balanceLiveData: MutableLiveData<BalanceInfoResponse> = MutableLiveData()
     val currency: MutableLiveData<Currency> = MutableLiveData()
 
+    var transactionJob: Job? = null
+    var updateBalanceJob: Job? = null
+
+    override fun stopRequest() {
+        transactionJob?.cancel()
+        updateBalanceJob?.cancel()
+    }
+
     fun getTransaction() {
-        launch(::onErrorHandler) {
+        transactionJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleTransactionResponse(repository.getTransactions())
             handleBalanceResponse(repository.getBalance())
@@ -36,7 +45,7 @@ class TransactionViewModel(
     }
 
     fun updateBalance() {
-        launch(::onErrorHandler) {
+        updateBalanceJob = launch(::onErrorHandler) {
             delay(5000)
             handleBalanceResponse(repository.getBalance())
         }

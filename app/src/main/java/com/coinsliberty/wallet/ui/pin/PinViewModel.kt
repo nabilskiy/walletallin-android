@@ -30,4 +30,7 @@ class PinViewModel(
 
     fun getPin() = sharedPreferencesProvider.getPin()
 
+    override fun stopRequest() {
+
+    }
 }

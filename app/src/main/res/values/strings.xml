@@ -96,7 +96,7 @@
         <item>Normal</item>
     </string-array>
 
-    <string name="send_max">Send Max</string>
+    <string name="send_max"><u>Send Max</u></string>
     <string name="max_amount">Maximum amount is</string>
     <string name="btc_max_amount">~BTC 0.04324352</string>
     <string name="network_fees">Network fees</string>

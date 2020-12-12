@@ -7,6 +7,7 @@ import com.coinsliberty.wallet.data.response.AddressInfoResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class QrCodeViewModel(
@@ -18,8 +19,14 @@ class QrCodeViewModel(
 
     val resultRecovery = MutableLiveData<String>()
 
+    var getAddressJob: Job? = null
+
+    override fun stopRequest() {
+        getAddressJob?.cancel()
+    }
+
     fun getAddress() {
-        launch(::onErrorHandler) {
+        getAddressJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.getAddress())
             withContext(Dispatchers.Main){onEndProgress.value = Unit}

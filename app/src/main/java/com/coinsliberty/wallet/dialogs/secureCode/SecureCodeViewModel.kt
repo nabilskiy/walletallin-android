@@ -8,6 +8,7 @@ import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 
 class SecureCodeViewModel(
@@ -19,9 +20,15 @@ class SecureCodeViewModel(
 
     val resultRecovery = MutableLiveData<Boolean>()
 
+    var updateProfileJob: Job? = null
+
+    override fun stopRequest() {
+        updateProfileJob?.cancel()
+    }
+
     fun updateProfile(account: EditProfileRequest?) {
         if(account == null) return
-        launch(::onErrorHandler) {
+        updateProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.updateUser(account))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}

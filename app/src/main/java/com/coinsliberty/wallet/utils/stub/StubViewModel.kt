@@ -9,4 +9,10 @@ class StubViewModel(
     private val app: Application,
     sharedPreferencesProvider: SharedPreferencesProvider,
     private val loginRepository: LoginRepository
-) : BaseViewModel(app, sharedPreferencesProvider, loginRepository)
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
+
+    override fun stopRequest() {
+
+    }
+
+}
