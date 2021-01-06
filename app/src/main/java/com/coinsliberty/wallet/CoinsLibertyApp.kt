@@ -1,5 +1,4 @@
 package com.coinsliberty.wallet
-
 import android.app.Application
 
 class CoinsLibertyApp : Application() {
@@ -8,4 +7,6 @@ class CoinsLibertyApp : Application() {
         super.onCreate()
         KoinProvider.startKoin(this)
     }
+
+
 }

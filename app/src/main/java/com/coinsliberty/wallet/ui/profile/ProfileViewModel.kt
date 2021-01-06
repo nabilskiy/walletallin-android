@@ -41,10 +41,12 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
-    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null) {
+    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null, avatar: Long? = null) {
         editProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = otp))
+            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = otp,
+                avatar = avatar
+            ))
             if(response.result == false) {
                 showError.postValue(response.error?.message ?: "Error")
             }
