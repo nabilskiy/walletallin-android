@@ -15,5 +15,7 @@ data class EditProfileRequest(
     @SerializedName("otp_enabled")
     val otpEnabled: Boolean? = null,
     @SerializedName("otp")
-    var otp: String? = null
+    var otp: String? = null,
+    @SerializedName("avatar")
+    val avatar: Long? = null
 ): Parcelable

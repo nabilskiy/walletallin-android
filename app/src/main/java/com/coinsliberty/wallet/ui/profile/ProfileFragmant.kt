@@ -1,10 +1,12 @@
 package com.coinsliberty.wallet.ui.profile
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.view.isVisible
+import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.EditProfileRequest
@@ -12,18 +14,16 @@ import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeDialog
 import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
-import com.coinsliberty.wallet.utils.extensions.bindDataTo
-import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.utils.currency.Currency
-import com.coinsliberty.wallet.utils.extensions.disable
-import com.coinsliberty.wallet.utils.extensions.enable
+import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
 import kotlinx.android.synthetic.main.attach_component.*
-import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.net.URI
+import java.net.URL
 
 
 class ProfileFragmant : BaseKotlinFragment() {
@@ -43,6 +43,10 @@ class ProfileFragmant : BaseKotlinFragment() {
         // openGallery(1);
         }
 
+        profileToolbar.ivAddPhoto.setOnClickListener {
+                openGallery(IMAGE_PICK_CODE)
+        }
+
         profileToolbar.ivToolbarIconLeft.visibility = View.GONE
         profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
         profileToolbar.tvToolbarTitle.text = "Profile"
@@ -55,7 +59,8 @@ class ProfileFragmant : BaseKotlinFragment() {
                     phone = ifcProfilePhone.getMyText(),
                     optEnabled = isNeed2fa,
                     file = null,
-                    otp = if(ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null
+                    otp = if(ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
+                    avatar = null
                 )
             } else {
                 getErrorDialog("Empty fields")
@@ -181,7 +186,18 @@ class ProfileFragmant : BaseKotlinFragment() {
         )
     }
 
-    private fun checkNotNull(): Boolean {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE){
+            val uri = data?.data
+           // profileToolbar.ivToolbarLogo.setImageURI(uri)
+
+            val bmp = BitmapFactory.decodeFile(URI(uri.toString()).path)
+            profileToolbar.ivToolbarLogo.setImageBitmap(bmp)
+        }
+    }
+
+    private fun  checkNotNull(): Boolean {
         return (ifcProfileFirstName.getMyText().isNotEmpty()
                 || ifcProfileLastName.getMyText().isNotEmpty()
                 || ifcProfilePhone.getMyText().isNotEmpty())
@@ -193,4 +209,10 @@ class ProfileFragmant : BaseKotlinFragment() {
     }
 
 
+    companion object {
+        //image pick code
+        private val IMAGE_PICK_CODE = 1000;
+        //Permission code
+        private val PERMISSION_CODE = 1001;
+    }
 }
