@@ -1,9 +1,11 @@
 package com.coinsliberty.wallet.ui.profile
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.DocumentsContract
+import android.provider.MediaStore
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
@@ -14,19 +16,22 @@ import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeDialog
 import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
+import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.net.URI
-import java.net.URL
+import java.io.File
 
 
-class ProfileFragmant : BaseKotlinFragment() {
+class ProfileFragment : BaseKotlinFragment() {
     override val layoutRes: Int = R.layout.fragment_profile
 
     override val viewModel: ProfileViewModel by viewModel()
@@ -39,8 +44,7 @@ class ProfileFragmant : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvAttachButton.setOnClickListener {
-            //
-        // openGallery(1);
+
         }
 
         profileToolbar.ivAddPhoto.setOnClickListener {
@@ -59,7 +63,7 @@ class ProfileFragmant : BaseKotlinFragment() {
                     phone = ifcProfilePhone.getMyText(),
                     optEnabled = isNeed2fa,
                     file = null,
-                    otp = if(ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
+                    otp = if (ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
                     avatar = null
                 )
             } else {
@@ -75,7 +79,14 @@ class ProfileFragmant : BaseKotlinFragment() {
                 viewModel.getOtp()
             } else {
 
-                UndoSecureCodeDialog.newInstance(EditProfileRequest(ifcProfileFirstName.getMyText(), ifcProfileLastName.getMyText(), ifcProfilePhone.getMyText(), false)).apply {
+                UndoSecureCodeDialog.newInstance(
+                    EditProfileRequest(
+                        ifcProfileFirstName.getMyText(),
+                        ifcProfileLastName.getMyText(),
+                        ifcProfilePhone.getMyText(),
+                        false
+                    )
+                ).apply {
 
                     initListeners {
                         update2FA(it)
@@ -88,13 +99,6 @@ class ProfileFragmant : BaseKotlinFragment() {
             showPopupMenu()
         }
 
-//        tvCurrencyField.setText(
-//            viewModel.saveCurrency(if(it){
-//                Currency.EUR.getTitle()
-//            } else {
-//                Currency.USD
-//            })
-//        }
         subscribeLiveData()
     }
 
@@ -111,14 +115,6 @@ class ProfileFragmant : BaseKotlinFragment() {
         }
 
         tvCurrencyField.text = currency.getTitle()
-//        when (currency) {
-//            Currency.USD -> {
-//                scCurrency.changeStatus(false)
-//            }
-//            Currency.EUR -> {
-//                scCurrency.changeStatus(true)
-//            }
-//        }
     }
 
     private fun showPopupMenu() {
@@ -147,7 +143,14 @@ class ProfileFragmant : BaseKotlinFragment() {
 
         if(s == null) return
 
-        SecureCodeDialog.newInstance(EditProfileRequest(ifcProfileFirstName.getMyText(), ifcProfileLastName.getMyText(), ifcProfilePhone.getMyText(), true), s, ifcProfileEmail.getMyText()).apply {
+        SecureCodeDialog.newInstance(
+            EditProfileRequest(
+                ifcProfileFirstName.getMyText(),
+                ifcProfileLastName.getMyText(),
+                ifcProfilePhone.getMyText(),
+                true
+            ), s, ifcProfileEmail.getMyText()
+        ).apply {
             initListeners {
                 update2FA(it)
             }
@@ -160,6 +163,7 @@ class ProfileFragmant : BaseKotlinFragment() {
 
     override fun onStart() {
         super.onStart()
+
         viewModel.getProfile()
         viewModel.getCurrency()
     }
@@ -178,6 +182,8 @@ class ProfileFragmant : BaseKotlinFragment() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
+
+        (activity as MainActivity).showPin = false
         startActivityForResult(
             Intent.createChooser(
                 intent,
@@ -189,12 +195,47 @@ class ProfileFragmant : BaseKotlinFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE){
-            val uri = data?.data
+
+            (activity as MainActivity).showPin = true
+            val uri: Uri = data?.data ?: return
            // profileToolbar.ivToolbarLogo.setImageURI(uri)
 
-            val bmp = BitmapFactory.decodeFile(URI(uri.toString()).path)
-            profileToolbar.ivToolbarLogo.setImageBitmap(bmp)
+            val file = File(getRealPath(uri))
+//
+//            Log.e("!!!", getRealPath(uri.toString())
+//
+            val requestFile =
+            RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
+
+            // MultipartBody.Part is used to send also the actual file name
+
+            // MultipartBody.Part is used to send also the actual file name
+
+            val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+            viewModel.sendFile(body)
+            //val body: MultipartBody.Part = MultipartBody.Part.createFormData.createFormData("picture", file.getName(), requestFile)
+
         }
+    }
+
+    fun getRealPath(uri: Uri?): String {
+        var filePath = ""
+        val wholeID = DocumentsContract.getDocumentId(uri)
+        val id = wholeID.split(":".toRegex()).toTypedArray()[1]
+        val column = arrayOf(MediaStore.Images.Media.DATA)
+
+        // where id is equal to
+        val sel = MediaStore.Images.Media._ID + "=?"
+        val cursor: Cursor = context?.contentResolver?.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            column, sel, arrayOf(id), null
+        )!!
+        val columnIndex = cursor.getColumnIndex(column[0])
+        if (cursor.moveToFirst()) {
+            filePath = cursor.getString(columnIndex)
+        }
+        cursor.close()
+        return filePath
     }
 
     private fun  checkNotNull(): Boolean {

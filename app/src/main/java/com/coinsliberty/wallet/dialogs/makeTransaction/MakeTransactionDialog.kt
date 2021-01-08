@@ -310,10 +310,11 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         btnSentCoin.setOnClickListener {
             viewModel.sendBtc(
                 "btc",
-                etAmountCripto.text.toString(),
+                etAmountCripto.text.toString().replace(",", ".", true).toDouble(),
                 tvLink.text.toString(),
                 etCL2FA.text,
-                tvAmountSatPerByte.text.toString()
+                tvAmountSatPerByte.text.toString(),
+                scReplaceable.isChecked
             )
 
             if (ress == true) {

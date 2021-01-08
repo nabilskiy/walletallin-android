@@ -34,7 +34,7 @@
     </fragment>
     <activity
         android:id="@+id/profileFragment2"
-        android:name="com.coinsliberty.wallet.ui.profile.ProfileFragmant"
+        android:name="com.coinsliberty.wallet.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
 
