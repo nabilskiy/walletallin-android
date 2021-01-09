@@ -1,7 +1,6 @@
 package com.coinsliberty.wallet.ui.transaction
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
@@ -10,8 +9,8 @@ import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.dialogs.AcceptDialog
-import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionDialog
+import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionTitleHolder
@@ -90,9 +89,21 @@ class TransactionFragment : BaseKotlinFragment() {
 
     override fun onStart() {
         super.onStart()
-
+        activity.let {
+            (it as MainActivity).showPin = false
+        }
         viewModel.getCurrency()
         viewModel.getTransaction()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val currentFragmentMenu = navController?.currentDestination?.label
+        if (currentFragmentMenu != "TransactionFragment") {
+            activity.let {
+                (it as MainActivity).showPin = true
+            }
+        }
     }
 
     private fun subscribeLiveData() {
