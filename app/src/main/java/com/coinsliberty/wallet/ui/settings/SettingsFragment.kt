@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.invisible
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_settings.itemChangeLanguage
 import kotlinx.android.synthetic.main.fragment_settings.settingsToolbar
@@ -52,16 +53,10 @@ class SettingsFragment() : BaseKotlinFragment() {
 
     private fun initView() {
 
-
+        settingsToolbar.ivToolbarIconLeft.invisible()
         settingsToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.selector_notification)
         settingsToolbar.ivToolbarRightIcon.setColorFilter(resources.getColor(R.color.white))
         settingsToolbar.tvToolbarTitle.setText(R.string.settings)
-
-        settingsToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
-        settingsToolbar.ivToolbarIconLeft.setImageResource(R.drawable.ic_arrow_back)
-        settingsToolbar.ivToolbarIconLeft.setOnClickListener {
-            navigator.back()
-        }
 
         itemChangeLanguage.tvTittle.setText(R.string.change_language)
 
