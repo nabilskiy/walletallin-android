@@ -2,12 +2,19 @@ package com.coinsliberty.wallet.ui.profile
 
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -36,24 +43,44 @@ class ProfileFragment : BaseKotlinFragment() {
 
     override val viewModel: ProfileViewModel by viewModel()
     override val navigator: StubNavigator = get()
-    var bufferFile : Any? = null
+    var bufferFile: Any? = null
 
     var isNeed2fa = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getProfile()
+        viewModel.getCurrency()
+
+//        Glide.with(this)
+//            .asBitmap()
+//            .load(viewModel.getUserAvatar())
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .apply(RequestOptions.circleCropTransform())
+//            .skipMemoryCache(true)
+//            .into(object : CustomTarget<Bitmap>(88, 88) {
+//                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+//                    profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+//                }
+//                override fun onLoadCleared(placeholder: Drawable?) {}
+//            })
 
         tvAttachButton.setOnClickListener {
 
         }
 
         profileToolbar.ivAddPhoto.setOnClickListener {
-                openGallery(IMAGE_PICK_CODE)
+            openGallery(IMAGE_PICK_CODE)
         }
 
-        profileToolbar.ivToolbarIconLeft.visibility = View.GONE
+        profileToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
+        profileToolbar.ivToolbarIconLeft.setImageResource(R.drawable.ic_arrow_back)
         profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
         profileToolbar.tvToolbarTitle.text = "Profile"
+
+        profileToolbar.ivToolbarIconLeft.setOnClickListener {
+            navigator.back()
+        }
 
         btnLoginUpdate.setOnClickListener {
             if (checkNotNull()) {
@@ -64,7 +91,7 @@ class ProfileFragment : BaseKotlinFragment() {
                     optEnabled = isNeed2fa,
                     file = null,
                     otp = if (ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
-                    avatar = null
+                    avatar = viewModel.ldNewUserAvatarId.value
                 )
             } else {
                 getErrorDialog("Empty fields")
@@ -107,10 +134,15 @@ class ProfileFragment : BaseKotlinFragment() {
         bindDataTo(viewModel.ldProfile, ::initProfileData)
         bindDataTo(viewModel.ldOtp, ::initOtp)
         bindDataTo(viewModel.ldCurrency, ::initCurrency)
+        //bindDataTo(viewModel.ldAvatar, ::setAvatar)
     }
 
+//    private fun setAvatar(uri: Uri?){
+//        profileToolbar.ivToolbarLogo.setImageURI(uri)
+//    }
+
     private fun initCurrency(currency: Currency?) {
-        if(currency == null) {
+        if (currency == null) {
             return
         }
 
@@ -122,18 +154,18 @@ class ProfileFragment : BaseKotlinFragment() {
         popupMenu.inflate(R.menu.currency_menu)
 
         popupMenu.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.usd -> {
-                        viewModel.saveCurrency(Currency.USD)
-                        true
-                    }
-                    R.id.eur -> {
-                        viewModel.saveCurrency(Currency.EUR)
-                        true
-                    }
-                    else -> false
+            when (item.itemId) {
+                R.id.usd -> {
+                    viewModel.saveCurrency(Currency.USD)
+                    true
                 }
+                R.id.eur -> {
+                    viewModel.saveCurrency(Currency.EUR)
+                    true
+                }
+                else -> false
             }
+        }
 
         popupMenu.show()
     }
@@ -141,7 +173,7 @@ class ProfileFragment : BaseKotlinFragment() {
     private fun initOtp(s: String?) {
         update2FA(false)
 
-        if(s == null) return
+        if (s == null) return
 
         SecureCodeDialog.newInstance(
             EditProfileRequest(
@@ -159,13 +191,6 @@ class ProfileFragment : BaseKotlinFragment() {
 
     fun update2FA(b: Boolean) {
         profileSwitch.changeStatus(b)
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        viewModel.getProfile()
-        viewModel.getCurrency()
     }
 
     private fun initProfileData(profileResponse: ProfileResponse?) {
@@ -194,27 +219,33 @@ class ProfileFragment : BaseKotlinFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE){
 
+        if (resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE) {
             (activity as MainActivity).showPin = true
             val uri: Uri = data?.data ?: return
-           // profileToolbar.ivToolbarLogo.setImageURI(uri)
-
             val file = File(getRealPath(uri))
-//
-//            Log.e("!!!", getRealPath(uri.toString())
-//
             val requestFile =
-            RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
-
-            // MultipartBody.Part is used to send also the actual file name
-
-            // MultipartBody.Part is used to send also the actual file name
-
+                RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
             val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-            viewModel.sendFile(body)
-            //val body: MultipartBody.Part = MultipartBody.Part.createFormData.createFormData("picture", file.getName(), requestFile)
 
+            viewModel.sendFile(body)
+
+            Glide.with(this)
+                .asBitmap()
+                .load(uri)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(RequestOptions.circleCropTransform())
+                .skipMemoryCache(true)
+                .into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {}
+                })
         }
     }
 
@@ -238,7 +269,7 @@ class ProfileFragment : BaseKotlinFragment() {
         return filePath
     }
 
-    private fun  checkNotNull(): Boolean {
+    private fun checkNotNull(): Boolean {
         return (ifcProfileFirstName.getMyText().isNotEmpty()
                 || ifcProfileLastName.getMyText().isNotEmpty()
                 || ifcProfilePhone.getMyText().isNotEmpty())
@@ -253,6 +284,7 @@ class ProfileFragment : BaseKotlinFragment() {
     companion object {
         //image pick code
         private val IMAGE_PICK_CODE = 1000;
+
         //Permission code
         private val PERMISSION_CODE = 1001;
     }

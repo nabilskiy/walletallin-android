@@ -55,7 +55,7 @@ class SharedPreferencesProvider(context: Context) {
 
     fun getCurrency(): Currency? {
         val currency = prefs.getString(CURRENCY, "")
-        if(currency.isNullOrEmpty()) {
+        if (currency.isNullOrEmpty()) {
             return Currency.USD
         }
 
@@ -72,6 +72,13 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(PASSWORD, pin).apply()
     }
 
+    fun getUserAvatar() = prefs.getString(USER_AVATAR, "")
+
+    fun setUserAvatar(idPhoto: Long) {
+        prefs.edit().putString(USER_AVATAR, "https://wallet.coinsliberty.com/files/$idPhoto")
+            .apply()
+    }
+
     companion object {
         private const val SHARED_PREFS = "coinsLiberty"
         private const val AUTH_TOKEN_KEY = "auth_TokenKey"
@@ -81,6 +88,7 @@ class SharedPreferencesProvider(context: Context) {
         private const val PASSWORD = "password"
         private const val PIN_CODE = "pinCode"
         private const val CURRENCY = "currency"
+        private const val USER_AVATAR = "userAvatar"
     }
 
 }

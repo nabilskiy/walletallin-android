@@ -4,6 +4,7 @@ import com.coinsliberty.wallet.data.*
 import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.data.response.TokenResponse
+import com.coinsliberty.wallet.data.response.UploadResponse
 import okhttp3.MultipartBody
 import retrofit2.http.*
 
@@ -29,5 +30,8 @@ interface UserApi {
 
     @Multipart
     @POST("/api/upload")
-    suspend fun sendFile(@Part body: MultipartBody.Part): Any
+    suspend fun sendFile(
+        @Part body: MultipartBody.Part
+    ): UploadResponse
+
 }

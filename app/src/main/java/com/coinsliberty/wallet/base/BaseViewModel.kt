@@ -1,27 +1,20 @@
 package com.coinsliberty.wallet.base
 
 import android.app.Application
-import android.util.Log
+import android.net.Uri
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.load.resource.bitmap.UnitBitmapDecoder
 import com.coinsliberty.wallet.data.LoginRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
-import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.coroutines.CoroutineHelper
 import com.coinsliberty.wallet.utils.liveData.SingleLiveData
-import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
-import org.koin.core.scope.Scope
-import retrofit2.HttpException
-import java.io.IOException
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel(
@@ -86,4 +79,12 @@ abstract class BaseViewModel(
     }
 
     abstract fun stopRequest();
+
+    fun setUserAvatar(id : Long) {
+        sharedPreferencesProvider.setUserAvatar(id);
+    }
+
+    fun getUserAvatar() : Uri {
+        return Uri.parse(sharedPreferencesProvider.getUserAvatar())
+    }
 }
