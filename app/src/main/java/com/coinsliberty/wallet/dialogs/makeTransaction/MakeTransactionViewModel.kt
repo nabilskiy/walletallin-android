@@ -41,7 +41,7 @@ class MakeTransactionViewModel(
         sendMaxJob?.cancel()
     }
 
-    fun sendBtc(asset: String, amount: String, address: String, otp: Editable, fee: String) {
+    fun sendBtc(asset: String, amount: Double, address: String, otp: Editable, fee: String, replaceable: Boolean) {
         sendBtcJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseSend(
@@ -51,7 +51,8 @@ class MakeTransactionViewModel(
                         amount,
                         address,
                         otp.toString(),
-                        fee
+                        fee,
+                        replaceable
                     )
                 )
             )

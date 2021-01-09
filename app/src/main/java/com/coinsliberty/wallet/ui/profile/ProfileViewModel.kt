@@ -12,6 +12,7 @@ import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
+import okhttp3.MultipartBody
 
 class ProfileViewModel(
     private val app: Application,
@@ -54,6 +55,15 @@ class ProfileViewModel(
         }
     }
 
+    fun sendFile(file: MultipartBody.Part) {
+        launch(::onErrorHandler) {
+            //withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            val response = repository.sendFile(file)
+
+            //withContext(Dispatchers.Main){onEndProgress.value = Unit}
+        }
+    }
+
     fun getOtp() {
         getOtpJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
@@ -74,6 +84,9 @@ class ProfileViewModel(
 
     override fun onErrorHandler(throwable: Throwable) {
         showError.postValue("Error")
+        Log.e("!!!", "Error")
+        Log.e("!!!", throwable.toString())
+        Log.e("!!!", throwable.message.toString())
     }
 
 

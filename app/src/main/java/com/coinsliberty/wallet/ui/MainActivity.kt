@@ -8,6 +8,7 @@ import androidx.navigation.Navigation
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.utils.extensions.setTransparentLightStatusBar
 import com.coinsliberty.wallet.utils.extensions.setupFullScreen
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,17 +21,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setTransparentLightStatusBar()
-        setupFullScreen()
+        try {
+            setTransparentLightStatusBar()
+            setupFullScreen()
+        } catch (e: Exception) {
+
+        }
 
     }
 
 
     override fun onStart() {
         super.onStart()
-        if (isActivePin == true) {
-            Log.e("!!!", "isActive")
-            Navigation.findNavController(this, R.id.navHostFragment).navigate(R.id.action_pin_code)
+        try {
+            if (isActivePin == true) {
+                Log.e("!!!", "isActive")
+                Navigation.findNavController(this, R.id.navHostFragment)
+                    .navigate(R.id.action_pin_code)
+            }
+        } catch (e: Exception) {
+
         }
     }
 
@@ -38,18 +48,26 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
 
-        Log.e("!!!", showPin.toString())
+        try {
+            val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
+            isActivePin = currentFragment != "LoginFragment" && showPin
+        } catch (e: Exception) {
 
-        val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
-        isActivePin = currentFragment != "LoginFragment" && showPin
+        }
+
+
 
     }
 
     override fun onStop() {
         super.onStop()
 
-        val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
-        isActivePin = currentFragment != "LoginFragment" && showPin
+        try {
+            val currentFragment = Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
+            isActivePin = currentFragment != "LoginFragment" && showPin
+        } catch (e: Exception) {
+
+        }
 
     }
 }
