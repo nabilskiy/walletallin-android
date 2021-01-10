@@ -24,6 +24,7 @@ class ProfileViewModel(
     val ldProfile = MutableLiveData<ProfileResponse>()
     val ldOtp = MutableLiveData<String>()
     val ldCurrency = MutableLiveData<Currency>()
+    val ldNewUserAvatarId = MutableLiveData<Long>()
 
     private var getProfileJob: Job? = null
     private var editProfileJob: Job? = null
@@ -40,6 +41,8 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             ldProfile.postValue(repository.getProfile())
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
+
+            ldProfile.value?.user?.avatar?.let { setUserAvatar(it) }
         }
     }
     fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null, avatar: Long? = null) {
@@ -57,10 +60,13 @@ class ProfileViewModel(
 
     fun sendFile(file: MultipartBody.Part) {
         launch(::onErrorHandler) {
-            //withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.sendFile(file)
-
-            //withContext(Dispatchers.Main){onEndProgress.value = Unit}
+            if(response.result == true) {
+                ldNewUserAvatarId.postValue(response.item?.file)
+                Log.e("new avatar!!!", response.item?.file.toString())
+            }
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
 
@@ -88,6 +94,5 @@ class ProfileViewModel(
         Log.e("!!!", throwable.toString())
         Log.e("!!!", throwable.message.toString())
     }
-
 
 }

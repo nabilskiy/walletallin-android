@@ -13,7 +13,10 @@ import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.invisible
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.fragment_settings.itemChangeLanguage
+import kotlinx.android.synthetic.main.fragment_settings.settingsToolbar
 import kotlinx.android.synthetic.main.item_settings.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
