@@ -41,9 +41,11 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
+import okhttp3.internal.wait
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
+import kotlin.concurrent.thread
 
 
 private const val keyBundleTittle = "tittle"
@@ -317,11 +319,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 scReplaceable.isChecked
             )
 
-            if (ress == true) {
-                getAcceptDialog(balanceForSend, addressForSend)
-            } else if (ress == false) {
-                getErrorDialog(viewModel.messageError.value.toString())
-            }
         }
 
         tvSendMax.setOnClickListener {
@@ -414,6 +411,13 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun initResult(b: Boolean?) {
         listener?.invoke(b == true, etAmountCripto.text.toString())
         ress = b
+
+        if (ress == true) {
+            getAcceptDialog(balanceForSend, addressForSend)
+        } else if (ress == false) {
+            getErrorDialog(viewModel.messageError.value.toString())
+        }
+
     }
 
     private fun cardPhotoCaptureIntent() {

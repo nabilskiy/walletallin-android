@@ -101,9 +101,8 @@ class MakeTransactionViewModel(
             result.postValue(true)
             return
         } else {
-            result.postValue(false)
             messageError.postValue(signUp.error?.message.toString())
-            // showError.postValue(signUp.error?.message)
+            result.postValue(false)
             return
         }
     }
