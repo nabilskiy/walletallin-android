@@ -24,7 +24,7 @@ class SendBtcViewModel (
 
     }
 
-    fun sendBtc(asset: String, amount: Double, address: String, otp: Editable) {
+    fun sendBtc(asset: String, amount: String, address: String, otp: Editable) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.sendBtcBalance(BtcBalance(asset, amount, address, otp.toString())))

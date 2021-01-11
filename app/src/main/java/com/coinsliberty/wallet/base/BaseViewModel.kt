@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import com.coinsliberty.wallet.data.LoginRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
@@ -84,7 +86,21 @@ abstract class BaseViewModel(
         sharedPreferencesProvider.setUserAvatar(id);
     }
 
-    fun getUserAvatar() : Uri {
-        return Uri.parse(sharedPreferencesProvider.getUserAvatar())
-    }
+//    fun getUserAvatar() : GlideUrl {
+//
+//
+//        //val glideUrl = GlideUrl(sharedPreferencesProvider.getUserAvatar()) { mapOf(Pair("Authorization", "Bearer $sharedPreferencesProvider.getToken()")) }
+//
+//        //val uri = Uri.parse(sharedPreferencesProvider.getUserAvatar())
+//        var glideUrl = GlideUrl(
+//            sharedPreferencesProvider.getUserAvatar(),
+//            sharedPreferencesProvider.getToken()?.let {
+//                LazyHeaders.Builder()
+//                    .addHeader("Authorization", /*"Bearer ${*/it/*}"*/)
+//                    .build()
+//            }
+//        )
+//
+//        return glideUrl
+//    }
 }

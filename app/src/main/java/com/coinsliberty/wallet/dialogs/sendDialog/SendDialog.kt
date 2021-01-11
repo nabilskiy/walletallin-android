@@ -78,7 +78,7 @@ class SendDialog : BaseKotlinDialogFragment() {
         ivClose.setOnClickListener { dismiss() }
 
         btnSentCoin.setOnClickListener {
-            viewModel.sendBtc("btc", tvAmountCripto.text.toString().toDouble(), tvLink.text.toString(), etCL2FA.text)
+           // viewModel.sendBtc("btc", tvAmountCripto.text.toString().toDouble(), tvLink.text.toString(), etCL2FA.text)
             //listener?.invoke(tvAmountCripto.text.toString() != "" && tvAmountFiat.text.toString() != "")
         }
         subscribeLiveData()

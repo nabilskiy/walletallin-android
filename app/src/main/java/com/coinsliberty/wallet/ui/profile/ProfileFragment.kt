@@ -12,6 +12,8 @@ import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -27,12 +29,14 @@ import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
+import com.google.common.net.HttpHeaders.AUTHORIZATION
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
@@ -58,7 +62,7 @@ class ProfileFragment : BaseKotlinFragment() {
 //            .diskCacheStrategy(DiskCacheStrategy.ALL)
 //            .apply(RequestOptions.circleCropTransform())
 //            .skipMemoryCache(true)
-//            .into(object : CustomTarget<Bitmap>(88, 88) {
+//            .into(object : CustomTarget<Bitmap>() {
 //                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
 //                    profileToolbar.ivToolbarLogo.setImageBitmap(resource)
 //                }
