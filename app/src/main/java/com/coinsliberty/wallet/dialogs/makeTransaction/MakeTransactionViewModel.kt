@@ -9,6 +9,7 @@ import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
+import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.currency.Currency
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -41,7 +42,7 @@ class MakeTransactionViewModel(
         sendMaxJob?.cancel()
     }
 
-    fun sendBtc(asset: String, amount: Double, address: String, otp: Editable, fee: String, replaceable: Boolean) {
+    fun sendBtc(asset: String, amount: Double, address: String, fee: String, replaceable: Boolean) {
         sendBtcJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseSend(
@@ -50,7 +51,7 @@ class MakeTransactionViewModel(
                         asset,
                         amount,
                         address,
-                        otp.toString(),
+                        encryptData(sharedPreferencesProvider.getPassword()) ?: "",
                         fee,
                         replaceable
                     )

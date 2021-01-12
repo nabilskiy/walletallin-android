@@ -314,7 +314,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 "btc",
                 etAmountCripto.text.toString().replace(",", ".", true).toDouble(),
                 tvLink.text.toString(),
-                etCL2FA.text,
                 tvAmountSatPerByte.text.toString(),
                 scReplaceable.isChecked
             )
