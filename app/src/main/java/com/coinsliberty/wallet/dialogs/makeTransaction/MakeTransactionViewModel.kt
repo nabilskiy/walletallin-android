@@ -44,19 +44,10 @@ class MakeTransactionViewModel(
         sendMaxJob?.cancel()
     }
 
-
-
-
-
-
-
-
-
     fun sendBtc(
         asset: String,
         amount: String,
         address: String,
-        otp: Editable,
         fee: String,
         replaceable: Boolean
     ) {
