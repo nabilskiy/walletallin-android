@@ -10,8 +10,8 @@ data class BtcBalance (
     val amount: String? = null,
     @SerializedName("address")
     val address: String? = null,
-    @SerializedName("otp")
-    val otp: String? = null,
+    @SerializedName("token")
+    val token: String? = null,
     @SerializedName("fee")
     val rate: String? = null,
     @SerializedName("replaceable")

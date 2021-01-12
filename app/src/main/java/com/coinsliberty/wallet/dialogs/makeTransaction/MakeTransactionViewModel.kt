@@ -9,6 +9,7 @@ import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
+import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import kotlinx.coroutines.Dispatchers
@@ -70,7 +71,7 @@ class MakeTransactionViewModel(
                         asset,
                         amount,
                         address,
-                        otp.toString(),
+                        encryptData(sharedPreferencesProvider.getPassword()) ?: "",
                         fee,
                         replaceable
                     )

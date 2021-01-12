@@ -318,7 +318,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 "btc",
                 valueAmountCryptoToSend,
                 tvLink.text.toString(),
-                etCL2FA.text,
                 valueFeeToSend,
                 scReplaceable.isChecked
             )
@@ -579,11 +578,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             null
         }
     }
-
-//    override fun onDismiss(dialog: DialogInterface) {
-//        super.onDismiss(dialog)
-//        viewModel.result.postValue(null)
-//    }
 
     companion object {
         const val TAG = "MakeTransaction"
