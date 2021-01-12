@@ -3,6 +3,9 @@ package com.coinsliberty.wallet.ui.profile
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
+import com.coinsliberty.wallet.BuildConfig
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.ProfileResponse
@@ -24,7 +27,7 @@ class ProfileViewModel(
     val ldProfile = MutableLiveData<ProfileResponse>()
     val ldOtp = MutableLiveData<String>()
     val ldCurrency = MutableLiveData<Currency>()
-    val ldNewUserAvatarId = MutableLiveData<Long>()
+    val ldCurrentUserAvatarId = MutableLiveData<Long>()
 
     private var getProfileJob: Job? = null
     private var editProfileJob: Job? = null
@@ -36,13 +39,26 @@ class ProfileViewModel(
         getOtpJob?.cancel()
     }
 
+    fun getUserAvatarGlideUrl() : GlideUrl {
+        val glideUrl = GlideUrl(
+            "${BuildConfig.API_URL}files/${160}",
+            LazyHeaders.Builder()
+                .addHeader("slc-auth",  sharedPreferencesProvider.getToken() ?: "")
+                .build()
+        )
+        return glideUrl
+    }
+
+    fun setUserAvatar(idPhoto: Long) {
+        ldCurrentUserAvatarId.postValue(idPhoto)
+    }
+
     fun getProfile() {
         getProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             ldProfile.postValue(repository.getProfile())
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
-
             ldProfile.value?.user?.avatar?.let { setUserAvatar(it) }
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
     fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null, avatar: Long? = null) {
@@ -63,7 +79,7 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.sendFile(file)
             if(response.result == true) {
-                ldNewUserAvatarId.postValue(response.item?.file)
+                ldCurrentUserAvatarId.postValue(response.item?.file)
                 Log.e("new avatar!!!", response.item?.file.toString())
             }
             withContext(Dispatchers.Main){onEndProgress.value = Unit}

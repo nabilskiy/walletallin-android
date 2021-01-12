@@ -3,6 +3,7 @@ package com.coinsliberty.wallet.model
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.coinsliberty.wallet.BuildConfig
 import com.coinsliberty.wallet.utils.currency.Currency
 
 
@@ -72,12 +73,6 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(PASSWORD, pin).apply()
     }
 
-    fun getUserAvatar() = prefs.getString(USER_AVATAR, "")
-
-    fun setUserAvatar(idPhoto: Long) {
-        prefs.edit().putString(USER_AVATAR, "https://wallet.coinsliberty.com/files/$idPhoto")
-            .apply()
-    }
 
     companion object {
         private const val SHARED_PREFS = "coinsLiberty"
@@ -88,7 +83,6 @@ class SharedPreferencesProvider(context: Context) {
         private const val PASSWORD = "password"
         private const val PIN_CODE = "pinCode"
         private const val CURRENCY = "currency"
-        private const val USER_AVATAR = "userAvatar"
     }
 
 }
