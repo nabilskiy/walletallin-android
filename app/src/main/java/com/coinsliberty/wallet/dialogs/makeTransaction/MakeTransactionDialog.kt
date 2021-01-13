@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
-import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
@@ -41,11 +40,9 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
-import okhttp3.internal.wait
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
-import kotlin.concurrent.thread
 
 
 private const val keyBundleTittle = "tittle"
@@ -77,6 +74,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private var login: String? = null
     private var data: EditProfileRequest? = null
     private var isChangeEtAmountCrypto = true
+    private lateinit var valueFeeToSend: String
 
     var addressForSend: String = " "
     var balanceForSend: String = " "
@@ -309,16 +307,26 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
         ivClose.setOnClickListener { dismiss() }
 
+
+
+
         btnSentCoin.setOnClickListener {
+           // Log.e("!!!Onclick", "1")
+            val valueAmountCryptoToSend = etAmountCripto.text.toString().replace(",", ".", true)
+
             viewModel.sendBtc(
                 "btc",
-                etAmountCripto.text.toString().replace(",", ".", true).toDouble(),
+                valueAmountCryptoToSend,
                 tvLink.text.toString(),
-                tvAmountSatPerByte.text.toString(),
+                valueFeeToSend,
                 scReplaceable.isChecked
             )
-
+            //Log.e("!!!Onclick", "2")
         }
+
+
+
+
 
         tvSendMax.setOnClickListener {
             sendMax()
@@ -384,7 +392,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun initFee(rates: Rates?) {
 
         this.rates = rates
-
         this.rates?.min = (rates?.min ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
         this.rates?.mid = (rates?.mid ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
         this.rates?.max = (rates?.max ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
@@ -393,21 +400,27 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             0 -> {
                 //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(String.format("%.2f",rates?.min))
+                valueFeeToSend = String.format("%.8f", ((rates?.min)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
             }
             1 -> {
                 //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(String.format("%.2f",rates?.mid))
+                valueFeeToSend = String.format("%.8f", ((rates?.mid)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
             }
             2 -> {
                 //tvAmountSatPerByte.disable()
                 tvAmountSatPerByte.setText(String.format("%.2f",rates?.max))
+                valueFeeToSend = String.format("%.8f", ((rates?.max)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
             }
         }
 
         viewModel.refreshFee()
     }
 
+
+
     private fun initResult(b: Boolean?) {
+       // Log.e("!!!initRes", "1")
         listener?.invoke(b == true, etAmountCripto.text.toString())
         ress = b
 
@@ -415,7 +428,10 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             getAcceptDialog(balanceForSend, addressForSend)
         } else if (ress == false) {
             getErrorDialog(viewModel.messageError.value.toString())
+            //Log.e("!!!initRes", "false")
         }
+
+
 
     }
 

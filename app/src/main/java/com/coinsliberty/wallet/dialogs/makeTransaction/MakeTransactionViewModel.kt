@@ -11,10 +11,12 @@ import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.currency.Currency
+import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class MakeTransactionViewModel(
     private val app: Application,
@@ -23,7 +25,7 @@ class MakeTransactionViewModel(
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
-    val result = MutableLiveData<Boolean>()
+    val result: SingleLiveData<Boolean> = SingleLiveData()
     val resultRecovery = MutableLiveData<String>()
     val feeInit = MutableLiveData<Rates>()
     val messageError = MutableLiveData<String>()
@@ -42,9 +44,18 @@ class MakeTransactionViewModel(
         sendMaxJob?.cancel()
     }
 
-    fun sendBtc(asset: String, amount: Double, address: String, fee: String, replaceable: Boolean) {
-        sendBtcJob = launch(::onErrorHandler) {
-            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+    fun sendBtc(
+        asset: String,
+        amount: String,
+        address: String,
+        fee: String,
+        replaceable: Boolean
+    ) {
+        Log.e("!!!sendBtc", "1")
+       // sendBtcJob = launch(::onErrorHandler) {
+            launch(::onErrorHandler) {
+            //withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+            Log.e("!!!sendBtc", "sendBtcJob")
             handleResponseSend(
                 repository.sendBtcBalance(
                     BtcBalance(
@@ -57,9 +68,16 @@ class MakeTransactionViewModel(
                     )
                 )
             )
-            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
+            Log.e("!!!sendBtc", "2")
+            //withContext(Dispatchers.Main) { onEndProgress.value = Unit }
+            Log.e("!!!sendBtc", "3")
         }
     }
+
+
+
+
+
 
     fun getCurrency() {
         currency.postValue(sharedPreferencesProvider.getCurrency())

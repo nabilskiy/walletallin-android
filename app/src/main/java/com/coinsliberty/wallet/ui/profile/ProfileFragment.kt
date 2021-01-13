@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.Bitmap
@@ -8,10 +9,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -27,12 +32,14 @@ import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
+import com.google.common.net.HttpHeaders.AUTHORIZATION
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
@@ -52,18 +59,26 @@ class ProfileFragment : BaseKotlinFragment() {
         viewModel.getProfile()
         viewModel.getCurrency()
 
-//        Glide.with(this)
-//            .asBitmap()
-//            .load(viewModel.getUserAvatar())
-//            .diskCacheStrategy(DiskCacheStrategy.ALL)
-//            .apply(RequestOptions.circleCropTransform())
-//            .skipMemoryCache(true)
-//            .into(object : CustomTarget<Bitmap>(88, 88) {
-//                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-//                    profileToolbar.ivToolbarLogo.setImageBitmap(resource)
-//                }
-//                override fun onLoadCleared(placeholder: Drawable?) {}
-//            })
+            Glide.with(this)
+                .asBitmap()
+                .load(viewModel.getUserAvatarGlideUrl())
+                .apply(RequestOptions.circleCropTransform())
+                .skipMemoryCache(true)
+                .into(object : CustomTarget<Bitmap>() {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
+                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+                    }
+
+                    override fun onLoadFailed(errorDrawable: Drawable?) {
+                        super.onLoadFailed(errorDrawable)
+                        Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onLoadCleared(placeholder: Drawable?) {}
+                })
 
         tvAttachButton.setOnClickListener {
 
@@ -91,7 +106,7 @@ class ProfileFragment : BaseKotlinFragment() {
                     optEnabled = isNeed2fa,
                     file = null,
                     otp = if (ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
-                    avatar = viewModel.ldNewUserAvatarId.value
+                    avatar = viewModel.ldCurrentUserAvatarId.value
                 )
             } else {
                 getErrorDialog("Empty fields")
@@ -134,12 +149,8 @@ class ProfileFragment : BaseKotlinFragment() {
         bindDataTo(viewModel.ldProfile, ::initProfileData)
         bindDataTo(viewModel.ldOtp, ::initOtp)
         bindDataTo(viewModel.ldCurrency, ::initCurrency)
-        //bindDataTo(viewModel.ldAvatar, ::setAvatar)
     }
 
-//    private fun setAvatar(uri: Uri?){
-//        profileToolbar.ivToolbarLogo.setImageURI(uri)
-//    }
 
     private fun initCurrency(currency: Currency?) {
         if (currency == null) {
@@ -230,22 +241,22 @@ class ProfileFragment : BaseKotlinFragment() {
 
             viewModel.sendFile(body)
 
-            Glide.with(this)
-                .asBitmap()
-                .load(uri)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .apply(RequestOptions.circleCropTransform())
-                .skipMemoryCache(true)
-                .into(object : CustomTarget<Bitmap>() {
-                    override fun onResourceReady(
-                        resource: Bitmap,
-                        transition: Transition<in Bitmap>?
-                    ) {
-                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
-                    }
-
-                    override fun onLoadCleared(placeholder: Drawable?) {}
-                })
+//            Glide.with(this)
+//                .asBitmap()
+//                .load(uri)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .apply(RequestOptions.circleCropTransform())
+//                .skipMemoryCache(true)
+//                .into(object : CustomTarget<Bitmap>() {
+//                    override fun onResourceReady(
+//                        resource: Bitmap,
+//                        transition: Transition<in Bitmap>?
+//                    ) {
+//                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+//                    }
+//
+//                    override fun onLoadCleared(placeholder: Drawable?) {}
+//                })
         }
     }
 

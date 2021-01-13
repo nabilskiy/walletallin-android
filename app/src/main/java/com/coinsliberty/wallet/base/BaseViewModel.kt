@@ -1,7 +1,6 @@
 package com.coinsliberty.wallet.base
 
 import android.app.Application
-import android.net.Uri
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -80,11 +79,4 @@ abstract class BaseViewModel(
 
     abstract fun stopRequest();
 
-    fun setUserAvatar(id : Long) {
-        sharedPreferencesProvider.setUserAvatar(id);
-    }
-
-    fun getUserAvatar() : Uri {
-        return Uri.parse(sharedPreferencesProvider.getUserAvatar())
-    }
 }
