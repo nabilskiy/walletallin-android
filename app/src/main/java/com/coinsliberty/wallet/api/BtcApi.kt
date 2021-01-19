@@ -10,7 +10,7 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface BtcApi {
-    @POST("/api/finance/send")
+    @POST("/mapi/finance/send")
     suspend fun sendBtcRate(
         @Body body: BtcBalance
     ): SignUpResponse

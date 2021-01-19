@@ -60,10 +60,10 @@ class MakeTransactionViewModel(
                 repository.sendBtcBalance(
                     BtcBalance(
                         asset,
-                        amount,
+                        amount.replace(",", ".", true),
                         address,
                         encryptData(sharedPreferencesProvider.getPassword()) ?: "",
-                        fee,
+                        fee.replace(",", ".", true),
                         replaceable
                     )
                 )
@@ -102,7 +102,7 @@ class MakeTransactionViewModel(
     fun sendMax(asset: String, rate: String) {
         sendMaxJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
-            handleResponseSendMax(repository.sendMax(asset, rate))
+            handleResponseSendMax(repository.sendMax(asset, rate.replace(",", ".", true)))
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
