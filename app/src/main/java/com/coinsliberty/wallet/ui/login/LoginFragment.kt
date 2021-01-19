@@ -44,7 +44,7 @@ class LoginFragment : BaseKotlinFragment() {
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
 
         btnLoginUpdate.setOnClickListener {
-            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText(), login2FA.getMyText())
+            viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
             }
 
         tvForgotPassword.setOnClickListener {
@@ -73,8 +73,6 @@ class LoginFragment : BaseKotlinFragment() {
     private fun showResult(b: Boolean?) {
         if(b == true) {
             navigate()
-        } else {
-            login2FA.visible()
         }
     }
 

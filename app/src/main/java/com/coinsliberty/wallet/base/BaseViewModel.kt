@@ -60,7 +60,7 @@ abstract class BaseViewModel(
     fun relogin(otp: String? = null) {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val login = loginRepository.login(LoginRequest(sharedPreferencesProvider.getLogin(), sharedPreferencesProvider.getPassword(), otp))
+            val login = loginRepository.login(LoginRequest(sharedPreferencesProvider.getLogin(), sharedPreferencesProvider.getPassword()))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
             if(login.result == false && otp.isNullOrEmpty()) {
                 showDialog.postValue(Unit)

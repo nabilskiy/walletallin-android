@@ -90,7 +90,7 @@ class ProfileFragment : BaseKotlinFragment() {
 
         profileToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
         profileToolbar.ivToolbarIconLeft.setImageResource(R.drawable.ic_arrow_back)
-        profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
+        //profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
         profileToolbar.tvToolbarTitle.text = "Profile"
 
         profileToolbar.ivToolbarIconLeft.setOnClickListener {
@@ -103,37 +103,10 @@ class ProfileFragment : BaseKotlinFragment() {
                     firstName = ifcProfileFirstName.getMyText(),
                     lastName = ifcProfileLastName.getMyText(),
                     phone = ifcProfilePhone.getMyText(),
-                    optEnabled = isNeed2fa,
-                    file = null,
-                    otp = if (ifcProfile2Fa.visibility == View.VISIBLE) ifcProfile2Fa.getMyText() else null,
                     avatar = viewModel.ldCurrentUserAvatarId.value
                 )
             } else {
                 getErrorDialog("Empty fields")
-            }
-        }
-
-        profileSwitch.initListeners {
-            isNeed2fa = it
-            ifcProfile2Fa.visibleIfOrGone { it }
-
-            if (it) {
-                viewModel.getOtp()
-            } else {
-
-                UndoSecureCodeDialog.newInstance(
-                    EditProfileRequest(
-                        ifcProfileFirstName.getMyText(),
-                        ifcProfileLastName.getMyText(),
-                        ifcProfilePhone.getMyText(),
-                        false
-                    )
-                ).apply {
-
-                    initListeners {
-                        update2FA(it)
-                    }
-                }.show(childFragmentManager, UndoSecureCodeDialog.TAG)
             }
         }
 
@@ -147,7 +120,6 @@ class ProfileFragment : BaseKotlinFragment() {
     private fun subscribeLiveData() {
         viewModel.showError.observe(this, ::getErrorDialog)
         bindDataTo(viewModel.ldProfile, ::initProfileData)
-        bindDataTo(viewModel.ldOtp, ::initOtp)
         bindDataTo(viewModel.ldCurrency, ::initCurrency)
     }
 
@@ -181,36 +153,11 @@ class ProfileFragment : BaseKotlinFragment() {
         popupMenu.show()
     }
 
-    private fun initOtp(s: String?) {
-        update2FA(false)
-
-        if (s == null) return
-
-        SecureCodeDialog.newInstance(
-            EditProfileRequest(
-                ifcProfileFirstName.getMyText(),
-                ifcProfileLastName.getMyText(),
-                ifcProfilePhone.getMyText(),
-                true
-            ), s, ifcProfileEmail.getMyText()
-        ).apply {
-            initListeners {
-                update2FA(it)
-            }
-        }.show(childFragmentManager, SecureCodeDialog.TAG)
-    }
-
-    fun update2FA(b: Boolean) {
-        profileSwitch.changeStatus(b)
-    }
-
     private fun initProfileData(profileResponse: ProfileResponse?) {
         ifcProfileFirstName.setText(profileResponse?.user?.firstName ?: "")
         ifcProfileLastName.setText(profileResponse?.user?.lastName ?: "")
         ifcProfilePhone.setText(profileResponse?.user?.phone ?: "")
         ifcProfileEmail.setText(profileResponse?.user?.login ?: "")
-        profileSwitch.changeStatus(profileResponse?.user?.optEnabled == 1)
-        ifcProfile2Fa.visibleIfOrGone { profileResponse?.user?.optEnabled == 1 }
         isNeed2fa = profileResponse?.user?.optEnabled == 1
     }
 

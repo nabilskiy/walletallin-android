@@ -12,10 +12,6 @@ data class EditProfileRequest(
     val lastName: String? = null,
     @SerializedName("phone")
     val phone: String? = null,
-    @SerializedName("otp_enabled")
-    val otpEnabled: Boolean? = null,
-    @SerializedName("otp")
-    var otp: String? = null,
     @SerializedName("avatar")
     val avatar: Long? = null
 ): Parcelable

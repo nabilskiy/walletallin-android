@@ -19,7 +19,7 @@ interface LoginApi {
         @Body body: ForgotPassRequest
     ): SignUpResponse
 
-    @POST("/api/newaccesstoken")
+    @POST("/mapi/newaccesstoken")
     suspend fun login(
         @Body body: LoginRequest
     ): SignUpResponse

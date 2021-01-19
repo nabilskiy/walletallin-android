@@ -56,7 +56,7 @@ class SecureCodeDialog : BaseKotlinDialogFragment() {
         }
 
         btnUpdate.setOnClickListener {
-            viewModel.updateProfile(data?.apply { otp = ifc2FA.getMyText() })
+            viewModel.updateProfile(data)
         }
         ivCopy.setOnClickListener {
             val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager

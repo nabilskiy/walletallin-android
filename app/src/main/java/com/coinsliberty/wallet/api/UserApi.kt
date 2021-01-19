@@ -12,7 +12,7 @@ interface UserApi {
     @GET("/api/account")
     suspend fun getProfile(): ProfileResponse
 
-    @POST("/api/account")
+    @POST("/mapi/account")
     suspend fun editProfile(
         @Body body: EditProfileRequest
     ): SignUpResponse

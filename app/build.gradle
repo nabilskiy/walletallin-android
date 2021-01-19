@@ -27,15 +27,18 @@ android {
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
         }
         debug {
             buildConfigField "String", "API_URL", "\"http://api.test-wallet.coinsliberty.com/\""
+            buildConfigField "String", "API_RES_URL", "\"http://web.test-wallet.coinsliberty.com/\""
             debuggable true
         }
 
         debugRelease {
             initWith debug
             buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
         }
     }
 

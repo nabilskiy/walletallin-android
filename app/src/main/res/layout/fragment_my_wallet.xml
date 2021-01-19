@@ -22,7 +22,8 @@
             android:layout_marginEnd="@dimen/wallet_total_icon_margin_end"
             android:background="@drawable/ic_ring"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"

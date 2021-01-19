@@ -61,18 +61,6 @@
             app:ifc_type="textPassword"
             app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
 
-
-        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-            android:id="@+id/login2FA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_cc_margin_end_start"
-            android:layout_marginTop="@dimen/login_cc_pass_margin_top"
-            android:layout_marginEnd="@dimen/login_cc_margin_end_start"
-            app:ifc_header="2FA"
-            app:ifc_type="text"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />
         <TextView
             android:id="@+id/tvForgotPassword"
             style="@style/H4"

@@ -42,7 +42,7 @@ class UndoSecureCodeDialog : BaseKotlinDialogFragment() {
         }
 
         btnUpdate.setOnClickListener {
-            viewModel.updateProfile(data?.apply { otp = secureCode.getMyText() })
+            viewModel.updateProfile(data)
         }
 
         subscribeLiveData()

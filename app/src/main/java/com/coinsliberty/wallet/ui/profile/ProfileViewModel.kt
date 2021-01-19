@@ -25,7 +25,6 @@ class ProfileViewModel(
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val ldProfile = MutableLiveData<ProfileResponse>()
-    val ldOtp = MutableLiveData<String>()
     val ldCurrency = MutableLiveData<Currency>()
     val ldCurrentUserAvatarId = MutableLiveData<Long>()
 
@@ -40,8 +39,10 @@ class ProfileViewModel(
     }
 
     fun getUserAvatarGlideUrl() : GlideUrl {
+
+        Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
         val glideUrl = GlideUrl(
-            "${BuildConfig.API_URL}files/${160}",
+            "${BuildConfig.API_RES_URL}files/${160}",
             LazyHeaders.Builder()
                 .addHeader("slc-auth",  sharedPreferencesProvider.getToken() ?: "")
                 .build()
@@ -61,10 +62,10 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
-    fun editProfile(firstName: String, lastName: String, phone: String, optEnabled: Boolean, file: Any?, otp: String? = null, avatar: Long? = null) {
+    fun editProfile(firstName: String, lastName: String, phone: String, avatar: Long? = null) {
         editProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone, optEnabled, otp = otp,
+            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone,
                 avatar = avatar
             ))
             if(response.result == false) {
@@ -82,15 +83,6 @@ class ProfileViewModel(
                 ldCurrentUserAvatarId.postValue(response.item?.file)
                 Log.e("new avatar!!!", response.item?.file.toString())
             }
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
-        }
-    }
-
-    fun getOtp() {
-        getOtpJob = launch(::onErrorHandler) {
-            withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.getOtp()
-            ldOtp.postValue(response.token)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }

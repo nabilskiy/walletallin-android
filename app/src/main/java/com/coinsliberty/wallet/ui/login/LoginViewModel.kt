@@ -7,6 +7,7 @@ import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.LoginRequest
 import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
+import com.coinsliberty.wallet.utils.crypto.encryptData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
@@ -25,20 +26,16 @@ class LoginViewModel(
         loginJob?.cancel()
     }
 
-    fun login(email: String, password: String, otp: String?) {
+    fun login(email: String, password: String) {
         loginJob = launch(::handleError) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val login = repository.login(LoginRequest(email, password, otp))
+            val login = repository.login(LoginRequest(email, encryptData(password)))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
             Log.e("!!!", login.toString())
-            if(login.result == false && otp.isNullOrEmpty()) {
-                result.postValue(false)
-            } else {
-                sharedPreferencesProvider.saveLogin(email)
-                sharedPreferencesProvider.savePassword(password)
-                handleResponse(login)
-            }
 
+            sharedPreferencesProvider.saveLogin(email)
+            sharedPreferencesProvider.savePassword(password)
+            handleResponse(login)
 
         }
     }

@@ -97,30 +97,6 @@
                 />
 
             <TextView
-                android:id="@+id/tvSwitchTitle"
-                style="@style/H8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/profile_switch_title_margin_top"
-                android:layout_marginEnd="176dp"
-                android:text="2FA"
-                android:textColor="@color/grey"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ifcProfilePhone" />
-
-            <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchComponent
-                android:id="@+id/profileSwitch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvSwitchTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="@dimen/profile_switch_margin_end"
-                android:layout_marginTop="@dimen/profile_switch_margin_top"
-                app:sc_left_btn_text="@string/enabled"
-                app:sc_right_btn_text="@string/disabled"
-                />
-
-            <TextView
                 android:id="@+id/tvChooseFileTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,18 +123,6 @@
                 app:ac_button_text="Browse"
                 />
 
-
-
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
-                android:id="@+id/ifcProfile2Fa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:ifc_header="@string/fa_code"
-                app:layout_constraintTop_toBottomOf="@id/profileAttachComponent"
-                android:layout_marginStart="@dimen/profile_phone_margin_start"
-                android:layout_marginEnd="@dimen/profile_phone_margin_end"
-                android:layout_marginTop="@dimen/profile_phone_margin_top" />
-
             <Button
                 android:id="@+id/btnLoginUpdate"
                 style="@style/ButtonGreyBorder"
@@ -169,7 +133,7 @@
                 android:textColor="@color/lightBlue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ifcProfile2Fa"
+                app:layout_constraintTop_toBottomOf="@+id/profileAttachComponent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="@dimen/profile_button_margin_top"
                 android:layout_marginBottom="24dp"/>
