@@ -80,27 +80,11 @@ abstract class BaseKotlinFragment : Fragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.baseLogout, ::logout)
-        bindDataTo(viewModel.showDialog, ::showDialog)
         bindDataTo(viewModel.restart, ::restartFragment)
     }
 
     private fun restartFragment(unit: Unit?) {
         onStart()
-    }
-
-    private fun showDialog(unit: Unit?) {
-        dialog.apply {
-            initListeners {
-                login(it)
-            }
-        }.show(childFragmentManager, OtpDialog.TAG)
-    }
-
-
-
-    private fun login(otp: String) {
-        viewModel.relogin(otp)
-        dialog.dismiss()
     }
 
     private fun logout(b: Boolean?) {

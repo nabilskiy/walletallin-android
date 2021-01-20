@@ -10,6 +10,7 @@ import com.coinsliberty.wallet.data.response.SignUpResponse
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.utils.coroutines.CoroutineHelper
+import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -57,14 +58,12 @@ abstract class BaseViewModel(
 //        }
     }
     
-    fun relogin(otp: String? = null) {
+    fun relogin() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val login = loginRepository.login(LoginRequest(sharedPreferencesProvider.getLogin(), sharedPreferencesProvider.getPassword()))
+            val login = loginRepository.login(LoginRequest(sharedPreferencesProvider.getLogin(), encryptData(sharedPreferencesProvider.getPassword())))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
-            if(login.result == false && otp.isNullOrEmpty()) {
-                showDialog.postValue(Unit)
-            } else if(login.result == false) {
+            if(login.result == false) {
                 showError.postValue(login.error?.message ?: "")
             } else {
                 handleResponse(login)
