@@ -3,10 +3,13 @@ package com.coinsliberty.wallet.ui.splash
 import android.animation.Animator
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.ui.config.NavigationConfig
+import com.coinsliberty.wallet.utils.crypto.decryptData
+import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_splash.*
 import org.koin.android.ext.android.get
@@ -28,6 +31,12 @@ class SplashFragment: BaseKotlinFragment() {
 
     override fun onStart() {
         super.onStart()
+        var data = "test"
+        Log.e("!!!", data)
+        data = encryptData(data) ?: ""
+        Log.e("!!!", data)
+
+        Log.e("!!!", decryptData(data) ?: "")
         lavCoinsLiberty.progress = 0.0f
         lavCoinsLiberty.playAnimation()
     }
