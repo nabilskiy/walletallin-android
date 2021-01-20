@@ -5,8 +5,8 @@ import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-private const val KEY_TOKEN = "Q9VCGDRJASATPIBVPJOG7L1ENCTUQW"
-private const val VECTOR_TOKEN = "WSZB5OI8F4KJO0CP"
+private const val KEY_TOKEN = "OMYONDKZDPQIHQZNYZGMCJPVKWSOILBW"
+private const val VECTOR_TOKEN = "LINKWCVTMOZUXJWN"
 
 fun encryptData(token: String?): String? {
 
