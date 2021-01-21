@@ -180,13 +180,17 @@ class ProfileFragment : BaseKotlinFragment() {
 
         if (resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE) {
             (activity as MainActivity).showPin = true
-            val uri: Uri = data?.data ?: return
-            val file = File(getRealPath(uri))
-            val requestFile =
-                RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
-            val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+            try {
+                val uri: Uri = data?.data ?: return
+                val file = File(getRealPath(uri))
+                val requestFile =
+                    RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
+                val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+                viewModel.sendFile(body)
+            } catch (e: Exception) {
 
-            viewModel.sendFile(body)
+            }
+
 
 //            Glide.with(this)
 //                .asBitmap()

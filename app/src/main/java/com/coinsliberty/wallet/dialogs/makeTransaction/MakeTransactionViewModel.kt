@@ -52,9 +52,8 @@ class MakeTransactionViewModel(
         replaceable: Boolean
     ) {
         Log.e("!!!sendBtc", "1")
-       // sendBtcJob = launch(::onErrorHandler) {
-            launch(::onErrorHandler) {
-            //withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+        launch(::onErrorHandler) {
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             Log.e("!!!sendBtc", "sendBtcJob")
             handleResponseSend(
                 repository.sendBtcBalance(

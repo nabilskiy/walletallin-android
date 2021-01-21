@@ -14,9 +14,9 @@ import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.liveData.SingleLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
-
 abstract class BaseViewModel(
     private val app: Application,
     private val sharedPreferencesProvider: SharedPreferencesProvider,
@@ -35,17 +35,25 @@ abstract class BaseViewModel(
     val baseLogout: MutableLiveData<Boolean> = MutableLiveData()
 
 
-    private val coroutineHelper = CoroutineHelper(viewModelScope)
+    private var coroutineHelper: CoroutineHelper
+
+    init {
+        coroutineHelper = CoroutineHelper(viewModelScope)
+    }
 
     protected open fun launch(
         onError: (e: Throwable) -> Unit,
         checkInternetConnection: Boolean = true,
         coroutineContext: CoroutineContext = Dispatchers.IO,
-        block: suspend CoroutineScope.() -> Unit) = coroutineHelper.launch(checkInternetConnection, coroutineContext, app, block, onError)
+        block: suspend CoroutineScope.() -> Unit): Job {
+        if(coroutineHelper == null) coroutineHelper = CoroutineHelper(viewModelScope)
+        return coroutineHelper.launch(checkInternetConnection, coroutineContext, app, block, onError)
+    }
+
 
 
     open fun onErrorHandler(throwable: Throwable) {
-        Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
 //        val body = (throwable as HttpException).response()?.errorBody()
 
 //        val gson = Gson()
@@ -57,7 +65,7 @@ abstract class BaseViewModel(
 //            e.printStackTrace()
 //        }
     }
-    
+
     fun relogin() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
@@ -79,3 +87,4 @@ abstract class BaseViewModel(
     abstract fun stopRequest();
 
 }
+
