@@ -1,11 +1,13 @@
 package com.coinsliberty.wallet.ui.profile
 
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
@@ -13,36 +15,30 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.model.GlideUrl
-import com.bumptech.glide.load.model.LazyHeaders
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
-import com.coinsliberty.wallet.data.EditProfileRequest
 import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.dialogs.ErrorDialog
-import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeDialog
-import com.coinsliberty.wallet.dialogs.secureCode.UndoSecureCodeDialog
 import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
-import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
-import com.google.common.net.HttpHeaders.AUTHORIZATION
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
+import java.util.jar.Manifest
 
 
 class ProfileFragment : BaseKotlinFragment() {
@@ -53,6 +49,15 @@ class ProfileFragment : BaseKotlinFragment() {
     var bufferFile: Any? = null
 
     var isNeed2fa = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+            && context?.let { ContextCompat.checkSelfPermission(it, android.Manifest.permission.READ_EXTERNAL_STORAGE) } != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                context as Activity, Array<String>(2) {android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -165,7 +170,6 @@ class ProfileFragment : BaseKotlinFragment() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-
         (activity as MainActivity).showPin = false
         startActivityForResult(
             Intent.createChooser(
@@ -173,6 +177,8 @@ class ProfileFragment : BaseKotlinFragment() {
                 "Select file to upload "
             ), req_code
         )
+        Log.e("SEND_IMG", "SENT")
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -180,35 +186,46 @@ class ProfileFragment : BaseKotlinFragment() {
 
         if (resultCode == IMAGE_PICK_CODE || requestCode == IMAGE_PICK_CODE) {
             (activity as MainActivity).showPin = true
+
             try {
                 val uri: Uri = data?.data ?: return
-                val file = File(getRealPath(uri))
+                val file = File(getImageFilePath(uri))
+
                 val requestFile =
                     RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
                 val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
                 viewModel.sendFile(body)
             } catch (e: Exception) {
-
+                Log.e("ERROE_IMG", e.toString())
             }
-
-
-//            Glide.with(this)
-//                .asBitmap()
-//                .load(uri)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .apply(RequestOptions.circleCropTransform())
-//                .skipMemoryCache(true)
-//                .into(object : CustomTarget<Bitmap>() {
-//                    override fun onResourceReady(
-//                        resource: Bitmap,
-//                        transition: Transition<in Bitmap>?
-//                    ) {
-//                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
-//                    }
-//
-//                    override fun onLoadCleared(placeholder: Drawable?) {}
-//                })
         }
+    }
+
+    fun getImageFilePath(uri: Uri?): String? {
+
+        var path: String? = null
+        var image_id: String? = null
+        var first_cursor =
+            uri?.let { context?.contentResolver?.query(it, null, null, null, null) }
+        if (first_cursor != null) {
+            first_cursor.moveToFirst()
+            image_id = first_cursor.getString(0)
+            image_id = image_id.substring(image_id.lastIndexOf(":") + 1)
+            first_cursor.close()
+        }
+        val cursor: Cursor? = context?.contentResolver?.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            null,
+            MediaStore.Images.Media._ID + " = ? ",
+            arrayOf(image_id),
+            null
+        )
+        if (cursor != null) {
+            cursor.moveToFirst()
+            path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
+            cursor.close()
+        }
+        return path
     }
 
     fun getRealPath(uri: Uri?): String {
@@ -216,7 +233,6 @@ class ProfileFragment : BaseKotlinFragment() {
         val wholeID = DocumentsContract.getDocumentId(uri)
         val id = wholeID.split(":".toRegex()).toTypedArray()[1]
         val column = arrayOf(MediaStore.Images.Media.DATA)
-
         // where id is equal to
         val sel = MediaStore.Images.Media._ID + "=?"
         val cursor: Cursor = context?.contentResolver?.query(
