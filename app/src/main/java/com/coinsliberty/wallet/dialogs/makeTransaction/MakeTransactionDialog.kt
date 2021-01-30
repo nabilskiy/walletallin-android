@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Message
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
@@ -54,8 +55,8 @@ private const val keyBundleLink = "link"
 
 const val REQUEST_CODE_SCAN = 101
 private val REQUEST_IMAGE_CAPTURE = 1
-private val REQUEST_CODE = 333
-private val REQUEST_SCAN = 222
+val REQUEST_CODE = 333
+val REQUEST_SCAN = 222
 
 
 class MakeTransactionDialog : BottomSheetDialogFragment() {
@@ -329,15 +330,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
 
         tvSendMax.setOnClickListener {
-            sendMax()
+            val rate = String.format("%.8f", (tvAmountSatPerByte.text.toString().replace(",", ".", true).toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0)))
+
+            viewModel.sendMax("btc", rate)
         }
     }
 
-    fun sendMax() {
-        val rate = String.format("%.8f", (tvAmountSatPerByte.text.toString().replace(",", ".", true).toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0)))
-
-        viewModel.sendMax("btc", rate)
-    }
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
         listener = onChoosen
@@ -364,7 +362,12 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         bindDataTo(viewModel.resultRecovery, ::setAddress)
         bindDataTo(viewModel.maxAvailable, ::sendMax)
         bindDataTo(viewModel.currency, ::initCurrency)
+        bindDataTo(viewModel.messageError, ::showToastError)
 
+    }
+
+    private fun showToastError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun initCurrency(currency: Currency?) {
@@ -427,7 +430,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         if (ress == true) {
             getAcceptDialog(balanceForSend, addressForSend)
         } else if (ress == false) {
-            getErrorDialog(viewModel.messageError.value.toString())
+            getErrorDialog(viewModel.showError.value.toString())
             //Log.e("!!!initRes", "false")
         }
 

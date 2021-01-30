@@ -16,7 +16,7 @@ class SharedPreferencesProvider(context: Context) {
     private val prefs =
         EncryptedSharedPreferences.create(
             context,
-            SHARED_PREFS,
+            "coinsLiberty",
             masterKey,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM

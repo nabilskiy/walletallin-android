@@ -38,11 +38,11 @@ class ProfileViewModel(
         getOtpJob?.cancel()
     }
 
-    fun getUserAvatarGlideUrl() : GlideUrl {
+    fun getUserAvatarGlideUrl(id: Long) : GlideUrl {
 
         Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
         val glideUrl = GlideUrl(
-            "${BuildConfig.API_RES_URL}files/${160}",
+            "${BuildConfig.API_RES_URL}files/${id}",
             LazyHeaders.Builder()
                 .addHeader("slc-auth",  sharedPreferencesProvider.getToken() ?: "")
                 .build()
@@ -66,7 +66,7 @@ class ProfileViewModel(
         editProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone,
-                avatar = avatar
+                avatar = ldCurrentUserAvatarId.value
             ))
             if(response.result == false) {
                 showError.postValue(response.error?.message ?: "Error")
@@ -80,8 +80,7 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             val response = repository.sendFile(file)
             if(response.result == true) {
-                ldCurrentUserAvatarId.postValue(response.item?.file)
-                Log.e("new avatar!!!", response.item?.file.toString())
+                ldCurrentUserAvatarId.postValue(response.item?.values?.iterator()?.next() ?: 0)
             }
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }

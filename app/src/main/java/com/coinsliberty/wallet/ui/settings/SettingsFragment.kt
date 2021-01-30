@@ -2,9 +2,16 @@ package com.coinsliberty.wallet.ui.settings
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.coinsliberty.wallet.BottomFragmant
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -13,7 +20,6 @@ import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.extensions.invisible
-import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_settings.itemChangeLanguage
 import kotlinx.android.synthetic.main.fragment_settings.settingsToolbar
@@ -37,6 +43,7 @@ class SettingsFragment() : BaseKotlinFragment() {
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.ldLogout, ::logout)
+        bindDataTo(viewModel.ldAva, ::loadAva)
     }
 
     private fun logout(b: Boolean?) {
@@ -51,12 +58,36 @@ class SettingsFragment() : BaseKotlinFragment() {
         }
     }
 
+    private fun loadAva(id: Long) {
+        Glide.with(this)
+            .asBitmap()
+            .load(viewModel.getUserAvatarGlideUrl(id))
+            .apply(RequestOptions.circleCropTransform())
+            .skipMemoryCache(true)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    settingsToolbar.ivToolbarLogo.setImageBitmap(resource)
+                }
+
+                override fun onLoadFailed(errorDrawable: Drawable?) {
+                    super.onLoadFailed(errorDrawable)
+                    Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {}
+            })
+    }
+
     private fun initView() {
 
         settingsToolbar.ivToolbarIconLeft.invisible()
         settingsToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.selector_notification)
         settingsToolbar.ivToolbarRightIcon.setColorFilter(resources.getColor(R.color.white))
         settingsToolbar.tvToolbarTitle.setText(R.string.settings)
+        settingsToolbar.ivAddPhoto.visibility = View.GONE
 
         itemChangeLanguage.tvTittle.setText(R.string.change_language)
 
@@ -101,6 +132,8 @@ class SettingsFragment() : BaseKotlinFragment() {
             viewModel.logout()
         }
         itemLogOut.imNext.invisible()
+
+        viewModel.loadProfile()
     }
 
 }

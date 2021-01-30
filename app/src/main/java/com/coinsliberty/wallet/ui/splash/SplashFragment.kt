@@ -21,22 +21,12 @@ class SplashFragment: BaseKotlinFragment() {
     override val viewModel: SplashViewModel by viewModel()
     override val navigator: SplashNavigation = get()
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
         subscribeLiveData()
 
         startFragmentAnimation()
-    }
-
-    override fun onStart() {
         super.onStart()
-        var data = "test"
-        Log.e("!!!", data)
-        data = encryptData(data) ?: ""
-        Log.e("!!!", data)
 
-        Log.e("!!!", decryptData(data) ?: "")
         lavCoinsLiberty.progress = 0.0f
         lavCoinsLiberty.playAnimation()
     }
@@ -53,12 +43,11 @@ class SplashFragment: BaseKotlinFragment() {
     }
 
 
-    fun startFragmentAnimation() {
+    private fun startFragmentAnimation() {
         lavCoinsLiberty.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {
             }
 
-            @SuppressLint("ShowToast")
             override fun onAnimationEnd(animation: Animator) {
                 viewModel.navigate()
             }

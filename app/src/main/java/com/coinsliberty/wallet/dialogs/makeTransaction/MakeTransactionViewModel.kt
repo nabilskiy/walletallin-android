@@ -51,10 +51,8 @@ class MakeTransactionViewModel(
         fee: String,
         replaceable: Boolean
     ) {
-        Log.e("!!!sendBtc", "1")
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
-            Log.e("!!!sendBtc", "sendBtcJob")
             handleResponseSend(
                 repository.sendBtcBalance(
                     BtcBalance(
@@ -99,10 +97,17 @@ class MakeTransactionViewModel(
     }
 
     fun sendMax(asset: String, rate: String) {
-        sendMaxJob = launch(::onErrorHandler) {
+        launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
-            handleResponseSendMax(repository.sendMax(asset, rate.replace(",", ".", true)))
+            val data = repository.sendMax(asset, rate.replace(",", ".", true))
+
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
+            if(data.result == false) {
+                messageError.postValue(data.error?.message ?: "Error")
+            } else {
+                handleResponseSendMax(data)
+            }
+
         }
     }
 
@@ -111,6 +116,8 @@ class MakeTransactionViewModel(
     }
 
     private fun handleResponseSendMax(sendMax: SendMaxResponse) {
+        Log.e("!!!", sendMax.toString())
+
         maxAvailable.postValue(sendMax)
     }
 
@@ -119,7 +126,7 @@ class MakeTransactionViewModel(
             result.postValue(true)
             return
         } else {
-            messageError.postValue(signUp.error?.message.toString())
+            showError.postValue(signUp.error?.message.toString())
             result.postValue(false)
             return
         }

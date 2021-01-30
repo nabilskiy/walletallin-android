@@ -78,7 +78,7 @@ class TransactionHolder() : Holder<TransactionItem>() {
         }
 
         itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvType.text = if(item.category != "send") "Sent" else "Received"
+        itemView.tvType.text = if(item.category == "send") "Sent" else "Received"
         itemView.tvPrice.text = item.amountUsd + if(item.currency == null || item.currency == Currency.USD) " $" else " €"
         itemView.ivOpenIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvOpenType.text = if(item.category != "send") "Sent" else "Received"

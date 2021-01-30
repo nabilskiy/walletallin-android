@@ -6,5 +6,8 @@ data class SendMaxResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("amount")
-    val balance: Double? = null
+    val balance: Double? = null,
+    @SerializedName("error")
+    val error: ErrorResponse? = null
+
 )

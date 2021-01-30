@@ -26,7 +26,7 @@ abstract class BaseViewModel(
     val onStartProgress: MutableLiveData<Unit> = MutableLiveData()
     val onEndProgress: MutableLiveData<Unit> = MutableLiveData()
 
-    val showError: SingleLiveData<String> = SingleLiveData()
+    var showError: MutableLiveData<String> = MutableLiveData()
 
     val showDialog: MutableLiveData<Unit> = MutableLiveData()
 
@@ -53,6 +53,7 @@ abstract class BaseViewModel(
 
 
     open fun onErrorHandler(throwable: Throwable) {
+
         //Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
 //        val body = (throwable as HttpException).response()?.errorBody()
 

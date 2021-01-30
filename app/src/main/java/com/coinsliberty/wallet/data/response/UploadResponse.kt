@@ -6,7 +6,7 @@ data class UploadResponse(
     @SerializedName("result")
     val result: Boolean? = null,
     @SerializedName("files")
-    val item: FilesItemUpload? = null,
+    val item: Map<String, Long>? = null,
     @SerializedName("error")
     val error: ErrorResponse? = null
 )

@@ -1,13 +1,11 @@
 package com.coinsliberty.wallet.ui.profile
 
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
@@ -15,7 +13,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -26,11 +23,14 @@ import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.response.ProfileResponse
 import com.coinsliberty.wallet.dialogs.ErrorDialog
+import com.coinsliberty.wallet.dialogs.makeTransaction.REQUEST_CODE
+import com.coinsliberty.wallet.dialogs.makeTransaction.REQUEST_SCAN
 import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -38,7 +38,8 @@ import okhttp3.RequestBody
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
-import java.util.jar.Manifest
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class ProfileFragment : BaseKotlinFragment() {
@@ -50,47 +51,19 @@ class ProfileFragment : BaseKotlinFragment() {
 
     var isNeed2fa = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            && context?.let { ContextCompat.checkSelfPermission(it, android.Manifest.permission.READ_EXTERNAL_STORAGE) } != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                context as Activity, Array<String>(2) {android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getProfile()
         viewModel.getCurrency()
 
-            Glide.with(this)
-                .asBitmap()
-                .load(viewModel.getUserAvatarGlideUrl())
-                .apply(RequestOptions.circleCropTransform())
-                .skipMemoryCache(true)
-                .into(object : CustomTarget<Bitmap>() {
-                    override fun onResourceReady(
-                        resource: Bitmap,
-                        transition: Transition<in Bitmap>?
-                    ) {
-                        profileToolbar.ivToolbarLogo.setImageBitmap(resource)
-                    }
 
-                    override fun onLoadFailed(errorDrawable: Drawable?) {
-                        super.onLoadFailed(errorDrawable)
-                        Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
-                    }
-
-                    override fun onLoadCleared(placeholder: Drawable?) {}
-                })
 
         tvAttachButton.setOnClickListener {
 
         }
 
         profileToolbar.ivAddPhoto.setOnClickListener {
-            openGallery(IMAGE_PICK_CODE)
+            requestPermissionAndCapturePhoto()
         }
 
         profileToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
@@ -122,6 +95,29 @@ class ProfileFragment : BaseKotlinFragment() {
         subscribeLiveData()
     }
 
+    private fun updateAvatar(id: Long) {
+        Glide.with(this)
+            .asBitmap()
+            .load(viewModel.getUserAvatarGlideUrl(id))
+            .apply(RequestOptions.circleCropTransform())
+            .skipMemoryCache(true)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+                }
+
+                override fun onLoadFailed(errorDrawable: Drawable?) {
+                    super.onLoadFailed(errorDrawable)
+                    Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {}
+            })
+    }
+
     private fun subscribeLiveData() {
         viewModel.showError.observe(this, ::getErrorDialog)
         bindDataTo(viewModel.ldProfile, ::initProfileData)
@@ -135,6 +131,58 @@ class ProfileFragment : BaseKotlinFragment() {
         }
 
         tvCurrencyField.text = currency.getTitle()
+    }
+
+    private fun requestPermissionAndCapturePhoto() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            openGallery(IMAGE_PICK_CODE)//if granted
+        } else {
+            requestPermissions(
+                arrayOf(
+                    android.Manifest.permission.CAMERA,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ), REQUEST_CODE
+            ) //request
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.size == 3 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                && grantResults[2] == PackageManager.PERMISSION_GRANTED
+            ) {
+                openGallery(IMAGE_PICK_CODE)
+            } else {
+                requestPermissionAndCapturePhoto()
+            }
+        } else if (requestCode == REQUEST_SCAN) {
+            if (grantResults.size == 3 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                && grantResults[2] == PackageManager.PERMISSION_GRANTED
+            ) {
+                openGallery(IMAGE_PICK_CODE)
+            } else {
+                openGallery(IMAGE_PICK_CODE)
+
+            }
+        }
     }
 
     private fun showPopupMenu() {
@@ -164,6 +212,8 @@ class ProfileFragment : BaseKotlinFragment() {
         ifcProfilePhone.setText(profileResponse?.user?.phone ?: "")
         ifcProfileEmail.setText(profileResponse?.user?.login ?: "")
         isNeed2fa = profileResponse?.user?.optEnabled == 1
+
+        updateAvatar(profileResponse?.user?.avatar ?: -1)
     }
 
     fun openGallery(req_code: Int) {
@@ -193,7 +243,17 @@ class ProfileFragment : BaseKotlinFragment() {
 
                 val requestFile =
                     RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
-                val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+                val body = MultipartBody.Part.createFormData(
+                    "file" + SimpleDateFormat("dd.MM.yyyy'-'HHmm").format(Date()),
+                    file.name,
+                    requestFile
+                )
+                Glide.with(this)
+                    .asBitmap()
+                    .load(uri)
+                    .apply(RequestOptions.circleCropTransform())
+                    .skipMemoryCache(true)
+                    .into(profileToolbar.ivToolbarLogo)
                 viewModel.sendFile(body)
             } catch (e: Exception) {
                 Log.e("ERROE_IMG", e.toString())

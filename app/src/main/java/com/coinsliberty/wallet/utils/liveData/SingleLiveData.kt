@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 class SingleLiveData<T> {
     private val liveData =   MutableLiveData<Event<T>>()
 
-    val value: T?
-    get() = liveData.value?.peekContent()
+    var value: T? = null
+        get() = liveData.value?.peekContent()
 
     fun postValue(value: T) {
         liveData.postValue(Event(value))
