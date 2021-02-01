@@ -319,7 +319,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 "btc",
                 valueAmountCryptoToSend,
                 tvLink.text.toString(),
-                valueFeeToSend,
+                String.format("%.8f", ((tvAmountSatPerByte.text.toString().toDoubleOrNull())?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))),
                 scReplaceable.isChecked
             )
             //Log.e("!!!Onclick", "2")
