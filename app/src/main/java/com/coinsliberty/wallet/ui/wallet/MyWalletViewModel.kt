@@ -1,6 +1,6 @@
 package com.coinsliberty.wallet.ui.wallet
+
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.coinsliberty.wallet.base.BaseViewModel
 import com.coinsliberty.wallet.data.response.*
@@ -14,25 +14,33 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
+// TODO: 17.02.2021 remove logs
+
+const val WALLET_VIEW_MODEL_TAG = "WALLET_VIEW_MODEL"
+
 class MyWalletViewModel(
     private val app: Application,
     private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val repository: WalletRepository,
     private val loginRepository: LoginRepository
-    ): BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
     val walletLiveData: MutableLiveData<List<WalletContent>> = MutableLiveData()
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
     val balanceDataLiveData: MutableLiveData<BalanceInfoContent> = MutableLiveData()
-    val availableBalanceDataLiveData: MutableLiveData<AvailableBalanceInfoContent> = MutableLiveData()
+    val availableBalanceDataLiveData: MutableLiveData<AvailableBalanceInfoContent> =
+        MutableLiveData()
     val currency: MutableLiveData<Currency> = MutableLiveData()
 
-    var rates: Double? = null
+    var btcRates: Double? = null
+    var ethRates: Double? = null
     var balanceData: BalanceInfoContent? = null
     var wallet: Wallets? = null
 
     var walletListJob: Job? = null
     var refreshDataJob: Job? = null
+
+    val TAG = WALLET_VIEW_MODEL_TAG
 
     override fun stopRequest() {
         walletListJob?.cancel()
@@ -41,18 +49,20 @@ class MyWalletViewModel(
 
     fun walletList() {
         walletListJob = launch(::onErrorHandler) {
-            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponse(repository.walletList(), repository.getBalance())
-            handleTransactionResponse(repository.getTransactions())
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+            handleTransactionResponse(repository.getTransactionsBtc())
+            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
 
     fun refreshData() {
+        refreshDataJob?.cancel()
+//        Log.i(TAG, "refreshData: ")
         refreshDataJob = launch(::onErrorHandler) {
             delay(6000)
             handleResponse(repository.walletList(), repository.getBalance())
-            handleTransactionResponse(repository.getTransactions())
+            handleTransactionResponse(repository.getTransactionsBtc())
         }
     }
 
@@ -61,7 +71,7 @@ class MyWalletViewModel(
     }
 
     private fun handleResponse(walletList: WalletInfoResponse, balance: BalanceInfoResponse) {
-        if((walletList.result == false && walletList.error?.code == 1002) ||(balance.result == false && balance.error?.code == 1002)) {
+        if ((walletList.result == false && walletList.error?.code == 1002) || (balance.result == false && balance.error?.code == 1002)) {
             launch(::onErrorHandler) {
                 sharedPreferencesProvider.setToken("")
 
@@ -77,20 +87,35 @@ class MyWalletViewModel(
         walletLiveData.postValue(walletList.list?.map {
             val currency = sharedPreferencesProvider.getCurrency()
             wallet = getWallet(it.id)
-            rates = if(currency == null ||currency == Currency.USD) { balance.rates?.btc?.usd ?: 0.0 } else { balance.rates?.btc?.eur ?: 0.0  }
+            btcRates = if (currency == null || currency == Currency.USD) {
+                balance.rates?.btc?.usd ?: 0.0
+            } else {
+                balance.rates?.btc?.eur ?: 0.0
+            }
+            ethRates = if (currency == null || currency == Currency.USD) {
+                balance.rates?.eth?.usd ?: 0.0
+            } else {
+                balance.rates?.eth?.usd ?: 0.0
+            }
             balanceData = balance.balances
-           // availableBalanceData = balance.availableBalances
+            // availableBalanceData = balance.availableBalances
             balanceDataLiveData.postValue(balance.balances)
             availableBalanceDataLiveData.postValue(balance.availableBalances)
 
-            val balanceValue = if(it.locked == false) getValue(balance, it.id) else null
+            val balanceValue = if (it.locked == false) getValue(balance, it.id) else null
 
             WalletContent(
                 wallet?.getImg() ?: 0,
                 wallet?.getTitle() ?: "",
                 it.label,
-                if(balanceValue != null ) String.format("%.8f", balanceValue) + " " + it.label else null,
-                if(balanceValue != null ) String.format("%.2f", (rates ?: 0.0) * balanceValue) + if(currency == null || currency == Currency.USD) " $" else " €" else null,
+                if (balanceValue != null) String.format(
+                    "%.8f",
+                    balanceValue
+                ) + " " + it.label else null,
+                if (balanceValue != null) String.format(
+                    "%.2f",
+                    (btcRates ?: 0.0) * balanceValue
+                ) + if (currency == null || currency == Currency.USD) " $" else " €" else null,
                 wallet?.getBackground() ?: 0
             )
         })

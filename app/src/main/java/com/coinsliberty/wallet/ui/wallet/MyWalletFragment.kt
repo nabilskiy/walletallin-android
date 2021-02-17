@@ -1,8 +1,8 @@
 package com.coinsliberty.wallet.ui.wallet
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -22,7 +22,6 @@ import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
-import kotlinx.coroutines.flow.merge
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -33,11 +32,23 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     val adapter = BaseAdapter()
         .map(R.layout.item_wallet, MyWalletHolder {
+            val balanceData: Double? =
+                if (it.type == "BTC")
+                    viewModel.balanceData?.btc
+                else viewModel.balanceData?.eth
+            Log.i(WALLET_VIEW_MODEL_TAG, "balance : $balanceData")
+            val rates =
+                if (it.type == "BTC")
+                    viewModel.btcRates
+                else
+                    viewModel.ethRates
+
             navigator.goToTransactions(
                 navController, TransactionFragment.getBundle(
-                    viewModel.rates,
-                    viewModel.balanceData?.btc,
-                    it.ico
+                    rates,
+                    balanceData,
+                    it.ico,
+                    it.type
                 )
             )
         })
@@ -74,7 +85,7 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initCurrency(currency: Currency?) {
-        if(currency == null) return
+        if (currency == null) return
         this.currency = currency
 
         tvFiatName.text = currency.getTitle()
@@ -82,13 +93,16 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
-        adapter.itemsLoaded(((walletData ?: emptyList()) + listOf("Last Transactions") + (getTransactions(list) ?: emptyList())))
+        adapter.itemsLoaded(
+            ((walletData ?: emptyList()) + listOf("Last Transactions") + (getTransactions(list)
+                ?: emptyList()))
+        )
 
         viewModel.refreshData()
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
-        if(list.isNullOrEmpty()) return emptyList()
+        if (list.isNullOrEmpty()) return emptyList()
 
         val resultList = ArrayList<Any>()
         var lastItem: TransactionItem? = null
@@ -102,7 +116,7 @@ class MyWalletFragment : BaseKotlinFragment() {
             resultList.add(it.apply {
                 it.amountUsd = String.format(
                     "%.2f",
-                    (it.amount?.toDouble() ?: 0.0) * (viewModel.rates ?: 0.0)
+                    (it.amount?.toDouble() ?: 0.0) * (viewModel.btcRates ?: 0.0)
                 )
 
             })
@@ -122,25 +136,25 @@ class MyWalletFragment : BaseKotlinFragment() {
 
     }
 
-    private fun initBalance(balance: BalanceInfoContent){
+    private fun initBalance(balance: BalanceInfoContent) {
         tvTotalBalanceCrypto.text = String.format("%.8f", balance.btc ?: 0.0)
         tvTotalBalanceFiat.text = String.format(
             "%.2f",
-            ((balance.btc ?: 0.0) * (viewModel.rates ?: 0.0))
+            ((balance.btc ?: 0.0) * (viewModel.btcRates ?: 0.0))
         )
 
     }
 
-    private fun initAvailableBalance(balance: AvailableBalanceInfoContent){
+    private fun initAvailableBalance(balance: AvailableBalanceInfoContent) {
         tvBalanceCrypto.text = String.format("%.8f", balance.btc ?: 0.0)
         tvBalanceFiat.text = String.format(
             "%.2f",
-            ((balance.btc ?: 0.0) * (viewModel.rates ?: 0.0))
+            ((balance.btc ?: 0.0) * (viewModel.btcRates ?: 0.0))
         )
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {
-        if(it) {
+        if (it) {
             sendDialog?.dismiss()
             AcceptDialog.newInstance(balance ?: "", "Success").show(
                 childFragmentManager,

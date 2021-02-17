@@ -7,5 +7,7 @@ class WalletRepository(private var api: WalletApi) {
 
    suspend fun getBalance() = api.getBalance()
 
-   suspend fun getTransactions() = api.getTransaction()
+   suspend fun getTransactionsBtc() = api.getTransactionBtc()
+
+   suspend fun getTransactionsEth() = api.getTransactionEth()
 }

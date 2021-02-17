@@ -20,7 +20,7 @@ class TransactionViewModel(
     private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val repository: WalletRepository,
     private val loginRepository: LoginRepository
-): BaseViewModel(app, sharedPreferencesProvider, loginRepository)  {
+) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
 
     val transactionsLiveData: MutableLiveData<List<TransactionItem>> = MutableLiveData()
@@ -30,6 +30,8 @@ class TransactionViewModel(
     var transactionJob: Job? = null
     var updateBalanceJob: Job? = null
 
+    var walletType  = "BTC"
+
     override fun stopRequest() {
         transactionJob?.cancel()
         updateBalanceJob?.cancel()
@@ -37,10 +39,12 @@ class TransactionViewModel(
 
     fun getTransaction() {
         transactionJob = launch(::onErrorHandler) {
-            withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            handleTransactionResponse(repository.getTransactions())
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+            if (walletType == "BTC")
+                handleTransactionResponse(repository.getTransactionsBtc())
+            else handleTransactionResponse(repository.getTransactionsEth())
             handleBalanceResponse(repository.getBalance())
-            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
 
@@ -57,7 +61,7 @@ class TransactionViewModel(
 
 
     private fun handleTransactionResponse(transactions: TransactionResponse) {
-        if(transactions.result == false && transactions.error?.code == 1002) {
+        if (transactions.result == false && transactions.error?.code == 1002) {
             launch(::onErrorHandler) {
                 sharedPreferencesProvider.setToken("")
 

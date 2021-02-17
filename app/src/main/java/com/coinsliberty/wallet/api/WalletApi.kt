@@ -8,13 +8,17 @@ import retrofit2.http.GET
 
 interface WalletApi {
     @GET("/api/list/assets")
-   suspend fun walletList(): WalletInfoResponse
+    suspend fun walletList(): WalletInfoResponse
 
     @GET("/api/finance/balances")
-   suspend fun getBalance(): BalanceInfoResponse
+    suspend fun getBalance(): BalanceInfoResponse
 
     @GET("/api/finance/transactions/btc")
-   suspend fun getTransaction(): TransactionResponse
+    suspend fun getTransactionBtc(): TransactionResponse
+
+
+    @GET("/api/finance/transactions/eth")
+    suspend fun getTransactionEth(): TransactionResponse
 
     @GET("/api/finance/address/btc")
     suspend fun getAddress(): AddressInfoResponse

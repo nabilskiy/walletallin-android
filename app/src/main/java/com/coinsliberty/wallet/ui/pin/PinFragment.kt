@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.pin
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -58,6 +59,7 @@ class PinFragment : BaseKotlinFragment() {
                         ))
                 }
                 else -> {
+                    showKeyboard()
                 }
             }
         }
@@ -76,6 +78,7 @@ class PinFragment : BaseKotlinFragment() {
         })
 
         ivTouchId.setOnClickListener {
+            hideKeyboard()
             BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
                 BiometricHelper.buildDefaultBiometricDialog(
                     "Authorization",
@@ -84,6 +87,7 @@ class PinFragment : BaseKotlinFragment() {
                 ))
         }
         ivFaceId.setOnClickListener {
+            hideKeyboard()
             BiometricHelper.createBiometricPrompt(this, biometricCallBack).authenticate(
                 BiometricHelper.buildDefaultBiometricDialog(
                     "Authorization",
@@ -95,17 +99,19 @@ class PinFragment : BaseKotlinFragment() {
     }
 
 
-    override fun onStart() {
-        super.onStart()
-
-        showKeyboard()
-    }
 
     private fun showKeyboard() {
         etPin.requestFocus()
         val imgr: InputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imgr.showSoftInput(etPin, InputMethodManager.SHOW_IMPLICIT)
     }
+
+    private fun hideKeyboard() {
+        etPin.requestFocus()
+        val imgr: InputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imgr.hideSoftInputFromWindow(etPin.windowToken, 0)
+    }
+
 
     private fun prepareData() {
         changeColorPin(0)
@@ -204,6 +210,16 @@ class PinFragment : BaseKotlinFragment() {
             super.onAuthenticationSucceeded(result)
 
             navigator.goToMain(navController)
+        }
+
+        override fun onAuthenticationFailed() {
+            super.onAuthenticationFailed()
+            showKeyboard()
+        }
+
+        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+            super.onAuthenticationError(errorCode, errString)
+            showKeyboard()
         }
     }
 

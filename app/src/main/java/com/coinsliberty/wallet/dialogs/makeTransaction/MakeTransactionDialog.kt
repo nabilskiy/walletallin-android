@@ -52,6 +52,7 @@ private const val keyBundleRates = "rates"
 private const val keyBundleData = "qr"
 private const val keyBundleLoginData = "login"
 private const val keyBundleLink = "link"
+private const val keyBundleIco = "ico"
 
 const val REQUEST_CODE_SCAN = 101
 private val REQUEST_IMAGE_CAPTURE = 1
@@ -102,6 +103,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val tittle = arguments?.getString(keyBundleTittle)
         tvTittle.text = "SEND $tittle"
+        ivDownLogo.setImageResource(arguments?.getInt(keyBundleIco)!!)
+        tvCriptoName.text = arguments?.getString(keyBundleTittle)
 
         //tvSendMax.text = Html.fromHtml(getString(R.string.send_max))
 
@@ -590,7 +593,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             balance: Double,
             data: EditProfileRequest?,
             link: String,
-            login: String
+            login: String,
+            ico: Int
         ): MakeTransactionDialog {
 
             val dialog = MakeTransactionDialog()
@@ -600,7 +604,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 keyBundleBalance to balance,
                 keyBundleData to data,
                 keyBundleLink to link,
-                keyBundleLoginData to login
+                keyBundleLoginData to login,
+                keyBundleIco to ico
             )
             dialog.arguments = bundle
             dialog.setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme)

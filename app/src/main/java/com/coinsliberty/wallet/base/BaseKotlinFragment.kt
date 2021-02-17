@@ -101,6 +101,8 @@ abstract class BaseKotlinFragment : Fragment() {
 
     }
 
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         navigator.attach(requireActivity())

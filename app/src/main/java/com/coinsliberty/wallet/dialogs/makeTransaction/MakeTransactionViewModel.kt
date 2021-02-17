@@ -9,6 +9,7 @@ import com.coinsliberty.wallet.data.BtcBalance
 import com.coinsliberty.wallet.data.response.*
 import com.coinsliberty.wallet.model.SharedPreferencesProvider
 import com.coinsliberty.wallet.ui.login.LoginRepository
+import com.coinsliberty.wallet.ui.wallet.WALLET_VIEW_MODEL_TAG
 import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.liveData.SingleLiveData
@@ -112,6 +113,7 @@ class MakeTransactionViewModel(
     }
 
     private fun handleResponseFee(fee: FeeResponse) {
+        Log.i(WALLET_VIEW_MODEL_TAG, "handleResponseFee: ${fee.rates?.min}")
         feeInit.postValue(fee.rates)
     }
 

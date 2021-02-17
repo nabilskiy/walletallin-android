@@ -26,6 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 private const val keyBundleBalance = "balance"
 private const val keyBundleWallet = "wallet"
 private const val keyBundleRates = "rates"
+private const val keyBundleWalletType = "walletType"
 
 class TransactionFragment : BaseKotlinFragment() {
 
@@ -38,7 +39,8 @@ class TransactionFragment : BaseKotlinFragment() {
     private var rates: Double = 0.0
     private var currency: Currency = Currency.USD
     private var balanceData: Double = 0.0
-    private var wallet: Int? = null
+    private var walletIco: Int? = null
+    private lateinit var walletType: String
 
     val adapter = BaseAdapter()
         .map(R.layout.item_transaction, TransactionHolder())
@@ -53,12 +55,13 @@ class TransactionFragment : BaseKotlinFragment() {
             if (makeTransactionDialog == null) {
                 makeTransactionDialog =
                     MakeTransactionDialog.newInstance(
-                        "BTC",
+                        walletType,
                         rates,
                         balanceData ?: 0.0,
                         null,
                         "17325782351905019asdofjkas",
-                        "ss"
+                        "ss",
+                        walletIco!!
                     )
             }
             makeTransactionDialog?.apply {
@@ -72,7 +75,9 @@ class TransactionFragment : BaseKotlinFragment() {
 
         rates = arguments?.getDouble(keyBundleRates) ?: 0.0
         balanceData = arguments?.getDouble(keyBundleBalance) ?: 0.0
-        wallet = arguments?.getInt(keyBundleWallet)
+        walletIco = arguments?.getInt(keyBundleWallet)
+        walletType = arguments?.getString(keyBundleWalletType) ?: ""
+        viewModel.walletType = walletType
 
         ivTransactionLeftIcon.setOnClickListener {
             activity?.onBackPressed()
@@ -113,7 +118,7 @@ class TransactionFragment : BaseKotlinFragment() {
     }
 
     private fun initCurrency(currency: Currency?) {
-        if(currency == null) return
+        if (currency == null) return
         this.currency = currency
     }
 
@@ -132,13 +137,19 @@ class TransactionFragment : BaseKotlinFragment() {
 
     private fun initBalance(balance: BalanceInfoResponse) {
         tvBTCPrice.text = String.format("%.2f", rates) + " ${currency.getTitle()}"
-        tvTransactionTitle.text = String.format("%.8f", balance.balances?.btc) + " BTC"
-        tvTransactionTotalBalance.text =  "= " + String.format("%.2f", balance.balances?.btc?.times(rates)) + if(currency == null || currency == Currency.USD)" $" else " €"
+        tvBTCPriceEquils.text = "1 $walletType = "
+        tvTransactionTitle.text = String.format("%.8f", balanceData) + " $walletType"
+        tvTransactionTotalBalance.text = "= " + String.format(
+            "%.2f",
+            balanceData?.times(rates)
+        ) + if (currency == null || currency == Currency.USD) " $" else " €"
+        if (walletIco != null)
+            ivTransactionLogo.setImageResource(walletIco!!)
         viewModel.updateBalance()
     }
 
     private fun getTransactions(list: List<TransactionItem>?): List<Any>? {
-        if(list.isNullOrEmpty()) return emptyList()
+        if (list.isNullOrEmpty()) return emptyList()
 
         val resultList = ArrayList<Any>()
         var lastItem: TransactionItem? = null
@@ -178,11 +189,17 @@ class TransactionFragment : BaseKotlinFragment() {
         val TAG: String =
             com.coinsliberty.wallet.ui.transaction.TransactionFragment::class.java.name
 
-        fun getBundle(rates: Double?, balance: Double?, wallet: Int?): Bundle {
+        fun getBundle(
+            rates: Double?,
+            balance: Double?,
+            wallet: Int?,
+            walletType: String?
+        ): Bundle {
             val bundle = bundleOf(
                 keyBundleRates to rates,
                 keyBundleBalance to balance,
-                keyBundleWallet to wallet
+                keyBundleWallet to wallet,
+                keyBundleWalletType to walletType
             )
             return bundle
         }
