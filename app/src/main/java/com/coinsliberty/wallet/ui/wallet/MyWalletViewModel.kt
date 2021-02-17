@@ -95,7 +95,7 @@ class MyWalletViewModel(
             ethRates = if (currency == null || currency == Currency.USD) {
                 balance.rates?.eth?.usd ?: 0.0
             } else {
-                balance.rates?.eth?.usd ?: 0.0
+                balance.rates?.eth?.eur ?: 0.0
             }
             balanceData = balance.balances
             // availableBalanceData = balance.availableBalances
