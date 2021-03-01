@@ -51,6 +51,7 @@
         app:popUpTo="@id/main_navigation"
         app:popUpToInclusive="true"
         app:destination="@id/settingsFragment"/>
+
     <fragment
         android:id="@+id/exchangeFragment"
         android:name="com.coinsliberty.wallet.ui.exchange.ExchangeFragment"

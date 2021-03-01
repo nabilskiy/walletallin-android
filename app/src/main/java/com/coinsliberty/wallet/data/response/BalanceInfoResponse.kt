@@ -47,3 +47,4 @@ data class Currency(
     val eur: Double? = null
 
 )
+

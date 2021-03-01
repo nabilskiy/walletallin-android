@@ -30,6 +30,7 @@ class MyWalletFragment : BaseKotlinFragment() {
     override val viewModel: MyWalletViewModel by viewModel()
     override val navigator: MyWalletNavigation = MyWalletNavigation()
 
+
     val adapter = BaseAdapter()
         .map(R.layout.item_wallet, MyWalletHolder {
             val balanceData: Double? =

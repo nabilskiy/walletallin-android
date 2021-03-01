@@ -37,4 +37,7 @@
     <color name="walletMiddleBlue">#C3DEF3</color>
 
     <color name="lightText">#818C99</color>
+    <color name="exchange_orange">#F0AA59</color>
+    <color name="exchange_blue">#627EEA</color>
+    <color name="exchange_gray_color">#929292</color>
 </resources>

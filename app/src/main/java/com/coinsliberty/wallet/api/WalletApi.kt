@@ -5,6 +5,7 @@ import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionResponse
 import com.coinsliberty.wallet.data.response.WalletInfoResponse
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface WalletApi {
     @GET("/api/list/assets")
@@ -21,5 +22,10 @@ interface WalletApi {
     suspend fun getTransactionEth(): TransactionResponse
 
     @GET("/api/finance/address/btc")
-    suspend fun getAddress(): AddressInfoResponse
+    suspend fun getAddressBtc(): AddressInfoResponse
+
+    @GET("/api/finance/address/eth")
+    suspend fun getAddressEth(): AddressInfoResponse
+
+
 }

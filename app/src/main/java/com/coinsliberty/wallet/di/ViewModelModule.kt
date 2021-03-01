@@ -30,7 +30,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get(), get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get(), get()) }
     viewModel { ProfileViewModel(get(), get(), get(), get()) }
-    viewModel { ExchangeViewModel(get(), get(), get()) }
+    viewModel { ExchangeViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { ChangeLanguageViewModel(get(), get(), get()) }
     viewModel { ForgotPassViewModel(get(), get(), get(), get()) }
     viewModel { MyWalletViewModel(get(), get(), get(), get()) }

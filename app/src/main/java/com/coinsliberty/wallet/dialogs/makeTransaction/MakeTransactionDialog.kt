@@ -1,6 +1,7 @@
 package com.coinsliberty.wallet.dialogs.makeTransaction
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.content.Context
@@ -44,6 +45,7 @@ import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
+import java.util.*
 
 
 private const val keyBundleTittle = "tittle"
@@ -77,6 +79,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private var data: EditProfileRequest? = null
     private var isChangeEtAmountCrypto = true
     private lateinit var valueFeeToSend: String
+    private lateinit var walletType: String
 
     var addressForSend: String = " "
     var balanceForSend: String = " "
@@ -101,14 +104,14 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tittle = arguments?.getString(keyBundleTittle)
-        tvTittle.text = "SEND $tittle"
+        walletType = arguments?.getString(keyBundleTittle, "BTC")!!
+        tvTittle.text = "SEND $walletType"
         ivDownLogo.setImageResource(arguments?.getInt(keyBundleIco)!!)
         tvCriptoName.text = arguments?.getString(keyBundleTittle)
 
         //tvSendMax.text = Html.fromHtml(getString(R.string.send_max))
 
-        viewModel.updateData()
+        viewModel.updateData(walletType.toLowerCase(Locale.ROOT))
 
         dialogReceive()
         viewModel.getCurrency()
@@ -118,7 +121,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         }
 
         ivHint.setOnClickListener {
-            HintDialog.newInstance("Bitcoin network (mining) fees are small amounts of bitcoin given to incentivize bitcoin miners (and their operators) to confirm bitcoin transactions. Bitcoin miners are the special pieces of hardware that confirm and secure transactions on the bitcoin network.").show(childFragmentManager, HintDialog.TAG)
+            HintDialog.newInstance("Bitcoin network (mining) fees are small amounts of bitcoin given to incentivize bitcoin miners (and their operators) to confirm bitcoin transactions. Bitcoin miners are the special pieces of hardware that confirm and secure transactions on the bitcoin network.")
+                .show(childFragmentManager, HintDialog.TAG)
         }
 
         switchDialog.changeStatus(isSend)
@@ -130,7 +134,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 clDialogSend.invisible()
                 clDialogReceive.visible()
                 layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_blue)
-                tvTittle.text = "RECEIVE $tittle"
+                tvTittle.text = "RECEIVE $walletType"
             } else {
                 switchDialog.changeStatus(true)
                 //SEND
@@ -138,7 +142,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 clDialogSend.visible()
                 clDialogReceive.invisible()
                 layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_green)
-                tvTittle.text = "SEND $tittle"
+                tvTittle.text = "SEND $walletType"
             }
         }
         subscribeLiveData()
@@ -155,19 +159,19 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     R.id.slow -> {
                         itemRate = 0
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.min))
+                        tvAmountSatPerByte.setText(String.format("%.2f", rates?.min))
                         true
                     }
                     R.id.medium -> {
                         itemRate = 1
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.mid))
+                        tvAmountSatPerByte.setText(String.format("%.2f", rates?.mid))
                         true
                     }
                     R.id.fast -> {
                         itemRate = 2
                         tvAmountSatPerByte.disable()
-                        tvAmountSatPerByte.setText(String.format("%.2f",rates?.max))
+                        tvAmountSatPerByte.setText(String.format("%.2f", rates?.max))
                         true
                     }
                     R.id.custom -> {
@@ -207,25 +211,30 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         val bundle = arguments?.getDouble(keyBundleBalance)
         val result = bundle!! * rates!!
 
-        tvBTCTransferResult.text = String.format("%.2f", result) + if(currency == Currency.USD) " $" else " €"
+        tvBTCTransferResult.text =
+            String.format("%.2f", result) + if (currency == Currency.USD) " $" else " €"
         etAmountCripto.setText(String.format("%.8f", bundle))
         etAmountFiat.setText(String.format("%.2f", result))
-        balanceForSend = etAmountFiat.text.toString() + if(currency == Currency.USD) " $" else " €"
+        balanceForSend = etAmountFiat.text.toString() + if (currency == Currency.USD) " $" else " €"
 
         etAmountCripto.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                val amountFiat = String.format("%.2f", ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) * rates))
+                val amountFiat = String.format(
+                    "%.2f",
+                    ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) * rates)
+                )
 
 
 
                 if (!cryptoValueChanged) {
                     usdValueChanged = true
-                    if(etAmountFiat.text.toString() != amountFiat) {
+                    if (etAmountFiat.text.toString() != amountFiat) {
                         etAmountFiat.setText(amountFiat)
                     }
                 } else {
@@ -237,7 +246,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         etAmountFiat.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val amountCrypto = String.format(
@@ -245,21 +255,23 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                     ((s.toString().replace(",", ".", true).toDoubleOrNull() ?: 0.0) / rates)
                 )
 
-                if((s.toString().replace(",", ".", true).split(".").getOrNull(1)?.length ?: 0) > 2) {
+                if ((s.toString().replace(",", ".", true).split(".").getOrNull(1)?.length
+                        ?: 0) > 2
+                ) {
                     refactorUsd = true
                     val splitValue = s.toString().replace(",", ".", true).split(".")
                     formantText(
-                        splitValue[0] + "." + splitValue.getOrNull(1)?.substring(0,2)
+                        splitValue[0] + "." + splitValue.getOrNull(1)?.substring(0, 2)
                     )
                     return
-                } else if(refactorUsd) {
+                } else if (refactorUsd) {
                     refactorUsd = false
                     return
                 }
 
                 if (!usdValueChanged) {
                     cryptoValueChanged = true
-                    if(etAmountCripto.text.toString() != amountCrypto) {
+                    if (etAmountCripto.text.toString() != amountCrypto) {
                         etAmountCripto.setText(amountCrypto)
                     }
                 } else {
@@ -274,16 +286,15 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
                 Unit
 
+            @SuppressLint("SetTextI18n")
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                Log.e("!!!", "1")
 
-                if(s.isNullOrEmpty()) {
+                if (s.isNullOrEmpty()) {
                     return
                 }
-                Log.e("!!!", "2")
 
-                if(s.toString().replace(",", ".", true).toDouble() > 100) {
+                if (s.toString().replace(",", ".", true).toDouble() > 100) {
                     tvAmountSatPerByte.setText("100")
                     tvAmountSatPerByte.setSelection(3)
                     tvBTCTransferResult.text = String.format(
@@ -300,7 +311,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 }
 
 
-
             }
         })
 
@@ -315,29 +325,34 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
 
 
         btnSentCoin.setOnClickListener {
-           // Log.e("!!!Onclick", "1")
             val valueAmountCryptoToSend = etAmountCripto.text.toString().replace(",", ".", true)
 
             viewModel.sendBtc(
-                "btc",
+                walletType.toLowerCase(Locale.ROOT),
                 valueAmountCryptoToSend,
                 tvLink.text.toString(),
-                String.format("%.8f", ((tvAmountSatPerByte.text.toString().toDoubleOrNull())?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))),
+                String.format(
+                    "%.8f",
+                    ((tvAmountSatPerByte.text.toString().replace(",", ".")
+                        .toDoubleOrNull())?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))
+                ),
                 scReplaceable.isChecked
             )
-            //Log.e("!!!Onclick", "2")
         }
-
-
-
-
 
         tvSendMax.setOnClickListener {
-            val rate = String.format("%.8f", (tvAmountSatPerByte.text.toString().replace(",", ".", true).toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0)))
+            val rate = String.format(
+                "%.8f",
+                (tvAmountSatPerByte.text.toString().replace(",", ".", true)
+                    .toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0))
+            )
 
-            viewModel.sendMax("btc", rate)
+            viewModel.sendMax(walletType.toLowerCase(Locale.ROOT), rate)
         }
     }
+
+    private fun tst() = tvAmountSatPerByte.text.toString().replace(",", ".")
+        .toDoubleOrNull()
 
 
     fun initListeners(onChoosen: (Boolean, String) -> Unit) {
@@ -374,7 +389,7 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     }
 
     private fun initCurrency(currency: Currency?) {
-        if(currency == null) return
+        if (currency == null) return
 
         tvFiatName.text = currency.getTitle()
         tvsatPerByte.text = currency.getTitle()
@@ -384,7 +399,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun sendMax(response: SendMaxResponse) {
         if (response.result == true) {
             etAmountCripto.setText(String.format("%.8f", response.balance))
-            val rs: Double = (response.balance ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0)
+            val rs: Double =
+                (response.balance ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0)
             etAmountFiat.setText(String.format("%.2f", rs))
         }
     }
@@ -398,25 +414,37 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     private fun initFee(rates: Rates?) {
 
         this.rates = rates
-        this.rates?.min = (rates?.min ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
-        this.rates?.mid = (rates?.mid ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
-        this.rates?.max = (rates?.max ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
+        this.rates?.min =
+            (rates?.min ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
+        this.rates?.mid =
+            (rates?.mid ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
+        this.rates?.max =
+            (rates?.max ?: 0.0) * (arguments?.getDouble(keyBundleRates) ?: 0.0) * 0.00000001 * 240
 
         when (itemRate) {
             0 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(String.format("%.2f",rates?.min))
-                valueFeeToSend = String.format("%.8f", ((rates?.min)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
+                tvAmountSatPerByte.setText(String.format("%.2f", rates?.min))
+                valueFeeToSend = String.format(
+                    "%.8f",
+                    ((rates?.min)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))
+                )
             }
             1 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(String.format("%.2f",rates?.mid))
-                valueFeeToSend = String.format("%.8f", ((rates?.mid)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
+                tvAmountSatPerByte.setText(String.format("%.2f", rates?.mid))
+                valueFeeToSend = String.format(
+                    "%.8f",
+                    ((rates?.mid)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))
+                )
             }
             2 -> {
                 //tvAmountSatPerByte.disable()
-                tvAmountSatPerByte.setText(String.format("%.2f",rates?.max))
-                valueFeeToSend = String.format("%.8f", ((rates?.max)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0))))
+                tvAmountSatPerByte.setText(String.format("%.2f", rates?.max))
+                valueFeeToSend = String.format(
+                    "%.8f",
+                    ((rates?.max)?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))
+                )
             }
         }
 
@@ -424,9 +452,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
     }
 
 
-
     private fun initResult(b: Boolean?) {
-       // Log.e("!!!initRes", "1")
+        // Log.e("!!!initRes", "1")
         listener?.invoke(b == true, etAmountCripto.text.toString())
         ress = b
 
@@ -436,7 +463,6 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             getErrorDialog(viewModel.showError.value.toString())
             //Log.e("!!!initRes", "false")
         }
-
 
 
     }

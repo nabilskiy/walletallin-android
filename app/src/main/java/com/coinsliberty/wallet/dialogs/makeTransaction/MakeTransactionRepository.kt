@@ -5,14 +5,22 @@ import com.coinsliberty.wallet.api.UserApi
 import com.coinsliberty.wallet.api.WalletApi
 import com.coinsliberty.wallet.data.BtcBalance
 
-class MakeTransactionRepository(private val api: UserApi, private val apiBtc: BtcApi, private val apiAddress: WalletApi) {
+class MakeTransactionRepository(
+    private val api: UserApi,
+    private val apiBtc: BtcApi,
+    private val apiAddress: WalletApi
+) {
 
-    suspend fun getAddress() = apiAddress.getAddress()
+    suspend fun getAddress(asset: String) = when (asset) {
+        "eth" -> apiAddress.getAddressEth()
+        else -> apiAddress.getAddressBtc()
+    }
 
     suspend fun sendBtcBalance(data: BtcBalance) = apiBtc.sendBtcRate(data)
 
     suspend fun getFee() = apiBtc.getFee()
 
-//    suspend fun sendMax(data: SendMaxRequest) = apiBtc.sendMax(data)
-    suspend fun sendMax(asset:String,rate :String) = apiBtc.sendMax(asset, rate)
+    //    suspend fun sendMax(data: SendMaxRequest) = apiBtc.sendMax(data)
+    suspend fun sendMax(asset: String, rate: String) = apiBtc.sendMax(asset, rate)
 }
+

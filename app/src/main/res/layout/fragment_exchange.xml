@@ -16,201 +16,604 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/exchangeToolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="@string/wallet_toolbar_title"
-            android:textAppearance="@style/H1"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalance"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvTotalBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="114dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/wallet_toolbar_total"
-            android:textAppearance="@style/H9"
-            android:textColor="@color/lightBlueLowOpacity"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivNotification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/wallet_total_icon_margin_top"
-            android:layout_marginEnd="@dimen/wallet_total_icon_margin_end"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/selector_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tvExchangeRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="1 BTC = 0,002"
-        android:textAppearance="@style/H9"
-        android:textColor="@color/darkGrey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exchangeToolbar" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clYouPay"
-        android:layout_width="328dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/bg_dialog_white"
-        app:layout_constraintTop_toBottomOf="@+id/tvExchangeRate">
-
-        <TextView
-            android:id="@+id/tvYouPay"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:text="You Pay"
-            android:textAppearance="@style/H8"
-            android:textColor="@color/darkGrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPayValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:text="0.25947531"
-            android:textAppearance="@style/H2"
-            android:textColor="@color/darkGrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvYouPay" />
-
-        <TextView
-            android:id="@+id/tvPayBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Balance: 456789,00 BTC"
-            android:textAppearance="@style/H11"
-            android:textColor="@color/grey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvPayValue" />
-
-        <ImageView
-            android:id="@+id/ivPayLogo"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/spinnerPay"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bitcoin_cash_logo" />
-
-        <Spinner
-            android:id="@+id/spinnerPay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/toolbar_cl2_margi_top"
             app:layout_constraintEnd_toEndOf="parent"
-            android:entries="@array/item_exchange"
-            app:layout_constraintTop_toTopOf="@id/ivPayLogo"
-            app:layout_constraintBottom_toBottomOf="@id/ivPayLogo"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clYouGet"
-        android:layout_width="328dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_grey_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clYouPay">
+            <TextView
+                android:id="@+id/tvAvBalance"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AVAILABLE BALANCE"
+                android:textColor="@color/lightBlueLowOpacity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvYouGet"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imWallet"
+                android:layout_width="@dimen/toolbar_iv_wallet_size"
+                android:layout_height="@dimen/toolbar_iv_wallet_size"
+                android:layout_marginTop="@dimen/toolbar_iv_wallet_margin_top"
+                android:layout_marginEnd="@dimen/toolbar_iv_wallet_margin_end"
+                app:layout_constraintEnd_toStartOf="@+id/tvAvBalance"
+                app:layout_constraintTop_toTopOf="@+id/tvAvBalance"
+                app:srcCompat="@drawable/ic_wallet_disactive" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/availableBalanceLl"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
-            android:text="You Get"
-            android:textAppearance="@style/H8"
-            android:textColor="@color/darkGrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvGetValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:text="3.000"
-            android:textAppearance="@style/H2"
-            android:textColor="@color/darkGrey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvYouGet" />
-
-        <TextView
-            android:id="@+id/tvGetBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Balance: 0"
-            android:textAppearance="@style/H11"
-            android:textColor="@color/grey"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvGetValue" />
-
-        <ImageView
-            android:id="@+id/ivGetLogo"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/spinnerTo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bitcoin_cash_logo" />
-
-        <Spinner
-            android:id="@+id/spinnerTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            android:entries="@array/item_exchange"
-            app:layout_constraintTop_toTopOf="@id/ivGetLogo"
-            app:layout_constraintBottom_toBottomOf="@id/ivGetLogo"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
+
+            <TextView
+                android:id="@+id/availableBalanceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/H1"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                tools:text="3.17382901" />
+
+            <TextView
+                android:id="@+id/availableBalanceCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="2dp"
+                android:text="BTC"
+                android:textAppearance="@style/H4"
+                android:textColor="@color/white"
+                android:textStyle="normal"
+                tools:text="BTC" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/availableBalanceCurrencyLl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/availableBalanceLl">
+
+            <TextView
+                android:id="@+id/availableBalanceCurrencyAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/H1"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                tools:text="3.17382901" />
+
+            <TextView
+                android:id="@+id/availableBalanceCurrencyCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="1dp"
+                android:textAppearance="@style/H4"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                android:textStyle="normal"
+                tools:text="BTC" />
+
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTotalBalanceCurrency"
+            android:layout_width="@dimen/toolbar_cl_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/toolbar_cl_margin"
+            android:layout_marginBottom="@dimen/toolbar_cl_margin"
+            android:background="@drawable/bg_low_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/availableBalanceCurrencyLl">
+
+            <TextView
+                android:id="@+id/tvTotalBalanceCurrency"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_total_balance_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:layout_marginBottom="@dimen/toolbar_tv_total_balance_margin_bottom"
+                android:text="@string/total_balance"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceCrypto"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:ellipsize="middle"
+                android:maxEms="4"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceCurrency"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="4.8729129444444" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceNameCrypto"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="BTC"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceCrypto"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceCrypto" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/toolbar_v_line_width"
+                android:layout_height="@dimen/toolbar_v_line_height"
+                android:layout_marginStart="@dimen/toolbar_v_line_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:background="@color/whiteLowOpacity"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceNameCrypto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiat"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_bal_fiat_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:ellipsize="end"
+                android:maxEms="3"
+
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="9999.19,34" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiatName"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="USD"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceFiat"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceFiat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/btnExhange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/clYouPay"
-        app:srcCompat="@drawable/ic_exchange_arrow" />
+        app:layout_constraintTop_toBottomOf="@id/exchangeToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fromCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_exchange_wallet_from"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/iHaveTvFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/i_have"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/exchange_gray_color"
+                    app:layout_constraintEnd_toStartOf="@+id/iHaveInCurrencyTvFrom"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
+                <TextView
+                    android:id="@+id/iHaveInCurrencyTvFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@string/i_have"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/exchange_gray_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iHaveTvFrom"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/llFrom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iHaveTvFrom">
+
+                    <ImageView
+                        android:id="@+id/fromIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_bitcoin" />
+
+                    <TextView
+                        android:id="@+id/fromCurrencyShortName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textAppearance="@style/H3"
+                        android:textColor="@color/exchange_orange"
+                        android:textSize="@dimen/h3_text_size"
+                        tools:text="BTC" />
+
+                    <TextView
+                        android:id="@+id/fromCurrencyFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textAppearance="@style/H4"
+                        android:textColor="#474954"
+                        android:textSize="@dimen/h3_text_size"
+                        android:textStyle="normal"
+                        tools:text="Bitcoin" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:srcCompat="@drawable/ic_arrow_down" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAmountFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:ems="8"
+                    android:inputType="numberDecimal"
+                    android:textAppearance="@style/H8"
+                    android:textColor="#474954 "
+                    android:textSize="@dimen/h3_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llFrom"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="0.0003"
+                    tools:textColor="@color/exchange_orange" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toCl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_exchange_wallet_to"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fromCl">
+
+                <TextView
+                    android:id="@+id/iHaveTvTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/i_want"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/exchange_gray_color"
+                    app:layout_constraintEnd_toStartOf="@+id/iWantAmountFiat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/iWantAmountFiat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/exchange_gray_color"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iHaveTvTo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/i_have" />
+
+                <LinearLayout
+                    android:id="@+id/llTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iHaveTvTo"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/toIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_etherium" />
+
+                    <TextView
+                        android:id="@+id/toCurrencyShortName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textAppearance="@style/H3"
+                        android:textColor="@color/exchange_blue"
+                        android:textSize="@dimen/h3_text_size"
+                        tools:text="ETH" />
+
+                    <TextView
+                        android:id="@+id/toCurrencyFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:textAppearance="@style/H4"
+                        android:textColor="#474954"
+                        android:textSize="@dimen/h3_text_size"
+                        android:textStyle="normal"
+                        tools:text="Etherium" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        app:srcCompat="@drawable/ic_arrow_down" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvAmountTo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:ellipsize="middle"
+                    android:gravity="end"
+                    android:textAppearance="@style/H8"
+                    android:textColor="@color/exchange_blue"
+                    android:textSize="@dimen/h3_text_size"
+                    app:layout_constraintBottom_toBottomOf="@id/llTo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/llTo"
+                    app:layout_constraintTop_toTopOf="@id/llTo"
+                    tools:text="18.55555555" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/btnSwap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/fromCl"
+                app:layout_constraintEnd_toEndOf="@+id/fromCl"
+                app:layout_constraintTop_toBottomOf="@+id/fromCl"
+                app:srcCompat="@drawable/ic_exchange_arrow" />
+
+            <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchExchange
+                android:id="@+id/switchExchange"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toCl" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchExchange"
+                app:layout_constraintVertical_bias="1.0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="@string/exchanging"
+                        android:textAppearance="@style/H8"
+                        android:textColor="#929292" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/exchangingAmountCrypto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/H8"
+                            android:textColor="#F08B16 "
+                            tools:text="0.68 BTC" />
+
+                        <TextView
+                            android:id="@+id/exchangingAmountFiat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/H8"
+                            android:textColor="#474954 "
+                            tools:text="28,5645 $" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#14212121" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="@string/receiving"
+                        android:textAppearance="@style/H8"
+                        android:textColor="#929292" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end|center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/receivingAmountCrypto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/H8"
+                            android:textColor="@color/exchange_blue"
+                            tools:text="0.68 BTC" />
+
+                        <TextView
+                            android:id="@+id/receivingAmountFiat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/H8"
+                            android:textColor="#474954 "
+                            tools:text="28,5645 $" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnExhange"
+        style="@style/ButtonGreyBorder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/exchange_button_margin_bottom"
+        android:gravity="center"
+        android:text="@string/exchange"
+        android:textAllCaps="false"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

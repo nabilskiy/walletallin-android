@@ -31,8 +31,12 @@ abstract class BaseKotlinFragment : Fragment() {
     val dialog = OtpDialog.newInstance()
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(layoutRes, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
+        inflater.inflate(layoutRes, container, false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +47,14 @@ abstract class BaseKotlinFragment : Fragment() {
     }
 
     private fun showError(s: String?) {
-        if(s == null) return
+        if (s == null) return
 
         ErrorDialog.newInstance(s).show(parentFragmentManager, ErrorDialog.TAG)
     }
 
     private fun startProgress(unit: Unit?) {
-        dialogProgressBar.show(parentFragmentManager, ProgressBarDialog.TAG)
+        if (!dialogProgressBar.isAdded)
+            dialogProgressBar.show(parentFragmentManager, ProgressBarDialog.TAG)
     }
 
     private fun endProgress(unit: Unit?) {
@@ -89,10 +94,10 @@ abstract class BaseKotlinFragment : Fragment() {
 
     private fun logout(b: Boolean?) {
         val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)
-        if(b == true) {
+        if (b == true) {
             viewModel.relogin()
         } else {
-            if(rootFragment != null) {
+            if (rootFragment != null) {
                 rootFragment.goToLogin()
             } else {
                 navigator.goToLogin(navController)
@@ -100,7 +105,6 @@ abstract class BaseKotlinFragment : Fragment() {
         }
 
     }
-
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

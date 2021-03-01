@@ -30,10 +30,10 @@ class BottomFragmant : BaseKotlinFragment() {
                 }
                  R.id.exchange -> {
                      Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_exchange)
-                     dialog.show(childFragmentManager, ExchangeDialog.TAG)
-                     dialog.initListeners {
-                         if(it) bottomNavigation.selectedItemId = R.id.wallet
-                     }
+//                     dialog.show(childFragmentManager, ExchangeDialog.TAG)
+//                     dialog.initListeners {
+//                         if(it) bottomNavigation.selectedItemId = R.id.wallet
+//                     }
                      true
                 }
                 R.id.setting -> {

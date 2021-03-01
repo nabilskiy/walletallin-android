@@ -15,21 +15,23 @@ fun String.formatFromHtml(): Spanned? = when {
     }
 }
 
-fun String.isStartWith(vararg values: String, ignoreCase: Boolean = true) : Boolean {
+fun String.isStartWith(vararg values: String, ignoreCase: Boolean = true): Boolean {
     values.forEach {
-        if(startsWith(it, ignoreCase)) return true
+        if (startsWith(it, ignoreCase)) return true
     }
 
     return false
 }
 
+
 fun String?.removeInnerSpaces() = this?.replace(" ", "")
 
-fun String?.getValueOrPlaceholder(placeholder: String = "---") = if (this.isNullOrEmpty()) placeholder else this
+fun String?.getValueOrPlaceholder(placeholder: String = "---") =
+    if (this.isNullOrEmpty()) placeholder else this
 
 val String?.containsCyrillic: Boolean
     get() {
-        if(this == null) return false
+        if (this == null) return false
 
         for (c in this) {
             if (c.isCyrillicCharacter) return true

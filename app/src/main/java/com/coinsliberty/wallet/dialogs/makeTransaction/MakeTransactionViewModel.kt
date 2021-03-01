@@ -38,6 +38,8 @@ class MakeTransactionViewModel(
     var refreshFeeJob: Job? = null
     var sendMaxJob: Job? = null
 
+    private val TAG = MakeTransactionViewModel::class.java.name
+
     override fun stopRequest() {
         sendBtcJob?.cancel()
         updateDataJob?.cancel()
@@ -52,6 +54,7 @@ class MakeTransactionViewModel(
         fee: String,
         replaceable: Boolean
     ) {
+        Log.i(TAG, "sendBtc: $fee")
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseSend(
@@ -81,10 +84,10 @@ class MakeTransactionViewModel(
         currency.postValue(sharedPreferencesProvider.getCurrency())
     }
 
-    fun updateData() {
+    fun updateData(asset:String) {
         updateDataJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
-            handleResponseReceive(repository.getAddress())
+            handleResponseReceive(repository.getAddress(asset))
             handleResponseFee(repository.getFee())
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
@@ -113,7 +116,6 @@ class MakeTransactionViewModel(
     }
 
     private fun handleResponseFee(fee: FeeResponse) {
-        Log.i(WALLET_VIEW_MODEL_TAG, "handleResponseFee: ${fee.rates?.min}")
         feeInit.postValue(fee.rates)
     }
 

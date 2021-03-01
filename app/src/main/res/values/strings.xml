@@ -122,5 +122,22 @@
     <string name="enter_your_4_digit_PIN_code">Enter your 4 digit PIN code.</string>
     <string name="Dont_have_an_account">Don’t have an account yet?</string>
 
+<!--    exchange-->
+    <string name="available_balance">Available BALANCE</string>
+    <string name="i_have">I have</string>
+    <string name="i_want">I want</string>
+    <string name="min">Min</string>
+    <string name="half">Half</string>
+    <string name="All">All</string>
+    <string name="exchanging">Exchanging</string>
+    <string name="receiving">Receiving</string>
+    <string name="exchange">Exchange</string>
+    <string name="total_balance">Total balance</string>
+    <string name="exchange_confirmation_title">Exchange Confirmation</string>
+    <string name="exchange_confirmation_descr">Are you confirm exchange</string>
+    <string name="exchange_confirmation_to">to</string>
+    <string name="confirm">Confirm</string>
+    <string name="convert_from">Convert from</string>
+    <string name="convert_to">Convert to</string>
 
 </resources>

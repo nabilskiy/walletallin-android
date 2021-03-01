@@ -54,6 +54,9 @@ abstract class BaseViewModel(
 
     open fun onErrorHandler(throwable: Throwable) {
 
+        // TODO: 23.02.2021 DMRK!!! stop lottie animation when request failed
+        onEndProgress.value = Unit
+
         //Toast.makeText(app, throwable.message, Toast.LENGTH_SHORT).show()
 //        val body = (throwable as HttpException).response()?.errorBody()
 

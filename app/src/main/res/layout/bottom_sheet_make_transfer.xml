@@ -43,7 +43,8 @@
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchDialog">
+            app:layout_constraintTop_toBottomOf="@+id/switchDialog"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/tvPleaseVerify"
@@ -170,7 +171,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchDialog">
+            app:layout_constraintTop_toBottomOf="@+id/switchDialog"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/tvToAddress"
@@ -311,14 +313,14 @@
                     android:layout_marginStart="@dimen/dialog_send_tv_marginStart"
                     android:background="@null"
                     android:gravity="start"
+                    android:inputType="numberDecimal"
                     android:textAppearance="@style/H10"
                     android:textColor="@color/darkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/tvFiatName"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2671.53"
-                    android:inputType="numberDecimal" />
+                    tools:text="2671.53" />
 
                 <TextView
                     android:id="@+id/tvFiatName"
@@ -404,15 +406,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_send_sat_margin_start"
                     android:background="@null"
+                    android:enabled="false"
                     android:inputType="numberDecimal"
                     android:text="@string/sat_number"
-                    android:enabled="false"
                     android:textAppearance="@style/H8"
                     android:textColor="@color/darkGrey"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tvsatPerByte"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/tvsatPerByte"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvsatPerByte"

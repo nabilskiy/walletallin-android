@@ -8,6 +8,7 @@ import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassRepository
 import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionRepository
 import com.coinsliberty.wallet.dialogs.secureCode.SecureCodeRepository
 import com.coinsliberty.wallet.dialogs.touchIdDialog.TouchIdRepository
+import com.coinsliberty.wallet.ui.exchange.ExchangeRepository
 import com.coinsliberty.wallet.ui.login.LoginRepository
 import com.coinsliberty.wallet.ui.pin.PinRepository
 import com.coinsliberty.wallet.ui.profile.ProfileRepository
@@ -29,6 +30,7 @@ val repositoryModule = module {
     factory { QrCodeRepository(get()) }
     factory { SecureCodeRepository(get()) }
     factory { BtcRepository(get()) }
+    factory { ExchangeRepository(get()) }
     factory { MakeTransactionRepository(get(),get(),get()) }
     factory { TouchIdRepository(get()) }
     factory { FaceIdRepository(get()) }
