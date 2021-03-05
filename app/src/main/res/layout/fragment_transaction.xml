@@ -3,143 +3,267 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/transactionToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/bg_toolbar">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTotalBalance"
+            android:layout_width="@dimen/toolbar_cl_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPriceOfOne">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#102D36"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#102D36"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalance"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:layout_marginBottom="@dimen/toolbar_tv_total_balance_margin_bottom"
+                android:text="@string/total_btc"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceCrypto"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:ellipsize="middle"
+                android:maxEms="4"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalance"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="4.8729129444444" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceNameCrypto"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="BTC"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceCrypto"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceCrypto" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/toolbar_v_line_width"
+                android:layout_height="@dimen/toolbar_v_line_height"
+                android:layout_marginStart="@dimen/toolbar_v_line_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:background="#102D36"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceNameCrypto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiatCurrency"
+                style="@style/H4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+                android:layout_marginBottom="@dimen/toolbar_tv_total_balance_margin_bottom"
+                android:text="@string/total_btc"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/view2"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Total USD:" />
+
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiat"
+                style="@style/H5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_bal_fiat_margin_start"
+                android:layout_marginTop="@dimen/toolbar_tv_total_balance_margin_top"
+
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceFiatCurrency"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="34400.00" />
+
+            <TextView
+                android:id="@+id/tvTotalBalanceFiatName"
+                style="@style/H11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/toolbar_tv_name_total"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/toolbar_tv_name_total"
+                android:text="USD"
+                android:textColor="@color/white"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTotalBalanceFiat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tvTotalBalanceFiat" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/ivTransactionLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bitcoin_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
             android:layout_marginTop="@dimen/transaction_logo_margin_top"
-            />
-
-        <TextView
-            android:id="@+id/tvTransactionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/ivTransactionLogo"
+            android:background="@drawable/bitcoin_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/transaction_title_margin_top"
-            tools:text="@string/transaction_title"
-            style="@style/H5"
-            android:textColor="@color/white"
-            />
-
-        <TextView
-            android:id="@+id/tvTransactionTotalBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tvTransactionTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/H9"
-            android:textColor="@color/lightBlueLowOpacity"
-            tools:text="@string/transaction_total"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivTransactionLeftIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
             android:layout_marginStart="@dimen/transaction_left_icon_margin_start"
-            android:padding="6dp"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clBTCPriceForOne"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/toolbar_cl_margin_top"
-            android:layout_marginBottom="@dimen/toolbar_cl_margin"
-            android:background="@drawable/btn_dark"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
+            android:padding="6dp"
+            android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginHorizontal="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvTransactionTotalBalance">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvBTCPriceEquils"
-                style="@style/H7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1 BTC = "
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvBTCPrice"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvBTCPrice"
-                style="@style/H7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/toolbar_tv_exchange_margin_start"
-                android:layout_marginTop="@dimen/toolbar_tv_exchange_margin_start"
-                android:layout_marginBottom="@dimen/toolbar_tv_exchange_margin_bottom"
-                tools:text="478 USD"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.6"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnMakeTransfer"
+        <LinearLayout
+            android:id="@+id/ll"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/toolbar_cl_margin_top"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/clTotalBalance"
+            app:layout_constraintStart_toStartOf="@id/clTotalBalance"
+            app:layout_constraintTop_toBottomOf="@id/clTotalBalance">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="@dimen/toolbar_cl_margin"
-            android:background="@drawable/btn_green"
+            android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginHorizontal="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/clBTCPriceForOne">
+            app:layout_constraintTop_toBottomOf="@id/clTotalBalance">
 
-            <ImageView
-                android:id="@+id/ivExchange"
-                android:layout_width="@dimen/ab_icon_size"
-                android:layout_height="@dimen/ab_icon_size"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvMakeTransfer"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_exchange_active" />
-
-            <TextView
-                android:id="@+id/tvMakeTransfer"
-                style="@style/H7"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/btnSend"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/toolbar_tv_exchange_margin_start"
-                android:layout_marginBottom="@dimen/toolbar_tv_exchange_margin_bottom"
-                android:text="Make Transfer"
-                android:textColor="@color/white"
-                app:layout_constraintHorizontal_bias="0.55"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_purple"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:srcCompat="@drawable/ic_mini_arrow_top" />
+
+                <TextView
+                    style="@style/H5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/send"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/h3_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnReceive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_green"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:srcCompat="@drawable/ic_mini_arrow_top" />
+
+                <TextView
+                    style="@style/H5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:paddingVertical="12dp"
+                    android:text="@string/receive"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/h3_text_size" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPriceOfOne"
+            style="@style/H7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivTransactionLogo"
+            tools:text="1BTC = 56241.00 USD" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -153,7 +277,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/transactionToolbar"
-        tools:listitem="@layout/item_transaction" />
+        tools:listitem="@layout/item_transaction"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/tvNoTransaction"
@@ -161,7 +286,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_transaction"
-        android:textColor="@color/grey"
+        android:textColor="#0E2D37"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

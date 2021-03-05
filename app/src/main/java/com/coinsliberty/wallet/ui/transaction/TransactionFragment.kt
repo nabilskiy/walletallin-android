@@ -1,5 +1,6 @@
 package com.coinsliberty.wallet.ui.transaction
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
@@ -20,7 +21,12 @@ import com.coinsliberty.wallet.utils.extensions.gone
 import com.coinsliberty.wallet.utils.extensions.visible
 import com.coinsliberty.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalance
+import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceCrypto
+import kotlinx.android.synthetic.main.fragment_transaction.tvTotalBalanceFiatCurrency
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 private const val keyBundleBalance = "balance"
@@ -50,27 +56,8 @@ class TransactionFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnMakeTransfer.setOnClickListener {
-
-            if (makeTransactionDialog == null) {
-                makeTransactionDialog =
-                    MakeTransactionDialog.newInstance(
-                        walletType,
-                        rates,
-                        balanceData ?: 0.0,
-                        null,
-                        "17325782351905019asdofjkas",
-                        "ss",
-                        walletIco!!
-                    )
-            }
-            makeTransactionDialog?.apply {
-                initListeners { result, text ->
-                    showResult(result, text)
-                }
-            }
-                ?.show(childFragmentManager, MakeTransactionDialog.TAG)
-        }
+        btnReceive.setOnClickListener { showTransactionDialog(false) }
+        btnSend.setOnClickListener { showTransactionDialog(true) }
 
 
         rates = arguments?.getDouble(keyBundleRates) ?: 0.0
@@ -83,13 +70,35 @@ class TransactionFragment : BaseKotlinFragment() {
             activity?.onBackPressed()
         }
 
-        clBTCPriceForOne.setOnClickListener {
-            navigator.goToDiagram(navController)
-        }
+//        clBTCPriceForOne.setOnClickListener {
+//            navigator.goToDiagram(navController)
+//        }
 
         subscribeLiveData()
 
         rvTransactions.adapter = adapter
+    }
+
+    private fun showTransactionDialog(isSend: Boolean) {
+        if (makeTransactionDialog == null) {
+            makeTransactionDialog =
+                MakeTransactionDialog.newInstance(
+                    walletType,
+                    rates,
+                    balanceData ?: 0.0,
+                    null,
+                    "17325782351905019asdofjkas",
+                    "ss",
+                    walletIco!!,
+                    isSend
+                )
+        }
+        makeTransactionDialog?.apply {
+            initListeners { result, text ->
+                showResult(result, text)
+            }
+        }
+            ?.show(childFragmentManager, MakeTransactionDialog.TAG)
     }
 
     override fun onStart() {
@@ -135,14 +144,23 @@ class TransactionFragment : BaseKotlinFragment() {
         adapter.itemsAdded(getTransactions(list))
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initBalance(balance: BalanceInfoResponse) {
-        tvBTCPrice.text = String.format("%.2f", rates) + " ${currency.getTitle()}"
-        tvBTCPriceEquils.text = "1 $walletType = "
-        tvTransactionTitle.text = String.format("%.8f", balanceData) + " $walletType"
-        tvTransactionTotalBalance.text = "= " + String.format(
-            "%.2f",
-            balanceData?.times(rates)
-        ) + if (currency == null || currency == Currency.USD) " $" else " €"
+        val priceForOne = "1$walletType=${String.format("%.2f", rates)}"
+        tvPriceOfOne.text = priceForOne
+        val totalBalance = "${getString(R.string.total_fiat)} ${currency.getTitle()}"
+        tvTotalBalance.text = totalBalance
+        tvTotalBalanceCrypto.text = String.format("%.8f", balanceData)
+        tvTotalBalanceNameCrypto.text = walletType
+        tvTotalBalanceFiatCurrency.text =
+            "${getString(R.string.total_fiat)} ${currency.getTitle().toUpperCase(Locale.ROOT)}:"
+        tvTotalBalanceFiat.text =
+            String.format(
+                "%.2f",
+                balanceData.times(rates)
+            )
+        tvTotalBalanceFiatName.text = currency.getTitle()
+
         if (walletIco != null)
             ivTransactionLogo.setImageResource(walletIco!!)
         viewModel.updateBalance()

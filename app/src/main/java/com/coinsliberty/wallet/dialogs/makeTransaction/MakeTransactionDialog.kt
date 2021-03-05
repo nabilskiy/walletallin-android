@@ -55,6 +55,7 @@ private const val keyBundleData = "qr"
 private const val keyBundleLoginData = "login"
 private const val keyBundleLink = "link"
 private const val keyBundleIco = "ico"
+private const val keyBundleIsSend = "isSend"
 
 const val REQUEST_CODE_SCAN = 101
 private val REQUEST_IMAGE_CAPTURE = 1
@@ -125,27 +126,25 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 .show(childFragmentManager, HintDialog.TAG)
         }
 
-        switchDialog.changeStatus(isSend)
-        switchDialog.setOnClickListener {
-            if (isSend) {
-                switchDialog.changeStatus(false)
-                //RECEIVE
-                isSend = false
-                clDialogSend.invisible()
-                clDialogReceive.visible()
-                layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_blue)
-                tvTittle.text = "RECEIVE $walletType"
-            } else {
-                switchDialog.changeStatus(true)
-                //SEND
-                isSend = true
-                clDialogSend.visible()
-                clDialogReceive.invisible()
-                layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_green)
-                tvTittle.text = "SEND $walletType"
-            }
-        }
+
+
         subscribeLiveData()
+        isSend = arguments?.getBoolean(keyBundleIsSend, true) ?: true
+        if (isSend) {
+            switchDialog.changeStatus(false)
+            //RECEIVE
+            clDialogSend.invisible()
+            clDialogReceive.visible()
+            layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_blue)
+            tvTittle.text = "RECEIVE $walletType"
+        } else {
+            switchDialog.changeStatus(true)
+            //SEND
+            clDialogSend.visible()
+            clDialogReceive.invisible()
+            layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_green)
+            tvTittle.text = "SEND $walletType"
+        }
     }
 
     private fun showPopupMenu() {
@@ -620,7 +619,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
             data: EditProfileRequest?,
             link: String,
             login: String,
-            ico: Int
+            ico: Int,
+            isSend: Boolean
         ): MakeTransactionDialog {
 
             val dialog = MakeTransactionDialog()
@@ -631,7 +631,8 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
                 keyBundleData to data,
                 keyBundleLink to link,
                 keyBundleLoginData to login,
-                keyBundleIco to ico
+                keyBundleIco to ico,
+                keyBundleIsSend to isSend
             )
             dialog.arguments = bundle
             dialog.setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme)

@@ -1,151 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/bg_item_wallet_border"
     android:orientation="vertical"
-    android:paddingTop="2dp"
-    android:background="@drawable/bg_dialog">
+    android:paddingTop="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clSample"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:autoLink="web">
+        android:autoLink="web"
+        tools:visibility="gone">
 
         <ImageView
             android:id="@+id/ivIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_send_icon"/>
+            android:src="@drawable/ic_send_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/ivIcon"
-            app:layout_constraintTop_toTopOf="@id/ivIcon"
-            android:text="Deposite"
             android:layout_marginStart="10dp"
-            android:textColor="@color/darkBlue"
-            android:textAppearance="@style/H4"/>
+            android:alpha="0.34"
+            android:text="Deposite"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/ivIcon"
+            app:layout_constraintTop_toTopOf="@id/ivIcon" />
 
         <TextView
             android:id="@+id/tvWallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/ivIcon"
-            app:layout_constraintStart_toEndOf="@id/ivIcon"
+            android:layout_marginStart="10dp"
+            android:alpha="0.34"
             android:text="Bitcoin Wallet"
             android:textAppearance="@style/H11"
-            android:layout_marginStart="10dp"/>
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/ivIcon"
+            app:layout_constraintStart_toEndOf="@id/ivIcon" />
 
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="$ 405.6"
-            android:textColor="@color/darkBlue"
-            android:textAppearance="@style/H4"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="18dp"/>
+            android:layout_marginEnd="18dp"
+            android:text="$ 405.6"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clFull"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:visibility="gone">
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible">
+
         <ImageView
             android:id="@+id/ivOpenIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_send_icon"/>
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_send_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvOpenType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
-            app:layout_constraintTop_toTopOf="@id/ivOpenIcon"
-            android:text="Deposite"
             android:layout_marginStart="10dp"
-            android:textColor="@color/darkBlue"
-            android:textAppearance="@style/H4"/>
+            android:alpha="0.34"
+            android:text="Deposite"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
+            app:layout_constraintTop_toTopOf="@id/ivOpenIcon" />
 
         <TextView
             android:id="@+id/tvOpenWallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/ivOpenIcon"
-            app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
+            android:layout_marginStart="10dp"
+            android:alpha="0.34"
             android:text="Wallet: Bitcoin Wallet"
             android:textAppearance="@style/H11"
-            android:layout_marginStart="10dp"/>
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/ivOpenIcon"
+            app:layout_constraintStart_toEndOf="@id/ivOpenIcon" />
 
 
         <TextView
             android:id="@+id/tvOpenWalletAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvOpenWallet"
-            app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
-            app:layout_constraintEnd_toStartOf="@id/ivOpenWalletAddressCopy"
+            android:layout_marginStart="10dp"
+            android:alpha="0.34"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Wallet Address: 16azaQHPThoQcf14o2XqmbGdfdfdsfdsfdsfdsfdddds"
             android:textAppearance="@style/H11"
-            android:layout_marginStart="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/ivOpenWalletAddressCopy"
+            app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvOpenWallet" />
 
         <ImageView
             android:id="@+id/ivOpenWalletAddressCopy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_copy"
-            app:layout_constraintTop_toTopOf="@id/tvOpenWalletAddress"
             app:layout_constraintBottom_toBottomOf="@+id/tvOpenWalletAddress"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvOpenWalletAddress" />
 
         <LinearLayout
             android:id="@+id/llOpenBlockchainList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvOpenWalletAddress"
+            app:layout_constraintEnd_toStartOf="@id/ivOpenBlockchainCopy"
             app:layout_constraintStart_toEndOf="@id/ivOpenIcon"
-            app:layout_constraintEnd_toStartOf="@id/ivOpenBlockchainCopy">
+            app:layout_constraintTop_toBottomOf="@id/tvOpenWalletAddress">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:alpha="0.34"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="Blockchain Link: "
                 android:textAppearance="@style/H11"
-                android:layout_marginStart="10dp"
-                android:ellipsize="end"
-                android:maxLines="1"/>
+                android:textColor="@color/white" />
+
             <TextView
                 android:id="@+id/tvOpenBlockchainList"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:alpha="0.34"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="https://www.blockchain.com/test/fgtbtnhjl/fhlbltl;g;;/ff"
                 android:textAppearance="@style/H11"
-                android:layout_marginStart="10dp"
-                android:ellipsize="end"
-                android:maxLines="1"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
-
 
 
         <ImageView
@@ -153,23 +170,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_copy"
-            app:layout_constraintTop_toTopOf="@id/llOpenBlockchainList"
             app:layout_constraintBottom_toBottomOf="@+id/llOpenBlockchainList"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/llOpenBlockchainList" />
 
         <TextView
             android:id="@+id/tvOpenPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="0.01215951 BTC\n$ 405.6"
-            android:gravity="end"
-            android:textColor="@color/darkBlue"
-            android:textAppearance="@style/H4"
-            android:lineHeight="12dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="18dp"/>
+            android:layout_marginEnd="18dp"
+            android:gravity="end"
+            android:lineHeight="12dp"
+            android:text="0.01215951 BTC\n$ 405.6"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -178,9 +195,9 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/whiteGrey"
         android:layout_marginHorizontal="16dp"
-        android:visibility="gone"/>
+        android:background="@color/whiteGrey"
+        android:visibility="gone" />
 
 </LinearLayout>
 

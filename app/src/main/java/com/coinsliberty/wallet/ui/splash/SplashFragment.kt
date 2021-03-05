@@ -12,6 +12,9 @@ import com.coinsliberty.wallet.utils.crypto.decryptData
 import com.coinsliberty.wallet.utils.crypto.encryptData
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_splash.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,12 +26,12 @@ class SplashFragment: BaseKotlinFragment() {
 
     override fun onStart() {
         subscribeLiveData()
-
-        startFragmentAnimation()
         super.onStart()
 
-        lavCoinsLiberty.progress = 0.0f
-        lavCoinsLiberty.playAnimation()
+        GlobalScope.launch {
+            delay(2000)
+            viewModel.navigate()
+        }
     }
 
     private fun subscribeLiveData() {
@@ -43,20 +46,5 @@ class SplashFragment: BaseKotlinFragment() {
     }
 
 
-    private fun startFragmentAnimation() {
-        lavCoinsLiberty.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationStart(animation: Animator) {
-            }
 
-            override fun onAnimationEnd(animation: Animator) {
-                viewModel.navigate()
-            }
-
-            override fun onAnimationCancel(animation: Animator) {
-            }
-
-            override fun onAnimationRepeat(animation: Animator) {
-            }
-        })
-    }
 }

@@ -7,9 +7,12 @@ import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat.getSystemService
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.utils.extensions.visibleIfOrGone
+import kotlinx.android.synthetic.main.fragment_pin.*
 import kotlinx.android.synthetic.main.input_field.view.*
 
 @Suppress("PLUGIN_WARNING")
@@ -29,8 +32,21 @@ class InputFieldComponent @JvmOverloads constructor(
     }
 
     private fun initView() {
-        inflate(context, R.layout.input_field , this)
+        inflate(context, R.layout.input_field, this)
         showHideData()
+    }
+
+    fun showKeyboard() {
+        etField.requestFocus()
+        val imgr: InputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imgr.showSoftInput(etField, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    fun hideKeyboard() {
+        val imgr: InputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
     private fun readAttributes(attrs: AttributeSet?) {
@@ -72,14 +88,35 @@ class InputFieldComponent @JvmOverloads constructor(
 
         when (type) {
             TypeOfInput.phone.name -> setPhoneNumber()
-            TypeOfInput.textEmailAddress.name -> etField.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+            TypeOfInput.textEmailAddress.name -> {
+                etField.inputType =
+                    InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_email_marketing,
+                    0, 0, 0
+                )
+            }
             TypeOfInput.textPassword.name -> {
                 cbShowHide.visibility = View.VISIBLE
                 cbShowHide.isChecked = false
                 etField.inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD
+                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_key,
+                    0, 0, 0
+                )
             }
-            TypeOfInput.text.name -> etField.inputType = InputType.TYPE_CLASS_TEXT
+            TypeOfInput.text.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_user_copy,
+                    0, 0, 0
+                )
+            }
         }
+    }
+
+    fun addTextWatcher(watcher: TextWatcher) {
+        etField.addTextChangedListener(watcher)
     }
 
     fun setPhoneNumber() {
@@ -88,7 +125,8 @@ class InputFieldComponent @JvmOverloads constructor(
         etField.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = Unit
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 modifyNumber(s.toString())
@@ -100,6 +138,10 @@ class InputFieldComponent @JvmOverloads constructor(
 
     fun setText(text: String) {
         etField.setText(text)
+    }
+
+    fun setTextColor(color: Int) {
+        etField.setTextColor(color)
     }
 
     private fun modifyNumber(number: String) {

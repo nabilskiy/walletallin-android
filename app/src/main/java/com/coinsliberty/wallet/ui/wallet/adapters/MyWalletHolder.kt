@@ -1,4 +1,4 @@
- package com.coinsliberty.wallet.ui.wallet.adapters
+package com.coinsliberty.wallet.ui.wallet.adapters
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -28,14 +28,17 @@ import kotlinx.android.synthetic.main.item_wallet.view.*
 import java.io.File.separator
 
 
- class MyWalletHolder(private val onItemClick: (WalletContent) -> Unit) : Holder<WalletContent>() {
+class MyWalletHolder(private val onItemClick: (WalletContent) -> Unit) : Holder<WalletContent>() {
     override fun bind(itemView: View, item: WalletContent) {
-        itemView.itemWalletLayout.setBackgroundResource(item.itemBackground)
+//        itemView.itemWalletLayout.setBackgroundResource(item.itemBackground)
         itemView.ivItemWalletIcon.setImageResource(item.ico)
         itemView.tvItemWalletTitle.text = item.title
-        itemView.tvItemWalletType.text = item.type
-        if (item.price == null || item.result == null){
-            itemView.tvItemWalletPrice.setTypeface(itemView.tvItemWalletPrice.typeface, Typeface.BOLD_ITALIC)
+        itemView.tvItemWalletType.text = "(${item.type})"
+        if (item.price == null || item.result == null) {
+            itemView.tvItemWalletPrice.setTypeface(
+                itemView.tvItemWalletPrice.typeface,
+                Typeface.BOLD_ITALIC
+            )
             itemView.tvItemWalletPrice.setTextColor(itemView.context.resources.getColor(R.color.grey))
             itemView.tvItemWalletPrice.text = "Coming Soon"
         } else {
@@ -62,32 +65,50 @@ class TransactionHolder() : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
 
         Log.e("!!!", item.currency.toString())
-        when(item.typeItem) {
-            0 -> {
-                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_top)
-                itemView.separator.visible()
-            }
-            1 -> {
-                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_middle)
-                itemView.separator.visible()
-            }
-            2 -> {
-                itemView.rootView.background = itemView.context.resources.getDrawable(R.drawable.bg_transaction_bottom)
-                itemView.separator.gone()
-            }
-        }
+//        when (item.typeItem) {
+//            0 -> {
+//                itemView.rootView.background =
+//                    itemView.context.resources.getDrawable(R.drawable.bg_transaction_top)
+//                itemView.separator.visible()
+//            }
+//            1 -> {
+//                itemView.rootView.background =
+//                    itemView.context.resources.getDrawable(R.drawable.bg_transaction_middle)
+//                itemView.separator.visible()
+//            }
+//            2 -> {
+//                itemView.rootView.background =
+//                    itemView.context.resources.getDrawable(R.drawable.bg_transaction_bottom)
+//                itemView.separator.gone()
+//            }
+//        }
 
-        itemView.ivIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvType.text = if(item.category == "send") "Sent" else "Received"
-        itemView.tvPrice.text = item.amountUsd + if(item.currency == null || item.currency == Currency.USD) " $" else " €"
-        itemView.ivOpenIcon.setImageResource(if(item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvOpenType.text = if(item.category != "send") "Sent" else "Received"
-        itemView.tvOpenPrice.text =  item.amount + " BTC\n" + item.amountUsd + if(item.currency == null || item.currency == Currency.USD) " $" else " €"
+        itemView.ivIcon.setImageResource(if (item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
+        itemView.tvType.text = if (item.category == "send") "Sent" else "Received"
+        val colorBlue = Color.parseColor("#4C7BF6")
+        val colorGreen = Color.parseColor("#00D983")
+        itemView.tvPrice.setTextColor(
+            if (item.category == "send")
+                colorBlue
+            else colorGreen
+        )
+        itemView.tvOpenPrice.setTextColor(
+            if (item.category == "send")
+                colorBlue
+            else colorGreen
+        )
+        itemView.tvPrice.text =
+            item.amountUsd + if (item.currency == null || item.currency == Currency.USD) " $" else " €"
+        itemView.ivOpenIcon.setImageResource(if (item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
+        itemView.tvOpenType.text = if (item.category != "send") "Sent" else "Received"
+        itemView.tvOpenPrice.text =
+            item.amount + " BTC\n" + item.amountUsd + if (item.currency == null || item.currency == Currency.USD) " $" else " €"
         itemView.tvOpenWalletAddress.text = "Wallet Address: " + item.address
 
         itemView.tvOpenBlockchainList.isClickable = true;
         itemView.tvOpenBlockchainList.movementMethod = LinkMovementMethod.getInstance()
-        itemView.tvOpenBlockchainList.text = Html.fromHtml("<a href='https://www.blockchain.com/btc/tx/${item.txid}'>" + item.txid + "</a>")
+        itemView.tvOpenBlockchainList.text =
+            Html.fromHtml("<a href='https://www.blockchain.com/btc/tx/${item.txid}'>" + item.txid + "</a>")
         itemView.clFull.setOnClickListener {
             itemView.clFull.gone()
             itemView.clSample.visible()
@@ -97,7 +118,12 @@ class TransactionHolder() : Holder<TransactionItem>() {
             itemView.clFull.visible()
         }
 
-        itemView.ivOpenBlockchainCopy.setOnClickListener { copyLink(itemView.rootView.context, "https://www.blockchain.com/btc/tx/${item.txid}") }
+        itemView.ivOpenBlockchainCopy.setOnClickListener {
+            copyLink(
+                itemView.rootView.context,
+                "https://www.blockchain.com/btc/tx/${item.txid}"
+            )
+        }
     }
 
     private fun copyLink(context: Context, copyText: String) {

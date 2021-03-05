@@ -31,6 +31,10 @@
         <item name="lineHeight">@dimen/h5_text_line_height</item>
     </style>
 
+    <style name="H5_Regular" parent="H5">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
     <style name="H6">
         <item name="fontFamily">@font/poppins_medium_italic</item>
         <item name="android:textSize">@dimen/h6_text_size</item>

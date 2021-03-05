@@ -12,4 +12,7 @@ class LoginNavigation : BaseNavigator() {
     fun goToContent(navController: NavController?) {
          navController?.navigate(R.id.action_loginFragment_to_pinFragment)
     }
+    fun goToForgotPassword(navController: NavController?){
+        navController?.navigate(R.id.action_loginFragment_to_forgot_pass_fragment)
+    }
 }

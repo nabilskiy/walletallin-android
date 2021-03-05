@@ -34,6 +34,10 @@ class SignUpViewModel(
         signUpJob?.cancel()
     }
 
+    fun showError(error: String) {
+        showError.postValue(error)
+    }
+
     private fun handleResponse(signUp: SignUpResponse) {
         if(signUp.result == true) {
             result.postValue(true)

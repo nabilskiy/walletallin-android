@@ -2,13 +2,11 @@ package com.coinsliberty.wallet.ui.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
-import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassDialog
+import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassFragment
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
-import com.coinsliberty.wallet.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
@@ -29,14 +27,14 @@ class LoginFragment : BaseKotlinFragment() {
 
         //loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
         ivLanguage.setOnClickListener {
-               ChangeLanguageDialog.newInstance(icon)
-                   .apply {
-                       initListeners {
-                           icon = it.ico
-                           dismiss()
-                           changeLanguage()
-                       }
-                   }.show(childFragmentManager, ChangeLanguageDialog.TAG)
+            ChangeLanguageDialog.newInstance(icon)
+                .apply {
+                    initListeners {
+                        icon = it.ico
+                        dismiss()
+                        changeLanguage()
+                    }
+                }.show(childFragmentManager, ChangeLanguageDialog.TAG)
 
         }
         //loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
@@ -45,18 +43,13 @@ class LoginFragment : BaseKotlinFragment() {
 
         btnLoginUpdate.setOnClickListener {
             viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
-            }
+        }
 
         tvForgotPassword.setOnClickListener {
-            ForgotPassDialog.newInstance()
-                .apply { initListeners {
-                    //if(!it) ErrorDialog.newInstance("Пустые поля").show(childFragmentManager, ErrorDialog.TAG)
-                    //dismiss()
-
-                } }
-                .show(childFragmentManager, ForgotPassDialog.TAG)
+            navigator.goToForgotPassword(navController)
         }
     }
+
 
     private fun changeLanguage() {
         ivLanguage.setImageResource(icon)
@@ -71,7 +64,7 @@ class LoginFragment : BaseKotlinFragment() {
     }
 
     private fun showResult(b: Boolean?) {
-        if(b == true) {
+        if (b == true) {
             navigate()
         }
     }

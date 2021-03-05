@@ -1,16 +1,19 @@
 package com.coinsliberty.wallet.base
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.coinsliberty.wallet.BottomFragmant
+import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.otp.OtpDialog
 import com.coinsliberty.wallet.ui.widgets.inputField.progressBarDialog.ProgressBarDialog
@@ -29,6 +32,10 @@ abstract class BaseKotlinFragment : Fragment() {
     var navController: NavController? = null
 
     val dialog = OtpDialog.newInstance()
+
+    fun changeNavigationBarColor(color: Int) {
+        activity?.window?.navigationBarColor = color
+    }
 
 
     override fun onCreateView(
@@ -90,6 +97,11 @@ abstract class BaseKotlinFragment : Fragment() {
 
     private fun restartFragment(unit: Unit?) {
         onStart()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        changeNavigationBarColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     private fun logout(b: Boolean?) {

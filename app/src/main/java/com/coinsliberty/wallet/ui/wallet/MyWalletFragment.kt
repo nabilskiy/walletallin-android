@@ -1,8 +1,10 @@
 package com.coinsliberty.wallet.ui.wallet
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
 import com.coinsliberty.wallet.base.BaseKotlinFragment
@@ -75,6 +77,12 @@ class MyWalletFragment : BaseKotlinFragment() {
         rvWallet.adapter = adapter
         viewModel.getCurrency()
         viewModel.walletList()
+        changeNavigationBarColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.balance_header_color
+            )
+        )
     }
 
     private fun subscribeLiveData() {
@@ -85,12 +93,15 @@ class MyWalletFragment : BaseKotlinFragment() {
         bindDataTo(viewModel.currency, ::initCurrency)
     }
 
+    @SuppressLint("DefaultLocale", "SetTextI18n")
     private fun initCurrency(currency: Currency?) {
         if (currency == null) return
         this.currency = currency
 
-        tvFiatName.text = currency.getTitle()
+        balanceView.fiatSymbol = currency.getSymbol()
         tvTotalBalanceFiatName.text = currency.getTitle()
+        tvTotalBalanceFiatCurrency.text =
+            "${getString(R.string.total_fiat)} ${currency.getTitle().toUpperCase()}:"
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
@@ -147,11 +158,8 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initAvailableBalance(balance: AvailableBalanceInfoContent) {
-        tvBalanceCrypto.text = String.format("%.8f", balance.btc ?: 0.0)
-        tvBalanceFiat.text = String.format(
-            "%.2f",
-            ((balance.btc ?: 0.0) * (viewModel.btcRates ?: 0.0))
-        )
+        balanceView.balance = balance.btc ?: 0.0
+        balanceView.rate = viewModel.btcRates ?: 0.0
     }
 
     private fun showResult(it: Boolean, balance: String? = null) {

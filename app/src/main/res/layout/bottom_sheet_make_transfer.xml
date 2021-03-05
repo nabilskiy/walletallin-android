@@ -5,7 +5,7 @@
     android:id="@+id/layoutBottomSheetMakeTransfer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_dialog_green"
+    android:background="@drawable/bg_dialog_dark_grey"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp">
@@ -14,13 +14,14 @@
         android:id="@+id/tvTittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+        android:layout_marginTop="24dp"
         android:text=""
         android:textAppearance="@style/H7"
-        android:textColor="@color/darkGrey"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Send BTC" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -38,12 +39,11 @@
             android:id="@+id/clDialogReceive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dialog_make_transaction_dialog_send_margin_start_top"
             android:background="@drawable/bg_dialog_white"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchDialog"
+            tools:layout_editor_absoluteY="60dp"
             tools:visibility="visible">
 
             <TextView
@@ -150,28 +150,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchTransaction
-            android:id="@+id/switchDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dialog_make_transaction_switch_margin_start_top"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:sc_left_btn_text="@string/enabled"
-            app:sc_right_btn_text="@string/disabled" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clDialogSend"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dialog_make_transaction_dialog_send_margin_start_top"
             android:background="@drawable/bg_dialog_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchDialog"
             tools:visibility="visible">
 
             <TextView
@@ -535,6 +522,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
         android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close" />
