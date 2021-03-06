@@ -3,6 +3,7 @@ package com.coinsliberty.wallet.ui.transaction
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
@@ -11,6 +12,7 @@ import com.coinsliberty.wallet.data.response.BalanceInfoResponse
 import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionDialog
+import com.coinsliberty.wallet.dialogs.makeTransaction.ReceiveDialog
 import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
@@ -41,6 +43,7 @@ class TransactionFragment : BaseKotlinFragment() {
     override val navigator: TransactionNavigation = TransactionNavigation()
 
     private var makeTransactionDialog: MakeTransactionDialog? = null
+    private var receiveDialog: ReceiveDialog? = null
 
     private var rates: Double = 0.0
     private var currency: Currency = Currency.USD
@@ -56,7 +59,7 @@ class TransactionFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnReceive.setOnClickListener { showTransactionDialog(false) }
+        btnReceive.setOnClickListener { showReceiveDialog() }
         btnSend.setOnClickListener { showTransactionDialog(true) }
 
 
@@ -77,6 +80,16 @@ class TransactionFragment : BaseKotlinFragment() {
         subscribeLiveData()
 
         rvTransactions.adapter = adapter
+    }
+
+    private fun showReceiveDialog() {
+        if (receiveDialog == null) {
+            receiveDialog =
+                ReceiveDialog.newInstance(
+                    walletType
+                )
+        }
+        receiveDialog?.show(childFragmentManager, ReceiveDialog.TAG)
     }
 
     private fun showTransactionDialog(isSend: Boolean) {
@@ -108,6 +121,12 @@ class TransactionFragment : BaseKotlinFragment() {
         }
         viewModel.getCurrency()
         viewModel.getTransaction()
+        changeNavigationBarColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.balance_header_color
+            )
+        )
     }
 
     override fun onPause() {

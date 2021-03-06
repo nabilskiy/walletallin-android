@@ -38,7 +38,7 @@
     <dimen name="splash_height">110dp</dimen>
 
     <!--    Activity Bottom-->
-    <dimen name="ab_icon_size">20dp</dimen>
+    <dimen name="ab_icon_size">17dp</dimen>
 
     <!--    Attech Component-->
     <dimen name="ac_padding_start">16dp</dimen>
@@ -263,7 +263,7 @@
     <dimen name="dialog_reset_btn_update_marginStartEnd">64dp</dimen>
 
     <!-- Transaction -->
-    <dimen name="transaction_logo_margin_top">32dp</dimen>
+    <dimen name="transaction_logo_margin_top">50dp</dimen>
     <dimen name="transaction_title_margin_top">12dp</dimen>
     <dimen name="transaction_right_icon_margin_top">28dp</dimen>
     <dimen name="transaction_right_icon_margin_end">10dp</dimen>

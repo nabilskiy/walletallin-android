@@ -15,7 +15,6 @@
         android:layout_alignParentBottom="true"
         android:background="@color/balance_header_color"
         app:itemIconSize="@dimen/ab_icon_size"
-
         app:itemIconTint="@color/bottom_navigation_item_background_colors"
         app:itemTextColor="@color/bottom_navigation_item_background_colors"
         app:menu="@menu/menu_bottom_navigation" />

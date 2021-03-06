@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_dark_grey_top_cornered"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp">
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        app:srcCompat="@drawable/ic_cross" />
+
+    <TextView
+        android:id="@+id/tvTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="-10dp"
+        android:textAppearance="@style/H2"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Send BTC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etAddress"
+            style="@style/H5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input_field_light"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/mulish_regular"
+            android:hint="@string/to_address"
+            android:inputType="text"
+            android:paddingStart="@dimen/if_edit_text_padding_start"
+            android:paddingTop="@dimen/if_edit_text_padding_top"
+            android:paddingEnd="35dp"
+            android:paddingBottom="@dimen/if_edit_text_padding_bottom"
+            android:singleLine="true"
+            android:textColor="#8FACB6 "
+            android:textColorHint="@color/whiteLowOpacity"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/btnQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:srcCompat="@drawable/selector_qr" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/amount_to_send"
+        android:textAppearance="@style/H4"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input_field_light"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/etAmount"
+            style="@style/H5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:fontFamily="@font/mulish_regular"
+            android:hint="0.00"
+            android:inputType="text"
+            android:paddingStart="@dimen/if_edit_text_padding_start"
+            android:paddingTop="@dimen/if_edit_text_padding_top"
+            android:paddingEnd="35dp"
+            android:paddingBottom="@dimen/if_edit_text_padding_bottom"
+            android:singleLine="true"
+            android:textColor="#8FACB6"
+            android:textColorHint="@color/whiteLowOpacity"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btnMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/btn_send_max"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:text="@string/send_max"
+            android:textColor="#99FFFFFF"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvAmountFiatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/whiteLowOpacity"
+            android:textSize="13sp"
+            tools:text="USD:" />
+
+        <TextView
+            android:id="@+id/tvAmountFiat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:text="$0.00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:elevation="1dp"
+            tools:srcCompat="@drawable/bitcoin_logo"
+            android:id="@+id/ivCrypto" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_transaction_info"
+            android:orientation="vertical"
+            android:layout_marginTop="-20dp">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

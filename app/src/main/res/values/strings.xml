@@ -52,7 +52,7 @@
     <string name="log_out">Log Out</string>
 
     <string name="to_address">To Address</string>
-    <string name="amount_to_send">Amount to send</string>
+    <string name="amount_to_send">Amount</string>
     <string name="send_coin">Send Coin</string>
     <string name="forgot_password_two">Forgot Password</string>
     <string name="send_to_mail">Reset</string>
@@ -73,8 +73,8 @@
     <!-- Transaction -->
     <string name="transaction_title">167465,20 ETH</string>
     <string name="transaction_total">= 59,23 $</string>
-    <string name="transaction_send">SEND</string>
-    <string name="transaction_receive">RECEIVE</string>
+    <string name="transaction_send">Send</string>
+    <string name="transaction_receive">Receive</string>
     <string name="no_transaction">"You don't have\nTransaction yet"</string>
 
 
@@ -98,7 +98,7 @@
         <item>Normal</item>
     </string-array>
 
-    <string name="send_max"><u>Send Max</u></string>
+    <string name="send_max">Max</string>
     <string name="max_amount">Maximum amount is</string>
     <string name="btc_max_amount">~BTC 0.04324352</string>
     <string name="network_fees">Network fees</string>
@@ -151,4 +151,8 @@
     <string name="menu_wallet">WALLET</string>
     <string name="menu_exchange">EXCHANGE</string>
     <string name="menu_profile">PROFILE</string>
+
+    <!--    receive-->
+    <string name="use_link_below">Use the address below to receive funds.</string>
+    <string name="copied">Copied</string>
 </resources>

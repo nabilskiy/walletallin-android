@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_toolbar"
+        android:elevation="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -149,7 +150,7 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_marginTop="@dimen/transaction_logo_margin_top"
-            android:background="@drawable/bitcoin_logo"
+            tools:background="@drawable/bitcoin_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -159,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/transaction_left_icon_margin_start"
-            android:layout_marginTop="@dimen/transaction_left_icon_margin_top"
+            android:layout_marginTop="30dp"
             android:padding="6dp"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"

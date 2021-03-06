@@ -131,14 +131,14 @@ class MakeTransactionDialog : BottomSheetDialogFragment() {
         subscribeLiveData()
         isSend = arguments?.getBoolean(keyBundleIsSend, true) ?: true
         if (isSend) {
-            switchDialog.changeStatus(false)
+//            switchDialog.changeStatus(false)
             //RECEIVE
             clDialogSend.invisible()
             clDialogReceive.visible()
             layoutBottomSheetMakeTransfer.setBackgroundResource(R.drawable.bg_dialog_blue)
             tvTittle.text = "RECEIVE $walletType"
         } else {
-            switchDialog.changeStatus(true)
+//            switchDialog.changeStatus(true)
             //SEND
             clDialogSend.visible()
             clDialogReceive.invisible()
