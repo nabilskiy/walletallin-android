@@ -1,9 +1,7 @@
-package com.coinsliberty.wallet.ui.widgets.inputField.switch
+package com.coinsliberty.wallet.ui.widgets.inputField.switchviews
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.view.children

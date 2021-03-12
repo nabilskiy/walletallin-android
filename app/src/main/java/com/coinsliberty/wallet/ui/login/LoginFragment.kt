@@ -8,7 +8,6 @@ import com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassFragment
 import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 

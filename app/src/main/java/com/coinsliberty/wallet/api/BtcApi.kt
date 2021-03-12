@@ -16,7 +16,7 @@ interface BtcApi {
     ): SignUpResponse
 
     @GET("/api/fees")
-    suspend fun getFee(): FeeResponse
+    suspend fun getFee(@Query("asset") asset: String): FeeResponse
 
     @GET("/api/get_withdraw_all_values")
     suspend fun sendMax(

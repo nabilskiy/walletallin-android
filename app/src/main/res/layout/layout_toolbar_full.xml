@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_toolbar"
+    android:elevation="7dp">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/selector_arrow_back" />
+
+    <ImageView
+        android:id="@+id/ivToolbarIconLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/toolbar_icon_left_margin_start"
+        android:layout_marginTop="@dimen/toolbar_icon_left_margin_top"
+        android:padding="8dp"
+        android:src="@drawable/ic_germany"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivToolbarRightIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/toolbar_icon_right_margin_top"
+        android:layout_marginEnd="@dimen/toolbar_icon_right_margin_end"
+        android:padding="8dp"
+        android:src="@drawable/ic_germany"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvToolbarTitle"
+        style="@style/H5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/edit_profile"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llToolbarLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_toolbar_logo"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvToolbarTitle">
+
+        <ImageView
+            android:id="@+id/ivToolbarLogo"
+            android:layout_width="@dimen/toolbar_logo_width"
+            android:layout_height="@dimen/toolbar_logo_height"
+            android:layout_margin="@dimen/toolbar_logo_margin"
+            android:src="@drawable/ic_toolbar_logo" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:textAppearance="@style/H2"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llToolbarLogo"
+        tools:text="User Name" />
+
+    <ImageView
+        android:id="@+id/ivAddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/toolbar_add_photo_margin_start"
+        android:layout_marginBottom="@dimen/toolbar_add_photo_margin_bottom"
+        android:src="@drawable/ic_add_logo_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/llToolbarLogo"
+        app:layout_constraintStart_toStartOf="@+id/llToolbarLogo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

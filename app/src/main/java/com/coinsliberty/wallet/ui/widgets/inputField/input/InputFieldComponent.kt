@@ -22,6 +22,8 @@ class InputFieldComponent @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    private var showIcon: Boolean = true
+
     enum class TypeOfInput {
         textPassword, phone, textEmailAddress, text
     }
@@ -60,6 +62,7 @@ class InputFieldComponent @JvmOverloads constructor(
 
         val typeOfInput = typedArray.getString(R.styleable.InputFieldComponent_ifc_type) ?: "text"
 
+        showIcon = typedArray.getBoolean(R.styleable.InputFieldComponent_ifc_show_icon, true)
 
         val useMask = typedArray.getBoolean(R.styleable.InputFieldComponent_ifc_use_mask, false)
         cbShowHide.visibleIfOrGone { useMask }
@@ -91,26 +94,29 @@ class InputFieldComponent @JvmOverloads constructor(
             TypeOfInput.textEmailAddress.name -> {
                 etField.inputType =
                     InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    R.drawable.ic_email_marketing,
-                    0, 0, 0
-                )
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_email_marketing,
+                        0, 0, 0
+                    )
             }
             TypeOfInput.textPassword.name -> {
                 cbShowHide.visibility = View.VISIBLE
                 cbShowHide.isChecked = false
                 etField.inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD
-                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    R.drawable.ic_key,
-                    0, 0, 0
-                )
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_key,
+                        0, 0, 0
+                    )
             }
             TypeOfInput.text.name -> {
                 etField.inputType = InputType.TYPE_CLASS_TEXT
-                etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    R.drawable.ic_user_copy,
-                    0, 0, 0
-                )
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_user_copy,
+                        0, 0, 0
+                    )
             }
         }
     }

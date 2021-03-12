@@ -1,65 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginTop="44dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/selector_arrow_back" />
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/toolbar_view_margin_bottom"
         android:background="@drawable/bg_toolbar"
-        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/toolbar_view_margin_bottom"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivToolbarIconLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_germany"
-        android:layout_marginTop="@dimen/toolbar_icon_left_margin_top"
         android:layout_marginStart="@dimen/toolbar_icon_left_margin_start"
-        android:padding="8dp" />
+        android:layout_marginTop="@dimen/toolbar_icon_left_margin_top"
+        android:padding="8dp"
+        android:src="@drawable/ic_germany"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivToolbarRightIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_germany"
         android:layout_marginTop="@dimen/toolbar_icon_right_margin_top"
         android:layout_marginEnd="@dimen/toolbar_icon_right_margin_end"
         android:padding="8dp"
-        android:visibility="gone"/>
+        android:src="@drawable/ic_germany"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvToolbarTitle"
+        style="@style/H5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        android:layout_marginTop="@dimen/toolbar_title_margin_top"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:hint="Title"
-        style="@style/H5"
+        android:layout_marginTop="56dp"
+        android:elevation="8dp"
+        android:text="@string/edit_profile"
         android:textColor="@color/white"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/llToolbarLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/toolbar_linerlayout_margin_top"
-        android:gravity="center"
+        android:layout_marginTop="42dp"
         android:background="@drawable/bg_toolbar_logo"
+        android:elevation="8dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/tvToolbarTitle">
@@ -69,17 +82,19 @@
             android:layout_width="@dimen/toolbar_logo_width"
             android:layout_height="@dimen/toolbar_logo_height"
             android:layout_margin="@dimen/toolbar_logo_margin"
-            android:src="@drawable/toolbar_logo" />
+            android:src="@drawable/ic_toolbar_logo" />
     </LinearLayout>
+
 
     <ImageView
         android:id="@+id/ivAddPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/toolbar_add_photo_margin_start"
+        android:layout_marginBottom="@dimen/toolbar_add_photo_margin_bottom"
+        android:elevation="8dp"
         android:src="@drawable/ic_add_logo_photo"
         app:layout_constraintBottom_toBottomOf="@+id/llToolbarLogo"
-        app:layout_constraintStart_toStartOf="@+id/llToolbarLogo"
-        android:layout_marginStart="@dimen/toolbar_add_photo_margin_start"
-        android:layout_marginBottom="@dimen/toolbar_add_photo_margin_bottom" />
+        app:layout_constraintStart_toStartOf="@+id/llToolbarLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

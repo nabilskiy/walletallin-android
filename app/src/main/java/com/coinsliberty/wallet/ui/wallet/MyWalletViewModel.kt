@@ -117,7 +117,8 @@ class MyWalletViewModel(
                     (btcRates ?: 0.0) * balanceValue
                 ) + if (currency == null || currency == Currency.USD) " $" else " €" else null,
                 wallet?.getBackground() ?: 0,
-                wallet?.getColor() ?: 0
+                wallet?.getColor() ?: 0,
+                wallet?.getFeeCoefficient() ?: 1.0
             )
         })
     }

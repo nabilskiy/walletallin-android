@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinDialogFragment
 import com.coinsliberty.wallet.utils.stub.StubViewModel
@@ -26,6 +27,17 @@ class ProgressBarDialog : BaseKotlinDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
+
+    override fun show(manager: FragmentManager, tag: String?) {
+        if (dialog != null
+            && dialog?.isShowing == true
+            && !isRemoving
+        ) {
+            return
+        } else {
+            super.show(manager, tag)
+        }
     }
 
 

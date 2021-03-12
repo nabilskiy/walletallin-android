@@ -5,7 +5,7 @@
     android:id="@+id/layoutBottomSheetMakeTransfer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_dialog_dark_grey"
+    android:background="@drawable/bg_dialog_light_dark_grey"
     android:orientation="vertical"
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp">

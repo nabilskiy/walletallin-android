@@ -7,5 +7,6 @@ data class WalletContent(
     val price: String? = null,
     val result: String? = null,
     val itemBackground: Int,
-    val color: Int
+    val color: Int,
+    val coefficient:Double
 )

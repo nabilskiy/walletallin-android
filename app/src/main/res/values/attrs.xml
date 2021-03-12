@@ -5,6 +5,7 @@
         <attr name="ifc_use_mask" format="boolean"/>
         <attr name="ifc_mask" format="boolean"/>
         <attr name="ifc_type" format="string"/>
+        <attr name="ifc_show_icon" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="SwitchComponent">

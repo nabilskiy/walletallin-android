@@ -88,7 +88,7 @@
         android:orientation="horizontal">
 
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etAmount"
             style="@style/H5"
             android:layout_width="0dp"
@@ -97,7 +97,7 @@
             android:background="@null"
             android:fontFamily="@font/mulish_regular"
             android:hint="0.00"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:paddingStart="@dimen/if_edit_text_padding_start"
             android:paddingTop="@dimen/if_edit_text_padding_top"
             android:paddingEnd="35dp"
@@ -155,28 +155,140 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/ivCrypto"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:elevation="1dp"
-            tools:srcCompat="@drawable/bitcoin_logo"
-            android:id="@+id/ivCrypto" />
+            tools:srcCompat="@drawable/bitcoin_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp"
             android:background="@drawable/bg_transaction_info"
             android:orientation="vertical"
-            android:layout_marginTop="-20dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/mulish_regular"
+                    android:gravity="end"
+                    android:text="@string/fees"
+                    android:textAppearance="@style/H4"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+
+                    <TextView
+                        android:id="@+id/tvFees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="2dp"
+                        android:fontFamily="@font/mulish_regular"
+                        android:text="Normal"
+                        android:textColor="#008753"
+                        android:textSize="13sp"
+                        app:drawableEndCompat="@drawable/ic_little_green_arrow_down" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="@string/network_fees"
+                    android:textAppearance="@style/H4"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:id="@+id/etLL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etNetworkFees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:inputType="none"
+                        android:text="0,009"
+                        android:textAppearance="@style/H4"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvNetworkCurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/mulish_regular"
+                        android:text="USD"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSend"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/btn_blue_login">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSend"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp"
+                android:text="@string/send"
+                android:layout_gravity="center"
+                android:paddingVertical="16dp"
+                android:drawablePadding="5dp"
+                app:drawableStartCompat="@drawable/ic_mini_arrow_top" />
+        </FrameLayout>
+
+
     </LinearLayout>
-
-
 </LinearLayout>

@@ -55,6 +55,9 @@
     <style name="DialogGrayBG" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/bg_dialog_gray</item>
     </style>
+    <style name="DialogDarkGrayBG" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_gray</item>
+    </style>
     <style name="DialogGreenBG" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@drawable/bg_dialog_green</item>
     </style>

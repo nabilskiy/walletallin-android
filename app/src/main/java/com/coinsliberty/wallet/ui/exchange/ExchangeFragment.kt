@@ -6,14 +6,12 @@ import android.view.View
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.response.BalanceInfoContent
-import com.coinsliberty.wallet.data.response.Rates
 import com.coinsliberty.wallet.data.response.SwapInfoData
 import com.coinsliberty.wallet.data.response.SwapLimitsData
-import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.ConfirmExchangeDialog
 import com.coinsliberty.wallet.ui.custom.CustomAmountEditText
 import com.coinsliberty.wallet.ui.wallet.data.WalletContent
-import com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchExchange
+import com.coinsliberty.wallet.ui.widgets.inputField.switchviews.SwitchExchange
 import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_exchange.*

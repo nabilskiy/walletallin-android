@@ -5,7 +5,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
@@ -15,16 +17,10 @@ import com.bumptech.glide.request.transition.Transition
 import com.coinsliberty.wallet.BottomFragmant
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
+import com.coinsliberty.wallet.databinding.FragmentSettingsBinding
 import com.coinsliberty.wallet.dialogs.ressPassword.ResetPassDialog
 import com.coinsliberty.wallet.ui.MainActivity
-import com.coinsliberty.wallet.ui.dialogs.ChangeLanguageDialog
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
-import com.coinsliberty.wallet.utils.extensions.invisible
-import kotlinx.android.synthetic.main.fragment_settings.*
-import kotlinx.android.synthetic.main.fragment_settings.itemChangeLanguage
-import kotlinx.android.synthetic.main.fragment_settings.settingsToolbar
-import kotlinx.android.synthetic.main.item_settings.view.*
-import kotlinx.android.synthetic.main.toolbar.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -33,6 +29,16 @@ class SettingsFragment() : BaseKotlinFragment() {
     override val viewModel: SettingsViewModel by viewModel()
     override val navigator: SettingsNavigation = get()
 
+    private lateinit var binding: FragmentSettingsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentSettingsBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -69,12 +75,12 @@ class SettingsFragment() : BaseKotlinFragment() {
                     resource: Bitmap,
                     transition: Transition<in Bitmap>?
                 ) {
-                    settingsToolbar.ivToolbarLogo.setImageBitmap(resource)
+                    binding.settingsToolbar.ivToolbarLogo.setImageBitmap(resource)
                 }
 
                 override fun onLoadFailed(errorDrawable: Drawable?) {
                     super.onLoadFailed(errorDrawable)
-                    Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {}
@@ -82,28 +88,12 @@ class SettingsFragment() : BaseKotlinFragment() {
     }
 
     private fun initView() {
+        binding.settingsToolbar.ivAddPhoto.visibility = View.GONE
 
-        settingsToolbar.ivToolbarIconLeft.invisible()
-        settingsToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.selector_notification)
-        settingsToolbar.ivToolbarRightIcon.setColorFilter(resources.getColor(R.color.white))
-        settingsToolbar.tvToolbarTitle.setText(R.string.settings)
-        settingsToolbar.ivAddPhoto.visibility = View.GONE
-
-        itemChangeLanguage.tvTittle.setText(R.string.change_language)
-
-        itemEditProfile.ivLeft.setImageResource(R.drawable.ic_profile_1)
-        itemEditProfile.tvTittle.setText(R.string.edit_profile)
-
-        itemEditProfile.setOnClickListener {
-//            Log.e("!!!", (parentFragment as NavHostFragment).parentFragment.toString())
-//            Log.e("!!!", parentFragmentManager.primaryNavigationFragment.toString())
+        binding.btnProfile.setOnClickListener {
             ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)?.goToProfile()
         }
-
-        itemResetPassword.ivLeft.setImageResource(R.drawable.ic_password)
-        itemResetPassword.tvTittle.setText(R.string.reset_password)
-
-        itemResetPassword.setOnClickListener {
+        binding.btnSecurity.setOnClickListener {
             ResetPassDialog.newInstance()
                 .apply { initListeners {
                     //if(!it) ErrorDialog.newInstance("Пустые поля").show(childFragmentManager, ErrorDialog.TAG)
@@ -112,28 +102,11 @@ class SettingsFragment() : BaseKotlinFragment() {
                 } }
                 .show(childFragmentManager, ResetPassDialog.TAG)
         }
-
-        itemChangeLanguage.setOnClickListener {
-            ChangeLanguageDialog.newInstance(R.drawable.ic_germany)
-                .apply {
-                    initListeners {
-                        dismiss()
-                    }
-                }.show(childFragmentManager, ChangeLanguageDialog.TAG)
-        }
-
-
-        itemOtherSettings.ivLeft.setImageResource(R.drawable.ic_settings_1)
-        itemOtherSettings.tvTittle.setText(R.string.other_settings)
-
-        itemLogOut.ivLeft.setImageResource(R.drawable.ic_logout)
-        itemLogOut.tvTittle.setText(R.string.log_out)
-        itemLogOut.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             viewModel.logout()
         }
-        itemLogOut.imNext.invisible()
-
         viewModel.loadProfile()
+        binding.settingsToolbar.ivBack.setOnClickListener { activity?.onBackPressed() }
     }
 
 }

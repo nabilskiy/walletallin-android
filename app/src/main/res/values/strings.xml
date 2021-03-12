@@ -101,7 +101,8 @@
     <string name="send_max">Max</string>
     <string name="max_amount">Maximum amount is</string>
     <string name="btc_max_amount">~BTC 0.04324352</string>
-    <string name="network_fees">Network fees</string>
+    <string name="network_fees">Network fees\u0020:\u0020</string>
+    <string name="fees">Fees\u0020:\u0020</string>
     <string name="sat_number">0</string>
     <string name="sat_per_byte">USD</string>
     <string name="allow_uncinfirmed">Allow unconfirmed replaceable transactions</string>
@@ -155,4 +156,15 @@
     <!--    receive-->
     <string name="use_link_below">Use the address below to receive funds.</string>
     <string name="copied">Copied</string>
+
+    <!--    fees-->
+    <string name="slow">Slow</string>
+    <string name="normal">Normal</string>
+    <string name="fast">Fast</string>
+    <string name="custom">Custom</string>
+
+   <!--    profile-->
+    <string name="personal_info">Personal Info</string>
+    <string name="currency">Currency</string>
+    <string name="upload_doc">Upload document</string>
 </resources>

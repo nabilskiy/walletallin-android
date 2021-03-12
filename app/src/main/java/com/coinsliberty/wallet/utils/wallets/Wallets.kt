@@ -17,6 +17,8 @@ enum class Wallets : Parcelable {
         override fun getColor(): Int =
             Color.parseColor("#f2a900")
 
+        override fun getFeeCoefficient() = 0.00000001 * 240
+
     },
     ETHEREUM_WALLET {
         override fun getImg(): Int = R.drawable.etherium_logo
@@ -27,6 +29,8 @@ enum class Wallets : Parcelable {
 
         override fun getColor(): Int =
             Color.parseColor("#8198EE")
+
+        override fun getFeeCoefficient(): Double = 2100 * 10E-9
 
     },
     LITECOIN_WALLET {
@@ -39,6 +43,8 @@ enum class Wallets : Parcelable {
         override fun getColor(): Int =
             Color.parseColor("#d3d3d3")
 
+        override fun getFeeCoefficient(): Double = 1.0
+
     },
     RIPPLE_WALLET {
         override fun getImg(): Int = R.drawable.ripple_logo
@@ -49,6 +55,9 @@ enum class Wallets : Parcelable {
 
         override fun getColor(): Int =
             Color.parseColor("#006097")
+
+
+        override fun getFeeCoefficient(): Double = 1.0
     },
     BITCOIN_CASH_WALLET {
         override fun getImg(): Int = R.drawable.bitcoin_cash_logo
@@ -59,6 +68,8 @@ enum class Wallets : Parcelable {
 
         override fun getColor(): Int =
             Color.parseColor("#ee8c28")
+
+        override fun getFeeCoefficient(): Double = 1.0
     },
     DASHCOIN_WALLET {
         override fun getImg(): Int = R.drawable.dashcoin_logo
@@ -69,10 +80,13 @@ enum class Wallets : Parcelable {
 
         override fun getColor(): Int =
             Color.parseColor("#006097")
+
+        override fun getFeeCoefficient(): Double = 1.0
     };
 
     abstract fun getImg(): Int
     abstract fun getBackground(): Int
     abstract fun getTitle(): String
     abstract fun getColor(): Int
+    abstract fun getFeeCoefficient(): Double
 }

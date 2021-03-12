@@ -10,7 +10,9 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
@@ -22,6 +24,8 @@ import com.coinsliberty.moneybee.utils.stub.StubNavigator
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseKotlinFragment
 import com.coinsliberty.wallet.data.response.ProfileResponse
+import com.coinsliberty.wallet.databinding.FragmentPinBinding
+import com.coinsliberty.wallet.databinding.FragmentProfileBinding
 import com.coinsliberty.wallet.dialogs.ErrorDialog
 import com.coinsliberty.wallet.dialogs.makeTransaction.REQUEST_CODE
 import com.coinsliberty.wallet.dialogs.makeTransaction.REQUEST_SCAN
@@ -30,8 +34,6 @@ import com.coinsliberty.wallet.utils.currency.Currency
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.attach_component.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.android.synthetic.main.toolbar.view.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -49,7 +51,19 @@ class ProfileFragment : BaseKotlinFragment() {
     override val navigator: StubNavigator = get()
     var bufferFile: Any? = null
 
+    private lateinit var binding: FragmentProfileBinding
+
     var isNeed2fa = false
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentProfileBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,16 +76,16 @@ class ProfileFragment : BaseKotlinFragment() {
 
         }
 
-        profileToolbar.ivAddPhoto.setOnClickListener {
+        binding.profileToolbar.ivAddPhoto.setOnClickListener {
             requestPermissionAndCapturePhoto()
         }
 
-        profileToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
-        profileToolbar.ivToolbarIconLeft.setImageResource(R.drawable.ic_arrow_back)
+        binding.profileToolbar.ivToolbarIconLeft.visibility = View.VISIBLE
+        binding.profileToolbar.ivToolbarIconLeft.setImageResource(R.drawable.ic_arrow_back)
         //profileToolbar.ivToolbarRightIcon.setBackgroundResource(R.drawable.ic_ring)
-        profileToolbar.tvToolbarTitle.text = "Profile"
+        binding.profileToolbar.tvToolbarTitle.text = "Profile"
 
-        profileToolbar.ivToolbarIconLeft.setOnClickListener {
+        binding.profileToolbar.ivToolbarIconLeft.setOnClickListener {
             navigator.back()
         }
 
@@ -106,12 +120,12 @@ class ProfileFragment : BaseKotlinFragment() {
                     resource: Bitmap,
                     transition: Transition<in Bitmap>?
                 ) {
-                    profileToolbar.ivToolbarLogo.setImageBitmap(resource)
+                    binding.profileToolbar.ivToolbarLogo.setImageBitmap(resource)
                 }
 
                 override fun onLoadFailed(errorDrawable: Drawable?) {
                     super.onLoadFailed(errorDrawable)
-                    Toast.makeText(context, "Unable to download", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "Unable to download image", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {}
@@ -119,7 +133,7 @@ class ProfileFragment : BaseKotlinFragment() {
     }
 
     private fun subscribeLiveData() {
-        viewModel.showError.observe(this, ::getErrorDialog)
+        viewModel.showError.observe(viewLifecycleOwner, ::getErrorDialog)
         bindDataTo(viewModel.ldProfile, ::initProfileData)
         bindDataTo(viewModel.ldCurrency, ::initCurrency)
     }
@@ -253,7 +267,7 @@ class ProfileFragment : BaseKotlinFragment() {
                     .load(uri)
                     .apply(RequestOptions.circleCropTransform())
                     .skipMemoryCache(true)
-                    .into(profileToolbar.ivToolbarLogo)
+                    .into(binding.profileToolbar.ivToolbarLogo)
                 viewModel.sendFile(body)
             } catch (e: Exception) {
                 Log.e("ERROE_IMG", e.toString())

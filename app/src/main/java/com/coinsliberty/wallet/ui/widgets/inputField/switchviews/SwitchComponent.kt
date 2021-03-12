@@ -1,4 +1,4 @@
-package com.coinsliberty.wallet.ui.widgets.inputField.switch
+package com.coinsliberty.wallet.ui.widgets.inputField.switchviews
 
 import android.content.Context
 import android.util.AttributeSet

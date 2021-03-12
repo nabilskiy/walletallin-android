@@ -75,7 +75,7 @@ class ExchangeViewModel(
                 walletRepository.getBalance(),
                 reverse
             )
-            handleResponseFee(transactionRepository.getFee())
+            handleResponseFee(transactionRepository.getFee(walletFrom.value?.type ?: ""))
             getSwapLimits()
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
@@ -238,7 +238,8 @@ class ExchangeViewModel(
                         (fromRates ?: 0.0) * balanceValue
                     ) + if (currency == null || currency == Currency.USD) " $" else " €" else null,
                     wallet?.getBackground() ?: 0,
-                    wallet?.getColor()!!
+                    wallet?.getColor()!!,
+                    wallet?.getFeeCoefficient()!!
                 )
 
 

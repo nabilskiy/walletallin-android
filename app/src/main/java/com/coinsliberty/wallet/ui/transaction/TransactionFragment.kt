@@ -13,6 +13,7 @@ import com.coinsliberty.wallet.data.response.TransactionItem
 import com.coinsliberty.wallet.dialogs.AcceptDialog
 import com.coinsliberty.wallet.dialogs.makeTransaction.MakeTransactionDialog
 import com.coinsliberty.wallet.dialogs.makeTransaction.ReceiveDialog
+import com.coinsliberty.wallet.dialogs.makeTransaction.SendDialog
 import com.coinsliberty.wallet.ui.MainActivity
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.coinsliberty.wallet.ui.wallet.adapters.TransactionHolder
@@ -35,6 +36,8 @@ private const val keyBundleBalance = "balance"
 private const val keyBundleWallet = "wallet"
 private const val keyBundleRates = "rates"
 private const val keyBundleWalletType = "walletType"
+private const val keyWalletColor = "walletColor"
+private const val keyWalletCoefficient = "walletCoefficient"
 
 class TransactionFragment : BaseKotlinFragment() {
 
@@ -42,13 +45,15 @@ class TransactionFragment : BaseKotlinFragment() {
     override val viewModel: TransactionViewModel by viewModel()
     override val navigator: TransactionNavigation = TransactionNavigation()
 
-    private var makeTransactionDialog: MakeTransactionDialog? = null
+    private var makeTransactionDialog: SendDialog? = null
     private var receiveDialog: ReceiveDialog? = null
 
     private var rates: Double = 0.0
     private var currency: Currency = Currency.USD
     private var balanceData: Double = 0.0
     private var walletIco: Int? = null
+    private var walletColor: Int? = null
+    private var walletCoefficient: Double = 1.0
     private lateinit var walletType: String
 
     val adapter = BaseAdapter()
@@ -60,13 +65,15 @@ class TransactionFragment : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnReceive.setOnClickListener { showReceiveDialog() }
-        btnSend.setOnClickListener { showTransactionDialog(true) }
+        btnSend.setOnClickListener { showTransactionDialog() }
 
 
         rates = arguments?.getDouble(keyBundleRates) ?: 0.0
         balanceData = arguments?.getDouble(keyBundleBalance) ?: 0.0
         walletIco = arguments?.getInt(keyBundleWallet)
+        walletColor = arguments?.getInt(keyWalletColor)
         walletType = arguments?.getString(keyBundleWalletType) ?: ""
+        walletCoefficient = arguments?.getDouble(keyWalletCoefficient) ?: 1.0
         viewModel.walletType = walletType
 
         ivTransactionLeftIcon.setOnClickListener {
@@ -92,26 +99,38 @@ class TransactionFragment : BaseKotlinFragment() {
         receiveDialog?.show(childFragmentManager, ReceiveDialog.TAG)
     }
 
-    private fun showTransactionDialog(isSend: Boolean) {
+    private fun showTransactionDialog() {
         if (makeTransactionDialog == null) {
             makeTransactionDialog =
-                MakeTransactionDialog.newInstance(
+                SendDialog.getInstance(
+                    balanceData,
                     walletType,
                     rates,
-                    balanceData ?: 0.0,
-                    null,
-                    "17325782351905019asdofjkas",
-                    "ss",
-                    walletIco!!,
-                    isSend
+                    walletColor ?: 0,
+                    walletIco ?: 0,
+                    walletCoefficient
                 )
         }
-        makeTransactionDialog?.apply {
-            initListeners { result, text ->
-                showResult(result, text)
-            }
-        }
-            ?.show(childFragmentManager, MakeTransactionDialog.TAG)
+        makeTransactionDialog?.show(childFragmentManager, SendDialog.TAG)
+//        if (makeTransactionDialog == null) {
+//            makeTransactionDialog =
+//                MakeTransactionDialog.newInstance(
+//                    walletType,
+//                    rates,
+//                    balanceData ?: 0.0,
+//                    null,
+//                    "17325782351905019asdofjkas",
+//                    "ss",
+//                    walletIco!!,
+//                    isSend
+//                )
+//        }
+//        makeTransactionDialog?.apply {
+//            initListeners { result, text ->
+//                showResult(result, text)
+//            }
+//        }
+//            ?.show(childFragmentManager, MakeTransactionDialog.TAG)
     }
 
     override fun onStart() {
@@ -230,13 +249,17 @@ class TransactionFragment : BaseKotlinFragment() {
             rates: Double?,
             balance: Double?,
             wallet: Int?,
-            walletType: String?
+            walletType: String?,
+            walletColor: Int,
+            coefficient: Double
         ): Bundle {
             val bundle = bundleOf(
                 keyBundleRates to rates,
                 keyBundleBalance to balance,
                 keyBundleWallet to wallet,
-                keyBundleWalletType to walletType
+                keyBundleWalletType to walletType,
+                keyWalletColor to walletColor,
+                keyWalletCoefficient to coefficient
             )
             return bundle
         }

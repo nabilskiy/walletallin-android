@@ -76,27 +76,23 @@ class MakeTransactionViewModel(
     }
 
 
-
-
-
-
-    fun getCurrency() {
-        currency.postValue(sharedPreferencesProvider.getCurrency())
+    fun getCurrency(): Currency {
+        return sharedPreferencesProvider.getCurrency()
     }
 
-    fun updateData(asset:String) {
+    fun updateData(asset: String) {
         updateDataJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponseReceive(repository.getAddress(asset))
-            handleResponseFee(repository.getFee())
+            handleResponseFee(repository.getFee(asset))
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
 
-    fun refreshFee() {
+    fun refreshFee(asset: String) {
         refreshFeeJob = launch(::onErrorHandler) {
             delay(5000)
-            handleResponseFee(repository.getFee())
+            handleResponseFee(repository.getFee(asset))
         }
     }
 
@@ -106,7 +102,7 @@ class MakeTransactionViewModel(
             val data = repository.sendMax(asset, rate.replace(",", ".", true))
 
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
-            if(data.result == false) {
+            if (data.result == false) {
                 messageError.postValue(data.error?.message ?: "Error")
             } else {
                 handleResponseSendMax(data)

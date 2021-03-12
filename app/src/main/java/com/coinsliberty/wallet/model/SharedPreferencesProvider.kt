@@ -54,7 +54,7 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(LOGIN, login).apply()
     }
 
-    fun getCurrency(): Currency? {
+    fun getCurrency(): Currency {
         val currency = prefs.getString(CURRENCY, "")
         if (currency.isNullOrEmpty()) {
             return Currency.USD

@@ -51,7 +51,9 @@ class MyWalletFragment : BaseKotlinFragment() {
                     rates,
                     balanceData,
                     it.ico,
-                    it.type
+                    it.type,
+                    it.color,
+                    it.coefficient
                 )
             )
         })

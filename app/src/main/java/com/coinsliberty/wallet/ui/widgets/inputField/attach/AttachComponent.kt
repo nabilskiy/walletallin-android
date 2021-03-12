@@ -31,17 +31,17 @@ class AttachComponent  @JvmOverloads constructor(
         val fieldText = typedArray.getString(R.styleable.AttachComponent_ac_text_field_text) ?: ""
         tvAttachFile.text = fieldText
 
-        val attachButtonText = typedArray.getString(R.styleable.AttachComponent_ac_button_text) ?: ""
-        tvAttachButton.text = attachButtonText
+//        val attachButtonText = typedArray.getString(R.styleable.AttachComponent_ac_button_text) ?: ""
+//        tvAttachButton.text = attachButtonText
 
         chooseFile()
         typedArray.recycle()
     }
 
     fun chooseFile() {
-        tvAttachButton.setOnClickListener {
-            Toast.makeText(context, "SMTH", Toast.LENGTH_SHORT).show()
-        }
+//        tvAttachButton.setOnClickListener {
+//            Toast.makeText(context, "SMTH", Toast.LENGTH_SHORT).show()
+//        }
     }
 
 }

@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
 
     <include
         android:id="@+id/settingsToolbar"
-        layout="@layout/toolbar"
+        layout="@layout/layout_toolbar_full"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,62 +20,71 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/setting_fragment_sv_layout_marginTop"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settingsToolbar"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/settingsToolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/itemChangeLanguage"
-                layout="@layout/item_settings"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_setting_width"
-                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom"
-                android:visibility="gone"/>
 
-            <include
-                android:id="@+id/itemEditProfile"
-                layout="@layout/item_settings"
+            <TextView
+                android:id="@+id/btnProfile"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_setting_width"
-                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:textSize="@dimen/h3_text_size"
+                android:paddingVertical="20dp"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/edit_profile"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/ic_settings_end_arrow"
+                app:drawableStartCompat="@drawable/ic_settings_profile" />
 
-            <include
-                android:id="@+id/itemResetPassword"
-                layout="@layout/item_settings"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_setting_width"
-                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+                android:layout_height="1dp"
+                android:background="#1AD8D8D8" />
 
-            <include
-                android:id="@+id/itemOtherSettings"
-                layout="@layout/item_settings"
+            <TextView
+                android:id="@+id/btnSecurity"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_setting_width"
-                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom"
-                android:visibility="gone"/>
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:textSize="@dimen/h3_text_size"
+                android:paddingVertical="20dp"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/reset_password"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/ic_settings_end_arrow"
+                app:drawableStartCompat="@drawable/ic_settings_profile" />
 
-            <include
-                android:id="@+id/itemLogOut"
-                layout="@layout/item_settings"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_setting_width"
-                android:layout_marginStart="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginEnd="@dimen/item_setting_layout_marginStartEnd"
-                android:layout_marginBottom="@dimen/setting_fragment_item_layout_marginBottom" />
+                android:layout_height="1dp"
+                android:background="#1AD8D8D8" />
+
+            <TextView
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:textSize="@dimen/h3_text_size"
+                android:paddingVertical="20dp"
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/log_out"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/ic_settings_end_arrow"
+                app:drawableStartCompat="@drawable/ic_settings_profile" />
+
+
         </LinearLayout>
 
     </ScrollView>

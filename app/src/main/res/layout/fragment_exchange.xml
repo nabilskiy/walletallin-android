@@ -480,7 +480,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/fromCl"
                 app:srcCompat="@drawable/ic_exchange_arrow" />
 
-            <com.coinsliberty.wallet.ui.widgets.inputField.switch.SwitchExchange
+            <com.coinsliberty.wallet.ui.widgets.inputField.switchviews.SwitchExchange
                 android:id="@+id/switchExchange"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

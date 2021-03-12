@@ -1,6 +1,7 @@
 package com.coinsliberty.wallet.utils.extensions
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +55,12 @@ fun hideKeyboard(activity: Activity?) {
         view = View(activity)
     }
     imm.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun View.showKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    this.requestFocus()
+    imm.showSoftInput(this, 0)
 }
 
 class FloatingScrollListener(private val downView: View,
