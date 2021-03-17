@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.base.BaseAdapter
 import com.coinsliberty.wallet.base.BaseKotlinDialogFragment
@@ -28,7 +29,7 @@ class ChooseWalletDialog(
     private val viewModel: ExchangeViewModel
 ) : BottomSheetDialogFragment() {
 
-    override fun getTheme(): Int = R.style.SendDialog
+    override fun getTheme(): Int = R.style.SendDialogGrey
 
     lateinit var chooseWalletViewModel: ChooseWalletViewModel
     lateinit var adapter: AdapterChooseWallet
@@ -41,6 +42,12 @@ class ChooseWalletDialog(
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.bottom_sheet_choose_wallet, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.window?.navigationBarColor =
+            ContextCompat.getColor(requireContext(), R.color.balance_header_color)
     }
 
 

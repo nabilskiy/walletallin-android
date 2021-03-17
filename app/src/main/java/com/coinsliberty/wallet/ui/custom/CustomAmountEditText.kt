@@ -59,6 +59,7 @@ class CustomAmountEditText(private val editText: AppCompatEditText) {
 
 
     private fun updateUiState() {
+        Log.i(TAG, "updateUiState: ")
         val isValid = validAmount()
         val underlineColor = getUnderlineColor(isValid)
         if (underlineColor != null)
@@ -71,6 +72,7 @@ class CustomAmountEditText(private val editText: AppCompatEditText) {
     }
 
     fun validAmount(): Boolean {
+        Log.i(TAG, "validAmount: ${checkBalance()} ${checkLimits()}")
         return checkBalance() && checkLimits()
     }
 
@@ -130,6 +132,7 @@ class CustomAmountEditText(private val editText: AppCompatEditText) {
                     amount = p0.toString().toDouble()
                 } catch (e: Exception) {
                     e.printStackTrace()
+                    return
                 }
                 updateUiState()
                 onAmountChangedListener?.onChanged(toDouble(), needToUpdateSwitch)

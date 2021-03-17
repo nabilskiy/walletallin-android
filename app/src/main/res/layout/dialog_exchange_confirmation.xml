@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/darkGrey"
     app:cardCornerRadius="15dp">
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_marginEnd="24dp"
             android:text="@string/exchange_confirmation_title"
             android:textAppearance="@style/H2"
-            android:textColor="#474954" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/confirmationDescr"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="36dp"
             android:gravity="center"
             android:textAppearance="@style/H4"
-            android:textColor="#929292"
+            android:textColor="@color/whiteLowOpacity"
             tools:text="Are you confirm exchange ETH 0.14504469 to BTC 0.00480031?" />
 
         <LinearLayout
@@ -65,13 +65,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/btn_grey_border"
+                android:background="@drawable/btn_blue_login"
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/confirm"
                 android:textAppearance="@style/H4"
-                android:textColor="@color/lightBlue" />
+                android:textColor="@color/white" />
 
 
         </LinearLayout>

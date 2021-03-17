@@ -90,4 +90,8 @@
         <item name="bottomSheetStyle">@drawable/bg_dialog_white</item>
     </style>
 
+    <style name="SendDialogGrey" parent="BottomSheetDialogTheme">
+        <item name="bottomSheetStyle">@drawable/bg_dialog_light_dark_grey</item>
+    </style>
+
 </resources>

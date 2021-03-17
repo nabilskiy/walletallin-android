@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp">
+    android:layout_marginTop="16dp"
+    tools:background="#0C2B36">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemWalletLayout"
@@ -32,11 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/darkBlue"
+            android:layout_marginBottom="2dp"
+            android:text="title"
+            android:textColor="#56CCF2"
+            app:layout_constraintBottom_toTopOf="@+id/tvItemWalletType"
             app:layout_constraintStart_toEndOf="@id/ivItemWalletIcon"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:hint="title" />
+            app:layout_constraintTop_toTopOf="@+id/ivItemWalletIcon" />
 
         <TextView
             android:id="@+id/tvItemWalletType"
@@ -44,11 +46,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
             android:textColor="@color/grey"
+            app:layout_constraintBottom_toBottomOf="@+id/ivItemWalletIcon"
             app:layout_constraintStart_toEndOf="@id/ivItemWalletIcon"
             app:layout_constraintTop_toBottomOf="@id/tvItemWalletTitle"
-            tools:hint="type" />
+            tools:text="BTC" />
 
         <ImageView
             android:id="@+id/check"
@@ -68,7 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
-        android:background="@color/whiteGrey"
+        android:background="#3DEFF1F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/itemWalletLayout"
         app:layout_constraintStart_toStartOf="@id/itemWalletLayout"

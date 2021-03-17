@@ -3,6 +3,7 @@ import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.coinsliberty.wallet.R
@@ -42,6 +43,17 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
 
         }
+
+        changeNavigationBarColor(
+            ContextCompat.getColor(
+                this,
+                R.color.balance_header_color
+            )
+        )
+    }
+
+    fun changeNavigationBarColor(color: Int) {
+        window?.navigationBarColor = color
     }
 
 

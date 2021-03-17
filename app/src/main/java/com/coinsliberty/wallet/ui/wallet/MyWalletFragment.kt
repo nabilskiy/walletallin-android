@@ -79,12 +79,6 @@ class MyWalletFragment : BaseKotlinFragment() {
         rvWallet.adapter = adapter
         viewModel.getCurrency()
         viewModel.walletList()
-        changeNavigationBarColor(
-            ContextCompat.getColor(
-                requireContext(),
-                R.color.balance_header_color
-            )
-        )
     }
 
     private fun subscribeLiveData() {

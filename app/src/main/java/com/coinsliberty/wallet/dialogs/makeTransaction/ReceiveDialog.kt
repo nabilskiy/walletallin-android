@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.utils.extensions.bindDataTo
@@ -93,6 +94,12 @@ class ReceiveDialog : BottomSheetDialogFragment() {
         } catch (e: WriterException) {
             null
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.window?.navigationBarColor =
+            ContextCompat.getColor(requireContext(), R.color.balance_header_color)
     }
 
     companion object {

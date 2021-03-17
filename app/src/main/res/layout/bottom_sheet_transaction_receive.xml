@@ -27,9 +27,6 @@
         android:layout_marginTop="-10dp"
         android:textAppearance="@style/H2"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="Send BTC" />
 
     <FrameLayout

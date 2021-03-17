@@ -303,6 +303,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
+
             <TextView
                 android:id="@+id/tvAllowUnconfirmed"
                 android:layout_width="@dimen/dialog_send_unconfirmed_width"

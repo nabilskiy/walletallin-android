@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import com.coinsliberty.wallet.R
 import com.coinsliberty.wallet.data.response.Currency
@@ -36,6 +37,7 @@ import com.coinsliberty.wallet.utils.extensions.enable
 import com.coinsliberty.wallet.utils.extensions.showKeyboard
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_make_transfer.*
+import kotlinx.android.synthetic.main.bottom_sheet_make_transfer_copy.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.IOException
@@ -116,6 +118,7 @@ class SendDialog : BottomSheetDialogFragment() {
             it.walletColor = arguments?.getInt(keyBundleWalletColor) ?: 0
             it.balance = arguments?.getDouble(keyBundleBalance)
             it.amount = 0.0
+            it.initListeners()
         }
         coefficient = arguments?.getDouble(keyBundleWalletCoefficient, 1.0) ?: 1.0
         currency = viewModel.getCurrency()
@@ -135,6 +138,32 @@ class SendDialog : BottomSheetDialogFragment() {
         }
         binding.ivClose.setOnClickListener { dismiss() }
         binding.etAmount.addTextChangedListener(amountTextWatcher)
+        binding.btnMax.setOnClickListener { sendMax() }
+        binding.btnSend.setOnClickListener { send() }
+    }
+
+    private fun sendMax() {
+        val rate = String.format(
+            "%.8f",
+            (binding.etNetworkFees.text.toString().replace(",", ".", true)
+                .toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0))
+        )
+
+        viewModel.sendMax(walletType.toLowerCase(Locale.ROOT), rate)
+    }
+
+    private fun send() {
+        viewModel.sendBtc(
+            walletType.toLowerCase(Locale.ROOT),
+            amountET.amount.toString(),
+            binding.etAddress.text.toString(),
+            String.format(
+                "%.8f",
+                ((binding.etNetworkFees.text.toString().replace(",", ".")
+                    .toDoubleOrNull())?.div((arguments?.getDouble(keyBundleRates) ?: 0.0)))
+            ),
+            binding.scReplaceable.isChecked
+        )
     }
 
     private fun subscribeLiveData() {
@@ -346,6 +375,12 @@ class SendDialog : BottomSheetDialogFragment() {
             ) //request
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.window?.navigationBarColor =
+            ContextCompat.getColor(requireContext(), R.color.balance_header_color)
     }
 
     override fun onRequestPermissionsResult(

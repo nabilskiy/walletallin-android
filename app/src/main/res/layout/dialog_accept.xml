@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_dialog_green">
+    app:cardCornerRadius="15dp"
+    app:cardBackgroundColor="@color/darkGrey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/dialog_layout_marginStartEndBottom"
-        android:layout_marginTop="@dimen/dialog_layout_marginTop"
-        android:layout_marginEnd="@dimen/dialog_layout_marginStartEndBottom"
-        android:layout_marginBottom="@dimen/dialog_layout_marginStartEndBottom"
-        android:background="@drawable/bg_dialog_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
+            android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
 
         <ImageView
             android:id="@+id/ivSuccess"
@@ -39,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_accept_tv_balance_marginTop"
             android:text="3333 USD"
-            android:textColor="@color/darkGrey"
             android:textAppearance="@style/H1"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivSuccess" />
@@ -65,21 +67,13 @@
             android:layout_marginEnd="8dp"
             android:gravity="center"
             android:textAppearance="@style/H8"
-            android:textColor="@color/darkGrey"
+            android:textColor="@color/whiteLowOpacity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWillBeSent"
             tools:text="3Wa2231sdsadsad3Wa2231sdsadsad3Wa2231sdsadsad3Wa2231sdsadsad3Wa2231sdsadsad" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/ivClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dialog_iv_close_marginTop"
-        android:layout_marginEnd="@dimen/dialog_iv_close_marginEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

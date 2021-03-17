@@ -51,6 +51,12 @@ abstract class BaseKotlinFragment : Fragment() {
         bindDataTo(viewModel.onEndProgress, ::endProgress)
         viewModel.showError.observe(this, ::showError)
         onReceiveParams(arguments)
+        changeNavigationBarColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.balance_header_color
+            )
+        )
     }
 
     private fun showError(s: String?) {
@@ -101,7 +107,6 @@ abstract class BaseKotlinFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        changeNavigationBarColor(ContextCompat.getColor(requireContext(), R.color.white))
     }
 
     private fun logout(b: Boolean?) {

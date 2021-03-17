@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiteGrey">
+    android:background="@color/darkGrey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/exchangeToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_toolbar"
+        android:elevation="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -253,7 +254,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/bg_exchange_wallet_from"
+                android:background="@drawable/bg_dialog_light_dark_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -343,6 +344,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white"
                     android:ems="8"
                     android:inputType="numberDecimal"
                     android:textAppearance="@style/H8"
@@ -363,9 +365,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
-                android:background="@drawable/bg_exchange_wallet_to"
+                android:background="@drawable/bg_dialog_light_dark_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fromCl">
@@ -474,9 +476,9 @@
                 android:id="@+id/btnSwap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintBottom_toBottomOf="@id/fromCl"
+                android:layout_marginTop="-13dp"
                 app:layout_constraintEnd_toEndOf="@+id/fromCl"
+                app:layout_constraintStart_toStartOf="@+id/fromCl"
                 app:layout_constraintTop_toBottomOf="@+id/fromCl"
                 app:srcCompat="@drawable/ic_exchange_arrow" />
 
@@ -607,13 +609,15 @@
         style="@style/ButtonGreyBorder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="@dimen/exchange_button_margin_bottom"
+        android:background="@drawable/btn_blue_login"
         android:gravity="center"
         android:text="@string/exchange"
         android:textAllCaps="false"
-        android:textColor="@color/lightBlue"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.6" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
