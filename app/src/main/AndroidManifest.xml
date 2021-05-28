@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.coinsliberty.wallet">
+    package="com.tallin.wallet">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
@@ -10,17 +10,17 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".CoinsLibertyApp"
+        android:name="com.tallin.wallet.WalletallinApp"
         android:allowBackup="false"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="false"
         tools:replace="android:allowBackup"
         android:theme="@style/AppTheme"
         android:requestLegacyExternalStorage="true">
-        <activity android:name=".ui.demo.DemoActivity"
+        <activity android:name="com.tallin.wallet.ui.demo.DemoActivity"
             android:screenOrientation="portrait">
 <!--             <intent-filter>-->
 <!--             <action android:name="android.intent.action.MAIN" />-->
@@ -28,7 +28,7 @@
 <!--             <category android:name="android.intent.category.LAUNCHER" />-->
 <!--             </intent-filter>-->
         </activity>
-        <activity android:name=".ui.MainActivity"
+        <activity android:name="com.tallin.wallet.ui.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".dialogs.sendDialog.ScanQRcodeActivity"
+        <activity android:name="com.tallin.wallet.dialogs.sendDialog.ScanQRcodeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|adjustPan"/>
     </application>

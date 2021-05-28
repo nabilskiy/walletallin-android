@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/myWalletFragment2"
-        android:name="com.coinsliberty.wallet.ui.wallet.MyWalletFragment"
+        android:name="com.tallin.wallet.ui.wallet.MyWalletFragment"
         android:label="MyWalletFragment"
         tools:layout="@layout/fragment_my_wallet">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
-        android:name="com.coinsliberty.wallet.ui.transaction.TransactionFragment"
+        android:name="com.tallin.wallet.ui.transaction.TransactionFragment"
         android:label="TransactionFragment"
         tools:layout="@layout/fragment_transaction">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.coinsliberty.wallet.ui.settings.SettingsFragment"
+        android:name="com.tallin.wallet.ui.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <activity
         android:id="@+id/profileFragment2"
-        android:name="com.coinsliberty.wallet.ui.profile.ProfileFragment"
+        android:name="com.tallin.wallet.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
 
@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/exchangeFragment"
-        android:name="com.coinsliberty.wallet.ui.exchange.ExchangeFragment"
+        android:name="com.tallin.wallet.ui.exchange.ExchangeFragment"
         android:label="ExchangeFragment"
         tools:layout="@layout/fragment_exchange"/>
 
@@ -66,7 +66,7 @@
         app:destination="@id/exchangeFragment"/>
     <fragment
         android:id="@+id/diagramFragment"
-        android:name="com.coinsliberty.wallet.ui.diagram.DiagramFragment"
+        android:name="com.tallin.wallet.ui.diagram.DiagramFragment"
         android:label="DiagramFragment"
         tools:layout="@layout/fragment_diagram"
         />

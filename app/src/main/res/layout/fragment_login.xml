@@ -87,7 +87,7 @@
         </LinearLayout>
 
 
-        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+        <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/loginEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
             app:ifc_type="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+        <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/loginPasswordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

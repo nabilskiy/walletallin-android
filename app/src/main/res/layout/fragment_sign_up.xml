@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_in" />
 
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcFirstName"
                 app:layout_constraintTop_toBottomOf="@id/ifcFirstName" />
 
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcLastName"
                 app:layout_constraintTop_toBottomOf="@id/ifcLastName" />
 
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcSignUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcEmail"
                 app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
 
-            <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
                 android:id="@+id/ifcSignUpPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

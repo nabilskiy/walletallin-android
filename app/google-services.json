@@ -1,95 +1,77 @@
 {
-
   "project_info": {
-
     "project_number": "150565322781",
-
     "firebase_url": "https://coinsliberty-c9a90.firebaseio.com",
-
     "project_id": "coinsliberty-c9a90",
-
     "storage_bucket": "coinsliberty-c9a90.appspot.com"
-
   },
-
   "client": [
-
     {
-
       "client_info": {
-
         "mobilesdk_app_id": "1:150565322781:android:83d0500dbe1f83023bc6f4",
-
         "android_client_info": {
-
           "package_name": "com.coinsliberty.wallet"
-
         }
-
       },
-
       "oauth_client": [
-
         {
-
           "client_id": "150565322781-b27u5lq21rb2b3e2kj5adkri1c94tc80.apps.googleusercontent.com",
-
           "client_type": 1,
-
           "android_info": {
-
             "package_name": "com.coinsliberty.wallet",
-
             "certificate_hash": "e6467778a32974d4bf69bc65a71850df74190a55"
-
           }
-
         },
-
         {
-
           "client_id": "150565322781-6hb5nq07878l1gv6kdtgth95nt367lhe.apps.googleusercontent.com",
-
           "client_type": 3
-
         }
-
       ],
-
       "api_key": [
-
         {
-
           "current_key": "AIzaSyBsgpoVjtGMTFqke_ByMovbHPqvnC4jhsA"
-
         }
-
       ],
-
       "services": {
-
         "appinvite_service": {
-
           "other_platform_oauth_client": [
-
             {
-
               "client_id": "150565322781-6hb5nq07878l1gv6kdtgth95nt367lhe.apps.googleusercontent.com",
-
               "client_type": 3
-
             }
-
           ]
-
         }
-
       }
-
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150565322781:android:3b607035f41f444d3bc6f4",
+        "android_client_info": {
+          "package_name": "com.tallin.wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150565322781-6hb5nq07878l1gv6kdtgth95nt367lhe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsgpoVjtGMTFqke_ByMovbHPqvnC4jhsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150565322781-6hb5nq07878l1gv6kdtgth95nt367lhe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
-
   ],
-
   "configuration_version": "1"
-
 }

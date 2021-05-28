@@ -111,7 +111,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.coinsliberty.moneybee.ui.widgets.inputField.InputFieldComponent
+        <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
             android:id="@+id/ifc2FA"
             android:layout_width="@dimen/dialog_clLink_width"
             android:layout_height="wrap_content"

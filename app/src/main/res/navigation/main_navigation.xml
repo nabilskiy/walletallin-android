@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.coinsliberty.wallet.ui.splash.SplashFragment"
+        android:name="com.tallin.wallet.ui.splash.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.coinsliberty.wallet.ui.login.LoginFragment"
+        android:name="com.tallin.wallet.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
 
@@ -61,19 +61,19 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.coinsliberty.wallet.ui.profile.ProfileFragment"
+        android:name="com.tallin.wallet.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/myWalletFragment"
-        android:name="com.coinsliberty.wallet.ui.wallet.MyWalletFragment"
+        android:name="com.tallin.wallet.ui.wallet.MyWalletFragment"
         android:label="WalletFragment"
         tools:layout="@layout/fragment_my_wallet" />
 
     <fragment
         android:id="@+id/bottomTabNavigator"
-        android:name="com.coinsliberty.wallet.BottomFragmant"
+        android:name="com.tallin.wallet.BottomFragmant"
         android:label="BottomActivityy"
         tools:layout="@layout/activity_bottom">
 
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/pinFragment"
-        android:name="com.coinsliberty.wallet.ui.pin.PinFragment"
+        android:name="com.tallin.wallet.ui.pin.PinFragment"
         android:label="PinFragment"
         tools:layout="@layout/fragment_pin">
         <action
@@ -116,14 +116,14 @@
         app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/forgotPassFragment"
-        android:name="com.coinsliberty.wallet.dialogs.forgetPassword.ForgotPassFragment"
+        android:name="com.tallin.wallet.dialogs.forgetPassword.ForgotPassFragment"
         android:label="ForgotPassFragment"
         tools:layout="@layout/fragment_forgot_pass" />
 
 
     <fragment
         android:id="@+id/signUpFragmnet"
-        android:name="com.coinsliberty.wallet.ui.signup.SignUpFragment"
+        android:name="com.tallin.wallet.ui.signup.SignUpFragment"
         android:label="SignUpFragmnet"
         tools:layout="@layout/fragment_sign_up" />
 

@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.coinsliberty.wallet"
+        applicationId "com.tallin.wallet"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 2
@@ -17,7 +17,7 @@ android {
         renderscriptSupportModeEnabled true
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        setProperty("archivesBaseName", "CoinsLiberty." + versionCode + "(" + versionName + ")-" + new Date().format("dd.MM.yyyy'-'HHmm"))
+        setProperty("archivesBaseName", "Walletallin." + versionCode + "(" + versionName + ")-" + new Date().format("dd.MM.yyyy'-'HHmm"))
 
     }
 
@@ -30,18 +30,18 @@ android {
             minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
+            buildConfigField "String", "API_URL", "\"http://api-mobile.paytechno.com/\""
             buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
         }
         debug {
-            buildConfigField "String", "API_URL", "\"http://api.test-wallet.coinsliberty.com/\""
+            buildConfigField "String", "API_URL", "\"https://api-mobile.paytechno.com/\""
             buildConfigField "String", "API_RES_URL", "\"http://web.test-wallet.coinsliberty.com/\""
             debuggable true
         }
 
         debugRelease {
             initWith debug
-            buildConfigField "String", "API_URL", "\"https://api-mobile.coinsliberty.com/\""
+            buildConfigField "String", "API_URL", "\"http://api-mobile.paytechno.com/\""
             buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
         }
     }
