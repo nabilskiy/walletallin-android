@@ -18,7 +18,6 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "Walletallin." + versionCode + "(" + versionName + ")-" + new Date().format("dd.MM.yyyy'-'HHmm"))
-
     }
 
     buildFeatures {
@@ -30,19 +29,19 @@ android {
             minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_URL", "\"http://api-mobile.paytechno.com/\""
-            buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
+            buildConfigField "String", "API_URL", "\"http://wallet.walletallin.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet.walletallin.com/\""
         }
         debug {
-            buildConfigField "String", "API_URL", "\"https://api-mobile.paytechno.com/\""
+            buildConfigField "String", "API_URL", "\"https://wallet.walletallin.com/\""
             buildConfigField "String", "API_RES_URL", "\"http://web.test-wallet.coinsliberty.com/\""
             debuggable true
         }
 
         debugRelease {
             initWith debug
-            buildConfigField "String", "API_URL", "\"http://api-mobile.paytechno.com/\""
-            buildConfigField "String", "API_RES_URL", "\"https://wallet.coinsliberty.com/\""
+            buildConfigField "String", "API_URL", "\"http://wallet.walletallin.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet.walletallin.com/\""
         }
     }
 
