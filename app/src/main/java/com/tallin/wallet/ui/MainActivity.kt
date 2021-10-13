@@ -54,11 +54,14 @@ class MainActivity : AppCompatActivity() {
                 Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
 
             isActivePin =
-                if (currentFragment == "LoginFragment"
-                    || currentFragment == "SignUpFragmnet"
-                )
-                    false
-                else showPin
+                when(currentFragment){
+                    "LoginFragment",
+                    "SignUpFragment",
+                    "SignUpBusinessFragment",
+                    "ChooseWalletFragment" -> false
+                    else -> showPin
+
+                }
         } catch (e: Exception) {
 
         }
