@@ -48,6 +48,12 @@
     <!-- Bottom Navigation -->
     <dimen name="bn_height">56dp</dimen>
 
+    <!-- Wallet Types Screen  -->
+
+    <dimen name="wallet_types_s_image">250dp</dimen>
+    <dimen name="wallet_types_s_buttons_height">48dp</dimen>
+    <dimen name="wallet_types_s_btns_margin_start_end">40dp</dimen>
+
     <!-- Login -->
     <dimen name="login_image_view_margin_top">36dp</dimen>
     <dimen name="login_image_view_margin_start">40dp</dimen>

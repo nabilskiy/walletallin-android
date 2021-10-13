@@ -23,7 +23,8 @@ class InputFieldComponent @JvmOverloads constructor(
     private var showIcon: Boolean = true
 
     enum class TypeOfInput {
-        textPassword, phone, textEmailAddress, text
+        textPassword, phone, textEmailAddress, text, textNameBusiness, phoneWithIco, phoneMobileWithIco,
+        textWebSite, textLocation, numPostCode, textDescription
     }
 
     init {
@@ -113,6 +114,62 @@ class InputFieldComponent @JvmOverloads constructor(
                 if (showIcon)
                     etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_user_copy,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.textNameBusiness.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_business,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.phoneWithIco.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_phone,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.phoneMobileWithIco.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_phone_mobile,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.textWebSite.name -> {
+                etField.inputType = InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_website,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.textLocation.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_location,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.numPostCode.name -> {
+                etField.inputType = InputType.TYPE_CLASS_NUMBER
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_post_code,
+                        0, 0, 0
+                    )
+            }
+            TypeOfInput.textDescription.name -> {
+                etField.inputType = InputType.TYPE_CLASS_TEXT
+                if (showIcon)
+                    etField.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_description,
                         0, 0, 0
                     )
             }

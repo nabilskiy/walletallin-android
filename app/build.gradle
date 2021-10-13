@@ -26,7 +26,7 @@ android {
     }
 
     buildTypes {
-        release {
+       /* release {
             minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -36,6 +36,18 @@ android {
         debug {
             buildConfigField "String", "API_URL", "\"https://api-mobile.paytechno.com/\""
             buildConfigField "String", "API_RES_URL", "\"http://web.test-wallet.coinsliberty.com/\""
+            debuggable true
+        }*/
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", "\"http://wallet.walletallin.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet.walletallin.com/\""
+        }
+        debug {
+            buildConfigField "String", "API_URL", "\"https://wallet-stage.walletallin.com/\""
+            buildConfigField "String", "API_RES_URL", "\"https://wallet-stage.walletallin.com/\""
             debuggable true
         }
 
