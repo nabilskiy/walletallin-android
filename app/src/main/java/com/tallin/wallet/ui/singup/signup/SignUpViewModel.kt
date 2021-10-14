@@ -23,7 +23,7 @@ class SignUpViewModel(
     var signUpJob: Job? = null
 
     fun signUp(
-        wallet_type_id: String,
+        walletTypeId: String,
         email: String,
         password: String,
         firstName: String,
@@ -32,11 +32,11 @@ class SignUpViewModel(
         signUpJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.signUp(SignUpRequest(
-                wallet_type_id,
-                email,
-                password,
-                firstName,
-                lastName
+                wallet_type_id = walletTypeId,
+                email = email,
+                password = password,
+                first_name = firstName,
+                last_name = lastName
             )))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }

@@ -23,34 +23,38 @@ class SignUpBusinessViewModel(
     var signUpJob: Job? = null
 
     fun signUp(
-        wallet_type_id: String,
+        walletTypeId: String,
         name: String,
-        company_number: String,
+        companyNumber: String,
         phone: String,
         website: String,
-        first_name_director: String,
-        last_name_director: String,
+        firstNameDirector: String,
+        lastNameDirector: String,
         city: String,
         street: String,
-        postal_code: String,
+        postalCode: String,
         country: String,
-        description: String
+        description: String,
+        email: String,
+        password: String
     ) {
         signUpJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.signUp(SignUpRequest(
-                wallet_type_id,
-                name,
-                company_number,
-                phone,
-                website,
-                first_name_director,
-                last_name_director,
-                city,
-                street,
-                postal_code,
-                country,
-                description
+                wallet_type_id = walletTypeId,
+                name = name,
+                company_number = companyNumber,
+                phone = phone,
+                website = website,
+                first_name_director = firstNameDirector,
+                last_name_director = lastNameDirector,
+                city = city,
+                street = street,
+                postal_code = postalCode,
+                country = country,
+                description = description,
+                email = email,
+                password = password
             )))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }

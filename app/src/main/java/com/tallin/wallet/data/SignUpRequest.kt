@@ -12,6 +12,8 @@ data class SignUpRequest(
     val first_name: String? = null,
     @SerializedName("last_name")
     val last_name: String? = null,
+
+    //both
     @SerializedName("email")
     val email: String? = null,
     @SerializedName("password")

@@ -44,7 +44,9 @@ class SingUpBusinessFragment : BaseKotlinFragment() {
                     ifcStreet.getMyText(),
                     ifcPostCode.getMyText(),
                     ifcCountry.getMyText(),
-                    ifcDescription.getMyText()
+                    ifcDescription.getMyText(),
+                    ifcEmail.getMyText(),
+                    ifcSignUpPassword.getMyText()
                 )
             else
                 viewModel.showError(getString(R.string.wrong_pass))
