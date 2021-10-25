@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.tallin.wallet.BottomFragmant
+import com.tallin.wallet.BottomFragment
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.databinding.FragmentSettingsBinding
@@ -90,7 +90,7 @@ class SettingsFragment() : BaseKotlinFragment() {
         binding.settingsToolbar.ivAddPhoto.visibility = View.GONE
 
         binding.btnProfile.setOnClickListener {
-            ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)?.goToProfile()
+            ((parentFragment as NavHostFragment).parentFragment as? BottomFragment)?.goToProfile()
         }
         binding.btnSecurity.setOnClickListener {
             ResetPassDialog.newInstance()
@@ -106,6 +106,8 @@ class SettingsFragment() : BaseKotlinFragment() {
         }
         viewModel.loadProfile()
         binding.settingsToolbar.ivBack.setOnClickListener { activity?.onBackPressed() }
+
+        binding.btnKYC.setOnClickListener { navigator.goToKyc(navController) }
     }
 
 }

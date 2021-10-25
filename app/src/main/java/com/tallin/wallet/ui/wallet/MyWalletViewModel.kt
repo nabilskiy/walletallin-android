@@ -154,5 +154,10 @@ class MyWalletViewModel(
             }
         }
 
-
+    fun getKycStatus() : Boolean {
+        return if (sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus == 0 && !sharedPreferencesProvider.getKycStatus()){
+            sharedPreferencesProvider.saveKycStatus(true)
+            false
+        }else true
+    }
 }

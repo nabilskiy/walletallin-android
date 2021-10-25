@@ -29,7 +29,7 @@ val repositoryModule = module {
     factory { KYCProcessRepository() }
     factory { ForgotPassRepository(get()) }
     factory { WalletRepository(get()) }
-    factory { LoginRepository(get()) }
+    factory { LoginRepository(get(), get()) }
     factory { ResetPassRepository(get()) }
     factory { ProfileRepository(get()) }
     factory { SettingsRepository(get()) }

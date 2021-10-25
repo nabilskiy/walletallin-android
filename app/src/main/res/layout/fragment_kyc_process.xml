@@ -5,90 +5,103 @@
     android:layout_height="match_parent"
     android:background="@color/darkGrey">
 
-    <ImageView
-        android:id="@+id/ivBack"
+    <com.tallin.wallet.ui.widgets.webView.MyWebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/tvBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginEnd="@dimen/dialog_forgot_iv_lock_marginStart"
         android:layout_marginTop="44dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/selector_arrow_back" />
-
-    <ImageView
-        android:id="@+id/ivShield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_shield"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.28"/>
+        app:drawableEndCompat="@drawable/ic_close"
+        app:drawableTint="@color/white"/>
 
-    <LinearLayout
-        android:id="@+id/wtLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivShield">
-
-        <TextView
+        android:id="@+id/parent">
+        <ImageView
+            android:id="@+id/ivShield"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/kyc_title"
-            android:textAppearance="@style/H1"
-            android:textColor="@color/white"
-            android:textSize="36sp"
-            android:layout_marginTop="30dp"/>
+            android:src="@drawable/ic_shield"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.20"/>
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/wtLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivShield">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/kyc_title"
+                android:textAppearance="@style/H1"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
+                style="@style/H4"
+                android:textSize="@dimen/h1_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kyc_text"
+                android:textColor="#82989F"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_types_s_buttons_height"
             android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
-            style="@style/H4"
-            android:textSize="@dimen/h1_text_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kyc_text"
-            android:textColor="#82989F"
-            android:gravity="center"/>
+            android:background="@drawable/btn_blue_login"
+            android:gravity="center"
+            android:text="@string/kyc_continue"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wtLogo" />
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnPrivateAccount"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/wallet_types_s_buttons_height"
-        android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
-        android:background="@drawable/btn_blue_login"
-        android:gravity="center"
-        android:text="@string/private_account"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wtLogo" />
-
-    <Button
-        android:id="@+id/btnBusinessAccount"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/wallet_types_s_buttons_height"
-        android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
-        android:background="@drawable/btn_grey_border"
-        android:gravity="center"
-        android:text="@string/business_account"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPrivateAccount" />
-
+        <Button
+            android:id="@+id/btnLater"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_types_s_buttons_height"
+            android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
+            android:background="@drawable/btn_grey_border"
+            android:gravity="center"
+            android:text="@string/kyc_later"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnContinue" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

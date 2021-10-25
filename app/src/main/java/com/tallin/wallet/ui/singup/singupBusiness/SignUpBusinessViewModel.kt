@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
 import com.tallin.wallet.data.SignUpRequest
 import com.tallin.wallet.data.response.SignUpResponse
+import com.tallin.wallet.data.response.WalletTypesData
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository
 import kotlinx.coroutines.Dispatchers
@@ -41,7 +42,10 @@ class SignUpBusinessViewModel(
         signUpJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             handleResponse(repository.signUp(SignUpRequest(
-                wallet_type_id = walletTypeId,
+                wallet_type_id =
+               /* if (anyData.value is ArrayList<*> && (anyData.value as ArrayList<*>)[1] is WalletTypesData) //todo
+                    ((anyData.value as ArrayList<*>)[1] as WalletTypesData).type_id.toString()
+                else*/ walletTypeId,
                 name = name,
                 company_number = companyNumber,
                 phone = phone,
@@ -54,7 +58,10 @@ class SignUpBusinessViewModel(
                 country = country,
                 description = description,
                 email = email,
-                password = password
+                company_email = email,
+                password = password,
+                first_name = firstNameDirector,
+                last_name = lastNameDirector
             )))
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }

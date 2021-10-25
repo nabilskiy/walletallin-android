@@ -94,6 +94,7 @@
             android:layout_marginStart="@dimen/login_cc_margin_end_start"
             android:layout_marginTop="@dimen/login_cc_mail_margin_top"
             android:layout_marginEnd="@dimen/login_cc_margin_end_start"
+            app:ifc_use_mask="false"
             app:ifc_header="Email"
             app:ifc_type="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo" />

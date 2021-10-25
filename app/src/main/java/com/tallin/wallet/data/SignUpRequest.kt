@@ -6,20 +6,18 @@ data class SignUpRequest(
 
     @SerializedName("wallet_type_id")
     val wallet_type_id: String? = null,
-
-    // Private
     @SerializedName("first_name")
     val first_name: String? = null,
     @SerializedName("last_name")
     val last_name: String? = null,
-
-    //both
     @SerializedName("email")
     val email: String? = null,
     @SerializedName("password")
     val password: String? = null,
 
     // Business
+    @SerializedName("company_email")
+    val company_email: String? = null,
     @SerializedName("name")
     val name: String? = null,
     @SerializedName("company_number")

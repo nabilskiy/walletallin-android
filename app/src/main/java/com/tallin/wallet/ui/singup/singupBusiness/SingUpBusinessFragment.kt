@@ -103,7 +103,7 @@ class SingUpBusinessFragment : BaseKotlinFragment() {
     }
     private fun showResult(b: Boolean?) {
         if (b == true) {
-            activity?.onBackPressed()
+            navigator.goToLoginFragment(navController)
         }
     }
 }

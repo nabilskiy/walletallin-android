@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_bottom.*
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class BottomFragmant : BaseKotlinFragment() {
+class BottomFragment : BaseKotlinFragment() {
     override val layoutRes: Int = R.layout.activity_bottom
     override val viewModel: StubViewModel by viewModel()
     override val navigator: StubNavigator = get()

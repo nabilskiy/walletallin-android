@@ -198,6 +198,7 @@
 
     <dimen name="dialog_error_tv_error_text_marginBottom">48dp</dimen>
     <dimen name="dialog_error_tv_error_marginTop">12dp</dimen>
+    <dimen name="dialog_error_tv_error_marginStartEnd">40dp</dimen>
 
     <dimen name="dialog_accept_tv_balance_marginTop">80dp</dimen>
     <dimen name="dialog_accept_tv_will_marginTop">10dp</dimen>

@@ -38,6 +38,7 @@ class LoginFragment : BaseKotlinFragment() {
         //loginToolbar.ivAddPhoto.visibility = View.INVISIBLE
 
         tvLoginSignUpButton.setOnClickListener { navigator.goToSignUp(navController) }
+        tvForgotPassword.setOnClickListener { navigator.goToForgot(navController) }
 
         btnLoginUpdate.setOnClickListener {
             viewModel.login(loginEmailInput.getMyText(), loginPasswordInput.getMyText())
@@ -56,14 +57,20 @@ class LoginFragment : BaseKotlinFragment() {
     }
 
     private fun subscribeLiveData() {
-        bindDataTo(viewModel.result, ::showResult)
+        bindDataTo(viewModel.resultLogin, ::showResultLogin)
+        bindDataTo(viewModel.resultGetProfile, ::showResultGetProfile)
     }
 
-    private fun showResult(b: Boolean?) {
+    private fun showResultLogin(b: Boolean?) {
+        if (b == true) {
+            viewModel.getProfile()
+        }
+    }
+
+    private fun showResultGetProfile(b: Boolean?) {
         if (b == true) {
             navigate()
         }
     }
-
 }
 

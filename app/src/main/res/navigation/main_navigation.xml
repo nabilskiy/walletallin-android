@@ -13,7 +13,7 @@
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_signUpFragmnet"
-            app:destination="@id/ChooseWalletFragment"
+            app:destination="@id/chooseWalletFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
@@ -43,7 +43,7 @@
 
         <action
             android:id="@+id/action_loginFragment_to_signUpFragmnet"
-            app:destination="@id/ChooseWalletFragment" />
+            app:destination="@id/chooseWalletFragment" />
         <action
             android:id="@+id/action_loginFragment_to_forgot_pass_fragment"
             app:destination="@+id/forgotPassFragment" />
@@ -57,9 +57,6 @@
         <action
             android:id="@+id/action_loginFragment_to_pinFragment"
             app:destination="@id/pinFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_ProcessKYC"
-            app:destination="@id/ProcessKYC" />
     </fragment>
 
     <fragment
@@ -76,7 +73,7 @@
 
     <fragment
         android:id="@+id/bottomTabNavigator"
-        android:name="com.tallin.wallet.BottomFragmant"
+        android:name="com.tallin.wallet.BottomFragment"
         android:label="BottomActivityy"
         tools:layout="@layout/activity_bottom">
 
@@ -130,13 +127,16 @@
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action android:id="@+id/action_signUpFragment_to_loginFragment"
-                app:destination="@id/loginFragment"/>
+                app:destination="@id/loginFragment"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/chooseWalletFragment"
+                app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
-        android:id="@+id/ChooseWalletFragment"
+        android:id="@+id/chooseWalletFragment"
         android:name="com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletFragment"
-        android:label="ChooseWalletFragment"
+        android:label="chooseWalletFragment"
         tools:layout="@layout/fragment_choose_wallet">
         <action
             android:id="@+id/action_chooseFragment_to_signUpBusinessFragmnet"
@@ -152,14 +152,10 @@
         android:label="SignUpBusinessFragment"
         tools:layout="@layout/fragment_sing_up_business">
         <action android:id="@+id/action_signUpBusinessFragment_to_loginFragment"
-            app:destination="@id/loginFragment"/>
-    </fragment>
-
-    <fragment
-        android:id="@+id/ProcessKYC"
-        android:name="com.tallin.wallet.ui.processKYC.KYCProcessFragment"
-        android:label="ProcessKYC"
-        tools:layout="@layout/fragment_kyc_process">
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/chooseWalletFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

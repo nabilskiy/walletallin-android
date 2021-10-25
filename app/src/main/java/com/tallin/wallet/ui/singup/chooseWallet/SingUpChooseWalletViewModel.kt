@@ -38,8 +38,8 @@ class SingUpChooseWalletViewModel(
 
     private fun handleResponse(walletTypes: WalletTypesResponse) {
         if(walletTypes.result == true) {
-
             result.postValue(walletTypes)
+           // anyData.postValue(walletTypes.data)
             return
         }
 

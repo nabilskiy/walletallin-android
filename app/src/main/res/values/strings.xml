@@ -47,6 +47,8 @@
     <string name="kyc_text">In order to buy / sell crypto
                             you must complete KYC process
                             Would you like to do it now?</string>
+    <string name="kyc_continue">Continue</string>
+    <string name="kyc_later">Later</string>
 
     <!-- Wallet content   -->
     <string name="bitcoin_wallet">Bitcoin Wallet</string>
