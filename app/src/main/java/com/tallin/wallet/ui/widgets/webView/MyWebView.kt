@@ -9,6 +9,8 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.AttributeSet
 import android.webkit.*
+import androidx.navigation.Navigation
+import com.tallin.wallet.R
 import com.tallin.wallet.ui.MainActivity
 import com.tallin.wallet.ui.profile.ProfileFragment
 import java.io.File
@@ -118,11 +120,7 @@ class MyWebView : WebView {
             chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent)
             chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser")
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray)
-
             activity?.safr(chooserIntent, INPUT_FILE_REQUEST_CODE)
-
-            ProfileFragment().openGallery(1000)
-
             return true
         }
 

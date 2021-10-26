@@ -18,7 +18,7 @@ class KYCProcessViewModel(
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
-    val result = MutableLiveData<String>()
+    val result = MutableLiveData<Array<String>>()
 
     private var kycJob: Job? = null
 
@@ -31,8 +31,8 @@ class KYCProcessViewModel(
                 val partMap1 = hashMapOf<String, Any>()
                 val partMap2 = hashMapOf<String, Any>()
                 val partMap3 = hashMapOf<String, Any>()
-                partMap3["onComplete"] = "https://wallet-stage.walletallin.com?externalId=${sharedPreferencesProvider.getUser()?.idp}"
-                partMap3["onError"] = "https://wallet-stage.walletallin.com?error_code={errorCode}"
+                partMap3["onComplete"] = "https://wallet-stage.walletallin.com/getid/complete?externalId="+sharedPreferencesProvider.getUser()!!.idp
+                partMap3["onError"] = "https://wallet-stage.walletallin.com/getid/error?error_code={errorCode}"
                 partMap2["First name"] = sharedPreferencesProvider.getUser()!!.firstName!!
                 partMap2["Last name"] = sharedPreferencesProvider.getUser()!!.lastName!!
                 partMap1["profile"] = partMap2
@@ -51,7 +51,8 @@ class KYCProcessViewModel(
 
     private fun handleResponse(link: KycResponse) {
         if(link.url != null) {
-            result.postValue(link.url)
+            val arr: Array<String> = arrayOf(link.url, sharedPreferencesProvider.getUser()!!.idp!!)
+            result.postValue(arr)
             return
         }
 

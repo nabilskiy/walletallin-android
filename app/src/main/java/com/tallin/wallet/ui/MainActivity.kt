@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private var isActivePin: Boolean? = null
     var showPin: Boolean = true
+
+    var skipPin: Boolean = false
     //var currentFragment: Fragment = getActivity().getFragmentManager().findFragmentById(R.id.navHostFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,14 +57,14 @@ class MainActivity : AppCompatActivity() {
 
             val currentFragment =
                 Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.label
-
             isActivePin =
                 when(currentFragment){
                     "LoginFragment",
                     "SignUpFragment",
                     "SignUpBusinessFragment",
-                    "ChooseWalletFragment",
-                    "KYCProcessFragment"-> false //todo
+                    "ChooseWalletFragment"-> false
+
+                    "BottomActivityy" -> if (skipPin){ skipPin = false; false }else showPin
                     else -> showPin
 
                 }
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (requestCode != MyWebView.INPUT_FILE_REQUEST_CODE || MyWebView.mFilePathCallback == null) {
                 super.onActivityResult(requestCode, resultCode, data)
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity() {
 
     fun safr(intent: Intent,
              requestCode: Int){
+        skipPin = true
         startActivityForResult(intent, requestCode)
-    }*/
+    }
 }
