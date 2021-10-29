@@ -48,4 +48,13 @@
     <color name="exchange_gray_color">#929292</color>
 
     <color name="balance_header_color">#061F27</color>
+
+    <!-- KYC statuses -->
+    <color name="not_start_verify">#808080</color>
+    <color name="approved">#008000</color>
+    <color name="start_verify">#FFFF00</color>
+    <color name="error_verify">@color/red</color>
+    <color name="needs_review">#FFA500</color>
+    <color name="declined">@color/red</color>
+    <color name="unknown">#808080</color>
 </resources>

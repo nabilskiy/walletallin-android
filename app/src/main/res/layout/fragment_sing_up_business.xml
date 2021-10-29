@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/selector_arrow_back" />
+
+    <TextView
+        android:id="@+id/tvScreenTitle"
+        style="@style/H1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/sign_up_with_upper"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_in">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                android:id="@+id/ifcCompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:ifc_header="@string/company_name"
+                app:ifc_type="textNameBusiness"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_in" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/sign_up_last_name_margin_top"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="bottom"
+                app:layout_constraintEnd_toEndOf="@+id/ifcCompanyName"
+                app:layout_constraintStart_toStartOf="@+id/ifcCompanyName"
+                app:layout_constraintTop_toBottomOf="@id/ifcCompanyName">
+
+                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    android:id="@+id/ifcNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="8dp"
+                    app:ifc_header="@string/company_number"
+                    app:ifc_type="phoneWithIco" />
+
+                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    android:id="@+id/ifcNumPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="0dp"
+                    app:ifc_header="@string/company_phone_number"
+                    app:ifc_type="phoneMobileWithIco"
+                    app:layout_constraintEnd_toEndOf="@+id/ifcFirstName"
+                    app:layout_constraintStart_toStartOf="@+id/ifcFirstName"
+                    app:layout_constraintTop_toBottomOf="@id/ifcFirstName" />
+
+            </LinearLayout>
+
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                android:id="@+id/ifcEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                android:layout_marginEnd="24dp"
+                app:ifc_header="@string/company_email"
+                app:ifc_type="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/ifcNum"
+                app:layout_constraintStart_toStartOf="@+id/ifcNum"
+                app:layout_constraintTop_toBottomOf="@id/ifcNum" />
+
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                android:id="@+id/ifcWebsite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                android:layout_marginEnd="24dp"
+                app:ifc_header="@string/company_website"
+                app:ifc_type="textWebSite"
+                app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:layout_marginTop="@dimen/sign_up_password_margin_top"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp">
+
+                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    android:id="@+id/ifcSignUpPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="8dp"
+                    app:ifc_header="@string/password"
+                    app:ifc_type="textPassword"
+                    app:layout_constraintEnd_toEndOf="@+id/ifcWebsite"
+                    app:layout_constraintStart_toStartOf="@+id/ifcWebsite"
+                    app:layout_constraintTop_toBottomOf="@id/ifcWebsite" />
+
+                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    android:id="@+id/ifcSignUpPasswordConfirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="0dp"
+                    app:ifc_header="@string/password_confirm"
+                    app:ifc_type="textPassword"
+                    app:layout_constraintEnd_toEndOf="@+id/ifcWebsite"
+                    app:layout_constraintStart_toStartOf="@+id/ifcWebsite"
+                    app:layout_constraintTop_toBottomOf="@id/ifcWebsite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnAddressInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="@dimen/sign_up_password_margin_top"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="@+id/ifcSignUpPassword"
+                app:layout_constraintStart_toStartOf="@+id/ifcSignUpPassword"
+                app:layout_constraintTop_toBottomOf="@id/ifcSignUpPassword">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_info"
+                    android:textColor="#54B0CD" />
+
+                <TextView
+                    android:id="@+id/triangle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="-90"
+                    app:drawableEndCompat="@drawable/ic_triangle"
+                    app:drawableTint="#54B0CD" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llAddressInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="bottom">
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcFirstName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:ifc_header="@string/company_director_first_name"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="0dp"
+                        app:ifc_header="@string/company_director_last_name"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="bottom">
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcCity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:ifc_header="@string/company_city"
+                        app:ifc_type="textLocation"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcStreet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="0dp"
+                        app:ifc_header="@string/company_street"
+                        app:ifc_type="textLocation"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="bottom">
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcPostCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:ifc_header="@string/company_post_code"
+                        app:ifc_type="numPostCode"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                        android:id="@+id/ifcCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="0dp"
+                        app:ifc_header="@string/company_country"
+                        app:ifc_type="textLocation"
+                        app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                        app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                        app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                android:id="@+id/ifcDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="@dimen/sign_up_email_margin_top"
+                android:layout_marginEnd="24dp"
+                app:ifc_header="@string/company_description"
+                app:ifc_type="textDescription"
+                app:layout_constraintEnd_toEndOf="@+id/ifcEmail"
+                app:layout_constraintStart_toStartOf="@+id/ifcEmail"
+                app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        style="@style/ButtonGreyBorder"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sign_up_button_height"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/btn_blue_login"
+        android:gravity="center"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sign_in"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="45dp"
+        android:gravity="center"
+        android:textAppearance="@style/H8"
+        android:textColor="#495F66"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScreenTitle"
+        tools:text="Enter all field for sign up to Business account, or Already have account?" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

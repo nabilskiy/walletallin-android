@@ -13,6 +13,8 @@ import retrofit2.Retrofit
 
 val retrofitModule = module(override = true) {
 
+
+
     single { ChuckInterceptor(get()) }
 
     single { ParamsInterceptor(get()) }
@@ -27,5 +29,6 @@ val retrofitModule = module(override = true) {
     single { get<Retrofit>().create(FileUploadService::class.java) }
     single { get<Retrofit>().create(BtcApi::class.java) }
     single { get<Retrofit>().create(ExchangeApi::class.java) }
+ //   single { get<Retrofit>().create(KycApi::class.java) }
 
 }

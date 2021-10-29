@@ -11,9 +11,12 @@ import com.tallin.wallet.dialogs.touchIdDialog.TouchIdRepository
 import com.tallin.wallet.ui.exchange.ExchangeRepository
 import com.tallin.wallet.ui.login.LoginRepository
 import com.tallin.wallet.ui.pin.PinRepository
+import com.tallin.wallet.ui.processKYC.KYCProcessRepository
 import com.tallin.wallet.ui.profile.ProfileRepository
 import com.tallin.wallet.ui.settings.SettingsRepository
-import com.tallin.wallet.ui.signup.SignUpRepository
+import com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletRepository
+import com.tallin.wallet.ui.singup.signup.SignUpRepository
+import com.tallin.wallet.ui.singup.singupBusiness.SingUpBusinessRepository
 import com.tallin.wallet.ui.wallet.WalletRepository
 import com.tallin.wallet.utils.manager.BiometricManager
 import org.koin.dsl.module
@@ -21,9 +24,12 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     factory { SignUpRepository(get()) }
+    factory { SingUpChooseWalletRepository(get()) }
+    factory { SingUpBusinessRepository(get()) }
+    factory { KYCProcessRepository() }
     factory { ForgotPassRepository(get()) }
     factory { WalletRepository(get()) }
-    factory { LoginRepository(get()) }
+    factory { LoginRepository(get(), get()) }
     factory { ResetPassRepository(get()) }
     factory { ProfileRepository(get()) }
     factory { SettingsRepository(get()) }

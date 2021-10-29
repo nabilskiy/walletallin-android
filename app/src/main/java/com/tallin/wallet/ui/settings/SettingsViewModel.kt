@@ -73,4 +73,7 @@ class SettingsViewModel(
         return glideUrl
     }
 
+    fun getUserStatus(): Int{
+        return sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus ?: 9
+    }
 }

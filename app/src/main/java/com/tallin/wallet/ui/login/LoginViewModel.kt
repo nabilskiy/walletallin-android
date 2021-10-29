@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
 import com.tallin.wallet.data.LoginRequest
+import com.tallin.wallet.data.response.KycProgramStatus
+import com.tallin.wallet.data.response.ProfileResponse
 import com.tallin.wallet.data.response.SignUpResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.utils.crypto.encryptData
@@ -18,12 +20,15 @@ class LoginViewModel(
     private val repository: LoginRepository
 ): BaseViewModel(app, sharedPreferencesProvider, repository) {
 
-    val result = MutableLiveData<Boolean>()
+    val resultLogin = MutableLiveData<Boolean>()
+    val resultGetProfile = MutableLiveData<Boolean>()
 
     private var loginJob: Job? = null
+    private var getProfileJob: Job? = null
 
     override fun stopRequest() {
         loginJob?.cancel()
+        getProfileJob?.cancel()
     }
 
     fun login(email: String, password: String) {
@@ -35,22 +40,49 @@ class LoginViewModel(
 
             sharedPreferencesProvider.saveLogin(email)
             sharedPreferencesProvider.savePassword(password)
-            handleResponse(login)
+            handleResponseLogin(login)
 
         }
     }
-    private fun handleResponse(signUp: SignUpResponse) {
+
+    fun getProfile() {
+        getProfileJob = launch(::handleError) {
+            withContext(Dispatchers.Main){onStartProgress.value = Unit}
+            val getProfile = repository.getProfile()
+            withContext(Dispatchers.Main){onEndProgress.value = Unit}
+            Log.e("!!!", getProfile.toString())
+            handleResponseGetProfile(getProfile)
+
+        }
+    }
+
+    private fun handleResponseLogin(signUp: SignUpResponse) {
         if(signUp.result == true) {
             sharedPreferencesProvider.setToken(signUp.token ?: "")
-            result.postValue(true)
+            resultLogin.postValue(true)
             return
         }
 
         showError.postValue(signUp.error?.message ?: "Error")
     }
 
+    private fun handleResponseGetProfile(profile: ProfileResponse) {
+        if(profile.result == true) {
+            resultGetProfile.postValue(true)
+            sharedPreferencesProvider.setUser(profile.user)
+            sharedPreferencesProvider.saveKycStatus(false)
+            /*if (profile.user?.wallet?.kyc_program_status != null)
+                if (profile.user.wallet.kyc_program_status == 0) {
+                    sharedPreferencesProvider.saveKycStatus(3)
+                } else sharedPreferencesProvider.saveKycStatus(profile.user.wallet.kyc_program_status)*/
+            return
+        }
+
+        showError.postValue(profile.error?.message ?: "Error")
+    }
+
     private fun handleError(t: Throwable) {
-        result.postValue(false)
+        resultLogin.postValue(false)
     }
 
 

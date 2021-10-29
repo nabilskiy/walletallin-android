@@ -52,6 +52,26 @@
                 android:background="#1AD8D8D8" />
 
             <TextView
+                android:id="@+id/btnKYC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:drawablePadding="16dp"
+                android:paddingVertical="20dp"
+                android:text="@string/KYC"
+                android:textAppearance="@style/H10"
+                android:textColor="@color/white"
+                android:textSize="@dimen/h3_text_size"
+                android:maxLines="1"
+                app:drawableEndCompat="@drawable/ic_settings_end_arrow"
+                app:drawableStartCompat="@drawable/ic_settings_profile" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1AD8D8D8" />
+
+            <TextView
                 android:id="@+id/btnSecurity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

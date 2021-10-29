@@ -17,4 +17,8 @@ class LoginNavigation : BaseNavigator() {
 
         }
     }
+
+    fun goToForgot(navController: NavController?){
+        navController?.navigate(R.id.action_loginFragment_to_forgot_pass_fragment)
+    }
 }
