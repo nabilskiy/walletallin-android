@@ -57,14 +57,14 @@ class KYCProcessFragment : BaseKotlinFragment() {
             }
         }
 
-        webView.setWebViewClient(object : WebViewClient() {
+        webView.webViewClient = object : WebViewClient() {
             override fun onLoadResource(view: WebView?, url: String?) {
                 if (url == "https://wallet-stage.walletallin.com/getid/complete?externalId=$externalId" ||
                     url == "https://wallet-stage.walletallin.com/getid/error?error_code={errorCode}&externalId={externalId}") {
                     activity?.onBackPressed()
                 }
             }
-        })
+        }
     }
 
     private fun subscribeLiveData() {

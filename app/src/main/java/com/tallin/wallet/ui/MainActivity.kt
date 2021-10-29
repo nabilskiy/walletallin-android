@@ -1,6 +1,5 @@
 package com.tallin.wallet.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -126,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         return
     }
 
-    fun safr(intent: Intent,
+    fun safrForWV(intent: Intent,
              requestCode: Int){
         skipPin = true
         startActivityForResult(intent, requestCode)

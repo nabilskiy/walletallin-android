@@ -120,7 +120,7 @@ class MyWebView : WebView {
             chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent)
             chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser")
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray)
-            activity?.safr(chooserIntent, INPUT_FILE_REQUEST_CODE)
+            activity?.safrForWV(chooserIntent, INPUT_FILE_REQUEST_CODE)
             return true
         }
 

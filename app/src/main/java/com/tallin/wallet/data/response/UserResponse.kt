@@ -28,6 +28,14 @@ data class UserResponse(
     val api: Boolean? = null,
     @SerializedName("avatar")
     val avatar: Long? = null,
+  /*  @SerializedName("flowid_getid")
+    val flowidGetid: String? = null,
+    @SerializedName("flowName")
+    val flowName: String? = null,
+    @SerializedName("getIdUrl")
+    val getIdUrl:String? = null,
+    @SerializedName("apiKeyGetId")
+    val apiKeyGetId: String? = null,*/
 
 
     @SerializedName("wallet")
@@ -56,6 +64,14 @@ data class UserResponseWallet(
 
 @Parcelize
 data class UserResponseKycProgram(
+    @SerializedName("flowid_getid")
+    val flowidGetid: String? = null,
+    @SerializedName("flowName")
+    val flowName: String? = null,
+    @SerializedName("getIdUrl")
+    val getIdUrl:String? = null,
+    @SerializedName("apiKeyGetId")
+    val apiKeyGetId: String? = null,
     @SerializedName("name")
     val name: String? = null,
     @SerializedName("description")

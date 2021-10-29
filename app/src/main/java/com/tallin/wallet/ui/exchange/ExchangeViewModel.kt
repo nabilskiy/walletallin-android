@@ -302,7 +302,7 @@ class ExchangeViewModel(
         }
 
     fun getKycStatus() : Boolean {
-        return if (sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus == 0 && !sharedPreferencesProvider.getKycStatus()){
+        return if (sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus != 1 && !sharedPreferencesProvider.getKycStatus()){
             sharedPreferencesProvider.saveKycStatus(true)
             false
         }else true

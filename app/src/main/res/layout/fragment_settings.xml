@@ -55,13 +55,14 @@
                 android:id="@+id/btnKYC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="16dp"
-                android:textSize="@dimen/h3_text_size"
-                android:paddingVertical="20dp"
                 android:layout_marginHorizontal="8dp"
-                android:text="KYC"
+                android:drawablePadding="16dp"
+                android:paddingVertical="20dp"
+                android:text="@string/KYC"
                 android:textAppearance="@style/H10"
                 android:textColor="@color/white"
+                android:textSize="@dimen/h3_text_size"
+                android:maxLines="1"
                 app:drawableEndCompat="@drawable/ic_settings_end_arrow"
                 app:drawableStartCompat="@drawable/ic_settings_profile" />
 

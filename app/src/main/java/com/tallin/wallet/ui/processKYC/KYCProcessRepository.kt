@@ -1,16 +1,17 @@
 package com.tallin.wallet.ui.processKYC
 
-import com.tallin.wallet.BuildConfig
 import com.tallin.wallet.api.KycApi
+import com.tallin.wallet.data.response.KycResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class KYCProcessRepository(/*private val api: KycApi*/) {
-    private val apiKYC = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_KYC_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(KycApi::class.java)
-
-    suspend fun getKycLink(externalId: String, partMap: HashMap<String, Any>) = apiKYC.tokenized(externalId, partMap)
+class KYCProcessRepository() {
+    suspend fun getKycLink(url: String, externalId: String, partMap: HashMap<String, Any>, flowName: String, key: String): KycResponse {
+        val apiKYC = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(KycApi::class.java)
+        return apiKYC.tokenized(externalId, partMap, flowName, key)
+    }
 }
