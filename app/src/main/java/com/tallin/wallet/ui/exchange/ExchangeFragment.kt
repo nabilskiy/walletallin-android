@@ -6,6 +6,7 @@ import android.view.View
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.BalanceInfoContent
+import com.tallin.wallet.data.response.KycProgramStatus
 import com.tallin.wallet.data.response.SwapInfoData
 import com.tallin.wallet.data.response.SwapLimitsData
 import com.tallin.wallet.dialogs.ConfirmExchangeDialog
@@ -45,6 +46,21 @@ class ExchangeFragment : BaseKotlinFragment() {
         initListeners()
         viewModel.getCurrency()
         viewModel.initData()
+
+        /*println("[ZERO] (ExchangeFragment) Start")
+        println("[ZERO] (ExchangeFragment) ${viewModel.anyData.value}")
+        if (viewModel.anyData.value is KycProgramStatus){
+            println("[ZERO] (ExchangeFragment) ?")
+            if ((viewModel.anyData.value as KycProgramStatus).status == 0){
+                println("[ZERO] (ExchangeFragment) ??")
+                navigator.goToKYCProcess(navController)
+                viewModel.anyData.postValue(null)
+            }
+        }
+        println("[ZERO] (ExchangeFragment) End")*/
+        if (!viewModel.getKycStatus()){
+            navigator.goToKYCProcess(navController)
+        }
     }
 
     private fun initEditText() {

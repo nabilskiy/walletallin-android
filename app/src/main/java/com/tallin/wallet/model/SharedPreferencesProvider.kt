@@ -3,6 +3,8 @@ package com.tallin.wallet.model
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.google.gson.Gson
+import com.tallin.wallet.data.response.UserResponse
 import com.tallin.wallet.utils.currency.Currency
 
 
@@ -72,6 +74,22 @@ class SharedPreferencesProvider(context: Context) {
         prefs.edit().putString(PASSWORD, pin).apply()
     }
 
+    fun getKycStatus(): Boolean {
+        return prefs.getBoolean(KYC_SHOW, false)
+    }
+
+    fun saveKycStatus(bool: Boolean) {
+        prefs.edit().putBoolean(KYC_SHOW, bool).apply()
+    }
+
+    @JvmName("getUser1")
+    fun getUser(): UserResponse?{
+        return Gson().fromJson(prefs.getString(USER, null), UserResponse::class.java)
+    }
+    @JvmName("setUser1")
+    fun setUser(user: UserResponse?){
+        prefs.edit().putString(USER, Gson().toJson(user)).apply()
+    }
 
     companion object {
         private const val SHARED_PREFS = "coinsLiberty"
@@ -82,6 +100,8 @@ class SharedPreferencesProvider(context: Context) {
         private const val PASSWORD = "password"
         private const val PIN_CODE = "pinCode"
         private const val CURRENCY = "currency"
+        private const val KYC_SHOW = "kyc_show"
+        private const val USER = "user"
     }
 
 }

@@ -10,4 +10,7 @@ class MyWalletNavigation : BaseNavigator() {
     fun goToTransactions(navController: NavController?, bundle: Bundle) {
         navController?.navigate(R.id.action_myWalletFragment2_to_transactionFragment, bundle)
     }
+    fun goToKYCProcess(navController: NavController?) {
+        navController?.navigate(R.id.action_myWalletFragment2_to_processKYC)
+    }
 }

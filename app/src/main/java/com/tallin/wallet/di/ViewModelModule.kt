@@ -12,9 +12,12 @@ import com.tallin.wallet.ui.dialogs.ChangeLanguageViewModel
 import com.tallin.wallet.ui.exchange.ExchangeViewModel
 import com.tallin.wallet.ui.login.LoginViewModel
 import com.tallin.wallet.ui.pin.PinViewModel
+import com.tallin.wallet.ui.processKYC.KYCProcessViewModel
 import com.tallin.wallet.ui.profile.ProfileViewModel
 import com.tallin.wallet.ui.settings.SettingsViewModel
-import com.tallin.wallet.ui.signup.SignUpViewModel
+import com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletViewModel
+import com.tallin.wallet.ui.singup.signup.SignUpViewModel
+import com.tallin.wallet.ui.singup.singupBusiness.SignUpBusinessViewModel
 import com.tallin.wallet.utils.stub.StubViewModel
 import com.tallin.wallet.ui.splash.SplashViewModel
 import com.tallin.wallet.ui.transaction.TransactionViewModel
@@ -28,6 +31,9 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get(), get(), get()) }
     viewModel { LoginViewModel(get(), get(), get()) }
     viewModel { SignUpViewModel(get(), get(), get(), get()) }
+    viewModel { SignUpBusinessViewModel(get(), get(), get(), get()) }
+    viewModel { SingUpChooseWalletViewModel(get(), get(), get(), get()) }
+    viewModel { KYCProcessViewModel(get(), get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get(), get()) }
     viewModel { ProfileViewModel(get(), get(), get(), get()) }
     viewModel { ExchangeViewModel(get(), get(), get(), get(), get(), get()) }

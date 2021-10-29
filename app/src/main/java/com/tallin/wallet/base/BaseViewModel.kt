@@ -32,6 +32,8 @@ abstract class BaseViewModel(
 
     val baseLogout: MutableLiveData<Boolean> = MutableLiveData()
 
+    //val anyData: MutableLiveData<Any> = MutableLiveData()
+
 
     private var coroutineHelper: CoroutineHelper
 

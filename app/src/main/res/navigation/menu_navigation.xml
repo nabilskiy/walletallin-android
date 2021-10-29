@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_myWalletFragment2_to_transactionFragment"
             app:destination="@id/transactionFragment" />
+        <action
+            android:id="@+id/action_myWalletFragment2_to_processKYC"
+            app:destination="@id/processKYC"/>
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_profileFragment2"
             app:destination="@id/profileFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_processKYC"
+            app:destination="@+id/processKYC" />
     </fragment>
     <activity
         android:id="@+id/profileFragment2"
@@ -56,7 +62,12 @@
         android:id="@+id/exchangeFragment"
         android:name="com.tallin.wallet.ui.exchange.ExchangeFragment"
         android:label="ExchangeFragment"
-        tools:layout="@layout/fragment_exchange"/>
+        tools:layout="@layout/fragment_exchange">
+        <action
+            android:id="@+id/action_exchangeFragment_to_processKYC"
+            app:destination="@id/processKYC"/>
+
+    </fragment>
 
     <action
         android:id="@+id/action_global_exchange"
@@ -70,5 +81,12 @@
         android:label="DiagramFragment"
         tools:layout="@layout/fragment_diagram"
         />
+
+    <fragment
+        android:id="@+id/processKYC"
+        android:name="com.tallin.wallet.ui.processKYC.KYCProcessFragment"
+        android:label="ProcessKYC"
+        tools:layout="@layout/fragment_kyc_process">
+    </fragment>
 
 </navigation>

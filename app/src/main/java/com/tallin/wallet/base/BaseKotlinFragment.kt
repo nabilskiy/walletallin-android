@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import com.tallin.wallet.BottomFragmant
+import com.tallin.wallet.BottomFragment
 import com.tallin.wallet.R
 import com.tallin.wallet.dialogs.ErrorDialog
 import com.tallin.wallet.dialogs.otp.OtpDialog
@@ -108,7 +108,7 @@ abstract class BaseKotlinFragment : Fragment() {
     }
 
     private fun logout(b: Boolean?) {
-        val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragmant)
+        val rootFragment = ((parentFragment as NavHostFragment).parentFragment as? BottomFragment)
         if (b == true) {
             viewModel.relogin()
         } else {

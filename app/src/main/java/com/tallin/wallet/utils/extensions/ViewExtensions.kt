@@ -2,9 +2,13 @@ package com.tallin.wallet.utils.extensions
 
 import android.app.Activity
 import android.content.Context
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tallin.wallet.model.ColoredString
 
 fun View.visible() {
     visibility = View.VISIBLE
@@ -80,4 +84,17 @@ class FloatingScrollListener(private val downView: View,
         downView.translationY = currentHeight
     }
 
+}
+
+fun TextView.setColoredText(coloredString: ColoredString) {
+    val spannable = SpannableString(coloredString.text)
+    for (span in coloredString.setting) {
+        spannable.setSpan(
+            ForegroundColorSpan(span.color),
+            span.start,
+            span.end,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+    }
+    text = spannable
 }

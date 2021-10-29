@@ -9,6 +9,7 @@ import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.AvailableBalanceInfoContent
 import com.tallin.wallet.data.response.BalanceInfoContent
+import com.tallin.wallet.data.response.KycProgramStatus
 import com.tallin.wallet.data.response.TransactionItem
 import com.tallin.wallet.dialogs.AcceptDialog
 import com.tallin.wallet.dialogs.ErrorDialog
@@ -69,6 +70,21 @@ class MyWalletFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeLiveData()
+
+        if (!viewModel.getKycStatus()){
+            navigator.goToKYCProcess(navController)
+        }
+       /* println("[ZERO] (MyWalletFragment) Start")
+        println("[ZERO] (MyWalletFragment) ${viewModel.anyData.value}")
+        if (viewModel.anyData.value is KycProgramStatus){
+            println("[ZERO] (MyWalletFragment) ?")
+            if ((viewModel.anyData.value as KycProgramStatus).status == 0){
+                println("[ZERO] (MyWalletFragment) ??")
+                navigator.goToKYCProcess(navController)
+                viewModel.anyData.postValue(null)
+            }
+        }
+        println("[ZERO] (MyWalletFragment) End")*/
     }
 
     override fun onStart() {
