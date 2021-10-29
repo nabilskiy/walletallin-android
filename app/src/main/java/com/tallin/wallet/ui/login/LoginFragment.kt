@@ -21,7 +21,7 @@ class LoginFragment : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeLiveData()
-
+        
 
         //loginToolbar.ivToolbarRightIcon.setImageResource(R.drawable.logout_icon)
         ivLanguage.setOnClickListener {

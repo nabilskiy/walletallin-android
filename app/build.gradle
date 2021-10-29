@@ -44,12 +44,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_URL", "\"http://wallet.walletallin.com/\""
             buildConfigField "String", "API_RES_URL", "\"https://wallet.walletallin.com/\""
-            buildConfigField "String", "API_KYC_URL", "\"https://cryptopayin.sb.getid.dev/\""
         }
         debug {
             buildConfigField "String", "API_URL", "\"https://wallet-stage.walletallin.com/\""
             buildConfigField "String", "API_RES_URL", "\"https://wallet-stage.walletallin.com/\""
-            buildConfigField "String", "API_KYC_URL", "\"https://cryptopayin.sb.getid.dev/\""
             debuggable true
         }
 
