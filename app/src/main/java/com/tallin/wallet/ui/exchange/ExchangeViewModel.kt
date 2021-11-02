@@ -297,7 +297,7 @@ class ExchangeViewModel(
                 Wallets.ETHEREUM_WALLET
             }
             else -> {
-                Wallets.LITECOIN_WALLET
+                Wallets.TETHER_WALLET
             }
         }
 

@@ -142,11 +142,11 @@ class SendDialog : BottomSheetDialogFragment() {
             (binding.etNetworkFees.text.toString().replace(",", ".", true)
                 .toDouble() / (arguments?.getDouble(keyBundleRates) ?: 1.0))
         )
-
         viewModel.sendMax(walletType.toLowerCase(Locale.ROOT), rate)
     }
 
     private fun send() {
+
         viewModel.sendBtc(
             walletType.toLowerCase(Locale.ROOT),
             amountET.amount.toString(),
@@ -425,7 +425,8 @@ class SendDialog : BottomSheetDialogFragment() {
 
 
     private fun showAcceptDialog() {
-        AcceptDialog.newInstance(amount, address)
+        AcceptDialog.newInstance(amountET.amount.toString(),
+            binding.etAddress.text.toString())
             .show(parentFragmentManager, AcceptDialog.TAG)
     }
 

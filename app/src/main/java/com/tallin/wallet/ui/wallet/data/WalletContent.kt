@@ -2,7 +2,7 @@ package com.tallin.wallet.ui.wallet.data
 
 data class WalletContent(
     val ico: Int,
-    val title: String,
+    val title: String? = null,
     val type: String? = null,
     val price: String? = null,
     val result: String? = null,

@@ -106,7 +106,7 @@ class MyWalletViewModel(
 
             WalletContent(
                 wallet?.getImg() ?: 0,
-                wallet?.getTitle() ?: "",
+                it.name,
                 it.label,
                 if (balanceValue != null) String.format(
                     "%.8f",
@@ -150,7 +150,7 @@ class MyWalletViewModel(
                 Wallets.ETHEREUM_WALLET
             }
             else -> {
-                Wallets.LITECOIN_WALLET
+                Wallets.TETHER_WALLET
             }
         }
 
