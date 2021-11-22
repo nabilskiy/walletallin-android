@@ -8,6 +8,7 @@ import com.bumptech.glide.load.model.LazyHeaders
 import com.tallin.wallet.BuildConfig
 import com.tallin.wallet.base.BaseViewModel
 import com.tallin.wallet.data.response.SignUpResponse
+import com.tallin.wallet.data.response.UserResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository
 import com.tallin.wallet.ui.profile.ProfileRepository
@@ -77,5 +78,9 @@ class SettingsViewModel(
     fun getUserStatus(): Int{
         println("getUserStatus ${sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus}")
         return sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus ?: 9
+    }
+
+    fun getUser(): UserResponse {
+        return sharedPreferencesProvider.getUser()!!
     }
 }

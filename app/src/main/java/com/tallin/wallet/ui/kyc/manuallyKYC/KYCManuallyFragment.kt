@@ -40,8 +40,11 @@ class KYCManuallyFragment : BaseKotlinFragment() {
     var mCameraPhotoPath: String? = null
 
     var imageUri: String? = null
+    var imgUri: Uri? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         ivNewImage.gone()
         wtDoc.visible()
 
@@ -54,29 +57,11 @@ class KYCManuallyFragment : BaseKotlinFragment() {
         btnCancel.setOnClickListener { activity?.onBackPressed()}
         btnNext.setOnClickListener {
             try {
-                viewModel.sendFile(imageUri!!, id!!, docId!!)
+                viewModel.sendFile(requireContext(), imgUri!!, id!!, docId!!)
             } catch (e: Exception){}
         }
-        btnOpenLibrary.setOnClickListener {
 
-            if (activity != null) {
-                val context = activity
-                (activity as MainActivity).showPin = false
-                TedImagePicker.with(context!!)
-                    .start { uri ->
-                        (activity as MainActivity).showPin = true
-                        ivNewImage.visible()
-                        wtDoc.gone()
-                        ivNewImage.setImageURI(uri)
-                        imageUri = uri.path
-                        //showSingleImage(uri)
-                    }
-            }
-
-            /*requestPermissionAndCapturePhoto(false)*/
-        }
         btnTakePhoto.setOnClickListener {
-
             if (activity != null) {
                 val context = activity
                 (activity as MainActivity).showPin = false
@@ -87,6 +72,7 @@ class KYCManuallyFragment : BaseKotlinFragment() {
                         ivNewImage.visible()
                         wtDoc.gone()
                         imageUri = uri.path
+                        imgUri = uri
                         //showSingleImage(uri)
                     }
             }
@@ -154,7 +140,6 @@ class KYCManuallyFragment : BaseKotlinFragment() {
                 openGallery(IMAGE_PICK_CODE)
             } else {
                 openGallery(IMAGE_PICK_CODE)
-
             }
         }
     }
@@ -330,6 +315,8 @@ class KYCManuallyFragment : BaseKotlinFragment() {
         if (s == true) {
             navigator.exitToSetting(navController)
             //activity?.onBackPressed()
+        }else{
+
         }
     }
 

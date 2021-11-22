@@ -1,10 +1,13 @@
 package com.tallin.wallet.ui.kyc.manuallyKYC
 
 import android.app.Application
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository
+import com.tallin.wallet.utils.extensions.FileUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
@@ -26,10 +29,11 @@ class KYCManuallyViewModel(
 
     private var sendFileJob: Job? = null
 
-    fun sendFile(uri: String, id: Int, docId: Int) {
+    fun sendFile(ctx: Context, uri: Uri, id: Int, docId: Int) {
         sendFileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val file = File(uri)
+           // val file = File(uri)
+            val file: File = FileUtils.getFile(ctx, uri)
             val document = MultipartBody.Part.createFormData(
                 "file" + SimpleDateFormat("dd.MM.yyyy'-'HHmm").format(Date()),
                 file.name,

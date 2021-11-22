@@ -50,7 +50,7 @@
     <string name="kyc_continue">Continue</string>
     <string name="kyc_later">Later</string>
 
-    <string name="take_photo">take photo</string>
+    <string name="take_photo">Take image</string>
     <string name="open_library">open library</string>
     <string name="cancel">Cancel</string>
     <string name="done">Done</string>
@@ -84,20 +84,20 @@
     <string name="log_out">Log Out</string>
     
     <!-- KYC statuses documents -->
-    <string name="not_start_verify">not start verify</string>
-    <string name="approved">approved</string>
-    <string name="start_verify">start verify</string>
-    <string name="error_verify">error verify</string>
-    <string name="needs_review">needs-review</string>
-    <string name="declined">declined</string>
-    <string name="unknown">unknown</string>
+    <string name="not_start_verify">Not start verify</string>
+    <string name="approved">Approved</string>
+    <string name="start_verify">Start verify</string>
+    <string name="error_verify">Error verify</string>
+    <string name="needs_review">Needs review</string>
+    <string name="declined">Declined</string>
+    <string name="unknown">Unknown</string>
 
     <!-- KYC statuses program -->
-    <string name="program_not_start_verify">not start verify</string>
-    <string name="program_approved">approved</string>
-    <string name="program_needs_review">needs-review</string>
-    <string name="program_declined">declined</string>
-    <string name="program_processing">processing</string>
+    <string name="program_not_start_verify">Not start verify</string>
+    <string name="program_approved">Approved</string>
+    <string name="program_needs_review">Needs review</string>
+    <string name="program_declined">Declined</string>
+    <string name="program_processing">Processing</string>
 
         
     <string name="to_address">To Address</string>

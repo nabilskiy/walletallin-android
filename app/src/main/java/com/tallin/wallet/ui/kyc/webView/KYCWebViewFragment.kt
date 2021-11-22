@@ -9,6 +9,7 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.tallin.wallet.BuildConfig
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.ui.MainActivity
@@ -30,7 +31,7 @@ class KYCWebViewFragment : BaseKotlinFragment() {
 
         val link = arguments?.getString("[KYC]link")
         val externalId = arguments?.getString("[KYC]externalId")
-        if (!link.isNullOrBlank() && !externalId.isNullOrBlank()){
+        if (!link.isNullOrBlank() && !externalId.isNullOrBlank()) {
             webView.load(link, /*activity as MainActivity*/this)
             this.externalId = externalId
         } else {
@@ -42,8 +43,9 @@ class KYCWebViewFragment : BaseKotlinFragment() {
         webView.webViewClient = object : WebViewClient() {
             override fun onLoadResource(view: WebView?, url: String?) {
 
-                if (url == "https://wallet-stage.walletallin.com/getid/complete?externalId=$externalId" ||
-                    url == "https://wallet-stage.walletallin.com/getid/error?error_code={errorCode}&externalId={externalId}") {
+                if (url == BuildConfig.API_URL + "getid/complete?externalId=$externalId" ||
+                    url == BuildConfig.API_URL + "getid/error?error_code={errorCode}&externalId={externalId}"
+                ) {
                     //activity?.onBackPressed()
                     navigator.exitToSetting(navController)
                 }
@@ -107,8 +109,10 @@ class KYCWebViewFragment : BaseKotlinFragment() {
         return
     }
 
-    fun safrForWV(intent: Intent,
-                  requestCode: Int){
+    fun safrForWV(
+        intent: Intent,
+        requestCode: Int
+    ) {
         (activity as MainActivity).showPin = false
         //skipPin = true
         startActivityForResult(intent, requestCode)

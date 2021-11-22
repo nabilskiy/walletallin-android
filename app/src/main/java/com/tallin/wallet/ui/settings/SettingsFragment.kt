@@ -116,6 +116,9 @@ class SettingsFragment() : BaseKotlinFragment() {
     }
 
     fun setKycStatusText(){
+        binding.settingsToolbar.tvName.setText(viewModel.getUser().firstName+" "+viewModel.getUser().lastName)
+        binding.settingsToolbar.tvWalletType.setText(viewModel.getUser().wallet?.walletType)
+        binding.settingsToolbar.tvKYC.setText("Program: "+viewModel.getUser().kycProgram?.name)
 
         var kycStatusName: String? = null
         var kycStatusColor: Int? = null

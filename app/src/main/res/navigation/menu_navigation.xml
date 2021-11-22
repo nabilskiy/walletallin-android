@@ -130,7 +130,7 @@
             app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_exit_WebViewKYC_to_SettingFragment"
-            app:destination="@id/processKYC"
+            app:destination="@id/settingsFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/kyc"
             app:popUpToInclusive="true"/>

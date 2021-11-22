@@ -62,21 +62,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wtDoc" />
 
-        <Button
-            android:id="@+id/btnOpenLibrary"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/wallet_types_s_buttons_height"
-            android:layout_marginStart="@dimen/kyc_btns_margin_start"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="@dimen/kyc_btns_margin_end"
-            android:background="@drawable/btn_grey_border"
-            android:gravity="center"
-            android:text="@string/open_library"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
+<!--        <Button-->
+<!--            android:id="@+id/btnOpenLibrary"-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/wallet_types_s_buttons_height"-->
+<!--            android:layout_marginStart="@dimen/kyc_btns_margin_start"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginEnd="@dimen/kyc_btns_margin_end"-->
+<!--            android:background="@drawable/btn_grey_border"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/open_library"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
