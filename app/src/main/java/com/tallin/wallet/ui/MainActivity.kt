@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     var skipPin: Boolean = false
 
-    var wvStarted = false
     //var currentFragment: Fragment = getActivity().getFragmentManager().findFragmentById(R.id.navHostFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {

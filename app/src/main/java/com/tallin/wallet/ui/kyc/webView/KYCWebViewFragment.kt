@@ -30,10 +30,9 @@ class KYCWebViewFragment : BaseKotlinFragment() {
 
         val link = arguments?.getString("[KYC]link")
         val externalId = arguments?.getString("[KYC]externalId")
-        if (!link.isNullOrBlank() && !externalId.isNullOrBlank() && !(activity as MainActivity).wvStarted){
+        if (!link.isNullOrBlank() && !externalId.isNullOrBlank()){
             webView.load(link, /*activity as MainActivity*/this)
             this.externalId = externalId
-            (activity as MainActivity).wvStarted = true
         } else {
             navigator.exitToSetting(navController)
         }

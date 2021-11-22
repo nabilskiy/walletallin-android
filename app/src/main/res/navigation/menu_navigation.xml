@@ -116,9 +116,6 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/kyc"
             app:popUpToInclusive="true"/>
-        <action
-            android:id="@+id/action_mKYC_to_WebViewKYC"
-            app:destination="@id/kyc"/>
     </fragment>
 
     <fragment

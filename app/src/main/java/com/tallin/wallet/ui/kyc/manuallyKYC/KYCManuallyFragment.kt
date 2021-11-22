@@ -51,7 +51,7 @@ class KYCManuallyFragment : BaseKotlinFragment() {
 
         subscribeLiveData()
 
-        btnCancel.setOnClickListener { /*activity?.onBackPressed()*/navigator.eexitToSetting(navController) }
+        btnCancel.setOnClickListener { activity?.onBackPressed()}
         btnNext.setOnClickListener {
             try {
                 viewModel.sendFile(imageUri!!, id!!, docId!!)

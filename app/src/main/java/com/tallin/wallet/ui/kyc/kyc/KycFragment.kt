@@ -27,6 +27,7 @@ class KycFragment : BaseKotlinFragment() {
 
     override fun onStart() {
         super.onStart()
+        viewModel.result.value = null
         adapter = BaseAdapter()
             .map(R.layout.item_kyc, ItemHolder( { type, flowName, id, docId ->
                 if (!type.isNullOrBlank())
@@ -107,7 +108,6 @@ class KycFragment : BaseKotlinFragment() {
 
     private fun showResultLink(s: Array<String>?) {
         if (s != null/* && flowName != null*/) {
-            (activity as MainActivity).wvStarted = false
             navigator.goToKycProcess(navController, s[0], s[1])
         }
     }
