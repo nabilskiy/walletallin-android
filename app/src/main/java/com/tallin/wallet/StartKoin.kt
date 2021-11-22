@@ -11,7 +11,7 @@ object KoinProvider {
     fun startKoin(app: WalletallinApp) {
         startKoin {
             androidContext(app)
-            modules(listOf(appModule, viewModelModule, navigatorsModule, sharedModule, retrofitModule, repositoryModule))
+            modules(listOf(appModule, viewModelModule, navigatorsModule, sharedModule,  retrofitModule, repositoryModule))
         }
     }
 }

@@ -14,7 +14,7 @@ object BiometricHelper {
         BiometricPrompt(activity, ContextCompat.getMainExecutor(activity), callback)
 
     fun createBiometricPrompt(fragment: Fragment, callback: BiometricPrompt.AuthenticationCallback) =
-        BiometricPrompt(fragment, ContextCompat.getMainExecutor(fragment.context), callback)
+        BiometricPrompt(fragment, ContextCompat.getMainExecutor(fragment.requireContext()), callback)
 
     fun checkSensor(context: Context): Boolean {
         val manager = BiometricManager.from(context)

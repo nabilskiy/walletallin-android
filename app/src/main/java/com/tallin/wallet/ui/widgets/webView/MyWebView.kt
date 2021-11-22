@@ -12,6 +12,7 @@ import android.webkit.*
 import androidx.navigation.Navigation
 import com.tallin.wallet.R
 import com.tallin.wallet.ui.MainActivity
+import com.tallin.wallet.ui.kyc.webView.KYCWebViewFragment
 import com.tallin.wallet.ui.profile.ProfileFragment
 import java.io.File
 import java.io.IOException
@@ -30,7 +31,7 @@ class MyWebView : WebView {
         const val FILECHOOSER_RESULTCODE = 1
 
     }
-    var activity: MainActivity? = null
+    var activity: KYCWebViewFragment? = null
 
     constructor(context: Context) : super(context) {
         initDefaultSetting()
@@ -69,7 +70,7 @@ class MyWebView : WebView {
     /**
      * Load Web View with url
      */
-    fun load(url: String, activity: MainActivity) {
+    fun load(url: String, activity: KYCWebViewFragment) {
         this.activity = activity
         this.loadUrl(url)
     }
@@ -78,6 +79,7 @@ class MyWebView : WebView {
 
     internal inner class MyWebViewClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+            println("shouldOverrideUrlLoading")
             view.loadUrl(request.url.toString())
             pageFinishedListener?.invoke(request.url.toString())
             return true

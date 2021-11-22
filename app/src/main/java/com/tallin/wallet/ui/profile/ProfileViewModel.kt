@@ -59,6 +59,7 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             ldProfile.postValue(repository.getProfile())
             ldProfile.value?.user?.avatar?.let { setUserAvatar(it) }
+            sharedPreferencesProvider.setUser(ldProfile.value?.user)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }

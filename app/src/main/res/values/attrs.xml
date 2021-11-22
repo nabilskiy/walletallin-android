@@ -18,4 +18,11 @@
         <attr name="ac_text_field_text" format="string"/>
         <attr name="ac_button_text" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="ItemKycComponent">
+        <attr name="ikc_header" format="string"/>
+        <attr name="ikc_description" format="string"/>
+        <attr name="ikc_status" format="integer"/>
+        <attr name="ikc_type" format="boolean"/>
+    </declare-styleable>
 </resources>

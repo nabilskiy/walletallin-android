@@ -35,8 +35,8 @@
             android:id="@+id/action_settingsFragment_to_profileFragment2"
             app:destination="@id/profileFragment2" />
         <action
-            android:id="@+id/action_settingsFragment_to_processKYC"
-            app:destination="@+id/processKYC" />
+            android:id="@+id/action_settingsFragment_to_KYC"
+            app:destination="@+id/kyc" />
     </fragment>
     <activity
         android:id="@+id/profileFragment2"
@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_exchange">
         <action
             android:id="@+id/action_exchangeFragment_to_processKYC"
-            app:destination="@id/processKYC"/>
+            app:destination="@id/kyc"/>
 
     </fragment>
 
@@ -84,9 +84,55 @@
 
     <fragment
         android:id="@+id/processKYC"
-        android:name="com.tallin.wallet.ui.processKYC.KYCProcessFragment"
+        android:name="com.tallin.wallet.ui.kyc.processKYC.KYCProcessFragment"
         android:label="ProcessKYC"
         tools:layout="@layout/fragment_kyc_process">
+        <action
+            android:id="@+id/action_ProcessKYC_to_KYC"
+            app:destination="@id/kyc"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/kyc"
+        android:name="com.tallin.wallet.ui.kyc.kyc.KycFragment"
+        android:label="KYC"
+        tools:layout="@layout/fragment_kyc">
+        <action
+            android:id="@+id/action_KYC_to_WebViewKYC"
+            app:destination="@id/webViewKYC"/>
+        <action
+            android:id="@+id/action_KYC_to_ManuallyKYC"
+            app:destination="@id/manuallyKYC"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/manuallyKYC"
+        android:name="com.tallin.wallet.ui.kyc.manuallyKYC.KYCManuallyFragment"
+        android:label="ManuallyKYC"
+        tools:layout="@layout/fragment_kyc_manually_button">
+        <action
+            android:id="@+id/action_exit_ManuallyKYC_to_SettingFragment"
+            app:destination="@id/settingsFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/kyc"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/webViewKYC"
+        android:name="com.tallin.wallet.ui.kyc.webView.KYCWebViewFragment"
+        android:label="WebViewKYC"
+        tools:layout="@layout/fragment_kyc_webview">
+        <action
+            android:id="@+id/action_exit_webViewKYC_to_KYC"
+            app:destination="@id/kyc"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_exit_WebViewKYC_to_SettingFragment"
+            app:destination="@id/processKYC"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/kyc"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

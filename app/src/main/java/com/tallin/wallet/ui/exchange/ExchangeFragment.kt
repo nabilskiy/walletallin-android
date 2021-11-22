@@ -6,7 +6,6 @@ import android.view.View
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.BalanceInfoContent
-import com.tallin.wallet.data.response.KycProgramStatus
 import com.tallin.wallet.data.response.SwapInfoData
 import com.tallin.wallet.data.response.SwapLimitsData
 import com.tallin.wallet.dialogs.ConfirmExchangeDialog

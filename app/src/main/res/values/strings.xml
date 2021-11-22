@@ -40,7 +40,7 @@
     <string name="verify_address">Please Verify the Address properly.</string>
     <string name="sent_btc">Sent BTC can not be reversed in any case.</string>
 
-    <!-- KYC Process -->
+    <!-- KYC -->
     <string name="kyc_btn_continue">Continue</string>
     <string name="kyc_btn_later">Later</string>
     <string name="kyc_title">Complete Your KYC</string>
@@ -49,6 +49,11 @@
                             Would you like to do it now?</string>
     <string name="kyc_continue">Continue</string>
     <string name="kyc_later">Later</string>
+
+    <string name="take_photo">take photo</string>
+    <string name="open_library">open library</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
 
     <!-- Wallet content   -->
     <string name="bitcoin_wallet">Bitcoin Wallet</string>
@@ -74,18 +79,26 @@
     <string name="settings">Settings</string>
     <string name="edit_profile">Edit profile</string>
     <string name="KYC">KYC</string>
-    <string name="reset_password">Reset password</string>
+    <string name="reset_password">Security</string>
     <string name="other_settings">Other Settings</string>
     <string name="log_out">Log Out</string>
     
-    <!-- KYC statuses -->
+    <!-- KYC statuses documents -->
     <string name="not_start_verify">not start verify</string>
     <string name="approved">approved</string>
     <string name="start_verify">start verify</string>
     <string name="error_verify">error verify</string>
-    <string name="needs_review">needs review</string>
+    <string name="needs_review">needs-review</string>
     <string name="declined">declined</string>
     <string name="unknown">unknown</string>
+
+    <!-- KYC statuses program -->
+    <string name="program_not_start_verify">not start verify</string>
+    <string name="program_approved">approved</string>
+    <string name="program_needs_review">needs-review</string>
+    <string name="program_declined">declined</string>
+    <string name="program_processing">processing</string>
+
         
     <string name="to_address">To Address</string>
     <string name="amount_to_send">Amount</string>
@@ -206,4 +219,6 @@
     <string name="personal_info">Personal Info</string>
     <string name="currency">Currency</string>
     <string name="upload_doc">Upload document</string>
+    <string name="passport">Passport</string>
+    <string name="description_passport">Prepare local passport or id card</string>
 </resources>

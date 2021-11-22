@@ -1,4 +1,4 @@
-package com.tallin.wallet.ui.processKYC
+package com.tallin.wallet.ui.kyc.processKYC
 
 import com.tallin.wallet.api.KycApi
 import com.tallin.wallet.data.response.KycResponse

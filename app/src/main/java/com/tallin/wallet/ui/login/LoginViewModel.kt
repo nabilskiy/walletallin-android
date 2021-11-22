@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
 import com.tallin.wallet.data.LoginRequest
-import com.tallin.wallet.data.response.KycProgramStatus
 import com.tallin.wallet.data.response.ProfileResponse
 import com.tallin.wallet.data.response.SignUpResponse
 import com.tallin.wallet.model.SharedPreferencesProvider

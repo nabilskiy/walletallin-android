@@ -1,4 +1,4 @@
-package com.tallin.wallet.ui.processKYC
+package com.tallin.wallet.ui.kyc.processKYC
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -17,12 +17,12 @@ class KYCProcessViewModel(
     private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
-
+/*
     val result = MutableLiveData<Array<String>>()
 
     private var kycJob: Job? = null
 
-    fun getKycLink(){
+    fun getKycLink(flowName: String){
         if (sharedPreferencesProvider.getUser() != null){
             kycJob = launch(::onErrorHandler) {
                 withContext(Dispatchers.Main) { onStartProgress.value = Unit }
@@ -40,16 +40,16 @@ class KYCProcessViewModel(
                     sharedPreferencesProvider.getUser()!!.kycProgram!!.getIdUrl!!,
                     sharedPreferencesProvider.getUser()!!.idp!!,
                     partMap1,
-                    sharedPreferencesProvider.getUser()!!.kycProgram!!.flowName!!,
+                    flowName,
                     sharedPreferencesProvider.getUser()!!.kycProgram!!.apiKeyGetId!!
                 ))
                 withContext(Dispatchers.Main) { onEndProgress.value = Unit }
             }
         }
-    }
+    }*/
     override fun stopRequest() {
-        kycJob?.cancel()
-    }
+      // kycJob?.cancel()
+    }/*
 
     private fun handleResponse(link: KycResponse) {
         if(link.url != null) {
@@ -59,5 +59,5 @@ class KYCProcessViewModel(
         }
 
         showError.postValue("Error")
-    }
+    }*/
 }

@@ -424,5 +424,11 @@
     <dimen name="exchange_wallet_icon_height">12dp</dimen>
     <dimen name="exchange_button_margin_bottom">24dp</dimen>
 
+<!--    kyc -->
+    <dimen name="kyc_btns_margin_start">27dp</dimen>
+    <dimen name="kyc_btns_margin_end">28dp</dimen>
+
+    <dimen name="kyc_alert_title_size">36sp</dimen>
+    <dimen name="kyc_alert_text_size">18sp</dimen>
 
 </resources>
