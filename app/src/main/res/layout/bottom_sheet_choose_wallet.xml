@@ -19,7 +19,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:padding="5dp"
-        app:srcCompat="@drawable/ic_cross" />
+        app:srcCompat="@drawable/ic_cross"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/tvTittle2"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="12dp"
             android:layout_marginStart="16dp"
-            android:tint="@color/white"
+            app:tint="@color/white"
             app:srcCompat="@drawable/ic_search" />
 
         <EditText
@@ -57,7 +58,7 @@
             android:layout_marginHorizontal="8dp"
             android:background="@null"
             android:gravity="start|center_vertical"
-            android:hint="@string/chuck_search"
+            android:hint="Search"
             android:inputType="text"
             android:maxLines="1"
             android:textAppearance="@style/H8"
