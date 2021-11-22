@@ -40,7 +40,8 @@ class SettingsViewModel(
     fun loadProfile() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            ldAva.postValue(profileRepository.getProfile().user?.avatar)
+            sharedPreferencesProvider.setUser(profileRepository.getProfile().user)
+            ldAva.postValue(sharedPreferencesProvider.getUser()?.avatar)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
@@ -74,6 +75,7 @@ class SettingsViewModel(
     }
 
     fun getUserStatus(): Int{
+        println("getUserStatus ${sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus}")
         return sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus ?: 9
     }
 }

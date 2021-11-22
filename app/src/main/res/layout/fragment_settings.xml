@@ -52,26 +52,6 @@
                 android:background="#1AD8D8D8" />
 
             <TextView
-                android:id="@+id/btnKYC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:drawablePadding="16dp"
-                android:paddingVertical="20dp"
-                android:text="@string/KYC"
-                android:textAppearance="@style/H10"
-                android:textColor="@color/white"
-                android:textSize="@dimen/h3_text_size"
-                android:maxLines="1"
-                app:drawableEndCompat="@drawable/ic_settings_end_arrow"
-                app:drawableStartCompat="@drawable/ic_settings_profile" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#1AD8D8D8" />
-
-            <TextView
                 android:id="@+id/btnSecurity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +63,70 @@
                 android:textAppearance="@style/H10"
                 android:textColor="@color/white"
                 app:drawableEndCompat="@drawable/ic_settings_end_arrow"
-                app:drawableStartCompat="@drawable/ic_settings_profile" />
+                app:drawableStartCompat="@drawable/ic_icon_security" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1AD8D8D8" />
+
+            <LinearLayout
+                android:id="@+id/llBtnKYC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/tvBtnKyc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:drawablePadding="16dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/KYC"
+                    android:textAppearance="@style/H10"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/h3_text_size"
+                    app:drawableStartCompat="@drawable/ic_icon_kyc"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvBtnKycStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:drawablePadding="16dp"
+                        android:text="@string/unknown"
+                        android:textAppearance="@style/H10"
+                        android:textColor="@color/lightWhite"
+                        android:textSize="@dimen/h11_text_size"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+                    <ImageView
+                        android:id="@+id/ivBtnKycStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_ellipse"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="8dp"
+                    android:drawablePadding="16dp"
+                    android:paddingVertical="20dp"
+                    android:textAppearance="@style/H10"
+                    android:textColor="@color/unknown"
+                    android:textSize="@dimen/h11_text_size"
+                    app:drawableEndCompat="@drawable/ic_settings_end_arrow"/>
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -102,7 +145,7 @@
                 android:textAppearance="@style/H10"
                 android:textColor="@color/white"
                 app:drawableEndCompat="@drawable/ic_settings_end_arrow"
-                app:drawableStartCompat="@drawable/ic_settings_profile" />
+                app:drawableStartCompat="@drawable/ic_icon_logout" />
 
 
         </LinearLayout>

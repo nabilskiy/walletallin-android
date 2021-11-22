@@ -9,7 +9,6 @@ import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.AvailableBalanceInfoContent
 import com.tallin.wallet.data.response.BalanceInfoContent
-import com.tallin.wallet.data.response.KycProgramStatus
 import com.tallin.wallet.data.response.TransactionItem
 import com.tallin.wallet.dialogs.AcceptDialog
 import com.tallin.wallet.dialogs.ErrorDialog

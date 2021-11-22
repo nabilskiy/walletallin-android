@@ -1,5 +1,6 @@
 package com.tallin.wallet.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
@@ -67,8 +68,6 @@ class ProfileFragment : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getProfile()
         viewModel.getCurrency()
-
-
 
         tvAttachButton.setOnClickListener {
 
@@ -260,6 +259,7 @@ class ProfileFragment : BaseKotlinFragment() {
                     file.name,
                     requestFile
                 )
+                println("tesstt AVATAR $uri")
                 Glide.with(this)
                     .asBitmap()
                     .load(uri)
@@ -273,11 +273,12 @@ class ProfileFragment : BaseKotlinFragment() {
         }
     }
 
+    @SuppressLint("Range")
     fun getImageFilePath(uri: Uri?): String? {
 
         var path: String? = null
         var image_id: String? = null
-        var first_cursor =
+        val first_cursor =
             uri?.let { context?.contentResolver?.query(it, null, null, null, null) }
         if (first_cursor != null) {
             first_cursor.moveToFirst()

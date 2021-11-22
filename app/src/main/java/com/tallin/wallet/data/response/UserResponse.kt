@@ -77,7 +77,9 @@ data class UserResponseKycProgram(
     @SerializedName("description")
     val description: String? = null,
     @SerializedName("default")
-    val default: Boolean? = null
+    val default: Boolean? = null,
+    @SerializedName("kycDocuments")
+    val kycDocuments: ArrayList<KycDocuments>? = null
 ): Parcelable
 
 @Parcelize
@@ -116,6 +118,22 @@ data class UserResponseCompany(
     val updatedAt: String? = null,
 ): Parcelable
 
-data class KycProgramStatus(
-    val status: Int?
-)
+@Parcelize
+data class KycDocuments(
+    @SerializedName("id")
+    val id: Int? = null,
+    @SerializedName("doc_id")
+    val docId: Int? = null,
+    @SerializedName("type")
+    val type: String? = null,
+    @SerializedName("doc_type_id")
+    val docTypeId: Int? = null,
+    @SerializedName("name")
+    val name: String? = null,
+    @SerializedName("status")
+    val status: Int? = null,
+    @SerializedName("flowName")
+    val flowName: String? = null,
+    @SerializedName("description")
+    val description: String? = null
+): Parcelable

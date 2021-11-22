@@ -8,8 +8,11 @@ import com.tallin.wallet.ui.singup.signup.SignUpNavigation
 import com.tallin.wallet.ui.splash.SplashNavigation
 import com.tallin.moneybee.utils.stub.StubNavigator
 import com.tallin.wallet.dialogs.forgetPassword.ForgotPassNavigator
+import com.tallin.wallet.ui.kyc.kyc.KycNavigation
+import com.tallin.wallet.ui.kyc.manuallyKYC.KYCManuallyNavigation
 import com.tallin.wallet.ui.pin.PinNavigation
-import com.tallin.wallet.ui.processKYC.KYCProcessNavigation
+import com.tallin.wallet.ui.kyc.processKYC.KYCProcessNavigation
+import com.tallin.wallet.ui.kyc.webView.KYCWebViewNavigation
 import com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletNavigation
 import com.tallin.wallet.ui.singup.singupBusiness.SingUpBusinessNavigation
 import org.koin.dsl.module
@@ -25,6 +28,9 @@ val navigatorsModule = module {
     factory { SingUpBusinessNavigation() }
     factory { SingUpChooseWalletNavigation() }
     factory { KYCProcessNavigation() }
+    factory { KycNavigation() }
+    factory { KYCManuallyNavigation() }
+    factory { KYCWebViewNavigation() }
     factory { ForgotPassNavigator() }
     factory { SplashNavigation() }
     factory { ExchangeNavigator() }

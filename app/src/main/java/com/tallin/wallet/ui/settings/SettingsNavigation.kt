@@ -9,7 +9,7 @@ import com.tallin.wallet.base.BaseNavigator
 class SettingsNavigation : BaseNavigator() {
 
     fun goToKyc(navController: NavController?){
-        navController?.navigate(R.id.action_settingsFragment_to_processKYC)
+        navController?.navigate(R.id.action_settingsFragment_to_KYC)
     }
 //    fun goToProfile(navController: NavController?) {
 //        navController?.navigate(R.id.action_settingsFragment_to_profileFragment2)

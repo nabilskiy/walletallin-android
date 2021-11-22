@@ -29,6 +29,6 @@ val retrofitModule = module(override = true) {
     single { get<Retrofit>().create(FileUploadService::class.java) }
     single { get<Retrofit>().create(BtcApi::class.java) }
     single { get<Retrofit>().create(ExchangeApi::class.java) }
- //   single { get<Retrofit>().create(KycApi::class.java) }
+    single { get<Retrofit>().create(KycMainApi::class.java) }
 
 }

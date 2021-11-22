@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wtDoc"
+            android:layout_width="match_parent"
+            android:layout_height="178dp"
+            android:layout_marginStart="@dimen/kyc_btns_margin_start"
+            android:layout_marginEnd="@dimen/kyc_btns_margin_end"
+            android:background="@drawable/ic_kyc_manually"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3">
+
+            <ImageView
+                android:id="@+id/ivDoc"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="59dp"
+                android:layout_marginStart="53dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/img_kyc_manually" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/ivNewImage"
+            android:layout_width="wrap_content"
+            android:layout_height="178dp"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_kyc_manually"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+        <Button
+            android:id="@+id/btnTakePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_types_s_buttons_height"
+            android:layout_marginStart="@dimen/kyc_btns_margin_start"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="@dimen/kyc_btns_margin_end"
+            android:background="@drawable/btn_grey_border"
+            android:gravity="center"
+            android:text="@string/take_photo"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wtDoc" />
+
+        <Button
+            android:id="@+id/btnOpenLibrary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_types_s_buttons_height"
+            android:layout_marginStart="@dimen/kyc_btns_margin_start"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="@dimen/kyc_btns_margin_end"
+            android:background="@drawable/btn_grey_border"
+            android:gravity="center"
+            android:text="@string/open_library"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_types_s_buttons_height"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="@dimen/kyc_btns_margin_start"
+            android:layout_marginEnd="@dimen/kyc_btns_margin_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnOpenLibrary">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/wallet_types_s_buttons_height"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btn_grey_border"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/wallet_types_s_buttons_height"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_blue_login"
+                android:gravity="center"
+                android:text="@string/done"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
