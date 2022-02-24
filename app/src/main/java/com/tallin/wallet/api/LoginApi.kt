@@ -1,11 +1,10 @@
 package com.tallin.wallet.api
 
-import com.tallin.wallet.data.ForgotPassRequest
-import com.tallin.wallet.data.LoginRequest
-import com.tallin.wallet.data.SignUpRequest
+import com.tallin.wallet.data.requests.ForgotPassRequest
+import com.tallin.wallet.data.requests.LoginRequest
+import com.tallin.wallet.data.requests.SignUpRequest
 import com.tallin.wallet.data.response.SignUpResponse
 import com.tallin.wallet.data.response.WalletTypesResponse
-import com.tallin.wallet.ui.singup.singupBusiness.SignUpBusinessViewModel
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

@@ -1,10 +1,8 @@
 package com.tallin.wallet.api
 
-import com.tallin.wallet.data.*
-import com.tallin.wallet.data.response.ProfileResponse
-import com.tallin.wallet.data.response.SignUpResponse
-import com.tallin.wallet.data.response.TokenResponse
-import com.tallin.wallet.data.response.UploadResponse
+import com.tallin.wallet.data.requests.ChangePasswordRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
+import com.tallin.wallet.data.response.*
 import okhttp3.MultipartBody
 import retrofit2.http.*
 
@@ -34,4 +32,8 @@ interface UserApi {
         @Part body: MultipartBody.Part
     ): UploadResponse
 
+    /*@POST("/api/exchange/get-rate")
+    suspend fun getRate(
+        @Body body: RateRequest
+    ): RateResponse*/
 }

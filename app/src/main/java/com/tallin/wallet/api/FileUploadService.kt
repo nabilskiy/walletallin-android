@@ -1,6 +1,6 @@
 package com.tallin.wallet.api
 
-import com.tallin.wallet.data.EditProfileRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

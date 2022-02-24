@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.AvailableBalanceInfoContent
@@ -24,15 +23,16 @@ import com.tallin.wallet.utils.extensions.bindDataTo
 import com.tallin.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
+import com.tallin.wallet.R
+import com.tallin.wallet.utils.extensions.gone
+import com.tallin.wallet.utils.extensions.visible
 
 class MyWalletFragment : BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_my_wallet
     override val viewModel: MyWalletViewModel by viewModel()
     override val navigator: MyWalletNavigation = MyWalletNavigation()
 
-
-    val adapter = BaseAdapter()
+    private val adapter = BaseAdapter()
         .map(R.layout.item_wallet, MyWalletHolder {
             val balanceData: Double? =
                 if (it.type == "BTC")
@@ -65,6 +65,7 @@ class MyWalletFragment : BaseKotlinFragment() {
     private var walletData: List<WalletContent>? = null
 
     private var currency = Currency.USD
+    private var cryptoType = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,17 +74,23 @@ class MyWalletFragment : BaseKotlinFragment() {
         if (!viewModel.getKycStatus()){
             navigator.goToKYCProcess(navController)
         }
-       /* println("[ZERO] (MyWalletFragment) Start")
-        println("[ZERO] (MyWalletFragment) ${viewModel.anyData.value}")
-        if (viewModel.anyData.value is KycProgramStatus){
-            println("[ZERO] (MyWalletFragment) ?")
-            if ((viewModel.anyData.value as KycProgramStatus).status == 0){
-                println("[ZERO] (MyWalletFragment) ??")
-                navigator.goToKYCProcess(navController)
-                viewModel.anyData.postValue(null)
-            }
+
+        tvCrypto_switch.setOnClickListener {
+            cryptoType = true
+            switchButtonCrypto.visible()
+            switchButtonFiat.gone()
+            tvFiat_switch.setTextColor(resources.getColor(R.color.txt_dark_gray))
+            tvCrypto_switch.setTextColor(resources.getColor(R.color.white))
+            initTransactions(viewModel.transactionsLiveData.value)
         }
-        println("[ZERO] (MyWalletFragment) End")*/
+        tvFiat_switch.setOnClickListener {
+            cryptoType = false
+            switchButtonCrypto.gone()
+            switchButtonFiat.visible()
+            tvFiat_switch.setTextColor(resources.getColor(R.color.white))
+            tvCrypto_switch.setTextColor(resources.getColor(R.color.txt_dark_gray))
+            initTransactions(viewModel.transactionsLiveData.value)
+        }
     }
 
     override fun onStart() {
@@ -115,8 +122,8 @@ class MyWalletFragment : BaseKotlinFragment() {
     }
 
     private fun initTransactions(list: List<TransactionItem>?) {
-        adapter.itemsLoaded(
-            ((walletData ?: emptyList()) + listOf("Last Transactions") + (getTransactions(list)
+        adapter.itemsLoaded(//todo filtr
+            ((walletData?.filter { it.crypto == cryptoType } ?: emptyList()) + listOf("Last Transactions") + (getTransactions(list)
                 ?: emptyList()))
         )
 

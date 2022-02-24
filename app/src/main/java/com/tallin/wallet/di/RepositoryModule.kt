@@ -8,7 +8,12 @@ import com.tallin.wallet.dialogs.forgetPassword.ForgotPassRepository
 import com.tallin.wallet.dialogs.makeTransaction.MakeTransactionRepository
 import com.tallin.wallet.dialogs.secureCode.SecureCodeRepository
 import com.tallin.wallet.dialogs.touchIdDialog.TouchIdRepository
+import com.tallin.wallet.ui.actions.buy.BuySellRepository
+import com.tallin.wallet.ui.actions.orderPreview.OrderPreviewRepository
+import com.tallin.wallet.ui.actions.sell.ConfirmationRepository
+import com.tallin.wallet.ui.actions.verifyPurchase.VerifyPurchaseRepository
 import com.tallin.wallet.ui.exchange.ExchangeRepository
+import com.tallin.wallet.ui.fragmentActions.ActionsRepository
 import com.tallin.wallet.ui.kyc.kyc.KycRepository
 import com.tallin.wallet.ui.kyc.manuallyKYC.KYCManuallyRepository
 import com.tallin.wallet.ui.login.LoginRepository
@@ -30,7 +35,7 @@ val repositoryModule = module {
     factory { SingUpChooseWalletRepository(get()) }
     factory { SingUpBusinessRepository(get()) }
     factory { KYCProcessRepository() }
-    factory { KycRepository(get()) }
+    factory { KycRepository(get(), get()) }
     factory { KYCManuallyRepository(get()) }
     factory { KYCWebViewRepository() }
     factory { ForgotPassRepository(get()) }
@@ -39,6 +44,11 @@ val repositoryModule = module {
     factory { ResetPassRepository(get()) }
     factory { ProfileRepository(get()) }
     factory { SettingsRepository(get()) }
+    factory { ActionsRepository() }
+    factory { BuySellRepository(get(), get()) }
+    factory { ConfirmationRepository() }
+    factory { VerifyPurchaseRepository() }
+    factory { OrderPreviewRepository(get()) }
     factory { QrCodeRepository(get()) }
     factory { SecureCodeRepository(get()) }
     factory { BtcRepository(get()) }

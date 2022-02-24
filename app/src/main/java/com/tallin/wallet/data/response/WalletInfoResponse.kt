@@ -19,5 +19,7 @@ data class WalletInfoContent(
     @SerializedName("name")
     val name: String? = null,
     @SerializedName("locked")
-    val locked: Boolean? = null
+    val locked: Boolean? = null,
+    @SerializedName("crypto")
+    val crypto: Boolean? = null
 )

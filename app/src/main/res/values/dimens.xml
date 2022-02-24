@@ -431,4 +431,9 @@
     <dimen name="kyc_alert_title_size">36sp</dimen>
     <dimen name="kyc_alert_text_size">18sp</dimen>
 
+<!-- actions buy&sell-->
+    <dimen name="actions_txt_size_big">28sp</dimen>
+    <dimen name="actions_txt_size">24sp</dimen>
+
+
 </resources>

@@ -17,47 +17,8 @@ class KYCProcessViewModel(
     private val sharedPreferencesProvider: SharedPreferencesProvider,
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
-/*
-    val result = MutableLiveData<Array<String>>()
 
-    private var kycJob: Job? = null
-
-    fun getKycLink(flowName: String){
-        if (sharedPreferencesProvider.getUser() != null){
-            kycJob = launch(::onErrorHandler) {
-                withContext(Dispatchers.Main) { onStartProgress.value = Unit }
-                val partMap1 = hashMapOf<String, Any>()
-                val partMap2 = hashMapOf<String, Any>()
-                val partMap3 = hashMapOf<String, Any>()
-                partMap3["onComplete"] = BuildConfig.API_URL+"getid/complete?externalId="+sharedPreferencesProvider.getUser()!!.idp
-                partMap3["onError"] = BuildConfig.API_URL+"getid/error?error_code={errorCode}"
-                partMap2["First name"] = sharedPreferencesProvider.getUser()!!.firstName!!
-                partMap2["Last name"] = sharedPreferencesProvider.getUser()!!.lastName!!
-                partMap1["profile"] = partMap2
-                partMap1["redirects"] = partMap3
-
-                handleResponse(repository.getKycLink(
-                    sharedPreferencesProvider.getUser()!!.kycProgram!!.getIdUrl!!,
-                    sharedPreferencesProvider.getUser()!!.idp!!,
-                    partMap1,
-                    flowName,
-                    sharedPreferencesProvider.getUser()!!.kycProgram!!.apiKeyGetId!!
-                ))
-                withContext(Dispatchers.Main) { onEndProgress.value = Unit }
-            }
-        }
-    }*/
     override fun stopRequest() {
       // kycJob?.cancel()
-    }/*
-
-    private fun handleResponse(link: KycResponse) {
-        if(link.url != null) {
-            val arr: Array<String> = arrayOf(link.url, sharedPreferencesProvider.getUser()!!.idp!!)
-            result.postValue(arr)
-            return
-        }
-
-        showError.postValue("Error")
-    }*/
+    }
 }

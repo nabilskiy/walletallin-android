@@ -118,6 +118,12 @@
     <string name="send">Send</string>
     <string name="receive">Receive</string>
 
+    <string name="buy_sell">Buy&amp;Sell</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="swap">Swap</string>
+    <string name="with">With</string>
+
 
     <!-- Transaction -->
     <string name="transaction_title">167465,20 ETH</string>
@@ -204,6 +210,8 @@
     <string name="menu_wallet">WALLET</string>
     <string name="menu_exchange">EXCHANGE</string>
     <string name="menu_profile">PROFILE</string>
+    <string name="menu_actions">ACTIONS</string>
+    <string name="menu_actions_lover_case">Actions</string>
 
     <!--    receive-->
     <string name="use_link_below">Use the address below to receive funds.</string>
@@ -221,4 +229,22 @@
     <string name="upload_doc">Upload document</string>
     <string name="passport">Passport</string>
     <string name="description_passport">Prepare local passport or id card</string>
+    <string name="wallet_switch_crypto_account">Crypto Account</string>
+    <string name="wallet_switch_fiat">Fiat</string>
+    <string name="crypto_account">Crypto Account</string>
+    <string name="fiat">Fiat</string>
+    <string name="rate_changed_update_request">Rate changed, update request</string>
+    <string name="rate_available_for_sec">Rate available for %d sec</string>
+    <string name="rate">Rate</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="your_mobile">Your mobile %s</string>
+    <string name="verify_purchase">Verify Purchase</string>
+    <string name="verify">Verify</string>
+    <string name="commission">Commission</string>
+    <string name="total_price">Total Price</string>
+    <string name="rate_changed">Rate changed</string>
+    <string name="waiting_for_your_coins">Waiting for your coins....</string>
+    <string name="your_transaction_is_in_progress">Your transaction is in progress</string>
+    <string name="transaction_failed">Transaction Failed</string>
+    <string name="please_go_back_for_another_try">Please go back for another try</string>
 </resources>

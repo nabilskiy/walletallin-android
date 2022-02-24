@@ -3,6 +3,76 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/arrow_white.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_attach.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_attach_button.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_border_white_low_opacity.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_bottom.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_dark_top_corned.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_dialog.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_dialog_blue.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_dialog_dark_gray.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_dialog_dark_grey_top_cornered.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_select_dark.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_select_light.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_strip_gradient.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bitcoin_cash_logo.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bitcoin_logo.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/btn_blue.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/btn_blue_login.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/btn_dark.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_actions_active.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_actions_desactive.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_actions_disactive.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_check.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_check_blue.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_ellipse_blue_seekark_point.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_exchange_arrow.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_mini_arrow_down.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_selector_actions.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_settings_active.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_settings_disactive.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_settings_end_arrow.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_strip_circle.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_triangle.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_wallet_switch_background.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/ic_wallet_switch_button.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/seek_arc_control_selector.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/seekbar_circle.xml" value="0.2111111111111111" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/selector_actions.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/selector_arrow_back.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/selector_exchange.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/selector_settings.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/selector_wallet.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_bottom.xml" value="0.25" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_demo.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_main.xml" value="0.11413043478260869" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/circle_balance.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions.xml" value="0.18" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_buy.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_sell.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_buy_sell.xml" value="0.25" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_confirmation.xml" value="0.18" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_diagram.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_exchange.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_process.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_webview.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_my_wallet.xml" value="0.33" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_order_preview.xml" value="0.25" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_settings.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_sing_up_business.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_verify_purchase.xml" value="0.33" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragments_buy_sell_united.xml" value="0.1" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_data.xml" value="0.1609375" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_title.xml" value="0.1609375" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_transaction.xml" value="0.1609375" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_wallet.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/layout_toolbar_short.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.20416666666666666" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/activity_bottom.xml" value="0.1796875" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/bottom_sheet_make_transfer_copy.xml" value="0.3333333333333333" />
@@ -14,7 +84,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -5,13 +5,13 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.tallin.wallet"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 7
         versionName "1.0.7"
         renderscriptSupportModeEnabled true
@@ -29,18 +29,6 @@ android {
     }
 
     buildTypes {
-       /* release {
-            minifyEnabled false
-            debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_URL", "\"http://wallet.walletallin.com/\""
-            buildConfigField "String", "API_RES_URL", "\"https://wallet.walletallin.com/\""
-        }
-        debug {
-            buildConfigField "String", "API_URL", "\"https://wallet.walletallin.com/\""
-            buildConfigField "String", "API_RES_URL", "\"http://web.test-wallet.coinsliberty.com/\""
-            debuggable true
-        }*/
         release {
             minifyEnabled false
             debuggable false
@@ -74,9 +62,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "androidx.constraintlayout:constraintlayout:2.1.2"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.3"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -87,10 +75,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
 
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.0"
 
-    implementation "com.google.android.material:material:1.5.0-alpha05"
+    implementation "com.google.android.material:material:1.6.0-alpha02"
 
     implementation "org.koin:koin-android:2.1.6"
     implementation "org.koin:koin-android-viewmodel:2.1.6"
@@ -102,15 +90,15 @@ dependencies {
 
     implementation 'com.nhaarman.supertooltips:library:3.0.0'
     //Gson
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.8'
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     //OkHttpClient
-    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     //Chuck
@@ -124,8 +112,8 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:2.1.6"
 
     //Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt"
 
     //qrcode_scan
     implementation 'com.kroegerama:barcode-kaiteki:1.1.1' //scan lib
@@ -138,7 +126,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.5.0'
 
     //Biometric
     implementation "androidx.biometric:biometric:1.1.0"
@@ -147,10 +135,10 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //for hashing
-    implementation "org.bouncycastle:bcprov-jdk15on:1.64"
+    implementation "org.bouncycastle:bcprov-jdk15on:1.65"
 
     //Security
-    implementation "androidx.security:security-crypto:1.1.0-alpha02"
+    implementation "androidx.security:security-crypto:1.1.0-alpha03"
 
     //image picker
     implementation 'gun0912.ted:tedimagepicker:1.1.10'

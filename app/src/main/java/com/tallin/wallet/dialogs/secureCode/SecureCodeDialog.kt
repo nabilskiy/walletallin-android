@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinDialogFragment
-import com.tallin.wallet.data.EditProfileRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
 import com.tallin.wallet.utils.extensions.bindDataTo
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException

@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder
 import com.readystatesoftware.chuck.ChuckInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.create
 
 val retrofitModule = module(override = true) {
 
@@ -25,10 +26,11 @@ val retrofitModule = module(override = true) {
 
     single { get<Retrofit>().create(LoginApi::class.java) }
     single { get<Retrofit>().create(WalletApi::class.java) }
+    single { get<Retrofit>().create(ActionsApi::class.java) }
     single { get<Retrofit>().create(UserApi::class.java) }
     single { get<Retrofit>().create(FileUploadService::class.java) }
     single { get<Retrofit>().create(BtcApi::class.java) }
     single { get<Retrofit>().create(ExchangeApi::class.java) }
-    single { get<Retrofit>().create(KycMainApi::class.java) }
+    single { get<Retrofit>().create(KycApi::class.java) }
 
 }

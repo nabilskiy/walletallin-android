@@ -1,7 +1,7 @@
 package com.tallin.wallet.dialogs.secureCode
 
 import com.tallin.wallet.api.UserApi
-import com.tallin.wallet.data.EditProfileRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
 
 class SecureCodeRepository(private val api: UserApi) {
 

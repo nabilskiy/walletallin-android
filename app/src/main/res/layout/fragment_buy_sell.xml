@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/darkGrey">
+
+    <TextView
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/wallet_types_s_buttons_height"
+        android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
+        android:background="@drawable/btn_blue_login"
+        android:gravity="center"
+        android:text="@string/confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:enabled="false"
+        android:alpha="0.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginTop="44dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/selector_arrow_back" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/H3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy_sell"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBack"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBack"/>
+
+    <TextView
+        android:id="@+id/tvWarning"
+        style="@style/H5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/rate_changed_update_request"
+        android:textColor="@color/red_low_opacity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBack"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/btnBuy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        android:textColor="@color/txt_blue"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        style="@style/H1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSell"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
+
+    <TextView
+        android:id="@+id/btnSell"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sell"
+        android:textColor="@color/txt_gray"
+        android:gravity="center"
+        style="@style/H1"
+        app:layout_constraintStart_toEndOf="@+id/btnBuy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBuy"/>
+
+    <ImageView
+        android:id="@+id/bottom_line_buy"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/txt_blue"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBuy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bottom_line_sell"/>
+
+    <ImageView
+        android:id="@+id/bottom_line_sell"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/line_blue_with_transparency"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBuy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bottom_line_buy"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/currencyLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_line_buy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/tvLeftTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvRightTitle"
+            android:text="@string/buy"
+            android:textColor="@color/light_gray_99"
+            style="@style/H2"
+            android:layout_marginEnd="5dp"/>
+
+        <TextView
+            android:id="@+id/tvRightTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvLeftTitle"
+            android:text="@string/with"
+            android:textColor="@color/light_gray_99"
+            style="@style/H2"
+            android:layout_marginStart="5dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/leftLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_select_light"
+            app:layout_constraintTop_toBottomOf="@+id/tvLeftTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tvLeftTitle"
+            android:paddingVertical="9dp"
+            android:paddingHorizontal="14dp">
+
+            <TextView
+                android:id="@+id/tvLeftCurrency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="ETH"
+                style="@style/H2"
+                android:textColor="@color/light_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvBuyTriangle_ChangeCurrency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:drawableEndCompat="@drawable/ic_triangle"
+                app:drawableTint="#387286A1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvLeftCurrency"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rightLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_select_light"
+            app:layout_constraintTop_toBottomOf="@+id/tvRightTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvRightTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvRightTitle"
+            android:paddingVertical="9dp"
+            android:paddingHorizontal="14dp">
+
+            <TextView
+                android:id="@+id/tvRightCurrency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="EUR"
+                style="@style/H2"
+                android:textColor="@color/light_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvWithTriangle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:drawableEndCompat="@drawable/ic_triangle"
+                app:drawableTint="#387286A1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvRightCurrency"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvRate_txt"
+            android:text="@string/rate"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/H2"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rightLayout"
+            app:layout_constraintEnd_toStartOf="@+id/tvRate"/>
+        <TextView
+            android:id="@+id/tvRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray_99"
+            tools:text="ETH=2349,02 EUR"
+            style="@style/H2"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rightLayout"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculatorLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_select_light"
+        app:layout_constraintTop_toBottomOf="@+id/currencyLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="7dp">
+
+        <TextView
+            android:id="@+id/topTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/H2"
+            android:textColor="@color/light_gray_99"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            tools:text="ETH"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/topInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bg_select_dark"
+            style="@style/H2"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/topTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/bottomTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/H2"
+            android:textColor="@color/light_gray_99"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="8dp"
+            tools:text="EUR"
+            app:layout_constraintTop_toBottomOf="@+id/topInput"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/bottomInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bg_select_dark"
+            style="@style/H2"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/bottomTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tvRate_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_weight="1"
+        android:text="@string/rate_available_for_sec"
+        android:textColor="@color/txt_blue"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="@style/H5"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintTop_toBottomOf="@+id/calculatorLayout"
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirm"/>
+
+    <ImageView
+        android:id="@+id/ivBlockView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C7061920"
+        android:visibility="gone"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_dialog_dark_grey_top_cornered"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvRecyclerView_Title"
+            tools:text="Buy Crypto"
+            android:textColor="@color/white"
+            style="@style/H2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:listitem="@layout/item_wallet"
+            tools:itemCount="4"
+            android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecyclerView_Title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

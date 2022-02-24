@@ -8,7 +8,8 @@ data class WalletContent(
     val result: String? = null,
     val itemBackground: Int,
     val color: Int,
-    val coefficient:Double,
-    val locked:Boolean,
-    val balance:Double = .0
+    val coefficient: Double,
+    val locked: Boolean,
+    val balance: Double = .0,
+    val crypto: Boolean
 )

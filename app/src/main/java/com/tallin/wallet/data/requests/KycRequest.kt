@@ -1,4 +1,4 @@
-package com.tallin.wallet.data
+package com.tallin.wallet.data.requests
 
 data class RedirectsKycRequest(
     val onComplete: String,

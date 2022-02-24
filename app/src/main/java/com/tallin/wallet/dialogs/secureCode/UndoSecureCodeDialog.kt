@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinDialogFragment
-import com.tallin.wallet.data.EditProfileRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
 import com.tallin.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.dialog_undo_secure_code.btnUpdate
 import kotlinx.android.synthetic.main.dialog_undo_secure_code.ivClose

@@ -1,5 +1,6 @@
 package com.tallin.wallet.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -121,6 +122,10 @@ abstract class BaseKotlinFragment : Fragment() {
 
     }
 
+    fun getColorFromRes(res: Int) : Int{
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            context?.getColor(res) ?: 0xb3b3b3 else context?.resources?.getInteger(res) ?: 0xb3b3b3
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

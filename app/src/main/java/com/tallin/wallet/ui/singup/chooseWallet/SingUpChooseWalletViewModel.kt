@@ -3,13 +3,9 @@ package com.tallin.wallet.ui.singup.chooseWallet
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
-import com.tallin.wallet.data.SignUpRequest
-import com.tallin.wallet.data.response.SignUpResponse
-import com.tallin.wallet.data.response.WalletTypesData
 import com.tallin.wallet.data.response.WalletTypesResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository
-import com.tallin.wallet.ui.singup.signup.SignUpRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package com.tallin.wallet.data
+package com.tallin.wallet.data.requests
 
 import com.google.gson.annotations.SerializedName
 

@@ -8,8 +8,13 @@ import com.tallin.wallet.dialogs.forgetPassword.ForgotPassViewModel
 import com.tallin.wallet.dialogs.makeTransaction.MakeTransactionViewModel
 import com.tallin.wallet.dialogs.secureCode.SecureCodeViewModel
 import com.tallin.wallet.dialogs.touchIdDialog.TouchIdViewModel
+import com.tallin.wallet.ui.actions.buy.BuySellViewModel
+import com.tallin.wallet.ui.actions.orderPreview.OrderPreviewViewModel
+import com.tallin.wallet.ui.actions.sell.ConfirmationViewModel
+import com.tallin.wallet.ui.actions.verifyPurchase.VerifyPurchaseViewModel
 import com.tallin.wallet.ui.dialogs.ChangeLanguageViewModel
 import com.tallin.wallet.ui.exchange.ExchangeViewModel
+import com.tallin.wallet.ui.fragmentActions.ActionsViewModel
 import com.tallin.wallet.ui.kyc.kyc.KycViewModel
 import com.tallin.wallet.ui.kyc.manuallyKYC.KYCManuallyViewModel
 import com.tallin.wallet.ui.login.LoginViewModel
@@ -41,6 +46,11 @@ val viewModelModule = module {
     viewModel { KYCManuallyViewModel(get(), get(), get(), get()) }
     viewModel { KYCWebViewViewModel(get(), get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get(), get()) }
+    viewModel { ActionsViewModel(get(), get(), get(), get()) }
+    viewModel { BuySellViewModel(get(), get(), get(), get()) }
+    viewModel { ConfirmationViewModel(get(), get(), get(), get()) }
+    viewModel { VerifyPurchaseViewModel(get(), get(), get(), get()) }
+    viewModel { OrderPreviewViewModel(get(), get(), get(), get()) }
     viewModel { ProfileViewModel(get(), get(), get(), get()) }
     viewModel { ExchangeViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { ChangeLanguageViewModel(get(), get(), get()) }

@@ -1,7 +1,7 @@
 package com.tallin.wallet.ui.singup.signup
 
 import com.tallin.wallet.api.LoginApi
-import com.tallin.wallet.data.SignUpRequest
+import com.tallin.wallet.data.requests.SignUpRequest
 
 class SignUpRepository(private val api: LoginApi) {
 

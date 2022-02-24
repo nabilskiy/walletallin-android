@@ -5,6 +5,7 @@ import android.text.Html
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.URLSpan
+import java.util.*
 
 fun String.formatFromHtml(): Spanned? = when {
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.N -> {

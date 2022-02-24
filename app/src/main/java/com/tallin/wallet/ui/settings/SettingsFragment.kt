@@ -1,5 +1,6 @@
 package com.tallin.wallet.ui.settings
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -115,10 +116,11 @@ class SettingsFragment() : BaseKotlinFragment() {
         binding.llBtnKYC.setOnClickListener { navigator.goToKyc(navController) }
     }
 
+    @SuppressLint("SetTextI18n")
     fun setKycStatusText(){
-        binding.settingsToolbar.tvName.setText(viewModel.getUser().firstName+" "+viewModel.getUser().lastName)
-        binding.settingsToolbar.tvWalletType.setText(viewModel.getUser().wallet?.walletType)
-        binding.settingsToolbar.tvKYC.setText("Program: "+viewModel.getUser().kycProgram?.name)
+        binding.settingsToolbar.tvName.text = viewModel.getUser().firstName+" "+viewModel.getUser().lastName
+        binding.settingsToolbar.tvWalletType.text = viewModel.getUser().wallet?.walletType
+        binding.settingsToolbar.tvKYC.text = "Program: "+viewModel.getUser().kycProgram?.name
 
         var kycStatusName: String? = null
         var kycStatusColor: Int? = null

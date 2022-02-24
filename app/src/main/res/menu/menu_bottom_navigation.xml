@@ -13,4 +13,9 @@
         android:id="@+id/setting"
         android:icon="@drawable/selector_settings"
         android:title="@string/menu_profile" />
+
+    <item
+        android:id="@+id/actions"
+        android:icon="@drawable/selector_actions"
+        android:title="@string/menu_actions" />
 </menu>

@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.BuildConfig
 import com.tallin.wallet.base.BaseViewModel
-import com.tallin.wallet.data.SwapRequestBody
+import com.tallin.wallet.data.requests.SwapRequestBody
 import com.tallin.wallet.data.response.*
 import com.tallin.wallet.dialogs.makeTransaction.MakeTransactionRepository
 import com.tallin.wallet.model.SharedPreferencesProvider
@@ -243,7 +243,8 @@ class ExchangeViewModel(
                     wallet?.getColor()!!,
                     wallet?.getFeeCoefficient() ?: 1.0,
                     it.locked ?: true,
-                    balance.availableBalances?.getByCode(it.label?.toLowerCase()) ?: .0
+                    balance.availableBalances?.getByCode(it.label?.toLowerCase()) ?: .0,
+                    it.crypto ?: true
                 )
 
 

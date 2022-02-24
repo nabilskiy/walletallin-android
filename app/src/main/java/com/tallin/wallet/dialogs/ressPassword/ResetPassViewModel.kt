@@ -3,7 +3,7 @@ package com.tallin.wallet.dialogs.ressPassword
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
-import com.tallin.wallet.data.ChangePasswordRequest
+import com.tallin.wallet.data.requests.ChangePasswordRequest
 import com.tallin.wallet.data.response.SignUpResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository

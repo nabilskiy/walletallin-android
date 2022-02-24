@@ -38,6 +38,10 @@ class BottomFragment : BaseKotlinFragment() {
                     Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_settings)
                     true
                 }
+                R.id.actions -> {
+                    Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_actions)
+                    true
+                }
                 else -> false
             }
         }

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkGrey">
+
+    <ImageView
+        android:id="@+id/ivBack_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dialog_forgot_iv_lock_marginStart"
+        android:layout_marginTop="44dp"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/selector_arrow_back" />
+
+    <TextView
+        android:id="@+id/tvTitle_o"
+        style="@style/H3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy_sell"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBack_o"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBack_o" />
+
+
+    <Button
+        android:id="@+id/btnConfirm_o"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/wallet_types_s_buttons_height"
+        android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
+        android:background="@drawable/btn_blue_login"
+        android:gravity="center"
+        android:text="@string/buy_now"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:enabled="false"
+        android:alpha="0.3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivBlockView_o"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C7061920"
+        android:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRecyclerView_o"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="1dp"
+        android:background="@drawable/bg_dialog_dark_grey_top_cornered"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvRecyclerView_Title_o"
+            style="@style/H2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Buy Crypto" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_o"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/wallet_recycle_margin"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecyclerView_Title_o"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_wallet" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvFiatCount_o"
+        style="@style/H7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/light_gray_99"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.14"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="2,634EUR" />
+
+    <TextView
+        android:id="@+id/tvCryptoCount_o"
+        style="@style/H1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/txt_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.21"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="9,048.38" />
+
+    <TextView
+        android:id="@+id/tvCryptoName_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_blue"
+        style="@style/H3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCryptoCount_o"
+        tools:text="ETH" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_o"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:max="60"
+        android:progress="0"
+        android:progressBackgroundTint="@color/bg_seekbar"
+        android:progressBackgroundTintMode="src_over"
+        android:progressTint="@color/txt_blue"
+        android:progressTintMode="src_over"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRate_available_o"
+        style="@style/H5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/rate_available_for_sec"
+        android:textColor="@color/txt_blue"
+        app:layout_constraintVertical_bias="0.39"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_weight="1"
+        tools:layout_editor_absoluteX="16dp"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvRate_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rate"
+        android:textColor="@color/white"
+        android:paddingStart="15dp"
+        android:layout_marginVertical="20dp"
+        style="@style/H2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.47"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRateCount_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2349,02 EUR"
+        android:textColor="@color/light_gray_99"
+        android:paddingEnd="15dp"
+        style="@style/H2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRate_o" />
+
+    <TextView
+        android:id="@+id/tvCommission_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/commission"
+        android:textColor="@color/white"
+        android:paddingStart="15dp"
+        android:layout_marginVertical="20dp"
+        style="@style/H2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.54"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCommissionCount_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="17 EUR"
+        android:textColor="@color/light_gray_99"
+        android:paddingEnd="15dp"
+        style="@style/H2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCommission_o" />
+
+    <TextView
+        android:id="@+id/tvTotalPrice_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_price"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:paddingStart="15dp"
+        android:layout_marginVertical="20dp"
+        style="@style/H2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTotalPriceCount_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2349,02 EUR"
+        android:textColor="@color/white"
+        android:paddingEnd="15dp"
+        style="@style/H2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalPrice_o" />
+
+    <TextView
+        android:id="@+id/tvRate_changed_o"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_changed"
+        android:textColor="@color/red_low_opacity"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        tools:visibility="visible"
+        style="@style/H5"
+        app:layout_constraintVertical_bias="0.77"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

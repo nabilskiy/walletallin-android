@@ -8,6 +8,12 @@ import com.tallin.wallet.ui.singup.signup.SignUpNavigation
 import com.tallin.wallet.ui.splash.SplashNavigation
 import com.tallin.moneybee.utils.stub.StubNavigator
 import com.tallin.wallet.dialogs.forgetPassword.ForgotPassNavigator
+import com.tallin.wallet.ui.actions.RateTimer
+import com.tallin.wallet.ui.actions.buy.BuySellNavigation
+import com.tallin.wallet.ui.actions.orderPreview.OrderPreviewNavigation
+import com.tallin.wallet.ui.actions.sell.ConfirmationNavigation
+import com.tallin.wallet.ui.actions.verifyPurchase.VerifyPurchaseNavigation
+import com.tallin.wallet.ui.fragmentActions.ActionsNavigation
 import com.tallin.wallet.ui.kyc.kyc.KycNavigation
 import com.tallin.wallet.ui.kyc.manuallyKYC.KYCManuallyNavigation
 import com.tallin.wallet.ui.pin.PinNavigation
@@ -24,6 +30,11 @@ val navigatorsModule = module {
     factory { LoginNavigation() }
     factory { ProfileNavigation() }
     factory { SettingsNavigation() }
+    factory { ActionsNavigation() }
+    factory { BuySellNavigation() }
+    factory { VerifyPurchaseNavigation() }
+    factory { ConfirmationNavigation() }
+    factory { OrderPreviewNavigation() }
     factory { SignUpNavigation() }
     factory { SingUpBusinessNavigation() }
     factory { SingUpChooseWalletNavigation() }
@@ -35,4 +46,6 @@ val navigatorsModule = module {
     factory { SplashNavigation() }
     factory { ExchangeNavigator() }
     factory { PinNavigation() }
+
+    single { RateTimer() }
 }

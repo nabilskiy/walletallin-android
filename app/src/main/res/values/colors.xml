@@ -63,4 +63,12 @@
 
     <color name="ted_image_picker_primary">#CC061B22</color>
     <color name="ted_image_picker_primary_pressed">#CC061B22</color>
+
+    <color name="txt_blue">#56CCF2</color>
+    <color name="txt_gray">#607D8B</color>
+    <color name="line_blue_with_transparency">#aa56CCF2</color>
+    <color name="light_gray_99">#99F6F6F6</color>
+    <color name="light_gray">#F6F6F6</color>
+
+    <color name="bg_seekbar">#0E2D37</color>
 </resources>

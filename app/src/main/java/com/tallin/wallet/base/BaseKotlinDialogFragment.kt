@@ -47,6 +47,7 @@ abstract class BaseKotlinDialogFragment : DialogFragment() {
     }
 
     private fun startProgress(unit: Unit?) {
+        //todo check
         dialogProgressBar.show(parentFragmentManager, ProgressBarDialog.TAG)
     }
 

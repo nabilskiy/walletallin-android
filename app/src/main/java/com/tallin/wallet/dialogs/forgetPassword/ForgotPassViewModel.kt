@@ -3,7 +3,7 @@ package com.tallin.wallet.dialogs.forgetPassword
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.tallin.wallet.base.BaseViewModel
-import com.tallin.wallet.data.ForgotPassRequest
+import com.tallin.wallet.data.requests.ForgotPassRequest
 import com.tallin.wallet.data.response.SignUpResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository

@@ -119,7 +119,8 @@ class MyWalletViewModel(
                 wallet?.getBackground() ?: 0,
                 wallet?.getColor() ?: 0,
                 wallet?.getFeeCoefficient() ?: 1.0,
-                it.locked ?: true
+                it.locked ?: true,
+                crypto = it.crypto ?: true
             )
         })
     }
@@ -141,7 +142,7 @@ class MyWalletViewModel(
             }
         }
 
-    fun getWallet(string: String?) =
+    private fun getWallet(string: String?) =
         when (string) {
             "btc" -> {
                 Wallets.BITCOIN_WALLET

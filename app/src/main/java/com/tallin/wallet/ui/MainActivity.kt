@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     var skipPin: Boolean = false
 
-    //var currentFragment: Fragment = getActivity().getFragmentManager().findFragmentById(R.id.navHostFragment)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

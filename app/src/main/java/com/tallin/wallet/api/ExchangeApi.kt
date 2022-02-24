@@ -1,6 +1,6 @@
 package com.tallin.wallet.api
 
-import com.tallin.wallet.data.SwapRequestBody
+import com.tallin.wallet.data.requests.SwapRequestBody
 import com.tallin.wallet.data.response.SwapInfoResponse
 import com.tallin.wallet.data.response.SwapLimitsResponse
 import com.tallin.wallet.data.response.SwapResultResponse

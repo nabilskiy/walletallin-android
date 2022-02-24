@@ -1,7 +1,7 @@
 package com.tallin.wallet.dialogs.forgetPassword
 
 import com.tallin.wallet.api.LoginApi
-import com.tallin.wallet.data.ForgotPassRequest
+import com.tallin.wallet.data.requests.ForgotPassRequest
 
 class ForgotPassRepository(private val api: LoginApi) {
 

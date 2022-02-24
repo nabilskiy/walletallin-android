@@ -1,7 +1,7 @@
 package com.tallin.wallet.ui.exchange
 
 import com.tallin.wallet.api.ExchangeApi
-import com.tallin.wallet.data.SwapRequestBody
+import com.tallin.wallet.data.requests.SwapRequestBody
 
 class ExchangeRepository(private val api: ExchangeApi) {
 

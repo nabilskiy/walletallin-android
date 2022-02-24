@@ -7,7 +7,7 @@ import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.tallin.wallet.BuildConfig
 import com.tallin.wallet.base.BaseViewModel
-import com.tallin.wallet.data.EditProfileRequest
+import com.tallin.wallet.data.requests.EditProfileRequest
 import com.tallin.wallet.data.response.ProfileResponse
 import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.ui.login.LoginRepository
@@ -50,7 +50,7 @@ class ProfileViewModel(
         return glideUrl
     }
 
-    fun setUserAvatar(idPhoto: Long) {
+    private fun setUserAvatar(idPhoto: Long) {
         ldCurrentUserAvatarId.postValue(idPhoto)
     }
 
@@ -59,16 +59,21 @@ class ProfileViewModel(
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
             ldProfile.postValue(repository.getProfile())
             ldProfile.value?.user?.avatar?.let { setUserAvatar(it) }
-            sharedPreferencesProvider.setUser(ldProfile.value?.user)
+            val profile = ldProfile.value
+            if (profile?.result == true) {
+                sharedPreferencesProvider.setUser(profile.user)
+            }
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
     fun editProfile(firstName: String, lastName: String, phone: String, avatar: Long? = null) {
         editProfileJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            val response = repository.editProfile(EditProfileRequest(firstName, lastName, phone,
+            val response = repository.editProfile(
+                EditProfileRequest(firstName, lastName, phone,
                 avatar = ldCurrentUserAvatarId.value
-            ))
+            )
+            )
             if(response.result == false) {
                 showError.postValue(response.error?.message ?: "Error")
             }

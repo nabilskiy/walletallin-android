@@ -58,6 +58,13 @@
         app:popUpToInclusive="true"
         app:destination="@id/settingsFragment"/>
 
+    <action
+        android:id="@+id/action_global_actions"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true"
+        app:destination="@id/fragment_actionsFragment"/>
+
     <fragment
         android:id="@+id/exchangeFragment"
         android:name="com.tallin.wallet.ui.exchange.ExchangeFragment"
@@ -135,4 +142,56 @@
             app:popUpTo="@+id/kyc"
             app:popUpToInclusive="true"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_actionsFragment"
+        android:name="com.tallin.wallet.ui.fragmentActions.ActionsFragment"
+        android:label="Actions"
+        tools:layout="@layout/fragment_actions">
+
+        <action
+            android:id="@+id/action_actionsFragment_to_BuyFragment"
+            app:destination="@id/BuySellFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/BuySellFragment"
+        android:name="com.tallin.wallet.ui.actions.buy.BuySellFragment"
+        android:label="BuySellFragment"
+        tools:layout="@layout/fragment_buy_sell">
+
+        <action
+            android:id="@+id/action_BuySellFragment_to_OrderPreviewFragment"
+            app:destination="@id/OrderPreviewFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/actionsConfirmationFragment"
+        android:name="com.tallin.wallet.ui.actions.sell.ConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/fragment_confirmation">
+
+        <action
+            android:id="@+id/action_ConfirmationFragment_back"
+            app:destination="@id/OrderPreviewFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/OrderPreviewFragment"
+        android:name="com.tallin.wallet.ui.actions.orderPreview.OrderPreviewFragment"
+        android:label="OrderPreviewFragment"
+        tools:layout="@layout/fragment_order_preview">
+
+        <action
+            android:id="@+id/action_OrderPreviewFragment_to_ConfirmationFragment"
+            app:destination="@id/actionsConfirmationFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/fragment_actionsFragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
 </navigation>
