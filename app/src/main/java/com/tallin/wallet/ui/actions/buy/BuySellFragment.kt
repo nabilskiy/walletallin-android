@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.navigation.Navigation
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
@@ -21,6 +22,7 @@ import com.tallin.wallet.ui.wallet.adapters.TransactionTitleHolder
 import com.tallin.wallet.ui.wallet.data.RateContent
 import com.tallin.wallet.ui.wallet.data.WalletContent
 import com.tallin.wallet.utils.currency.Currency
+import com.tallin.wallet.utils.currency.getCurrencyByName
 import com.tallin.wallet.utils.extensions.bindDataTo
 import com.tallin.wallet.utils.extensions.gone
 import com.tallin.wallet.utils.extensions.hideKeyboard
@@ -40,18 +42,21 @@ class BuySellFragment: BaseKotlinFragment() {
 
     private var walletData: List<WalletContent>? = null
 
+    private var availableFiat: List<String> = listOf()
+    private var availableCrypto: List<String> = listOf()
+
     private var cryptoType = true
-    private var currencyFiat = Currency.USD
-    private var currencyCrypto = "BTC"
+    private var currencyFiat: Currency? = null //!!
+    private var currencyCrypto: String? = null //!!
 
     private var balanceFiat = 0.0
     private var balanceCrypto = 0.0
 
     private var isBuy = true
-
-    private var rate = 0.0
-
+    private var rate = -1.0
     private var normalNum = false
+    private var changeViewGlob: EditText? = null
+    private var changeType = false
 
     private val adapter = BaseAdapter()
         .map(R.layout.item_wallet, MyWalletHolder { wc ->
@@ -84,11 +89,15 @@ class BuySellFragment: BaseKotlinFragment() {
                 bottomTitle.text = wc.type
             }
             rateTimer.isRun = false
-            viewModel.refreshData(currencyFiat.getTitle(), currencyCrypto)
+            if (currencyFiat != null && currencyCrypto != null) {
+                viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
+            }
             ivBlockView.gone()
             clRecyclerView.gone()
         })
-        .map(R.layout.item_transaction, TransactionHolder())
+        .map(R.layout.item_transaction, TransactionHolder(){
+            //todo dell
+        })
         .map(R.layout.item_data, TransactionDataHolder())
         .map(R.layout.item_title, TransactionTitleHolder())
 
@@ -97,8 +106,7 @@ class BuySellFragment: BaseKotlinFragment() {
         recyclerView.adapter = null
         adapter.removeAll()
         recyclerView.adapter = adapter
-        viewModel.getCurrency()
-        viewModel.walletList(currencyFiat.getTitle(), currencyCrypto)
+        viewModel.walletList(currencyFiat?.getTitle(), currencyCrypto)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,24 +119,28 @@ class BuySellFragment: BaseKotlinFragment() {
 
         ivBack.setOnClickListener { activity?.onBackPressed() }
         btnBuy.setOnClickListener {
+            changeType = true
             val oldBuy = isBuy
             isBuy = true
             buySellDesign()
             changeOperation(oldBuy != isBuy)
+            changeType = false
         }
         btnSell.setOnClickListener {
+            changeType = true
             val oldBuy = isBuy
             isBuy = false
             buySellDesign()
             changeOperation(oldBuy != isBuy)
+            changeType = false
         }
         ivBlockView.setOnClickListener {
             ivBlockView.gone()
             clRecyclerView.gone()
         }
 
-        topInput.addTextChangedListener(countTextWatcher(isBuy, topInput, bottomInput))
-        bottomInput.addTextChangedListener(countTextWatcher(!isBuy, bottomInput, topInput))
+        topInput.addTextChangedListener(countTextWatcher(topInput, bottomInput))
+        bottomInput.addTextChangedListener(countTextWatcher(bottomInput, topInput))
 
         leftLayout.setOnClickListener {
             changeCurrency(isBuy)
@@ -137,23 +149,33 @@ class BuySellFragment: BaseKotlinFragment() {
             changeCurrency(!isBuy)
         }
         btnConfirm.setOnClickListener {
-            navigator.goToOrderPreviewFragment(
-                navController,
-                if (isBuy) bottomInput.text.toString().toDouble() else topInput.text.toString().toDouble(),
-                currencyFiat.getTitle(),
-                if (isBuy) topInput.text.toString().toDouble() else bottomInput.text.toString().toDouble(),
-                currencyCrypto,
-                rate.toString(),
-                isBuy
-            )
+
+            if (currencyFiat != null && currencyCrypto != null) {
+                navigator.goToOrderPreviewFragment(
+                    navController,
+                    if (isBuy) bottomInput.text.toString() else topInput.text.toString(),
+                    currencyFiat!!.getTitle(),
+                    if (isBuy) topInput.text.toString() else bottomInput.text.toString(),
+                    currencyCrypto!!,
+                    rate.toString(),
+                    isBuy
+                )
+            }
         }
 
         subscribeLiveData()
     }
 
     private fun initTransactions() {
-        adapter.itemsLoaded(//todo filtr
-            ((walletData?.filter { it.crypto == cryptoType } ?: emptyList()))
+        adapter.itemsLoaded(
+            ((walletData?.filter { wc ->
+                wc.crypto == cryptoType &&
+                        if (cryptoType){
+                            availableCrypto.any { wc.type == it }
+                        } else {
+                            availableFiat.any { wc.type == it }
+                        }
+            } ?: emptyList()))
         )
     }
 
@@ -162,31 +184,70 @@ class BuySellFragment: BaseKotlinFragment() {
     }
 
     @SuppressLint("DefaultLocale", "SetTextI18n")
-    private fun initCurrency(currency: Currency?) {
-        if (currency == null) return
-        this.currencyFiat = currency
+    private fun initFiat(fiat: List<String>) {
 
-        tvLeftCurrency.text = if (isBuy) currencyCrypto else currency.getTitle()
-        topTitle.text = if (isBuy) currencyCrypto else currency.getTitle()
+        availableFiat = fiat
 
-        tvRightCurrency.text = if (isBuy) currency.getTitle() else currencyCrypto
-        bottomTitle.text = if (isBuy) currency.getTitle() else currencyCrypto
+        if (availableFiat.isNotEmpty()) {
+            this.currencyFiat = getCurrencyByName(availableFiat.first())
+        }
+
+        if (currencyFiat != null && currencyCrypto != null) {
+            tvLeftCurrency.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+            topTitle.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+
+            tvRightCurrency.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+            bottomTitle.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+        }
+    }
+
+    private fun initCrypto(crypto: List<String>) {
+
+        availableCrypto = crypto
+
+        if (availableCrypto.isNotEmpty()) {
+            this.currencyCrypto = availableCrypto.first()
+        }
+
+        if (currencyFiat != null && currencyCrypto != null) {
+            tvLeftCurrency.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+            topTitle.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+
+            tvRightCurrency.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+            bottomTitle.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun initRate(rateData: RateContent){
         rate = rateData.rate  //todo
-        tvRate.text = "${currencyCrypto}=${rateData.rate} ${currencyFiat.getTitle()}"
-
+        tvRate.text = "${currencyCrypto}=${rateData.rate} ${currencyFiat?.getTitle()}"
         goToCalc()
-        rateTimer.startTimer()
+        rateTimer.startTimer(rateData.timeExpiration)
+    }
+
+    private fun initCalculate(calculate: String){
+        changeViewGlob?.setText(calculate)
     }
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.walletLiveData, ::initData)
-        bindDataTo(viewModel.currency, ::initCurrency)
         bindDataTo(viewModel.rateLiveData, ::initRate)
+        bindDataTo(viewModel.fiats, ::initFiat)
+        bindDataTo(viewModel.cryptos, ::initCrypto)
         bindDataTo(viewModel.balanceDataLiveData, ::initBalance)
+        bindDataTo(viewModel.calculatorLiveData, ::initCalculate)
+        bindDataTo(viewModel.onEndProgress, ::initOnEndProgress)
+    }
+
+    private fun initOnEndProgress(unit: Unit){
+        if (rate == -1.0)
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                if (currencyFiat != null && currencyCrypto != null)
+                viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
+            }
+        }, 1000)
     }
 
     private fun initBalance(balance: BalanceInfoContent) {
@@ -194,19 +255,14 @@ class BuySellFragment: BaseKotlinFragment() {
         balanceFiat = balance.btc ?: 0.0
     }
 
-    private fun countTextWatcher(isCrypto: Boolean, view: EditText, changeView: EditText) =
+    private fun countTextWatcher(view: EditText, changeView: EditText) =
         object : TextWatcher {
-            //private var change = true
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-              /*  if (change){
-                    editTextFormat(p0.toString())
-                } else {
-                    change = true
-                }*/
-            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
-                calculator(isCrypto, view, changeView)
+                if (!changeType) {
+                    calculator(view, changeView)
+                }
             }
         }
     /** timer */
@@ -238,7 +294,9 @@ class BuySellFragment: BaseKotlinFragment() {
                 tvRate_available.gone()
                 tvRate.setTextColor(getColorFromRes(R.color.red_low_opacity))
                 tvWarning.visible()
-                viewModel.refreshData(currencyFiat.getTitle(), currencyCrypto)
+                if (currencyFiat != null && currencyCrypto != null) {
+                    viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
+                }
             } catch (e: Exception) {
                 println(e)
             }
@@ -247,15 +305,11 @@ class BuySellFragment: BaseKotlinFragment() {
 
     private fun goToCalc(){
         if (!topInput.text.isNullOrBlank()){
-            calculator(isBuy, topInput, bottomInput)
+            calculator(topInput, bottomInput)
         }
     }
 
-    /*private fun editTextFormat(string: String){
-        if ()
-    }*/
-
-    private fun calculator(isCrypto: Boolean, view: EditText, changeView: EditText) {
+    private fun calculator(view: EditText, changeView: EditText) {
         if (view.isFocused) {
             val str = view.text.toString()
             if (str.isNotBlank()) {
@@ -265,49 +319,57 @@ class BuySellFragment: BaseKotlinFragment() {
                     } catch (e: Exception) {
                         0.0
                     }
-                    when{
-                        isCrypto -> {
-                            val result = strDouble * rate
-                         //   val afterFormat = strDouble.decimalFormat(2)
-                            /** when {
-                            strDouble > balanceCrypto -> {
-                            getErrorDialog("You don't have enough cryptocurrency")
-                            }
-                            result > balanceFiat -> {
-                            getErrorDialog("You don't have enough currency")
-                            }
-                            else -> {**/
-                          /*  if (afterFormat != strDouble.toString()){
-                                view.setText(afterFormat)
-                            }*/
-                            changeView.setText(result.decimalFormat(8))
-                            /**   }
-                            }**/
-                        }
-                        !isCrypto -> {
-                            if (rate != 0.0) {
-                                val result = strDouble / rate
-                            //    val afterFormat = strDouble.decimalFormat(8)
-
-                                /** when {
-                                strDouble > balanceCrypto -> {
-                                getErrorDialog("You don't have enough cryptocurrency")
+                    changeViewGlob = changeView
+                    changeView.setText("")
+                    when(view == topInput){
+                            // верхня - крипто, нижня - фіат
+                                // верхня - фіат, нижня - крипто
+                        true -> {
+                            if (rate > 0.0) {
+                                if (isBuy) { // - верхня - ліва
+                                    currencyFiat?.name?.let {
+                                        viewModel.getCalculator(
+                                            rate,
+                                            null,
+                                            strDouble,
+                                            it
+                                        ) // хочу fiat - даю крипто
+                                    }
+                                } else { //- верхня права
+                                    currencyCrypto?.let {
+                                        viewModel.getCalculator(
+                                            rate,
+                                            strDouble,
+                                            null,
+                                            it
+                                        ) // хочу crypto - даю fiat
+                                    }
                                 }
-                                result > balanceFiat -> {
-                                getErrorDialog("You don't have enough currency")
-                                }
-                                else -> {**/
-
-                              /*  if (afterFormat != strDouble.toString()){
-                                    view.setText(afterFormat)
-                                }*/
-                                changeView.setText(result.decimalFormat(2))
-                                /**       }
-                                }**/
                             } else {
                                 //todo !/0
                                 rateTimer.isRun = false
-                                viewModel.refreshData(currencyFiat.getTitle(), currencyCrypto)
+                                if (currencyFiat != null && currencyCrypto != null) {
+                                    viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
+                                }
+                            }
+                        }
+                        false -> {
+                            if (rate > 0.0) {
+                                if (isBuy) { // - нижня ліва
+                                    currencyCrypto?.let {
+                                        viewModel.getCalculator(rate, strDouble, null, it)
+                                    } // хочу crypto - даю fiat
+                                } else { // - нижня права
+                                    currencyFiat?.name?.let{
+                                        viewModel.getCalculator(rate, null, strDouble, it)
+                                    } // хочу fiat - даю crypto
+                                }
+                            } else {
+                                //todo !/0
+                                rateTimer.isRun = false
+                                if (currencyFiat != null && currencyCrypto != null) {
+                                    viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
+                                }
                             }
                         }
                     }
@@ -337,16 +399,25 @@ class BuySellFragment: BaseKotlinFragment() {
         hideKeyboard(activity)
     }
     private fun changeOperation(isChange: Boolean = false){
-        tvLeftCurrency.text = if (isBuy) currencyCrypto else currencyFiat.getTitle()
-        tvRightCurrency.text = if (isBuy) currencyFiat.getTitle() else currencyCrypto
-        topTitle.text = if (isBuy) currencyCrypto else currencyFiat.getTitle()
-        bottomTitle.text = if (isBuy) currencyFiat.getTitle() else currencyCrypto
-        if (isChange) {
-            val str = topInput.text
-            topInput.text = bottomInput.text
-            bottomInput.text = str
+        if (currencyFiat != null && currencyCrypto != null) {
+            tvLeftCurrency.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+            tvRightCurrency.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+            topTitle.text = if (isBuy) currencyCrypto else currencyFiat!!.getTitle()
+            bottomTitle.text = if (isBuy) currencyFiat!!.getTitle() else currencyCrypto
+            if (isChange) {
+                if (isBuy) { /** click buy */
+                    val str = topInput.text
+                    topInput.text = bottomInput.text
+                    bottomInput.text = str
+
+                } else { /** click sell */
+                    val str = bottomInput.text
+                    bottomInput.text = topInput.text
+                    topInput.text = str
+                }
+            }//todo change buy
+            goToCalc()
         }
-        goToCalc()
     }
 
     private fun buySellDesign(){
@@ -362,7 +433,4 @@ class BuySellFragment: BaseKotlinFragment() {
             bottom_line_sell.setBackgroundColor(getColorFromRes(R.color.txt_blue))
         }
     }
-
-    private fun Double.decimalFormat(charsAfterDot: Int) = String.format(Locale.ROOT, "%.${charsAfterDot}f", this)
-
 }

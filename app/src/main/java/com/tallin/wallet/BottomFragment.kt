@@ -53,5 +53,7 @@ class BottomFragment : BaseKotlinFragment() {
     fun goToProfile() {
         navigator.goToProfile(navController)
     }
-
+    fun goToTransactionDocument(docId: Int) {
+        navigator.goToTransactionDocuments(navController, docId)
+    }
 }

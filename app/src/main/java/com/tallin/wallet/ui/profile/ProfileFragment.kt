@@ -48,7 +48,6 @@ class ProfileFragment : BaseKotlinFragment() {
 
     override val viewModel: ProfileViewModel by viewModel()
     override val navigator: StubNavigator = get()
-    var bufferFile: Any? = null
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -227,7 +226,7 @@ class ProfileFragment : BaseKotlinFragment() {
         updateAvatar(profileResponse?.user?.avatar ?: -1)
     }
 
-    fun openGallery(req_code: Int) {
+    private fun openGallery(req_code: Int) {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -239,7 +238,6 @@ class ProfileFragment : BaseKotlinFragment() {
             ), req_code
         )
         Log.e("SEND_IMG", "SENT")
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -253,13 +251,12 @@ class ProfileFragment : BaseKotlinFragment() {
                 val file = File(getImageFilePath(uri))
 
                 val requestFile =
-                    RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
+                    RequestBody.create("image/png".toMediaTypeOrNull(), file)
                 val body = MultipartBody.Part.createFormData(
                     "file" + SimpleDateFormat("dd.MM.yyyy'-'HHmm").format(Date()),
                     file.name,
                     requestFile
                 )
-                println("tesstt AVATAR $uri")
                 Glide.with(this)
                     .asBitmap()
                     .load(uri)
@@ -334,9 +331,9 @@ class ProfileFragment : BaseKotlinFragment() {
 
     companion object {
         //image pick code
-        private val IMAGE_PICK_CODE = 1000;
+        private val IMAGE_PICK_CODE = 1000
 
         //Permission code
-        private val PERMISSION_CODE = 1001;
+        //private val PERMISSION_CODE = 1001
     }
 }

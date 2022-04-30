@@ -1,4 +1,4 @@
-package com.tallin.wallet.ui.transaction
+package com.tallin.wallet.ui.transactions.transaction
 
 import androidx.navigation.NavController
 import com.tallin.wallet.base.BaseNavigator

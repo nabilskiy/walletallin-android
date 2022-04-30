@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 
-
 class SplashFragment: BaseKotlinFragment() {
     override val layoutRes = R.layout.fragment_splash
     override val viewModel: SplashViewModel by viewModel()
@@ -36,7 +35,4 @@ class SplashFragment: BaseKotlinFragment() {
             is NavigationConfig.GO_TO_MAIN -> navigator.goToMainScreen(navController)
         }
     }
-
-
-
 }

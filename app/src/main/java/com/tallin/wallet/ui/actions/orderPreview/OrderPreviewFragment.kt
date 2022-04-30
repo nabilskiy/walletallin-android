@@ -3,8 +3,10 @@ package com.tallin.wallet.ui.actions.orderPreview
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.Navigation
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
+import com.tallin.wallet.data.response.BuySellResponse
 import com.tallin.wallet.ui.actions.RateTimer
 import com.tallin.wallet.utils.extensions.bindDataTo
 import com.tallin.wallet.utils.extensions.gone
@@ -20,6 +22,8 @@ class OrderPreviewFragment: BaseKotlinFragment() {
 
     private val rateTimer: RateTimer = get()
 
+    private var operationId: Int? = null
+
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,9 +31,9 @@ class OrderPreviewFragment: BaseKotlinFragment() {
 
         rateTimer.fragmentOrderPreview = this
 
-        val currencyFiat = arguments?.getDouble("[Buy-Sell]fiatAmount")
+        val currencyFiat = arguments?.getString("[Buy-Sell]fiatAmount")
         val currencyFiatName = arguments?.getString("[Buy-Sell]fiatCurrency")
-        val currencyCrypto = arguments?.getDouble("[Buy-Sell]cryptoAmount")
+        val currencyCrypto = arguments?.getString("[Buy-Sell]cryptoAmount")
         val currencyCryptoName = arguments?.getString("[Buy-Sell]cryptoCurrency")
         val rate = arguments?.getString("[Buy-Sell]rate")
         val operation = arguments?.getBoolean("[Buy-Sell]operation")
@@ -39,13 +43,49 @@ class OrderPreviewFragment: BaseKotlinFragment() {
         tvCryptoName_o.text = currencyCryptoName
         tvRateCount_o.text = "$rate $currencyFiatName"
 
+        btnConfirm_o.text = when (operation){
+            true -> "Buy Now"
+            false -> "Sell Now"
+            else -> "Exit"
+        }
 
         ivBack_o.setOnClickListener { activity?.onBackPressed() }
         btnConfirm_o.setOnClickListener {
+
+            val currentFragment =
+                Navigation.findNavController(requireActivity(), R.id.frameLayout).currentDestination?.label
+            println(currentFragment)
+            println(currentFragment)
+
             when (operation){
-                true -> viewModel.doBuy(currencyCryptoName ?: "", currencyCrypto ?: 0.0)
-                false -> viewModel.doSell(currencyFiatName ?: "", currencyFiat ?: 0.0)
+                true ->{
+                    viewModel.doBuy(
+                        currencyFiatName ?: "",
+                        currencyCryptoName ?: "",
+                        currencyFiat ?: "0.0",
+                        currencyCrypto ?: "0.0"
+                    )
+                }
+                false -> {
+                    viewModel.doSell(
+                        currencyFiatName ?: "",
+                        currencyCryptoName ?: "",
+                        currencyCrypto ?: "0.0",
+                        currencyFiat ?: "0.0"
+                    )
+                }
                 null -> activity?.onBackPressed()
+            }
+        }
+        view_background.setOnClickListener {}
+        nextBuySell.setOnClickListener {
+            navigator.goToConfirmationFragment(navController, true)
+            if (operationId != null) {
+                when (operation) {
+                    true -> viewModel.confirmBuy(operationId!!, input2faCode.text.toString())
+                    false -> viewModel.confirmSell(operationId!!, input2faCode.text.toString())
+                    else -> activity?.onBackPressed()
+                }
             }
         }
 
@@ -83,9 +123,22 @@ class OrderPreviewFragment: BaseKotlinFragment() {
         bindDataTo(viewModel.resultLiveData, ::result)
     }
 
-    private fun result(b: Boolean){
-        if (b){
-            navigator.goToConfirmationFragment(navController, b)
+    private fun result(result: BuySellResponse){
+        if (result.result == true){
+            when (result.status){
+                "success" -> {
+                    if (result.operationId != null) {
+                        ll2fa.visible()
+                        view_background.visible()
+                        operationId = result.operationId
+                    } else navigator.goToConfirmationFragment(navController, result.result)
+                }
+                "created" -> {
+                    navigator.goToConfirmationFragment(navController, result.result)
+                }
+            }
+        } else {
+            navigator.goToConfirmationFragment(navController, result.result ?: false)
         }
     }
 }

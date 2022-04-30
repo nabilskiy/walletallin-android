@@ -9,17 +9,17 @@ class BuySellNavigation : BaseNavigator() {
 
     fun goToOrderPreviewFragment(
         navController: NavController?,
-        fiatAmount: Double,
+        fiatAmount: String,
         fiatCurrency: String,
-        cryptoAmount: Double,
+        cryptoAmount: String,
         cryptoCurrency: String,
         rate: String,
         operation: Boolean
     ){
         val bundle = Bundle()
-        bundle.putDouble("[Buy-Sell]fiatAmount", fiatAmount)
+        bundle.putString("[Buy-Sell]fiatAmount", fiatAmount)
         bundle.putString("[Buy-Sell]fiatCurrency", fiatCurrency)
-        bundle.putDouble("[Buy-Sell]cryptoAmount", cryptoAmount)
+        bundle.putString("[Buy-Sell]cryptoAmount", cryptoAmount)
         bundle.putString("[Buy-Sell]cryptoCurrency", cryptoCurrency)
         bundle.putString("[Buy-Sell]rate", rate)
         bundle.putBoolean("[Buy-Sell]operation", operation)

@@ -36,7 +36,7 @@ class KycViewModel(
     }
 
     private fun handleResponseGetProfile(profile: ProfileResponse) {
-        if(profile.result == true) {
+        if(profile.result == true && profile.error == null) {
             ldProfile.postValue(profile)
             sharedPreferencesProvider.setUser(profile.user)
             return

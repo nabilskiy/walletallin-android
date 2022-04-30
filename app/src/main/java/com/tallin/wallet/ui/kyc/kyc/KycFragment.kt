@@ -9,7 +9,6 @@ import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.ProfileResponse
 import com.tallin.wallet.dialogs.makeTransaction.REQUEST_CODE
-import com.tallin.wallet.ui.MainActivity
 import com.tallin.wallet.ui.kyc.adapters.ItemHolder
 import com.tallin.wallet.utils.extensions.bindDataTo
 import kotlinx.android.synthetic.main.fragment_kyc.*

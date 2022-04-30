@@ -247,4 +247,12 @@
     <string name="your_transaction_is_in_progress">Your transaction is in progress</string>
     <string name="transaction_failed">Transaction Failed</string>
     <string name="please_go_back_for_another_try">Please go back for another try</string>
+
+    <!-- Transaction Documents -->
+    <string name="transaction_documents">Transaction Documents</string>
+    <string name="scan_your_document">Scan your Document</string>
+    <string name="or_choose_document_manually">or choose Document manually</string>
+    <string name="choose">Choose</string>
+    <string name="look_good">Look good?</string>
+    <string name="make_sure_the_picture_is_clear">Make sure the picture is clear</string>
 </resources>

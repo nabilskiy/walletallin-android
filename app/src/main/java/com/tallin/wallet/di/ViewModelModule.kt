@@ -28,7 +28,9 @@ import com.tallin.wallet.ui.singup.signup.SignUpViewModel
 import com.tallin.wallet.ui.singup.singupBusiness.SignUpBusinessViewModel
 import com.tallin.wallet.utils.stub.StubViewModel
 import com.tallin.wallet.ui.splash.SplashViewModel
-import com.tallin.wallet.ui.transaction.TransactionViewModel
+import com.tallin.wallet.ui.transactions.transaction.TransactionViewModel
+import com.tallin.wallet.ui.transactions.transactionDocuments.TransactionDocumentsViewModel
+import com.tallin.wallet.ui.transactions.transactionsDocumentUpLoad.TransactionDocumentUpLoadViewModel
 import com.tallin.wallet.ui.wallet.MyWalletViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -65,4 +67,6 @@ val viewModelModule = module {
     viewModel { TouchIdViewModel(get(), get(), get(), get()) }
     viewModel { FaceIdViewModel(get(), get(), get(), get()) }
     viewModel { PinViewModel(get(), get(), get(), get(), get()) }
+    viewModel { TransactionDocumentsViewModel(get(), get(), get(), get()) }
+    viewModel { TransactionDocumentUpLoadViewModel(get(), get(), get(), get()) }
 }

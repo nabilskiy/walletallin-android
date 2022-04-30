@@ -6,7 +6,6 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.tallin.wallet"

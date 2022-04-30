@@ -37,7 +37,7 @@ class SettingsFragment() : BaseKotlinFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSettingsBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -160,20 +160,6 @@ class SettingsFragment() : BaseKotlinFragment() {
         }
         tvBtnKycStatus.text = kycStatusName
         ivBtnKycStatus.setColorFilter(kycStatusColor ?: 0x000)
-
-        /*if (kycStatusColor != null) {
-            tvBtnKycStatus.setColoredText(
-                ColoredString(
-                    kycStatusName, arrayListOf(
-                        ColoredSpan(
-                            4,//context?.getString(R.string.KYC)!!.length,
-                            kycStatusText.length,
-                            kycStatusColor
-                        )
-                    )
-                )
-            )
-        } else tvBtnKycStatus.text = kycStatusText*/
     }
     private fun ifM(res: Int) : Int{
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)

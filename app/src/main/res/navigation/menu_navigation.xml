@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
-        android:name="com.tallin.wallet.ui.transaction.TransactionFragment"
+        android:name="com.tallin.wallet.ui.transactions.transaction.TransactionFragment"
         android:label="TransactionFragment"
         tools:layout="@layout/fragment_transaction">
         <action
@@ -191,7 +191,6 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/fragment_actionsFragment"
             app:popUpToInclusive="true"/>
-
     </fragment>
 
 </navigation>

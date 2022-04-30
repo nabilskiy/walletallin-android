@@ -1,4 +1,4 @@
-package com.tallin.wallet.ui.transaction
+package com.tallin.wallet.ui.transactions.transaction
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData

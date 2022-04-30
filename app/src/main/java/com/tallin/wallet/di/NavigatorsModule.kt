@@ -21,6 +21,8 @@ import com.tallin.wallet.ui.kyc.processKYC.KYCProcessNavigation
 import com.tallin.wallet.ui.kyc.webView.KYCWebViewNavigation
 import com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletNavigation
 import com.tallin.wallet.ui.singup.singupBusiness.SingUpBusinessNavigation
+import com.tallin.wallet.ui.transactions.transactionDocuments.TransactionDocumentsNavigation
+import com.tallin.wallet.ui.transactions.transactionsDocumentUpLoad.TransactionDocumentUpLoadNavigation
 import org.koin.dsl.module
 
 
@@ -46,6 +48,8 @@ val navigatorsModule = module {
     factory { SplashNavigation() }
     factory { ExchangeNavigator() }
     factory { PinNavigation() }
+    factory { TransactionDocumentsNavigation() }
+    factory { TransactionDocumentUpLoadNavigation() }
 
     single { RateTimer() }
 }

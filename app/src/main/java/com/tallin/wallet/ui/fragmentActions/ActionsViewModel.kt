@@ -12,8 +12,7 @@ class ActionsViewModel(
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
+    fun getUser() = sharedPreferencesProvider.getUser()
 
-    override fun stopRequest() {
-
-    }
+    override fun stopRequest() {}
 }

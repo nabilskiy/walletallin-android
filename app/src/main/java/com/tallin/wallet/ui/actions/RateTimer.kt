@@ -14,7 +14,7 @@ class RateTimer {
     var fragmentBuySell: BuySellFragment? = null
     var fragmentOrderPreview: OrderPreviewFragment? = null
 
-    fun startTimer(time: Int = 60000) {
+    fun startTimer(time: Long = 60000) {
         if (isRun) return
         isRun = true
         val now = System.currentTimeMillis()
@@ -40,7 +40,6 @@ class RateTimer {
                             println(cnc)
                         }
                     }
-                    println("Timer${finish - System.currentTimeMillis()}")
                     TimeUnit.MILLISECONDS.sleep(200)
                 }
                 isRun = false

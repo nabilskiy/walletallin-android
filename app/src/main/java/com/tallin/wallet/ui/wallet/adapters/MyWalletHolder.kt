@@ -17,6 +17,7 @@ import com.tallin.wallet.ui.wallet.data.WalletContent
 import com.tallin.wallet.utils.convertTimestampForUI
 import com.tallin.wallet.utils.currency.Currency
 import com.tallin.wallet.utils.extensions.gone
+import com.tallin.wallet.utils.extensions.invisible
 import com.tallin.wallet.utils.extensions.visible
 import kotlinx.android.synthetic.main.item_data.view.*
 import kotlinx.android.synthetic.main.item_title.view.*
@@ -57,7 +58,7 @@ class TransactionTitleHolder() : Holder<String>() {
     }
 }
 
-class TransactionHolder() : Holder<TransactionItem>() {
+class TransactionHolder(private var listener: (Int) -> Unit) : Holder<TransactionItem>() {
     override fun bind(itemView: View, item: TransactionItem) {
 
         Log.e("!!!", item.currency.toString())
@@ -79,11 +80,29 @@ class TransactionHolder() : Holder<TransactionItem>() {
 //            }
 //        }
 
+        itemView.tvCheck.setOnClickListener {
+            item.num?.let {
+                listener.invoke(it)
+            }
+        }
+
         itemView.ivIcon.setImageResource(if (item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
-        itemView.tvType.text = if (item.category == "send") "Sent" else "Received"
+        itemView.tvAmout.text = "${item.amountUsd} ${item.currency.getTitle()}"
+        itemView.tvCrypto.text = "BTC" //todo
+        when(item.compliance){
+            0, 1, 2 -> {
+                itemView.tvCheck.visible()
+                itemView.ivCheck.invisible()
+            }
+            null -> {
+                itemView.tvCheck.gone()
+                itemView.ivCheck.visible()
+            }
+        }
+        //if (item.category == "send") "Sent" else "Received"
         val colorBlue = Color.parseColor("#4C7BF6")
         val colorGreen = Color.parseColor("#00D983")
-        itemView.tvPrice.setTextColor(
+        itemView.tvAmout.setTextColor(
             if (item.category == "send")
                 colorBlue
             else colorGreen
@@ -93,8 +112,8 @@ class TransactionHolder() : Holder<TransactionItem>() {
                 colorBlue
             else colorGreen
         )
-        itemView.tvPrice.text =
-            item.amountUsd + if (item.currency == null || item.currency == Currency.USD) " $" else " €"
+       /* itemView.tvPrice.text =
+            item.amountUsd + if (item.currency == null || item.currency == Currency.USD) " $" else " €"*/
         itemView.ivOpenIcon.setImageResource(if (item.category == "send") R.drawable.ic_send_icon else R.drawable.ic_arrow_left)
         itemView.tvOpenType.text = if (item.category != "send") "Sent" else "Received"
         itemView.tvOpenPrice.text =

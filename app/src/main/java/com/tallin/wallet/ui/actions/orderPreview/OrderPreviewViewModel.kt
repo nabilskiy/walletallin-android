@@ -17,30 +17,35 @@ class OrderPreviewViewModel (
     private val loginRepository: LoginRepository
 ) : BaseViewModel(app, sharedPreferencesProvider, loginRepository) {
 
-    val resultLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    val resultLiveData: MutableLiveData<BuySellResponse> = MutableLiveData()
 
-    private var doBuyJob: Job? = null
-    private var doSellJob: Job? = null
+    private var doBuySellJob: Job? = null
 
-    fun doBuy(cryptoCurrency: String, cryptoAmount: Double) {
-        doBuyJob = launch(::onErrorHandler) {
+    fun doBuy(fiatCurrency: String, cryptoCurrency: String, amountFrom: String, amountTo: String) {
+        doBuySellJob?.cancel()
+        doBuySellJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponse(
                 repository.buy(
+                    fiatCurrency,
                     cryptoCurrency,
-                    cryptoAmount
+                    amountFrom,
+                    amountTo
                 )
             )
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
-    fun doSell(fiatCurrency: String, fiatAmount: Double) {
-        doBuyJob = launch(::onErrorHandler) {
+    fun doSell(fiatCurrency: String, cryptoCurrency: String, amountFrom: String, amountTo: String) {
+        doBuySellJob?.cancel()
+        doBuySellJob = launch(::onErrorHandler) {
             withContext(Dispatchers.Main) { onStartProgress.value = Unit }
             handleResponse(
-                repository.buy(
+                repository.sell(
                     fiatCurrency,
-                    fiatAmount
+                    cryptoCurrency,
+                    amountFrom,
+                    amountTo
                 )
             )
             withContext(Dispatchers.Main) { onEndProgress.value = Unit }
@@ -48,14 +53,34 @@ class OrderPreviewViewModel (
     }
 
     private fun handleResponse(response: BuySellResponse){
-        if (response.result == true){
-            resultLiveData.postValue(true)
+       // if (response.result == true){
+            resultLiveData.postValue(response)
+       // }
+    }
+
+    fun confirmBuy(operationId: Int, code: String){
+        doBuySellJob?.cancel()
+        doBuySellJob = launch(::onErrorHandler) {
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+                handleResponse(
+                    repository.confirmBuy(operationId, code)
+                )
+            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
         }
     }
 
+    fun confirmSell(operationId: Int, code: String){
+        doBuySellJob?.cancel()
+        doBuySellJob = launch(::onErrorHandler) {
+            withContext(Dispatchers.Main) { onStartProgress.value = Unit }
+                handleResponse(
+                    repository.confirmSell(operationId, code)
+                )
+            withContext(Dispatchers.Main) { onEndProgress.value = Unit }
+        }
+    }
 
     override fun stopRequest() {
-        doBuyJob?.cancel()
-        doSellJob?.cancel()
+        doBuySellJob?.cancel()
     }
 }

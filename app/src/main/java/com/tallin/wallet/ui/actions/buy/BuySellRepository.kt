@@ -10,11 +10,14 @@ class BuySellRepository(private val api: WalletApi, private val api2: ActionsApi
 
     suspend fun getBalance() = api.getBalance()
 
-    //suspend fun getTransactionsBtc() = api.getTransactionBtc()
+    suspend fun getRate(currency: String) = api2.getRate(currency)
 
-    suspend fun getRate(rateReq: RateRequest) = api2.getRate(rateReq)
+    suspend fun currencies() = api2.currencies()
 
-    //suspend fun getTransactionsEth() = api.getTransactionEth()
-
-
+    suspend fun calculateAPI(
+        rate: Double,
+        amountFiat: Double?,
+        amountCrypto: Double?,
+        currencyTo: String
+    ) = api2.calculateAPI(rate, amountFiat, amountCrypto, currencyTo)
 }

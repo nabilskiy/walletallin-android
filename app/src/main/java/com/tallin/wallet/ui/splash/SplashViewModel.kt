@@ -21,7 +21,7 @@ class SplashViewModel(
     }
 
     fun navigate() {
-       if(sharedPreferencesProvider.getToken().isNullOrEmpty()) {
+       if(sharedPreferencesProvider.getToken().isNullOrBlank()) {
            ldNavigate.postValue(NavigationConfig.GO_TO_LOGIN)
        } else {
            ldNavigate.postValue(NavigationConfig.GO_TO_MAIN)

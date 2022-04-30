@@ -1,6 +1,7 @@
 package com.tallin.wallet.ui.wallet
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseNavigator

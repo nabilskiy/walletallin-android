@@ -199,7 +199,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.54"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvCommissionCount_o"
@@ -210,7 +211,8 @@
         android:paddingEnd="15dp"
         style="@style/H2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvCommission_o" />
+        app:layout_constraintTop_toTopOf="@+id/tvCommission_o"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvTotalPrice_o"
@@ -225,7 +227,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.65"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvTotalPriceCount_o"
@@ -236,7 +239,8 @@
         android:paddingEnd="15dp"
         style="@style/H2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvTotalPrice_o" />
+        app:layout_constraintTop_toTopOf="@+id/tvTotalPrice_o"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tvRate_changed_o"
@@ -251,4 +255,51 @@
         app:layout_constraintVertical_bias="0.77"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99999999"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/ll2fa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_select_light"
+        android:layout_marginHorizontal="50dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Input code"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            style="@style/H1"/>
+
+        <EditText
+            android:id="@+id/input2faCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_select_dark"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            style="@style/H1"/>
+
+        <Button
+            android:id="@+id/nextBuySell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_blue_login"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:text="next"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

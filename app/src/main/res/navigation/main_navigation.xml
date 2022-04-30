@@ -12,26 +12,26 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_signUpFragmnet"
-            app:destination="@id/chooseWalletFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
         <action
+            android:id="@+id/action_splashFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+        <!--action
+            android:id="@+id/action_splashFragment_to_signUpFragmnet"
+            app:destination="@id/chooseWalletFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" /-->
+        <!--action
             android:id="@+id/action_splashFragment_to_bottomTabNavigator"
             app:destination="@id/bottomTabNavigator"
             app:launchSingleTop="true"
             app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_splashFragment_to_pinFragment"
-            app:destination="@id/pinFragment" />
+            app:popUpToInclusive="true" /-->
     </fragment>
 
 
@@ -86,6 +86,10 @@
         <action
             android:id="@+id/action_bottomTabNavigator_to_profileFragment"
             app:destination="@id/profileFragment" />
+
+        <action
+            android:id="@+id/action_bottomTabNavigator_to_transactionDocuments"
+            app:destination="@id/TransactionDocumentsFragment" />
 
     </fragment>
     <fragment
@@ -158,6 +162,22 @@
             app:popUpToInclusive="true"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/TransactionDocumentsFragment"
+        android:name="com.tallin.wallet.ui.transactions.transactionDocuments.TransactionDocumentsFragment"
+        android:label="TransactionDocumentsFragment"
+        tools:layout="@layout/fragment_transaction_documents">
 
+        <action
+            android:id="@+id/action_TransactionDocumentsFragment_to_TransactionDocumentUpLoadFragment"
+            app:destination="@id/TransactionDocumentUpLoadFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/TransactionDocumentUpLoadFragment"
+        android:name="com.tallin.wallet.ui.transactions.transactionsDocumentUpLoad.TransactionDocumentUpLoadFragment"
+        android:label="TransactionDocumentUpLoadFragment"
+        tools:layout="@layout/fragment_transaction_document_upload">
+    </fragment>
 
 </navigation>

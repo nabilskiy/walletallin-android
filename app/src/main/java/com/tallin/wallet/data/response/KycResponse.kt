@@ -6,7 +6,7 @@ data class KycResponse(
 )
 
 data class KycManuallyResponse(
-    val result: Boolean?,
-    //val error:
-    val files: Unit?
+    val result: Boolean? = null,
+    val error: ErrorResponse? = null,
+    val files: Unit? = null
 )

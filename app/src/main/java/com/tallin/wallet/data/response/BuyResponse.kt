@@ -9,8 +9,8 @@ data class BuySellResponse(
     val error: ErrorResponse? = null,
     @SerializedName("status")
     val status: String? = null,
-    @SerializedName("transactionId")
-    val transactionId: Int? = null,
+    @SerializedName("operationId")
+    val operationId: Int? = null,
     @SerializedName("message")
     val message: String? = null
 )

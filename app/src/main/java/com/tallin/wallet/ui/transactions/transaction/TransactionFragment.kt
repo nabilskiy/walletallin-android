@@ -1,4 +1,4 @@
-package com.tallin.wallet.ui.transaction
+package com.tallin.wallet.ui.transactions.transaction
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -56,7 +56,9 @@ class TransactionFragment : BaseKotlinFragment() {
     private lateinit var walletType: String
 
     val adapter = BaseAdapter()
-        .map(R.layout.item_transaction, TransactionHolder())
+        .map(R.layout.item_transaction, TransactionHolder(){
+            //todo do to
+        })
         .map(R.layout.item_data, TransactionDataHolder())
         .map(R.layout.item_title, TransactionTitleHolder())
 
@@ -242,7 +244,7 @@ class TransactionFragment : BaseKotlinFragment() {
 
     companion object {
         val TAG: String =
-            com.tallin.wallet.ui.transaction.TransactionFragment::class.java.name
+            com.tallin.wallet.ui.transactions.transaction.TransactionFragment::class.java.name
 
         fun getBundle(
             rates: Double?,

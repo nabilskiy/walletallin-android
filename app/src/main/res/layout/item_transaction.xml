@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:autoLink="web"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/ivIcon"
@@ -27,16 +27,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvType"
+            android:id="@+id/tvAmout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:alpha="0.34"
             android:text="Deposite"
             android:textAppearance="@style/H4"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@id/ivIcon"
             app:layout_constraintTop_toTopOf="@id/ivIcon" />
+
+        <TextView
+            android:id="@+id/tvCrypto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Deposite"
+            android:textAppearance="@style/H4"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/tvAmout"
+            app:layout_constraintTop_toTopOf="@id/tvAmout" />
 
         <TextView
             android:id="@+id/tvWallet"
@@ -50,17 +60,25 @@
             app:layout_constraintBottom_toBottomOf="@id/ivIcon"
             app:layout_constraintStart_toEndOf="@id/ivIcon" />
 
-        <TextView
-            android:id="@+id/tvPrice"
+        <ImageView
+            android:id="@+id/ivCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="18dp"
-            android:text="$ 405.6"
-            android:textAppearance="@style/H4"
-            android:textColor="@color/darkBlue"
+            android:src="@drawable/ic_approve"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documents Required"
+            android:textColor="@color/txt_blue"
+            android:layout_marginEnd="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

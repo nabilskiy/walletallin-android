@@ -40,7 +40,6 @@ class LoginViewModel(
             sharedPreferencesProvider.saveLogin(email)
             sharedPreferencesProvider.savePassword(password)
             handleResponseLogin(login)
-
         }
     }
 
@@ -50,8 +49,8 @@ class LoginViewModel(
             val getProfile = repository.getProfile()
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
             Log.e("!!!", getProfile.toString())
+            println("!!!getProfile!!! $getProfile")
             handleResponseGetProfile(getProfile)
-
         }
     }
 
@@ -66,7 +65,7 @@ class LoginViewModel(
     }
 
     private fun handleResponseGetProfile(profile: ProfileResponse) {
-        if(profile.result == true) {
+        if(profile.result == true && profile.error == null) {
             resultGetProfile.postValue(true)
             sharedPreferencesProvider.setUser(profile.user)
             sharedPreferencesProvider.saveKycStatus(false)

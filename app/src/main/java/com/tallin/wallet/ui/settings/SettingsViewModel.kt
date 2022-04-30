@@ -41,7 +41,9 @@ class SettingsViewModel(
     fun loadProfile() {
         launch(::onErrorHandler) {
             withContext(Dispatchers.Main){onStartProgress.value = Unit}
-            sharedPreferencesProvider.setUser(profileRepository.getProfile().user)
+            try {
+                sharedPreferencesProvider.setUser(profileRepository.getProfile().user!!)
+            }catch (e: Exception){}
             sharedPreferencesProvider.getUser()?.avatar.let {
                 ldAva.postValue(it)
             }

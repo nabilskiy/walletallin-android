@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.navigation.fragment.NavHostFragment
+import com.tallin.wallet.BottomFragment
 import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
 import com.tallin.wallet.data.response.AvailableBalanceInfoContent
@@ -12,7 +14,7 @@ import com.tallin.wallet.data.response.TransactionItem
 import com.tallin.wallet.dialogs.AcceptDialog
 import com.tallin.wallet.dialogs.ErrorDialog
 import com.tallin.wallet.dialogs.sendDialog.SendDialog
-import com.tallin.wallet.ui.transaction.TransactionFragment
+import com.tallin.wallet.ui.transactions.transaction.TransactionFragment
 import com.tallin.wallet.ui.wallet.adapters.MyWalletHolder
 import com.tallin.wallet.ui.wallet.adapters.TransactionDataHolder
 import com.tallin.wallet.ui.wallet.adapters.TransactionHolder
@@ -24,7 +26,7 @@ import com.tallin.wallet.utils.isDifferrentDate
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.tallin.wallet.R
-import com.tallin.wallet.utils.extensions.gone
+import com.tallin.wallet.utils.extensions.invisible
 import com.tallin.wallet.utils.extensions.visible
 
 class MyWalletFragment : BaseKotlinFragment() {
@@ -56,7 +58,9 @@ class MyWalletFragment : BaseKotlinFragment() {
                 )
             )
         })
-        .map(R.layout.item_transaction, TransactionHolder())
+        .map(R.layout.item_transaction, TransactionHolder{
+            ((parentFragment as NavHostFragment).parentFragment as? BottomFragment)?.goToTransactionDocument(it)
+        })
         .map(R.layout.item_data, TransactionDataHolder())
         .map(R.layout.item_title, TransactionTitleHolder())
 
@@ -78,14 +82,14 @@ class MyWalletFragment : BaseKotlinFragment() {
         tvCrypto_switch.setOnClickListener {
             cryptoType = true
             switchButtonCrypto.visible()
-            switchButtonFiat.gone()
+            switchButtonFiat.invisible()
             tvFiat_switch.setTextColor(resources.getColor(R.color.txt_dark_gray))
             tvCrypto_switch.setTextColor(resources.getColor(R.color.white))
             initTransactions(viewModel.transactionsLiveData.value)
         }
         tvFiat_switch.setOnClickListener {
             cryptoType = false
-            switchButtonCrypto.gone()
+            switchButtonCrypto.invisible()
             switchButtonFiat.visible()
             tvFiat_switch.setTextColor(resources.getColor(R.color.white))
             tvCrypto_switch.setTextColor(resources.getColor(R.color.txt_dark_gray))

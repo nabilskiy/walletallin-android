@@ -6,27 +6,27 @@ import kotlinx.android.parcel.Parcelize
 
 
 data class UserResponse(
-    @SerializedName("otp_enabled")
+    @SerializedName("otp_enabled")//+
     val optEnabled: Int? = null,
-    @SerializedName("login")
+    @SerializedName("login")//+
     val login: String? = null,
-    @SerializedName("is_active")
+    @SerializedName("is_active")//+
     val isActive: Int? = null,
-    @SerializedName("first_name")
+    @SerializedName("first_name")//+
     val firstName: String? = null,
-    @SerializedName("last_name")
+    @SerializedName("last_name")//+
     val lastName: String? = null,
-    @SerializedName("phone")
+    @SerializedName("phone")//+
     val phone: String? = null,
-    @SerializedName("role")
+    @SerializedName("role")//+
     val role: String? = null,
-    @SerializedName("wallet_id")
+    @SerializedName("wallet_id")//+
     val walletId: Int? = null,
-    @SerializedName("idp")
+    @SerializedName("idp")//+
     val idp: String? = null,
-    @SerializedName("api")
+    @SerializedName("api")//+
     val api: Boolean? = null,
-    @SerializedName("avatar")
+    @SerializedName("avatar")//+
     val avatar: Long? = null,
   /*  @SerializedName("flowid_getid")
     val flowidGetid: String? = null,
@@ -37,28 +37,30 @@ data class UserResponse(
     @SerializedName("apiKeyGetId")
     val apiKeyGetId: String? = null,*/
 
+    @SerializedName("wallet_type_id")//+
+    val wallet_type_id: Int? = null,
 
-    @SerializedName("wallet")
+    @SerializedName("wallet")//+
     val wallet: UserResponseWallet? = null,
-    @SerializedName("kycProgram")
+    @SerializedName("kycProgram")//+
     val kycProgram: UserResponseKycProgram? = null,
-    @SerializedName("company")
+    @SerializedName("company")//+
     val company: UserResponseCompany? = null
 )
 
 @Parcelize
 data class UserResponseWallet(
-    @SerializedName("id")
+    @SerializedName("id")//+
     val id: Int? = null,
-    @SerializedName("wallet_type")
+    @SerializedName("wallet_type")//+
     val walletType: String? = null,
-    @SerializedName("kyc_program_id")
+    @SerializedName("kyc_program_id")//+
     val kycProgramId: Int? = null,
-    @SerializedName("kyc_program_status")
+    @SerializedName("kyc_program_status")//+
     val kycProgramStatus: Int? = null,
-    @SerializedName("createdAt")
+    @SerializedName("createdAt")//+
     val createdAt: String? = null,
-    @SerializedName("updatedAt")
+    @SerializedName("updatedAt")//+
     val updatedAt: String? = null
 ): Parcelable
 
@@ -68,53 +70,57 @@ data class UserResponseKycProgram(
     val flowidGetid: String? = null,
     @SerializedName("flowName")
     val flowName: String? = null,
-    @SerializedName("getIdUrl")
+    @SerializedName("getIdUrl")//+
     val getIdUrl:String? = null,
-    @SerializedName("apiKeyGetId")
+    @SerializedName("apiKeyGetId")//+
     val apiKeyGetId: String? = null,
-    @SerializedName("name")
+    @SerializedName("name")//+
     val name: String? = null,
-    @SerializedName("description")
+    @SerializedName("description")//+
     val description: String? = null,
-    @SerializedName("default")
+    @SerializedName("default")//+
     val default: Boolean? = null,
-    @SerializedName("kycDocuments")
+    @SerializedName("kycDocuments")//+
     val kycDocuments: ArrayList<KycDocuments>? = null
 ): Parcelable
 
 @Parcelize
 data class UserResponseCompany(
-    @SerializedName("id")
+    @SerializedName("id")//+
     val id: Int? = null,
-    @SerializedName("name")
+    @SerializedName("name")//+
     val name: String? = null,
-    @SerializedName("company_number")
+    @SerializedName("company_number")//+
     val companyNumber: String? = null,
-    @SerializedName("company_email")
-    val companyEmail: Int? = null,
-    @SerializedName("phone")
-    val phone: Long? = null,
-    @SerializedName("website")
+    @SerializedName("company_email")//+
+    val companyEmail: String? = null,
+    //val companyEmail: Int? = null,
+    @SerializedName("phone")//+
+    val phone: String? = null,
+    //val phone: Long? = null,
+    @SerializedName("website")//+
     val website: String? = null,
-    @SerializedName("first_name_director")
+    @SerializedName("first_name_director")//+
     val firstNameDirector: String? = null,
-    @SerializedName("last_name_director")
+    @SerializedName("last_name_director")//+
     val lastNameDirector: String? = null,
-    @SerializedName("city")
+    @SerializedName("city")//+
     val city: String? = null,
-    @SerializedName("street")
-    val street: Int? = null,
-    @SerializedName("postal_code")
-    val postalCode: Long? = null,
-    @SerializedName("country")
+    @SerializedName("street")//+
+    val street: String? = null,
+    //val street: Int? = null,
+    @SerializedName("postal_code")//+
+    val postalCode: String? = null,
+    //val postalCode: Long? = null,
+    @SerializedName("country")//+
     val country: String? = null,
-    @SerializedName("description")
+    @SerializedName("description")//+
     val description: String? = null,
-    @SerializedName("user_login")
+    @SerializedName("user_login")//+
     val userLogin: String? = null,
-    @SerializedName("createdAt")
+    @SerializedName("createdAt")//+
     val createdAt: String? = null,
-    @SerializedName("updatedAt")
+    @SerializedName("updatedAt")//+
     val updatedAt: String? = null,
 ): Parcelable
 

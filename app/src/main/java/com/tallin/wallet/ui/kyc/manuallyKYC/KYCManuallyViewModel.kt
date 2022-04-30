@@ -37,14 +37,14 @@ class KYCManuallyViewModel(
             val document = MultipartBody.Part.createFormData(
                 "file" + SimpleDateFormat("dd.MM.yyyy'-'HHmm").format(Date()),
                 file.name,
-                file.asRequestBody("image/jpg".toMediaTypeOrNull()))
+                file.asRequestBody("image/*".toMediaTypeOrNull()))
 
             val assignId = MultipartBody.Part.createFormData("assign_id", id.toString())
             val documentId = MultipartBody.Part.createFormData("document_id", docId.toString())
 
             val sendDoc = repository.sendDoc(assignId, documentId, document)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
-            if(sendDoc.result == true) {
+            if(sendDoc.result == true && sendDoc.error == null) {
                 resultSendFile.postValue(true)
             }
 

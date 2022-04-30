@@ -25,6 +25,8 @@ import com.tallin.wallet.ui.settings.SettingsRepository
 import com.tallin.wallet.ui.singup.chooseWallet.SingUpChooseWalletRepository
 import com.tallin.wallet.ui.singup.signup.SignUpRepository
 import com.tallin.wallet.ui.singup.singupBusiness.SingUpBusinessRepository
+import com.tallin.wallet.ui.transactions.transactionDocuments.TransactionDocumentsRepository
+import com.tallin.wallet.ui.transactions.transactionsDocumentUpLoad.TransactionDocumentUpLoadRepository
 import com.tallin.wallet.ui.wallet.WalletRepository
 import com.tallin.wallet.utils.manager.BiometricManager
 import org.koin.dsl.module
@@ -56,7 +58,9 @@ val repositoryModule = module {
     factory { MakeTransactionRepository(get(),get(),get()) }
     factory { TouchIdRepository(get()) }
     factory { FaceIdRepository(get()) }
-    factory { PinRepository(get()) }
+    factory { PinRepository() }
+    factory { TransactionDocumentsRepository(get()) }
+    factory { TransactionDocumentUpLoadRepository(get()) }
 
     factory { BiometricManager(get(), get()) }
 }

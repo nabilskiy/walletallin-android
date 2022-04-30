@@ -22,3 +22,11 @@ enum class Currency : Parcelable {
     abstract fun getTitle(): String
     abstract fun getSymbol(): String
 }
+
+fun getCurrencyByName(name: String) : Currency{
+    return when(name){
+        "USD" -> Currency.USD
+        "EUR" -> Currency.EUR
+        else -> Currency.USD
+    }
+}

@@ -98,6 +98,10 @@ class KYCManuallyFragment : BaseKotlinFragment() {
         } else {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
+                    android.Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(
+                    requireContext(),
                     android.Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(
@@ -109,6 +113,7 @@ class KYCManuallyFragment : BaseKotlinFragment() {
             } else {
                 requestPermissions(
                     arrayOf(
+                        android.Manifest.permission.CAMERA,
                         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         android.Manifest.permission.READ_EXTERNAL_STORAGE
                     ), REQUEST_CODE
@@ -158,36 +163,7 @@ class KYCManuallyFragment : BaseKotlinFragment() {
     }
 
     private fun openCamera(req_code: Int) {
-        /*var takePictureIntent: Intent? = Intent()
-        takePictureIntent!!.type = "image/**/"
-        takePictureIntent.action = MediaStore.ACTION_IMAGE_CAPTURE
-        //var takePictureIntent: Intent? = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if (takePictureIntent.resolveActivity(ContextWrapper(context).packageManager) != null) {
-            var photoFile: File? = null
-            try {
-                photoFile = createImageFile()
-                takePictureIntent.putExtra("PhotoPath", mCameraPhotoPath)
-            } catch (ex: IOException) {
-            }
-            if (photoFile != null) {
-                mCameraPhotoPath = "file:" + photoFile.absolutePath
-                takePictureIntent.putExtra(
-                    MediaStore.EXTRA_OUTPUT,
-                    Uri.fromFile(photoFile)
-                )
-            } else {
-                takePictureIntent = null
-            }
-        }
-        (activity as MainActivity).showPin = false
-        startActivityForResult(
-            Intent.createChooser(
-                takePictureIntent,
-                "Select file to upload "
-            ), req_code
-        )*/
         val intent = Intent()
-        //intent.type = "image/*"
         intent.action = MediaStore.ACTION_IMAGE_CAPTURE
         (activity as MainActivity).showPin = false
         if (intent.resolveActivity(ContextWrapper(context).packageManager) != null) {
@@ -205,7 +181,7 @@ class KYCManuallyFragment : BaseKotlinFragment() {
                     /*Uri.fromFile(*/photoFile//)
                 )
             } else {
-                println("file error camera (((")
+                println("file error camera (")
                 //takePictureIntent = null
             }
         }

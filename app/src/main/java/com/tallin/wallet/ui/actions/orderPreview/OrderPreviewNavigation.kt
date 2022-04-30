@@ -11,6 +11,6 @@ class OrderPreviewNavigation : BaseNavigator() {
         val bundle = Bundle()
         bundle.putBoolean("[Buy-Sell]result", result)
 
-        navController?.navigate(R.id.action_OrderPreviewFragment_to_ConfirmationFragment)
+        navController?.navigate(R.id.action_OrderPreviewFragment_to_ConfirmationFragment, bundle)
     }
 }

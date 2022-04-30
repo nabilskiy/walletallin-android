@@ -1,5 +1,6 @@
 package com.tallin.wallet.base
 
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import com.tallin.wallet.R
@@ -24,6 +25,11 @@ abstract class BaseNavigator {
 
     fun goToProfile(navHostController: NavController?) {
         navHostController?.navigate(R.id.action_bottomTabNavigator_to_profileFragment)
+    }
+
+    fun goToTransactionDocuments(navHostController: NavController?, id: Int) {
+        val bundle = bundleOf("[transactionDocs]id" to id)
+        navHostController?.navigate(R.id.action_bottomTabNavigator_to_transactionDocuments, bundle)
     }
 
     fun back() {
