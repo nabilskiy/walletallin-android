@@ -37,7 +37,7 @@ class KYCManuallyViewModel(
             val document = MultipartBody.Part.createFormData(
                 "file" + SimpleDateFormat("dd.MM.yyyy'-'HHmm").format(Date()),
                 file.name,
-                file.asRequestBody("image/*".toMediaTypeOrNull()))
+                file.asRequestBody("image/png".toMediaTypeOrNull()))
 
             val assignId = MultipartBody.Part.createFormData("assign_id", id.toString())
             val documentId = MultipartBody.Part.createFormData("document_id", docId.toString())

@@ -10,13 +10,14 @@ class TransactionDocumentsNavigation: BaseNavigator() {
 
     fun goToTransactionDocumentFragment(
         navController: NavController?,
-        docData: DataTransactionDocumentsInfoResponse
+        docData: DataTransactionDocumentsInfoResponse,
+        id: Int
     ){
         val bundle = bundleOf(
             "[transactionDocs]assignId" to docData.assignId,
             "[transactionDocs]name" to docData.kycDocument?.name,
             "[transactionDocs]docId" to docData.documentId,
-            "[transactionDocs]transId" to docData.id,
+            "[transactionDocs]transId" to id,
         )
         navController?.navigate(R.id.TransactionDocumentUpLoadFragment, bundle)
     }

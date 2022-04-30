@@ -17,9 +17,10 @@ class TransactionDocumentsFragment: BaseKotlinFragment() {
     override val viewModel: TransactionDocumentsViewModel by viewModel()
     override val navigator: TransactionDocumentsNavigation = get()
 
+    private var transId: Int? = null
     private val adapter = BaseAdapter()
         .map(R.layout.item_transaction_documents, TransactionDocumentsHolder{
-            navigator.goToTransactionDocumentFragment(navController, it)
+            if (transId != null) navigator.goToTransactionDocumentFragment(navController, it, transId!!)
         })
 
     override fun onStart() {
@@ -27,15 +28,14 @@ class TransactionDocumentsFragment: BaseKotlinFragment() {
         rvDocs.adapter = null
         adapter.removeAll()
         rvDocs.adapter = adapter
+        transId = arguments?.getInt("[transactionDocs]id")
+        if (transId != null){
+            viewModel.getTransactionDocsInfo(transId!!)
+        } else activity?.onBackPressed()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val id = arguments?.getInt("[transactionDocs]id")
-        if (id != null){
-            viewModel.getTransactionDocsInfo(id)
-        } else activity?.onBackPressed()
 
         ivBack.setOnClickListener {
             activity?.onBackPressed()
@@ -51,8 +51,6 @@ class TransactionDocumentsFragment: BaseKotlinFragment() {
     private fun showResult(result: TransactionDocumentsInfoResponse){
         if (result.result == true){
             adapter.itemsLoaded(result.data)
-            println(result.data)
-            //result.data
         } else activity?.onBackPressed()
     }
 }
