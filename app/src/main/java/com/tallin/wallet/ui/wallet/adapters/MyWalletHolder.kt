@@ -80,7 +80,7 @@ class TransactionHolder(private var listener: (Int) -> Unit) : Holder<Transactio
 //            }
 //        }
 
-        itemView.tvCheck.setOnClickListener {
+        itemView.vCheckClick.setOnClickListener {
             item.num?.let {
                 listener.invoke(it)
             }

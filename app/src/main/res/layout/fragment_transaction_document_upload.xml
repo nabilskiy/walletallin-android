@@ -77,6 +77,50 @@
         app:layout_constraintTop_toTopOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <LinearLayout
+        android:id="@+id/llError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/vDelimiter2"
+        app:layout_constraintTop_toTopOf="@+id/tvTitle"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tvTitleError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/we_couldn_t_capture_try_again"
+            android:textColor="@color/white"
+            style="@style/H1"/>
+        <TextView
+            android:id="@+id/tvTextError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/try_shooting_in_a_better_lighting"
+            android:textColor="@color/txt_blue"
+            style="@style/H4"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnTryAgain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/wallet_types_s_buttons_height"
+        android:layout_marginStart="@dimen/wallet_types_s_btns_margin_start_end"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="@dimen/wallet_types_s_btns_margin_start_end"
+        android:background="@drawable/btn_blue_login"
+        android:gravity="center"
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/vDelimiter2"
+        android:visibility="gone"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clCanvasImgUpload"
@@ -135,8 +179,7 @@
         app:layout_constraintTop_toTopOf="@+id/vDelimiter"
         app:layout_constraintBottom_toBottomOf="@+id/vDelimiter2"
         app:srcCompat="@drawable/img_kyc_manually"
-        android:visibility="gone"
-        tools:visibility="visible"/>
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/vDelimiter2"

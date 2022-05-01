@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.navigation.fragment.NavHostFragment
+import com.tallin.wallet.BottomFragment
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseAdapter
 import com.tallin.wallet.base.BaseKotlinFragment
@@ -57,7 +59,7 @@ class TransactionFragment : BaseKotlinFragment() {
 
     val adapter = BaseAdapter()
         .map(R.layout.item_transaction, TransactionHolder(){
-            //todo do to
+            ((parentFragment as NavHostFragment).parentFragment as? BottomFragment)?.goToTransactionDocument(it)
         })
         .map(R.layout.item_data, TransactionDataHolder())
         .map(R.layout.item_title, TransactionTitleHolder())

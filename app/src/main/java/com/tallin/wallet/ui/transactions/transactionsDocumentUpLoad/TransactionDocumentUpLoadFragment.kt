@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.tallin.wallet.R
 import com.tallin.wallet.base.BaseKotlinFragment
-import com.tallin.wallet.data.response.TransactionDocumentsInfoResponse
 import com.tallin.wallet.dialogs.makeTransaction.REQUEST_CODE
 import com.tallin.wallet.dialogs.makeTransaction.REQUEST_SCAN
 import com.tallin.wallet.ui.MainActivity
@@ -54,14 +53,15 @@ class TransactionDocumentUpLoadFragment: BaseKotlinFragment() {
         tvChoose.setOnClickListener { activity?.onBackPressed() }
         tvNext.setOnClickListener { loadPhoto() }
         clCanvasImgUpload.setOnClickListener { loadPhoto() }
-        tvChooseDoc.setOnClickListener { loadPhoto()  }
+        tvChooseDoc.setOnClickListener { loadPhoto() }
         tvNext.setOnClickListener {
             try {
                 viewModel.loadFile(requireContext(), imgUri!!, id!!, docId!!, transId!!)
             } catch (e: Exception){
-                //todo Error
+                showError()
             }
         }
+        btnTryAgain.setOnClickListener { goneError() }
         subscribeLiveData()
     }
 
@@ -72,7 +72,7 @@ class TransactionDocumentUpLoadFragment: BaseKotlinFragment() {
         if (result){
             activity?.onBackPressed()
         } else {
-            //todo Error
+            showError()
         }
     }
 
@@ -239,6 +239,24 @@ class TransactionDocumentUpLoadFragment: BaseKotlinFragment() {
         tvChoose.visible()
         tvNext.visible()
         tvNext.text = activity?.resources?.getText(R.string.kyc_continue)
+    }
+
+    private fun showError(){
+        clCanvasImgUpload.gone()
+        tvChooseDoc.gone()
+        tvTitleGL.gone()
+        tvTextGL.gone()
+        ivNewImage.gone()
+        tvChoose.gone()
+        tvNext.gone()
+        btnTryAgain.visible()
+        llError.visible()
+    }
+    private fun goneError(){
+        clCanvasImgUpload.visible()
+        tvChooseDoc.visible()
+        btnTryAgain.gone()
+        llError.gone()
     }
 
     companion object {

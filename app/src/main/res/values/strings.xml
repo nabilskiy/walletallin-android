@@ -255,4 +255,8 @@
     <string name="choose">Choose</string>
     <string name="look_good">Look good?</string>
     <string name="make_sure_the_picture_is_clear">Make sure the picture is clear</string>
+    <string name="documents_required">Documents Required</string>
+    <string name="we_couldn_t_capture_try_again">We couldn’t capture, try again</string>
+    <string name="try_shooting_in_a_better_lighting">Try shooting in a better lighting</string>
+    <string name="try_again">Try again</string>
 </resources>
