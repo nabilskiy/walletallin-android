@@ -34,6 +34,10 @@
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_transaction_documents_declined.xml" value="0.153" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_transaction_documents_pending.xml" value="0.153" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border.xml" value="0.2203125" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border_acute_left_bottom.xml" value="0.152" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border_acute_left_top.xml" value="0.152" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border_acute_right_bottom.xml" value="0.152" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_item_wallet_border_acute_right_top.xml" value="0.152" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_link_stroked_grey.xml" value="0.153" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_low_black.xml" value="0.153" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/drawable/bg_select_dark.xml" value="0.2203125" />
@@ -179,8 +183,9 @@
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_bottom.xml" value="0.21136363636363636" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_demo.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/activity_main.xml" value="0.11413043478260869" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/bottom_sheet_choose_wallet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/circle_balance.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions.xml" value="0.199438202247191" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions.xml" value="0.33" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_buy.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_sell.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_buy_sell.xml" value="0.21" />

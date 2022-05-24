@@ -19,27 +19,32 @@ class BottomFragment : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var dialog = ExchangeDialog.newInstance()
+        val first = arguments?.getBoolean("[BottomNavigation]first")
+        if (first == true){
+            bottomNavigation.selectedItemId = R.id.actions
+            //Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_actions)
+        }
 
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.actions -> {
+                    Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_actions)
+                    true
+                }
                 R.id.wallet -> {
                     Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_my_wallet)
                     true
                 }
-                 R.id.exchange -> {
-                     Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_exchange)
+                 //R.id.exchange -> {
+                 //    Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_exchange)
 //                     dialog.show(childFragmentManager, ExchangeDialog.TAG)
 //                     dialog.initListeners {
 //                         if(it) bottomNavigation.selectedItemId = R.id.wallet
 //                     }
-                     true
-                }
+                 //    true
+                //}
                 R.id.setting -> {
                     Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_settings)
-                    true
-                }
-                R.id.actions -> {
-                    Navigation.findNavController(requireActivity(), R.id.frameLayout).navigate(R.id.action_global_actions)
                     true
                 }
                 else -> false

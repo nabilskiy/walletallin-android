@@ -1,5 +1,6 @@
 package com.tallin.wallet.ui.fragmentActions
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import com.tallin.wallet.R
@@ -15,17 +16,45 @@ class ActionsFragment : BaseKotlinFragment() {
     override val viewModel: ActionsViewModel by viewModel()
     override val navigator: ActionsNavigation = get()
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (viewModel.getUser()?.wallet?.kycProgramStatus == 1){
-            btnBuySell.visible()
+        val user = viewModel.getUser()
+        if (user?.wallet?.kycProgramStatus == 1){
+            btn3.visible()
+            btn3.text = resources.getString(R.string.buy_sell)
+            btn1.text = resources.getString(R.string.send)
+            btn2.text = resources.getString(R.string.receive)
+            btn4.text = resources.getString(R.string.swap)
+            btn3.setOnClickListener { clickBuySell() }
+            btn1.setOnClickListener { clickSend() }
+            btn2.setOnClickListener { clickReceive() }
+            btn4.setOnClickListener { clickSwap() }
         } else {
-            btnBuySell.gone()
+            btn3.gone()
+            btn1.text = resources.getString(R.string.send)
+            btn2.text = resources.getString(R.string.receive)
+            btn4.text = resources.getString(R.string.swap)
+            btn4.background = resources.getDrawable(R.drawable.bg_item_wallet_border, null)
+            btn1.setOnClickListener { clickSend() }
+            btn2.setOnClickListener { clickReceive() }
+            btn4.setOnClickListener { clickSwap() }
         }
 
-        btnBuySell.setOnClickListener {
-            navigator.goToBuyFragment(navController)
-        }
+        tvHello.text = resources.getString(R.string.hello_s, user?.firstName ?: "")
+    }
+
+    private fun clickBuySell(){
+        navigator.goToBuyFragment(navController)
+    }
+    private fun clickSend(){
+
+    }
+    private fun clickReceive(){
+
+    }
+    private fun clickSwap(){
+        navigator.goToExchange(navController)
     }
 }

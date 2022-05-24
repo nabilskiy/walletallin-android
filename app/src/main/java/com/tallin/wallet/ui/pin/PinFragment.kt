@@ -186,10 +186,12 @@ class PinFragment : BaseKotlinFragment() {
                         changeColorPin(0)
                     } else {
                         viewModel.savePin(addData ?: "")
+                        hideKeyboard()
                         navigator.goToMain(navController)
                     }
                 } else {
                     if (etPin.text.toString() == pinCode) {
+                        hideKeyboard()
                         navigator.goToMain(navController)
                     } else {
                         toast("Fail")
@@ -204,7 +206,7 @@ class PinFragment : BaseKotlinFragment() {
     private val biometricCallBack = object : BiometricPrompt.AuthenticationCallback() {
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
-
+            hideKeyboard()
             navigator.goToMain(navController)
         }
 

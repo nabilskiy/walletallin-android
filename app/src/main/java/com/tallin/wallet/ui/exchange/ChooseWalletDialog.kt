@@ -63,7 +63,7 @@ class ChooseWalletDialog(
     private fun initAdapter(wallets: MutableList<WalletContent>) {
         Log.i(TAG, "initAdapter: ${wallets.size}")
         adapter = AdapterChooseWallet(
-            wallets,
+            wallets.filter { it.crypto } as MutableList<WalletContent>,
             object : AdapterChooseWallet.WalletClickListener {
                 override fun onClick(wallet: WalletContent) {
                     if (isFromWallet) {

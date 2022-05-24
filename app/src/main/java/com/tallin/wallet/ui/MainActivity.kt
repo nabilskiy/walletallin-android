@@ -1,28 +1,32 @@
 package com.tallin.wallet.ui
 
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.tallin.wallet.R
-//import com.tallin.wallet.model.SharedPreferencesProvider
 import com.tallin.wallet.utils.extensions.setTransparentLightStatusBar
 import com.tallin.wallet.utils.extensions.setupFullScreen
-import java.lang.Exception
-//import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity() {
 
     private var isActivePin: Boolean? = null
     var showPin: Boolean = true
-    //private val sharedPreferencesProvider: SharedPreferencesProvider = get()
 
     var skipPin: Boolean = false
-    //var postPinFragment: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val uri: Uri? = intent.data
+
+        if (uri != null) {
+            val mtoken: String? = uri.getQueryParameter("mtoken")
+            val page: String? = uri.getQueryParameter("page")
+            val wtoken: String? = uri.getQueryParameter("wtoken")
+            println("mtoken : $mtoken page : $page wtoken : $wtoken")
+        }
 
         try {
             setTransparentLightStatusBar()
