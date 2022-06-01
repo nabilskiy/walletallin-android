@@ -322,31 +322,28 @@ class BuySellFragment: BaseKotlinFragment() {
                     changeViewGlob = changeView
                     changeView.setText("")
                     when(view == topInput){
-                            // верхня - крипто, нижня - фіат
-                                // верхня - фіат, нижня - крипто
                         true -> {
                             if (rate > 0.0) {
-                                if (isBuy) { // - верхня - ліва
+                                if (isBuy) {
                                     currencyFiat?.name?.let {
                                         viewModel.getCalculator(
                                             rate,
                                             null,
                                             strDouble,
                                             it
-                                        ) // хочу fiat - даю крипто
+                                        )
                                     }
-                                } else { //- верхня права
+                                } else {
                                     currencyCrypto?.let {
                                         viewModel.getCalculator(
                                             rate,
                                             strDouble,
                                             null,
                                             it
-                                        ) // хочу crypto - даю fiat
+                                        )
                                     }
                                 }
                             } else {
-                                //todo !/0
                                 rateTimer.isRun = false
                                 if (currencyFiat != null && currencyCrypto != null) {
                                     viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
@@ -355,17 +352,16 @@ class BuySellFragment: BaseKotlinFragment() {
                         }
                         false -> {
                             if (rate > 0.0) {
-                                if (isBuy) { // - нижня ліва
+                                if (isBuy) {
                                     currencyCrypto?.let {
                                         viewModel.getCalculator(rate, strDouble, null, it)
-                                    } // хочу crypto - даю fiat
-                                } else { // - нижня права
+                                    }
+                                } else {
                                     currencyFiat?.name?.let{
                                         viewModel.getCalculator(rate, null, strDouble, it)
-                                    } // хочу fiat - даю crypto
+                                    }
                                 }
                             } else {
-                                //todo !/0
                                 rateTimer.isRun = false
                                 if (currencyFiat != null && currencyCrypto != null) {
                                     viewModel.refreshData(currencyFiat!!.getTitle(), currencyCrypto!!)
