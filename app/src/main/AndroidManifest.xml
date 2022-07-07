@@ -19,15 +19,10 @@
         android:supportsRtl="false"
         tools:replace="android:allowBackup, android:icon"
         android:theme="@style/AppTheme"
-        android:requestLegacyExternalStorage="true">
-        <activity android:name="com.tallin.wallet.ui.demo.DemoActivity"
-            android:screenOrientation="portrait">
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
+        android:requestLegacyExternalStorage="true"
+        tools:targetApi="32">
+        <!--activity android:name="com.tallin.wallet.ui.demo.DemoActivity"-->
 
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
-        </activity>
         <activity android:name="com.tallin.wallet.ui.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
@@ -35,13 +30,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"/>
-                <data android:host="wallet-stage.walletallin.com"
-                    android:pathPrefix="/login/sso"/>
+                <data android:host="www.facebook.com"/>
+
             </intent-filter>
         </activity>
 

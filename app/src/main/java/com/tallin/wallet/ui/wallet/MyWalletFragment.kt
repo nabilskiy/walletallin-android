@@ -75,10 +75,6 @@ class MyWalletFragment : BaseKotlinFragment() {
         super.onViewCreated(view, savedInstanceState)
         subscribeLiveData()
 
-        if (!viewModel.getKycStatus()){
-            navigator.goToKYCProcess(navController)
-        }
-
         tvCrypto_switch.setOnClickListener {
             cryptoType = true
             switchButtonCrypto.visible()

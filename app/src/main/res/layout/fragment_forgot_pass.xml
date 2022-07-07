@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/selector_arrow_back" />
 
 
-    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
         android:id="@+id/forgotPasswordMail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

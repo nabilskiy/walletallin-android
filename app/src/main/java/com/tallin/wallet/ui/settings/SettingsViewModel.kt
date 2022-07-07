@@ -25,6 +25,7 @@ class SettingsViewModel(
 
     val ldLogout = MutableLiveData<Boolean>()
     val ldAva = MutableLiveData<Long>()
+    val ldUser = MutableLiveData<Boolean>()
 
     override fun stopRequest() {
 
@@ -47,6 +48,7 @@ class SettingsViewModel(
             sharedPreferencesProvider.getUser()?.avatar.let {
                 ldAva.postValue(it)
             }
+            ldUser.postValue(true)
             withContext(Dispatchers.Main){onEndProgress.value = Unit}
         }
     }
@@ -67,23 +69,22 @@ class SettingsViewModel(
         showError.postValue("Can not logout")
     }
 
-    fun getUserAvatarGlideUrl(id: Long) : GlideUrl {
+    fun getUserAvatarGlideUrl(id: Long): GlideUrl {
 
         Log.e("!!!", sharedPreferencesProvider.getToken() ?: "")
-        val glideUrl = GlideUrl(
+        return GlideUrl(
             "${BuildConfig.API_RES_URL}files/${id}",
             LazyHeaders.Builder()
-                .addHeader("slc-auth",  sharedPreferencesProvider.getToken() ?: "")
+                .addHeader("slc-auth", sharedPreferencesProvider.getToken() ?: "")
                 .build()
         )
-        return glideUrl
     }
 
     fun getUserStatus(): Int{
         return sharedPreferencesProvider.getUser()?.wallet?.kycProgramStatus ?: 9
     }
 
-    fun getUser(): UserResponse {
-        return sharedPreferencesProvider.getUser()!!
+    fun getUser(): UserResponse? {
+        return sharedPreferencesProvider.getUser()
     }
 }

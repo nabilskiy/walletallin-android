@@ -45,13 +45,13 @@ class SettingsFragment() : BaseKotlinFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
         subscribeLiveData()
     }
 
     private fun subscribeLiveData() {
         bindDataTo(viewModel.ldLogout, ::logout)
         bindDataTo(viewModel.ldAva, ::loadAva)
+        bindDataTo(viewModel.ldUser, ::loadUser)
     }
 
     private fun logout(b: Boolean?) {
@@ -66,8 +66,13 @@ class SettingsFragment() : BaseKotlinFragment() {
         }
     }
 
+    private fun loadUser(b: Boolean){
+        if (b){
+            setKycStatusText()
+        }
+    }
+
     private fun loadAva(id: Long) {
-        setKycStatusText()
         Glide.with(this)
             .asBitmap()
             .load(viewModel.getUserAvatarGlideUrl(id))
@@ -118,9 +123,9 @@ class SettingsFragment() : BaseKotlinFragment() {
 
     @SuppressLint("SetTextI18n")
     fun setKycStatusText(){
-        binding.settingsToolbar.tvName.text = viewModel.getUser().firstName+" "+viewModel.getUser().lastName
-        binding.settingsToolbar.tvWalletType.text = viewModel.getUser().wallet?.walletType
-        binding.settingsToolbar.tvKYC.text = "Program: "+viewModel.getUser().kycProgram?.name
+        binding.settingsToolbar.tvName.text = viewModel.getUser()?.firstName+" "+viewModel.getUser()?.lastName
+        binding.settingsToolbar.tvWalletType.text = viewModel.getUser()?.wallet?.walletType
+        binding.settingsToolbar.tvKYC.text = "Program: "+viewModel.getUser()?.kycProgram?.name
 
         var kycStatusName: String? = null
         var kycStatusColor: Int? = null

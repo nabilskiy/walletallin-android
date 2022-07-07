@@ -43,6 +43,10 @@ class ActionsFragment : BaseKotlinFragment() {
         }
 
         tvHello.text = resources.getString(R.string.hello_s, user?.firstName ?: "")
+
+        if (!viewModel.getKycStatus()){
+            navigator.goToKYCProcess(navController)
+        }
     }
 
     private fun clickBuySell(){

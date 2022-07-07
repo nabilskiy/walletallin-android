@@ -1,4 +1,4 @@
-package com.tallin.moneybee.ui.widgets.inputField
+package com.tallin.wallet.ui.widgets.inputField.input
 
 import android.content.Context
 import android.text.Editable
@@ -74,7 +74,7 @@ class InputFieldComponent @JvmOverloads constructor(
     }
 
 
-    fun showHideData() {
+    private fun showHideData() {
         cbShowHide.setOnCheckedChangeListener { _, isChecked ->
             etField.apply {
                 transformationMethod = PasswordTransformationMethod().takeIf { isChecked.not() }
@@ -85,7 +85,7 @@ class InputFieldComponent @JvmOverloads constructor(
         }
     }
 
-    fun currentInputType(type: String) {
+    private fun currentInputType(type: String) {
         cbShowHide.visibility = View.INVISIBLE
 
         when (type) {
@@ -180,7 +180,7 @@ class InputFieldComponent @JvmOverloads constructor(
         etField.addTextChangedListener(watcher)
     }
 
-    fun setPhoneNumber() {
+    private fun setPhoneNumber() {
         etField.inputType = InputType.TYPE_CLASS_NUMBER
 
         etField.addTextChangedListener(object : TextWatcher {

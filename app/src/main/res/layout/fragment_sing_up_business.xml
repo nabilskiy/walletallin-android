@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcCompanyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcCompanyName"
                 app:layout_constraintTop_toBottomOf="@id/ifcCompanyName">
 
-                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                     android:id="@+id/ifcNum"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                     app:ifc_header="@string/company_number"
                     app:ifc_type="phoneWithIco" />
 
-                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                     android:id="@+id/ifcNumPhone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
 
             </LinearLayout>
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcNum"
                 app:layout_constraintTop_toBottomOf="@id/ifcNum" />
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcWebsite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp">
 
-                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                     android:id="@+id/ifcSignUpPassword"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     app:layout_constraintStart_toStartOf="@+id/ifcWebsite"
                     app:layout_constraintTop_toBottomOf="@id/ifcWebsite" />
 
-                <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                     android:id="@+id/ifcSignUpPasswordConfirm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                     android:layout_marginEnd="24dp"
                     android:gravity="bottom">
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcFirstName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                         app:layout_constraintStart_toStartOf="@+id/ifcEmail"
                         app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcLastName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                     android:layout_marginEnd="24dp"
                     android:gravity="bottom">
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcCity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
                         app:layout_constraintStart_toStartOf="@+id/ifcEmail"
                         app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcStreet"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -273,7 +273,7 @@
                     android:layout_marginEnd="24dp"
                     android:gravity="bottom">
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcPostCode"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -286,7 +286,7 @@
                         app:layout_constraintStart_toStartOf="@+id/ifcEmail"
                         app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
 
-                    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+                    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                         android:id="@+id/ifcCountry"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -303,7 +303,7 @@
 
             </LinearLayout>
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

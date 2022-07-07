@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+    <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
         android:id="@+id/forgotPasswordMail"
         android:layout_width="@dimen/dialog_forgot_cc_password_width"
         android:layout_height="wrap_content"

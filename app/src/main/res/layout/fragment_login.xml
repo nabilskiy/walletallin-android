@@ -86,8 +86,18 @@
 
         </LinearLayout>
 
+        <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
+            android:id="@+id/loginPasswordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/login_cc_margin_end_start"
+            android:layout_marginTop="@dimen/login_cc_pass_margin_top"
+            android:layout_marginEnd="@dimen/login_cc_margin_end_start"
+            app:ifc_header="Password"
+            app:ifc_type="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
 
-        <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+        <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
             android:id="@+id/loginEmailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,16 +109,6 @@
             app:ifc_type="textEmailAddress"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
-        <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
-            android:id="@+id/loginPasswordInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_cc_margin_end_start"
-            android:layout_marginTop="@dimen/login_cc_pass_margin_top"
-            android:layout_marginEnd="@dimen/login_cc_margin_end_start"
-            app:ifc_header="Password"
-            app:ifc_type="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/loginEmailInput" />
 
         <TextView
             android:id="@+id/tvForgotPassword"

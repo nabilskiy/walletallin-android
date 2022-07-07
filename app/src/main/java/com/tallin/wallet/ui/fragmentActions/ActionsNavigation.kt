@@ -11,4 +11,7 @@ class ActionsNavigation : BaseNavigator() {
     fun goToExchange(navController: NavController?){
         navController?.navigate(R.id.action_global_exchange)
     }
+    fun goToKYCProcess(navController: NavController?) {
+        navController?.navigate(R.id.action_actionsFragment_to_processKYC)
+    }
 }

@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_myWalletFragment2_to_transactionFragment"
             app:destination="@id/transactionFragment" />
-        <action
-            android:id="@+id/action_myWalletFragment2_to_processKYC"
-            app:destination="@id/processKYC"/>
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
@@ -153,6 +150,9 @@
             android:id="@+id/action_actionsFragment_to_BuyFragment"
             app:destination="@id/BuySellFragment"/>
 
+        <action
+            android:id="@+id/action_actionsFragment_to_processKYC"
+            app:destination="@id/processKYC"/>
     </fragment>
 
     <fragment

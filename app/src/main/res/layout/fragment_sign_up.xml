@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_in" />
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcFirstName"
                 app:layout_constraintTop_toBottomOf="@id/ifcFirstName" />
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcLastName"
                 app:layout_constraintTop_toBottomOf="@id/ifcLastName" />
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcSignUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 app:layout_constraintStart_toStartOf="@+id/ifcEmail"
                 app:layout_constraintTop_toBottomOf="@id/ifcEmail" />
 
-            <com.tallin.moneybee.ui.widgets.inputField.InputFieldComponent
+            <com.tallin.wallet.ui.widgets.inputField.input.InputFieldComponent
                 android:id="@+id/ifcSignUpPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,21 +111,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-
-
-    <TextView
-        android:id="@+id/tvLogin"
-        style="@style/H4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/sign_up_login_margin_start"
-        android:layout_marginTop="@dimen/sign_up_login_margin_top"
-        android:text="@string/login"
-        android:textColor="@color/blue"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ifcSignUpPassword" />
 
     <Button
         android:id="@+id/btnSignUp"
