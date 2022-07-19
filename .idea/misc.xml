@@ -189,15 +189,13 @@
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_buy.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_actions_sell.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_buy_sell.xml" value="0.21" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_choose_wallet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_confirmation.xml" value="0.18" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_diagram.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_exchange.xml" value="0.22" />
+        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_exchange.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc.xml" value="0.33" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_manually_button.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_process.xml" value="0.1539855072463768" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_webview.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_my_wallet.xml" value="0.22" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_order_preview.xml" value="0.25" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
@@ -205,12 +203,10 @@
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_sing_up_business.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_splash.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_transaction.xml" value="0.25" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_transaction_document_upload.xml" value="0.25" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_transaction_documents.xml" value="0.22" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragment_verify_purchase.xml" value="0.33" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/fragments_buy_sell_united.xml" value="0.1" />
-        <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/input_field.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_data.xml" value="0.1609375" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_title.xml" value="0.1609375" />
         <entry key="..\:/Users/Unit/AndroidStudioProjects/walletallin-android/app/src/main/res/layout/item_transaction.xml" value="0.2846153846153846" />
@@ -225,11 +221,12 @@
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/fragment_kyc_manually_button.xml" value="0.10714285714285714" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/fragment_profile.xml" value="0.1796875" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
+        <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/item_kyc.xml" value="0.4466666666666667" />
         <entry key="..\:/sasha/StudioProjects/walletallin-android/app/src/main/res/layout/layout_toolbar_full.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

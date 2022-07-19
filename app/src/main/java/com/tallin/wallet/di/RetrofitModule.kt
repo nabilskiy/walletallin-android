@@ -1,5 +1,6 @@
 package com.tallin.wallet.di
 
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.tallin.wallet.api.*
 import com.tallin.wallet.network.interceptors.ParamsInterceptor
 import com.tallin.wallet.network.interceptors.ResponseInterceptor
@@ -7,17 +8,13 @@ import com.tallin.wallet.network.retrofit.RetrofitFactory
 import com.tallin.wallet.network.retrofit.RetrofitFactoryImpl
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.readystatesoftware.chuck.ChuckInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.create
 
 val retrofitModule = module(override = true) {
 
-
-
-    single { ChuckInterceptor(get()) }
-
+    single { ChuckerInterceptor(get()) }
     single { ParamsInterceptor(get()) }
     single { ResponseInterceptor() }
     single<Gson> { GsonBuilder().setLenient().create() }

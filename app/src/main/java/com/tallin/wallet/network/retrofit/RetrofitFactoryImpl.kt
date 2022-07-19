@@ -1,8 +1,9 @@
 package com.tallin.wallet.network.retrofit
 
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.tallin.wallet.BuildConfig
 import com.google.gson.Gson
-import com.readystatesoftware.chuck.ChuckInterceptor
+
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitFactoryImpl(private val paramsInterceptor: ParamsInterceptor,
                           private val responseInterceptor: ResponseInterceptor,
-                          private val chuckInterceptor: ChuckInterceptor) : RetrofitFactory {
+                          private val chuckInterceptor: ChuckerInterceptor) : RetrofitFactory {
 
     override fun createRetrofit(gson: Gson): Retrofit {
         val okHttpBuilder =

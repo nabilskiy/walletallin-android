@@ -101,9 +101,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     //Chuck
-    debugImplementation "com.readystatesoftware.chuck:library:1.1.0"
-    debugReleaseImplementation "com.readystatesoftware.chuck:library:1.1.0"
-    releaseImplementation "com.readystatesoftware.chuck:library-no-op:1.1.0"
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    debugReleaseImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
     //Koin
     implementation "org.koin:koin-android:2.1.6"
