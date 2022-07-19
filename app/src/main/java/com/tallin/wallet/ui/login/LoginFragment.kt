@@ -72,5 +72,11 @@ class LoginFragment : BaseKotlinFragment() {
             navigate()
         }
     }
+
+    override fun onStart() {
+        loginEmailInput.setText("")
+        loginPasswordInput.setText("")
+        super.onStart()
+    }
 }
 
